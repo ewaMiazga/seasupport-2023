@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"com.example.src","c":"Main","l":"Main()","u":"%3Cinit%3E()"},{"p":"com.example.src","c":"Main","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"com.example.src","c":"Main","l":"start(Stage)","u":"start(javafx.stage.Stage)"}];updateSearchResults();
+memberSearchIndex = [{"p":"src.newapp","c":"Main","l":"Main()","u":"%3Cinit%3E()"},{"p":"src.newapp","c":"Main","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"src.newapp","c":"Main","l":"start(Stage)","u":"start(javafx.stage.Stage)"}];updateSearchResults();

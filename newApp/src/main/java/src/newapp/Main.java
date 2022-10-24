@@ -1,4 +1,4 @@
-package com.example.src;
+package src.newapp;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,14 +8,21 @@ import javafx.stage.Stage;
 
 
 /**
- * Class HelloApplication
+ * Class Main
  *
  * @author ewa.miazga
  */
 public class Main extends Application {
 
+    /**
+     * The Button.
+     */
     Button button;
-
+    /**
+     * The func that generates first window.
+     *
+     * @param primaryStage
+     */
     public void start(Stage primaryStage) {
         primaryStage.setTitle("SeaSupPort");
         button = new Button();

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newApp/newApp.iml" filepath="$PROJECT_DIR$/newApp/newApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/seasupport.iml" filepath="$PROJECT_DIR$/.idea/seasupport.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/src/src.iml" filepath="$PROJECT_DIR$/app/src/src.iml" />
     </modules>
   </component>
 </project>

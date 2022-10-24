@@ -1,1 +1,1 @@
-moduleSearchIndex = [{"l":"com.example.src"}];updateSearchResults();
+moduleSearchIndex = [{"l":"src.newapp"}];updateSearchResults();
