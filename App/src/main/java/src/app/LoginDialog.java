@@ -66,6 +66,8 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 300, 275);
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
     }
