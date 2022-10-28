@@ -11,26 +11,23 @@ import javafx.stage.Stage;
  *
  * @author ewa.miazga
  */
-
 public class Main extends Application {
 
     /**
      * primary Stage
      */
-    Stage primaryStage;
+    Stage stage;
     /**
-     * The func that generates first window.
+     * The func that run application
      *
      * @param primaryStage
      */
     public void start(Stage primaryStage) {
-        primaryStage = new Stage();
-        primaryStage.setTitle("SeaSupPort");
+        stage = new Stage();
+        stage.setTitle("SeaSupPort");
 
-        StackPane layout = new StackPane();
-        Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        LoginDialog loginDialog = new LoginDialog();
+        loginDialog.start(stage);
     }
 
     /**

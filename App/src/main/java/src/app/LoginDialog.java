@@ -5,13 +5,23 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
+/**
+ * Class LoginDialog
+ *
+ * @author ewa.miazga
+ */
 public class LoginDialog extends Application implements EventHandler<ActionEvent> {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) {
         //TODO
     }
 
+    /**
+     * The entry point of class LoginDialog
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
