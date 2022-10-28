@@ -38,7 +38,6 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-        //grid.setGridLinesVisible(true);
 
         formTitle = new Text("Welcome");
         formTitle.setId("formatTitle");
