@@ -82,6 +82,8 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent event) {
-        //TODO
+        if (event.getSource() == signInButton) {
+            notification.setText("Sign in button pressed");
+        }
     }
 }
