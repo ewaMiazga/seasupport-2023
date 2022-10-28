@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>src</groupId>
-    <artifactId>newApp</artifactId>
+    <artifactId>app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>newApp</name>
+    <name>app</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>src.newapp/src.newapp.HelloApplication</mainClass>
+                            <mainClass>src.app/src.app.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
