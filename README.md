@@ -4,7 +4,17 @@
 
 ## Cel projektu
 
-Stworzenie aplikacji obsługującej porty morskie.
+Celem projektu jest stworzenie aplikacji obsługującej porty morskie. Aplikacja będzie umożliwiała użytkownikowi sprawdzenie listy portów, rezerwacji wolnego miejsca i dodawanie swojego jachtu. A administratorzy portów będą mieli możliwość m.in. zarządzania rezerwacjami.
+
+
+## Podstawowe założenia aplikacji
+
+- Aplikacja będzie wymagała zalogowania się przez użytkownika
+- Użytkownicy będą podzieleni na administratorów portów i zwykłych użytkowników (żeglarzy)
+- Będzie możliwość dodania swojego jachtu i podania jego szczegółowych informacji
+- W aplikacji będzie lista działających portów
+- Aplikacja będzie posiadała szczegółowe informacje o portach, a także umożliwi sprawdzenie i rezerwacje miejsca w porcie
+
 
 ## Skład zespołu
 
