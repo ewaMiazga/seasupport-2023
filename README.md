@@ -2,6 +2,19 @@
 
 
 
+## Cel projektu
+
+Stworzenie aplikacji obsługującej porty morskie.
+
+## Skład zespołu
+
+Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
+
+## Wstępna deklaracja wybranej technologii
+
+Nasz wybór padł na JavaFX
+
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
