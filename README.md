@@ -41,9 +41,11 @@ Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
 
 ## Model relacyjny bazy danych
 
-![Screenshot from 2022-11-05 17-21-54.png](./db_scripts/Screenshot from 2022-11-05 17-21-54.png)
-
 ![model_relacyjny.png](./db_scripts/model_relacyjny.png)
+
+## Model logiczny bazy danych
+
+![Screenshot from 2022-11-05 17-21-54.png](./db_scripts/Screenshot from 2022-11-05 17-21-54.png)
 
 
 ## Workflow
