@@ -27,6 +27,7 @@ Celem projektu jest stworzenie aplikacji desktopowej obsługującej polskie port
 
 Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
 
+
 ## Wstępna deklaracja wybranej technologii
 
 - Interfejs graficzny: JavaFX.
@@ -36,6 +37,11 @@ Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
 - Testy jednostkowe: JUnit
 - Łączenie się z bazą danych z poziomu aplikacji: do uzgodnienia
 - Dokumentacja: JavaDoc
+
+
+## Model relacyjny bazy danych
+
+![model_relacyjny.png](./db_scripts/model_relacyjny.png)
 
 
 ## Workflow
