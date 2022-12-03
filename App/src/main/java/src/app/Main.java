@@ -24,6 +24,7 @@ public class Main extends Application {
         primaryStage = new Stage();
         primaryStage.setTitle("SeaSupPort");
 
+
         WelcomeDialog welcomeDialog = new WelcomeDialog();
         welcomeDialog.start(primaryStage);
 
