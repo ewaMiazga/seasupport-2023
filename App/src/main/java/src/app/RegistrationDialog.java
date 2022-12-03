@@ -99,7 +99,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(registerButton, 1, 10);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
-        scene = new Scene(grid, 300, 275);
+        scene = new Scene(grid, 500, 575);
         stage.setScene(scene);
         stage.show();
     }
