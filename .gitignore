@@ -28,3 +28,5 @@ target/
 out/test/seasupport/src/app/
 
 App/.mvn/
+
+App/target/*
