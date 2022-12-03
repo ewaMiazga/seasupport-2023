@@ -27,8 +27,6 @@ public class Main extends Application {
 
         WelcomeDialog welcomeDialog = new WelcomeDialog();
         welcomeDialog.start(primaryStage);
-
-
     }
 
     /**
