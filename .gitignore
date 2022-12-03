@@ -21,6 +21,6 @@ target/
 .springBeans
 .sts4-cache
 
-out/
+out/test/seasupport/src/app/
 
 App/.mvn/
