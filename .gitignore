@@ -1,3 +1,4 @@
 newApp/target/*
 README.md
-out/
+out/*
+.idea/
