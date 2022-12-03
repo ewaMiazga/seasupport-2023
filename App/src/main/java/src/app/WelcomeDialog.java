@@ -81,9 +81,15 @@ public class WelcomeDialog  extends Application implements EventHandler<ActionEv
     public void handle(ActionEvent event) {
         if (event.getSource() == loginButton) {
             notification.setText("Sign in button pressed");
+            Stage stage = new Stage();
+            LoginDialog loginDialog = new LoginDialog();
+            loginDialog.start(stage);
         }
         else if (event.getSource() == registrationButton) {
             notification.setText("Registration button pressed");
+            Stage stage = new Stage();
+            RegistrationDialog registrationDialog = new RegistrationDialog();
+            registrationDialog.start(stage);
         }
     }
 }
