@@ -27,8 +27,13 @@ public class Main extends Application {
         //LoginDialog loginDialog = new LoginDialog();
         //loginDialog.start(primaryStage);
 
-        RegistrationDialog registrationDialog = new RegistrationDialog();
-        registrationDialog.start(primaryStage);
+        //RegistrationDialog registrationDialog = new RegistrationDialog();
+        //registrationDialog.start(primaryStage);
+
+        WelcomeDialog welcomeDialog = new WelcomeDialog();
+        welcomeDialog.start(primaryStage);
+
+
     }
 
     /**
