@@ -14,18 +14,21 @@ public class Main extends Application {
     /**
      * primary Stage
      */
-    private Stage stage;
+    private Stage primaryStage;
     /**
      * The func that run application
      *
      * @param primaryStage
      */
     public void start(Stage primaryStage) {
-        stage = new Stage();
-        stage.setTitle("SeaSupPort");
+        primaryStage = new Stage();
+        primaryStage.setTitle("SeaSupPort");
 
-        LoginDialog loginDialog = new LoginDialog();
-        loginDialog.start(stage);
+        //LoginDialog loginDialog = new LoginDialog();
+        //loginDialog.start(primaryStage);
+
+        RegistrationDialog registrationDialog = new RegistrationDialog();
+        registrationDialog.start(primaryStage);
     }
 
     /**
