@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd2d5fe0-de19-4081-ad87-2e4d89e98977" name="Changes" comment="">
+    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="classes from database generated">
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntityPK.java" afterDir="false" />
@@ -16,6 +16,8 @@
       <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/mvnw.cmd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
     </list>
@@ -24,11 +26,129 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ISd7ertnmzJLD3FfkzWswJf3Fw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "71693650-dd14-4029-a774-6a07daac621c",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/michal/.m2/repository/org/hibernate/orm/hibernate-core/6.1.5.Final",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.20689656",
+    "settings.editor.selected.configurable": "editing.templates",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/App" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="src.logic" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install:install-file" />
+      <command value="mvn install:install-file -Dfile={ojdbc11.jar}  -DgroupId=com.oracle -DartifactId=ojdbc11 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=ojdbc11.jar  -DgroupId=com.oracle -DartifactId=ojdbc11 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=ojdbc11.jar  -DgroupId=com.oracle -DartifactId=ojdbc11 -Dversion=21.7.0.0  -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=ojdbc11.jar  -DgroupId=com.hibernate.orm  -DartifactId=gibernate-core -Dversion=6.1.5.Final  -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=hibernate-core-6.1.5.Final.jar  -DgroupId=com.hibernate.orm  -DartifactId=gibernate-core -Dversion=6.1.5.Final  -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=hibernate-core-6.1.5.Final.jar  -DgroupId=com.hibernate.orm  -DartifactId=hibernate-core -Dversion=6.1.5.Final  -Dpackaging=jar" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="" />
+      <created>1670178754432</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670178754432</updated>
+      <workItem from="1670178757567" duration="6520000" />
+      <workItem from="1670185291334" duration="567000" />
+      <workItem from="1670185868692" duration="942000" />
+      <workItem from="1670186824150" duration="2385000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="classes from database generated" />
+    <option name="LAST_COMMIT_MESSAGE" value="classes from database generated" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

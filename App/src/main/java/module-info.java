@@ -7,5 +7,6 @@ module src.app {
     exports src.app;
     requires org.hibernate.orm.core;
     requires com.oracle.database.jdbc;
+    requires java.naming;
 //    requires org.hibernate.commons.annotations;
 }

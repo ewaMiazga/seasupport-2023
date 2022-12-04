@@ -21,6 +21,16 @@ public class CaptainsEntity {
     @Column(name = "CAPTAIN_ID")
     private int captainId;
 
+    public CaptainsEntity()
+    {}
+
+    public CaptainsEntity(String forename, String surname, String pesel, int captainId) {
+        this.forename = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.captainId = captainId;
+    }
+
     public String getForename() {
         return forename;
     }
