@@ -19,7 +19,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     private ListView<String> listView;
 
-    private Button mouseButton;
+    private Button mouseButton, settingsButton;
     private Scene scene;
 
     //private Stage stage;
@@ -36,6 +36,21 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         formTitle = new Text("Choose Port");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
+
+        settingsButton = new Button("Settings");
+        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource().equals(settingsButton)) {
+                    LoginDialog loginDialog = new LoginDialog();
+                    loginDialog.start(stage);
+                }
+
+            }
+        });
+
+        grid.add(settingsButton, 1, 0);
+        grid.setHalignment(settingsButton, HPos.RIGHT);
 
         listView = new ListView<String>();
         listView.getItems().addAll("Port1", "Port2", "Port3");
@@ -62,12 +77,6 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
             }
         });
 
-
-        //signInButton = new Button("Sign In");
-        //signInButton.setOnAction(this);
-
-        //grid.add(signInButton, 1, 4);
-        //grid.setHalignment(signInButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");

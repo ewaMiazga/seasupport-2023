@@ -19,10 +19,8 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
     private GridPane grid;
     private Text formTitle, notification;
     private Label whoAreYouLabel, toLoginLabel, toRegisterLabel;
-
     private Button loginButton, registrationButton;
     private Scene scene;
-
     @Override
     public void start(Stage stage) {
         stage.setTitle("Welcome Dialog");
