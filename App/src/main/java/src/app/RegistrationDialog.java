@@ -30,8 +30,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private Button registerButton;
 
     private Scene scene;
+
+    private Stage registrationStage;
     @Override
     public void start(Stage stage) {
+        registrationStage = stage;
         stage.setTitle("Registration Dialog");
 
         grid = new GridPane();
@@ -100,8 +103,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         scene = new Scene(grid, 500, 575);
-        stage.setScene(scene);
-        stage.show();
+        registrationStage.setScene(scene);
+        registrationStage.show();
     }
 
     /**
@@ -117,6 +120,10 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     public void handle(ActionEvent event) {
         if (event.getSource() == registerButton) {
             registerButton.setText("Register button pressed");
+            LoginDialog loginDialog = new LoginDialog();
+            loginDialog.start(registrationStage);
         }
-        }
+    }
+
+
     }

@@ -15,14 +15,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class WelcomeDialog  extends Application implements EventHandler<ActionEvent> {
+public class WelcomeDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
     private Label whoAreYouLabel, toLoginLabel, toRegisterLabel;
-
     private Button loginButton, registrationButton;
     private Scene scene;
-
     @Override
     public void start(Stage stage) {
         stage.setTitle("Welcome Dialog");
