@@ -34,6 +34,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private String cssPath;
     @Override
     public void start(Stage stage) {
+        registrationStage = stage;
         stage.setTitle("Registration Dialog");
 
         grid = new GridPane();
@@ -127,6 +128,10 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     public void handle(ActionEvent event) {
         if (event.getSource() == registerButton) {
             registerButton.setText("Register button pressed");
+            LoginDialog loginDialog = new LoginDialog();
+            loginDialog.start(registrationStage);
         }
-        }
+    }
+
+
     }
