@@ -22,6 +22,7 @@ public class WelcomeDialog  extends Application implements EventHandler<ActionEv
 
     private Button loginButton, registrationButton;
     private Scene scene;
+    private String cssPath;
 
     @Override
     public void start(Stage stage) {
@@ -64,6 +65,8 @@ public class WelcomeDialog  extends Application implements EventHandler<ActionEv
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 675);
+        cssPath = this.getClass().getResource("RegistrationDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
     }
