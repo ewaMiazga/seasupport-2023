@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.util.Objects;
+import java.lang.String;
 
 @Entity
 @Table(name = "ALL_USERS")
@@ -15,6 +16,20 @@ public class AllUsersEntity {
     @Basic
     @Column(name = "USER_PASSWORD")
     private String userPassword;
+
+    public AllUsersEntity(String login, String userPassword, String forename,
+                          String surname, String phoneNumber, Date birthday, String pesel,
+                          String userType) {
+        this.login = login;
+        this.userPassword = userPassword;
+        this.forename = forename;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.pesel = pesel;
+        this.userType = userType;
+    }
+
     @Basic
     @Column(name = "FORENAME")
     private String forename;
@@ -109,5 +124,17 @@ public class AllUsersEntity {
     @Override
     public int hashCode() {
         return Objects.hash(login, userPassword, forename, surname, phoneNumber, birthday, pesel, userType);
+    }
+
+    public void startVisit(PortsEntity port, ShipsEntity ship) {
+        if (!this.inPort()) {
+            if (port.isAvalible(ship.getShipLength())) {
+                continue;
+            }
+        }
+    }
+
+    public boolean inPort(){
+        //zapytanie czy uztkownik jest w jakims porcie / na podstawie wizyt
     }
 }

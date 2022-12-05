@@ -164,4 +164,16 @@ public class PortsEntity {
     public void setAdminPortIntermediariesByPortId(Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId) {
         this.adminPortIntermediariesByPortId = adminPortIntermediariesByPortId;
     }
+
+    public boolean isAvalible(int shipLen){
+        if(shipLen <= 15){
+            this.placesShipsSmall -= 1;
+            return true;
+        }
+        if(shipLen <= 30){
+            this.placesShipsBig -= 1;
+            return true;
+        }
+        return false;
+    }
 }
