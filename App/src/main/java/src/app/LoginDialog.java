@@ -28,9 +28,12 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private PasswordField userPassField;
     private Button signInButton;
     private Scene scene;
+
+    private Stage loginStage;
     private String cssPath;
     @Override
     public void start(Stage stage) {
+        loginStage = stage;
         stage.setTitle("Login Dialog");
 
         grid = new GridPane();
@@ -68,8 +71,8 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         scene = new Scene(grid, 300, 275);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
-        stage.setScene(scene);
-        stage.show();
+        loginStage.setScene(scene);
+        loginStage.show();
     }
 
     /**
@@ -88,6 +91,8 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         //database @michał
         if (event.getSource() == signInButton) {
             notification.setText("Sign in button pressed");
+            PortsDialog portsDialog = new PortsDialog();
+            portsDialog.start(loginStage);
         }
     }
 }
