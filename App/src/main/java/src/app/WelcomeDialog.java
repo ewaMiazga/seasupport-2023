@@ -21,6 +21,8 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
     private Label whoAreYouLabel, toLoginLabel, toRegisterLabel;
     private Button loginButton, registrationButton;
     private Scene scene;
+    private String cssPath;
+
     @Override
     public void start(Stage stage) {
         stage.setTitle("Welcome Dialog");
@@ -62,6 +64,8 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 675);
+        cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
     }
