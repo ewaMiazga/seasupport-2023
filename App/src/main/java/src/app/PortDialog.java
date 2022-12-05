@@ -93,7 +93,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 575);
-        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+        cssPath = this.getClass().getResource("PortsDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         portStage.setScene(scene);
         portStage.show();
