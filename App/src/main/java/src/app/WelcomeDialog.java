@@ -65,7 +65,7 @@ public class WelcomeDialog  extends Application implements EventHandler<ActionEv
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 675);
-        cssPath = this.getClass().getResource("RegistrationDialog.css").toExternalForm();
+        cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
