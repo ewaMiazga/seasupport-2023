@@ -31,6 +31,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private Scene scene;
 
+    private Stage registrationStage;
+
     private String cssPath;
     @Override
     public void start(Stage stage) {
@@ -108,7 +110,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(registerButton, 1, 11);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
-        scene = new Scene(grid, 500, 575);
+        scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);

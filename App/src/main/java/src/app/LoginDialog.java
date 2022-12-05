@@ -72,6 +72,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         loginStage.setScene(scene);
+        loginStage.centerOnScreen();
         loginStage.show();
     }
 
