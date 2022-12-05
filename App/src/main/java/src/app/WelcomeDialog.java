@@ -63,7 +63,7 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         notification.setId("notification");
         grid.add(notification, 1, 6);
 
-        scene = new Scene(grid, 600, 675);
+        scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);

@@ -22,7 +22,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     private Button mouseButton, settingsButton;
     private Scene scene;
 
-    //private Stage stage;
+    private String cssPath;
     @Override
     public void start(Stage stage) {
         stage.setTitle("Ports Dialog");
@@ -82,8 +82,11 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         notification.setId("notification");
         grid.add(notification, 1, 6);
 
-        scene = new Scene(grid, 300, 275);
+        scene = new Scene(grid, 600, 575);
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
