@@ -23,6 +23,22 @@ Celem projektu jest stworzenie aplikacji desktopowej obsługującej polskie port
 - Budowa aplikacji przystosowana do późniejszego rozwoju i dodania kolejnych modułów.
 
 
+## Instalacja i uruchomienie aplikacji
+
+Do zainstalowania aplikacji potrzebny będzie Maven zainstalowany na własnym komputerze.
+Pobierabmy wszystkie pliki z repozytorium.
+
+Kompilujemy kod i zasoby za pomocą komend
+```
+mvn compiler:compile
+mvn resources:resources
+```
+Uruchamiamy aplikację
+```
+mvn javafx:run
+```
+
+
 ## Skład zespołu
 
 Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
