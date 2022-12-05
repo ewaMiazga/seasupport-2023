@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="" />
+    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/RegistrationDialog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,9 +26,15 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "last_opened_file_path": "C:/Users/ewa.miazga/IdeaProjects/seasupport/App/src/main/resources/src/app",
     "settings.editor.selected.configurable": "build.tools"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ewa.miazga\IdeaProjects\seasupport\App\src\main\resources\src\app" />
+    </key>
+  </component>
   <component name="TaskManager">
     <servers />
   </component>
