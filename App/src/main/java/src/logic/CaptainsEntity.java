@@ -16,7 +16,6 @@ public class CaptainsEntity {
     @Basic
     @Column(name = "PESEL")
     private String pesel;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "CAPTAIN_ID")
     private int captainId;

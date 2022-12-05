@@ -8,7 +8,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "ALL_USERS")
 public class AllUsersEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "LOGIN")
     private String login;

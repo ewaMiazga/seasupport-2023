@@ -4,8 +4,10 @@ package src.app;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import src.logic.AllUsersEntity;
 import src.logic.CaptainsEntity;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class DataBase {
@@ -17,7 +19,7 @@ public class DataBase {
 
     private Configuration con;
 
-    private ServiceRegistry reg;
+    private StandardServiceRegistry reg;
     private void connect()
     {
         this.con = new Configuration().configure().addAnnotatedClass(CaptainsEntity.class);
@@ -26,9 +28,14 @@ public class DataBase {
 //        this.sessionFactory = con.buildSessionFactory(reg);
 //        this.session = sessionFactory.openSession();
 //        session.close();
-
+//        this.reg = new StandardServiceRegistryBuilder().configure().build()
 
     }
+
+//    public void addUser(AllUsersEntity allUsers)
+//    {
+//
+//    }
 
     public void addCaptain(CaptainsEntity cap)
     {

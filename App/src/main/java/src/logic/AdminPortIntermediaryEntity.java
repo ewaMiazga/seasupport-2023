@@ -8,11 +8,9 @@ import java.util.Objects;
 @Table(name = "ADMIN_PORT_INTERMEDIARY")
 @IdClass(AdminPortIntermediaryEntityPK.class)
 public class AdminPortIntermediaryEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "LOGIN")
     private String login;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "PORT_ID")
     private int portId;

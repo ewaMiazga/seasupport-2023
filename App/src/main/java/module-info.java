@@ -8,5 +8,6 @@ module src.app {
     requires org.hibernate.orm.core;
     requires com.oracle.database.jdbc;
     requires java.naming;
+    opens src.logic to org.hibernate.orm.core;
 //    requires org.hibernate.commons.annotations;
 }
