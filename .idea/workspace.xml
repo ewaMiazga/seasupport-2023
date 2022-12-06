@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="Add genearted classes.">
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/AppActions/AppGetData.java" afterDir="false" />
+    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="Add prototypes of functions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/Logic/AllUsersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/Logic/AllUsersEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/Logic/PortsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/Logic/PortsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/Logic/VisitsEntity (1).java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670246563275</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add prototypes of functions.">
+      <created>1670278396255</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670278396255</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add genearted classes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add genearted classes." />
+    <MESSAGE value="Add prototypes of functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add prototypes of functions." />
   </component>
 </project>
