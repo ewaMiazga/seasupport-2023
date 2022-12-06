@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 /**
  * The type Port dialog.
+ *
  */
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
