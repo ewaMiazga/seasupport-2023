@@ -114,7 +114,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         scene = new Scene(grid, 600, 575);
-        cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
