@@ -13,6 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * The type Port dialog.
+ */
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -21,13 +24,20 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
     private Button mouseButton;
     private Scene scene;
-
     private Stage portStage;
+
+    private String cssPath;
 
     @Override
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     */
     public void start(Stage stage, String port) {
         portStage = stage;
         stage.setTitle("Port Dialog");
@@ -92,6 +102,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 575);
+        cssPath = this.getClass().getResource("PortsDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         portStage.setScene(scene);
         portStage.show();
     }

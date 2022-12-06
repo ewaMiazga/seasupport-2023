@@ -15,12 +15,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * The type Welcome dialog.
+ */
 public class WelcomeDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
     private Label whoAreYouLabel, toLoginLabel, toRegisterLabel;
     private Button loginButton, registrationButton;
     private Scene scene;
+    private String cssPath;
+
     @Override
     public void start(Stage stage) {
         stage.setTitle("Welcome Dialog");
@@ -61,7 +66,9 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         notification.setId("notification");
         grid.add(notification, 1, 6);
 
-        scene = new Scene(grid, 600, 675);
+        scene = new Scene(grid, 600, 575);
+        cssPath = this.getClass().getResource("loginDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
     }
