@@ -88,36 +88,36 @@ main
 ```
 
 Praca na repozytorium:
-      1. Stwórz nową gałąź:
+1. Stwórz nową gałąź:
 ```
 git checkout -b feature-new-branch
 ```
-      2. Praca nad nową funkcjonalnością:
-            1. Dodaj zmienione pliki do repozytorium:
+2. Praca nad nową funkcjonalnością:
+1. Dodaj zmienione pliki do repozytorium:
 ```
 git add <files>
 ```
-            2. Zapisz poczynione zmiany:
+2. Zapisz poczynione zmiany:
 ```
 git commit -m  "message"
 ```
-      3. Zaaktualizuj ścieżkę commitów:
+3. Zaaktualizuj ścieżkę commitów:
 ```
 git rebase origin main
 ```
-      4. Wyślij zmiany:
+4. Wyślij zmiany:
 ```
 git push
 ```
-      5. Zmień branch na main:
+5. Zmień branch na main:
 ```
 git checkout main
 ```
-      6. Pobierz nowe zmiany:
+6. Pobierz nowe zmiany:
 ```
 git pull
 ```
-      7. Otwórz merge request w gitlabie
+7. Otwórz merge request w gitlabie
 
 
 ## Frequently Asked Questions
