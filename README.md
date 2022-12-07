@@ -89,9 +89,9 @@ main
 
 Praca na repozytorium:
       1. Stwórz nową gałąź:
-      ```
-      git checkout -b feature-new-branch
-      ```
+```
+git checkout -b feature-new-branch
+```
       2. Praca nad nową funkcjonalnością:
             1. Dodaj zmienione pliki do repozytorium:
             ```
