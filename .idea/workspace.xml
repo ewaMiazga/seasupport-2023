@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntityPK.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" afterDir="false" />
-    </list>
+    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
