@@ -93,11 +93,11 @@ Praca na repozytorium:
 git checkout -b feature-new-branch
 ```
 2. Praca nad nową funkcjonalnością:
-1. Dodaj zmienione pliki do repozytorium:
+  Dodaj zmienione pliki do repozytorium:
 ```
 git add <files>
 ```
-2. Zapisz poczynione zmiany:
+  Zapisz poczynione zmiany:
 ```
 git commit -m  "message"
 ```
