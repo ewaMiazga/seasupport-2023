@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/background.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" afterDir="false" />
     </list>
