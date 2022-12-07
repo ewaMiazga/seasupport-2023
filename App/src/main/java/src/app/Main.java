@@ -2,6 +2,7 @@ package src.app;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import src.logic.CaptainsEntity;
 
 
 /**
