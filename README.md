@@ -86,6 +86,7 @@ main
   ...
   └ feature-database-connection
 ```
+
 Praca na repozytorium:
       1. Stwórz nową gałąź:
       ```
@@ -101,7 +102,7 @@ Praca na repozytorium:
             git commit -m  "message"
             ```
       3. Zaaktualizuj ścieżkę commitów:
-       ```
+      ```
       git rebase origin main
       ```
       4. Wyślij zmiany:
@@ -117,6 +118,7 @@ Praca na repozytorium:
       git pull
       ```
       7. Otwórz merge request w gitlabie
+
 
 ## Frequently Asked Questions
 
