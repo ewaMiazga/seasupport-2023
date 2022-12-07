@@ -94,29 +94,29 @@ git checkout -b feature-new-branch
 ```
       2. Praca nad nową funkcjonalnością:
             1. Dodaj zmienione pliki do repozytorium:
-            ```
-            git add <files>
-            ```
+```
+git add <files>
+```
             2. Zapisz poczynione zmiany:
-            ```
-            git commit -m  "message"
-            ```
+```
+git commit -m  "message"
+```
       3. Zaaktualizuj ścieżkę commitów:
-      ```
-      git rebase origin main
-      ```
+```
+git rebase origin main
+```
       4. Wyślij zmiany:
-       ```
-      git push
-      ```
+```
+git push
+```
       5. Zmień branch na main:
-      ```
-      git checkout main
-      ```
+```
+git checkout main
+```
       6. Pobierz nowe zmiany:
-       ```
-      git pull
-      ```
+```
+git pull
+```
       7. Otwórz merge request w gitlabie
 
 
