@@ -69,14 +69,56 @@ Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
 ```
 seasupport
    ├ App
-   │  └ src
+     └ src
          ├ app
          └ logic
    ├ db_scripts
    └ doc
 ```
 
-# Frequently Asked Questions
+## Gitflow
+Repozytorium powinno być budowane według systemu zarządzania gałęziami gitflow:
+
+```
+main
+  ├ feature-styling-dialogs
+  ├ feature-branch-logic
+  ...
+  └ feature-database-connection
+```
+Praca na repozytorium:
+      1. Stwórz nową gałąź:
+      ```
+      git checkout -b feature-new-branch
+      ```
+      2. Praca nad nową funkcjonalnością:
+            1. Dodaj zmienione pliki do repozytorium:
+            ```
+            git add <files>
+            ```
+            2. Zapisz poczynione zmiany:
+            ```
+            git commit -m  "message"
+            ```
+      3. Zaaktualizuj ścieżkę commitów:
+       ```
+      git rebase origin main
+      ```
+      4. Wyślij zmiany:
+       ```
+      git push
+      ```
+      5. Zmień branch na main:
+      ```
+      git checkout main
+      ```
+      6. Pobierz nowe zmiany:
+       ```
+      git pull
+      ```
+      7. Otwórz merge request w gitlabie
+
+## Frequently Asked Questions
 
 ## Spis Treści
 
