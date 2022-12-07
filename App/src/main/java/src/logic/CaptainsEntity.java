@@ -7,13 +7,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "CAPTAINS")
 public class CaptainsEntity {
-    @Basic
     @Column(name = "FORENAME")
     private String forename;
-    @Basic
     @Column(name = "SURNAME")
     private String surname;
-    @Basic
     @Column(name = "PESEL")
     private String pesel;
     @Id

@@ -51,6 +51,16 @@
             <version>6.1.5.Final</version>
 <!--            <type>pom</type>-->
         </dependency>
+        <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-c3p0</artifactId>
+        <version>6.1.5.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>com.mchange</groupId>
+        <artifactId>c3p0</artifactId>
+        <version>0.9.5.5</version>
+    </dependency>
 
 
     </dependencies>

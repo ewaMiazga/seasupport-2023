@@ -3,6 +3,7 @@ package src.logic;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,27 +12,42 @@ public class AllUsersEntity {
     @Id
     @Column(name = "LOGIN")
     private String login;
-    @Basic
     @Column(name = "USER_PASSWORD")
     private String userPassword;
     @Basic
     @Column(name = "FORENAME")
     private String forename;
-    @Basic
     @Column(name = "SURNAME")
     private String surname;
-    @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
-    @Basic
     @Column(name = "BIRTHDAY")
     private Date birthday;
-    @Basic
     @Column(name = "PESEL")
     private String pesel;
-    @Basic
     @Column(name = "USER_TYPE")
     private String userType;
+
+    public AllUsersEntity()
+    {}
+    public AllUsersEntity(String login, String userPassword, String forename, String surname, String phoneNumber, Date birthday, String pesel, String userType) {
+        this.login = login;
+        this.userPassword = userPassword;
+        this.forename = forename;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.pesel = pesel;
+        this.userType = userType;
+    }
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ADMIN_PORT_INTERMEDIARY",
+            joinColumns = { @JoinColumn(name = "LOGIN") },
+            inverseJoinColumns = { @JoinColumn(name = "PORT_ID") }
+    )
+    private Collection<PortsEntity> portsEntities;
 
     public String getLogin() {
         return login;

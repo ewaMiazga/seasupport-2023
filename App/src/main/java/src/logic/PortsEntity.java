@@ -9,6 +9,8 @@ import java.util.Objects;
 @Table(name = "PORTS")
 public class PortsEntity {
     @Id
+    @SequenceGenerator(name = "ports_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ports_id")
     @Column(name = "PORT_ID")
     private int portId;
     @Basic
@@ -16,13 +18,13 @@ public class PortsEntity {
     private String portName;
     @Basic
     @Column(name = "PLACES_SHIPS_BIG")
-    private byte placesShipsBig;
+    private int placesShipsBig;
     @Basic
     @Column(name = "PLACES_SHIPS_SMALL")
-    private byte placesShipsSmall;
+    private int placesShipsSmall;
     @Basic
     @Column(name = "STREET_NUMBER")
-    private byte streetNumber;
+    private int streetNumber;
     @Basic
     @Column(name = "STREET_NAME")
     private String streetName;
@@ -35,17 +37,33 @@ public class PortsEntity {
     @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
-    @Basic
     @Column(name = "VHF_CHANNEL")
-    private byte vhfChannel;
-    @Basic
+    private int vhfChannel;
     @Column(name = "BANK_ACCOUNT")
     private String bankAccount;
-    @Basic
+
     @Column(name = "PRICE_LIST_ID")
     private int priceListId;
-    @OneToMany(mappedBy = "portsByPortId")
-    private Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId;
+
+    public PortsEntity()
+    {}
+
+    public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, int priceListId) {
+//        this.portId = portId;
+        this.portName = portName;
+        this.placesShipsBig = placesShipsBig;
+        this.placesShipsSmall = placesShipsSmall;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.cityName = cityName;
+        this.postCode = postCode;
+        this.phoneNumber = phoneNumber;
+        this.vhfChannel = vhfChannel;
+        this.bankAccount = bankAccount;
+        this.priceListId = priceListId;
+    }
+    @ManyToMany(mappedBy = "portsEntities")
+    private Collection<AllUsersEntity> allUsersEntities;
 
     public int getPortId() {
         return portId;
@@ -63,27 +81,27 @@ public class PortsEntity {
         this.portName = portName;
     }
 
-    public byte getPlacesShipsBig() {
+    public int getPlacesShipsBig() {
         return placesShipsBig;
     }
 
-    public void setPlacesShipsBig(byte placesShipsBig) {
+    public void setPlacesShipsBig(int placesShipsBig) {
         this.placesShipsBig = placesShipsBig;
     }
 
-    public byte getPlacesShipsSmall() {
+    public int getPlacesShipsSmall() {
         return placesShipsSmall;
     }
 
-    public void setPlacesShipsSmall(byte placesShipsSmall) {
+    public void setPlacesShipsSmall(int placesShipsSmall) {
         this.placesShipsSmall = placesShipsSmall;
     }
 
-    public byte getStreetNumber() {
+    public int getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(byte streetNumber) {
+    public void setStreetNumber(int streetNumber) {
         this.streetNumber = streetNumber;
     }
 
@@ -119,11 +137,11 @@ public class PortsEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public byte getVhfChannel() {
+    public int getVhfChannel() {
         return vhfChannel;
     }
 
-    public void setVhfChannel(byte vhfChannel) {
+    public void setVhfChannel(int vhfChannel) {
         this.vhfChannel = vhfChannel;
     }
 
@@ -156,11 +174,11 @@ public class PortsEntity {
         return Objects.hash(portId, portName, placesShipsBig, placesShipsSmall, streetNumber, streetName, cityName, postCode, phoneNumber, vhfChannel, bankAccount, priceListId);
     }
 
-    public Collection<AdminPortIntermediaryEntity> getAdminPortIntermediariesByPortId() {
-        return adminPortIntermediariesByPortId;
-    }
-
-    public void setAdminPortIntermediariesByPortId(Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId) {
-        this.adminPortIntermediariesByPortId = adminPortIntermediariesByPortId;
-    }
+//    public Collection<AdminPortIntermediaryEntity> getAdminPortIntermediariesByPortId() {
+//        return adminPortIntermediariesByPortId;
+//    }
+//
+//    public void setAdminPortIntermediariesByPortId(Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId) {
+//        this.adminPortIntermediariesByPortId = adminPortIntermediariesByPortId;
+//    }
 }

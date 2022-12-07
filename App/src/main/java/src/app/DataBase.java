@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import src.logic.AdminPortIntermediaryEntity;
 import src.logic.AllUsersEntity;
 import src.logic.CaptainsEntity;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,9 +25,11 @@ public class DataBase {
 
     private static DataBase instance;
 
-    private Configuration con;
+    private static Configuration configuration;
 
-    private StandardServiceRegistry reg;
+    private static StandardServiceRegistry serviceRegistry;
+
+    private static SessionFactory sessionFactory;
 
     /**
      * Constructor calls the method configureConnection()
@@ -43,14 +46,21 @@ public class DataBase {
      */
     private void configureConnection()
     {
-        this.con = new Configuration().configure();
-        con.addAnnotatedClass(CaptainsEntity.class);
-        con.addAnnotatedClass(AllUsersEntity.class);
-        con.addAnnotatedClass(PortsEntity.class);
-        this.reg = new StandardServiceRegistryBuilder().applySettings(con.getProperties()).build();
+        configuration = new Configuration().configure();
+        configuration.addAnnotatedClass(CaptainsEntity.class);
+        configuration.addAnnotatedClass(AllUsersEntity.class);
+        configuration.addAnnotatedClass(PortsEntity.class);
+//        configuration.addAnnotatedClass(AdminPortIntermediaryEntity.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
     }
 
+    public static void disableConnection()
+    {
+        sessionFactory.close();
+//        StandardServiceRegistryBuilder.destroy(sessionFactory.getSessionFactoryOptions().getServiceRegistry());
+    }
 
     /**
      * Method responsible on the first use for creation the DataBase object
@@ -76,13 +86,11 @@ public class DataBase {
      */
     public PortsEntity getPort(String portId)
     {
-        SessionFactory sfa = con.buildSessionFactory(reg);
-        Session ss = sfa.openSession();
+        Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         PortsEntity portsEntity = ss.get(PortsEntity.class, portId);
         tx.commit();
         ss.close();
-        sfa.close();
         return portsEntity;
     }
 
@@ -95,13 +103,11 @@ public class DataBase {
      */
     public void addPort(PortsEntity portsEntity)
     {
-        SessionFactory sfa = con.buildSessionFactory(reg);
-        Session ss = sfa.openSession();
+        Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         ss.save(portsEntity);
         tx.commit();
         ss.close();
-        sfa.close();
     }
 
 
@@ -114,13 +120,11 @@ public class DataBase {
      */
     public AllUsersEntity getUser(String login)
     {
-        SessionFactory sfa = con.buildSessionFactory(reg);
-        Session ss = sfa.openSession();
+        Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         AllUsersEntity allUsersEntity = ss.get(AllUsersEntity.class, login);
         tx.commit();
         ss.close();
-        sfa.close();
         return allUsersEntity;
     }
 
@@ -133,13 +137,11 @@ public class DataBase {
      */
     public void addUser(AllUsersEntity allUsers)
     {
-        SessionFactory sfa = con.buildSessionFactory(reg);
-        Session ss = sfa.openSession();
+        Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         ss.save(allUsers);
         tx.commit();
         ss.close();
-        sfa.close();
     }
 
 
@@ -149,15 +151,14 @@ public class DataBase {
      *
      * @param cap
      */
+
     public void addCaptain(CaptainsEntity cap)
     {
-        SessionFactory sfa = con.buildSessionFactory(reg);
-        Session ss = sfa.openSession();
+        Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         ss.save(cap);
         tx.commit();
         ss.close();
-        sfa.close();
     }
 
 
