@@ -98,4 +98,14 @@ CREATE TABLE visits
 
 
 
+<<<<<<< HEAD
 
+=======
+ALTER TABLE PORTS
+    DROP CONSTRAINT ports_price_fk;
+
+CREATE SEQUENCE port_id_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1;
+>>>>>>> 2c72b991708e5f66ec057d95f1482ed6fd19269c

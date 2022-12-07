@@ -4,23 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AdminPortIntermediaryEntityPK.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -32,8 +46,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2IRmiaU3PqHaoaJjei5BRSKT9qL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2IakFp5sZBTJa5OzawiCQgtZrau" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,18 +54,23 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+      <command value="mvn site:jar" />
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c49aeb88-aab2-45eb-ab87-c16d05bb68e5" name="Changes" comment="" />
-      <created>1670152900308</created>
+      <changelist id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="" />
+      <created>1670426982275</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1670152900308</updated>
+      <updated>1670426982275</updated>
     </task>
     <servers />
   </component>
