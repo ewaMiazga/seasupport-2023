@@ -1,34 +1,35 @@
 package src.app;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- * The type Ports dialog.
- */
-public class PortsDialog extends Application implements EventHandler<MouseEvent> {
+public class priceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-
-    private ListView<String> listView;
-
-    private Button mouseButton, settingsButton;
+    private ListView<String> priceListView;
+    private Button returnButton;
     private Scene scene;
-
     private String cssPath;
+
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Ports Dialog");
+    }
+
+    public void start(Stage stage, String port) {
+        stage.setTitle("Port: " + port + ", price list");
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -40,35 +41,35 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        settingsButton = new Button("Settings");
-        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        returnButton = new Button("Return");
+        returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(event.getSource().equals(settingsButton)) {
-                    LoginDialog loginDialog = new LoginDialog();
-                    loginDialog.start(stage);
+                if(event.getSource().equals(returnButton)) {
+                    PortDialog portDialog = new PortDialog();
+                    portDialog.start(stage, port);
                 }
 
             }
         });
 
-        grid.add(settingsButton, 1, 0);
-        grid.setHalignment(settingsButton, HPos.RIGHT);
+        grid.add(returnButton, 1, 2);
+        grid.setHalignment(returnButton, HPos.RIGHT);
 
-        listView = new ListView<String>();
-        listView.getItems().addAll("Port1", "Port2", "Port3");
-        listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        priceListView = new ListView<String>();
+        priceListView.getItems().addAll("Usluga1", "Usluga2", "Usluga3");
+        priceListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(listView, 1, 1);
+        grid.add(priceListView, 1, 1);
 
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        priceListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent click) {
 
                 if (click.getClickCount() == 2) {
                     //Use ListView's getSelected Item
-                    String currentItemSelected = listView.getSelectionModel()
+                    String currentItemSelected = priceListView.getSelectionModel()
                             .getSelectedItem();
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
@@ -103,6 +104,6 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     }
 
     @Override
-    public void handle(MouseEvent mouseEvent) {
+    public void handle(ActionEvent event) {
     }
 }
