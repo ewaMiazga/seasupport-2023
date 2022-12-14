@@ -7,9 +7,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -19,7 +17,7 @@ import javafx.stage.Stage;
 public class priceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private ListView<String> priceListView;
+    private TableView priceListView;
     private Button returnButton;
     private Scene scene;
     private String cssPath;
@@ -37,7 +35,7 @@ public class priceListDialog extends Application implements EventHandler<ActionE
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text("Choose Port");
+        formTitle = new Text("Price List");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
@@ -56,8 +54,18 @@ public class priceListDialog extends Application implements EventHandler<ActionE
         grid.add(returnButton, 1, 2);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
-        priceListView = new ListView<String>();
-        priceListView.getItems().addAll("Usluga1", "Usluga2", "Usluga3");
+        priceListView = new TableView();
+
+        TableColumn nameServiceCol = new TableColumn("Name of service");
+        nameServiceCol.setMinWidth(160);
+        TableColumn priceCol = new TableColumn("Price (ZL)");
+        priceCol.setMinWidth(100);
+
+        //priceListView.setEditable(true);
+        //priceListView.getSelectionModel().setCellSelectionEnabled(true);
+        priceListView.getColumns().addAll(nameServiceCol, priceCol);
+
+        //priceListView.getItems().addAll("Usluga1", "Usluga2", "Usluga3");
         priceListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         grid.add(priceListView, 1, 1);
@@ -69,13 +77,13 @@ public class priceListDialog extends Application implements EventHandler<ActionE
 
                 if (click.getClickCount() == 2) {
                     //Use ListView's getSelected Item
-                    String currentItemSelected = priceListView.getSelectionModel()
-                            .getSelectedItem();
+                    //String currentItemSelected = priceListView.getSelectionModel()
+                    //        .getSelectedItem();
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
-                    System.out.println(currentItemSelected);
-                    PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, currentItemSelected);
+                    //System.out.println(currentItemSelected);
+                    //PortDialog portDialog = new PortDialog();
+                    //portDialog.start(stage, currentItemSelected);
 
                 }
             }

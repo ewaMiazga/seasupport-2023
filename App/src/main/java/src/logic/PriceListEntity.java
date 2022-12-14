@@ -44,9 +44,7 @@ public class PriceListEntity {
     @OneToMany(mappedBy = "priceListByPriceListId")
     private Collection<PortsEntity> portsByListId;
 
-    public int getListId() {
-        return listId;
-    }
+    public int getListId() { return listId; }
 
     public void setListId(int listId) {
         this.listId = listId;
