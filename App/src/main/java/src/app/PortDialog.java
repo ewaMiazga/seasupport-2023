@@ -2,7 +2,6 @@ package src.app;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -135,7 +134,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             //Stage stage = new Stage();
-            priceListDialog priceListDialog = new priceListDialog();
+            PriceListDialog priceListDialog = new PriceListDialog();
             priceListDialog.start(portStage, portName);
         }
         else if (event.getSource() == docksButton) {

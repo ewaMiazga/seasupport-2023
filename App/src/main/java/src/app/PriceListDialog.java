@@ -1,6 +1,8 @@
 package src.app;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -8,19 +10,26 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
-public class priceListDialog extends Application implements EventHandler<ActionEvent> {
+public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private TableView priceListView;
+    private TableView<Pair<String, Integer>> priceListView;
     private Button returnButton;
     private Scene scene;
     private String cssPath;
+
+    private final ObservableList<Pair<String, Integer>> data = FXCollections.observableArrayList(
+            new Pair("Usluga1", 12),
+            new Pair("Usluga2", 10),
+            new Pair("Usluga3", 15)
+    );
 
     @Override
     public void start(Stage stage) {
@@ -54,13 +63,17 @@ public class priceListDialog extends Application implements EventHandler<ActionE
         grid.add(returnButton, 1, 2);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
-        priceListView = new TableView();
+        priceListView = new TableView<Pair<String, Integer>>();
 
         TableColumn nameServiceCol = new TableColumn("Name of service");
         nameServiceCol.setMinWidth(160);
+        nameServiceCol.setCellValueFactory(
+                new PropertyValueFactory<Pair<String, Integer>, String>("name"));
         TableColumn priceCol = new TableColumn("Price (ZL)");
         priceCol.setMinWidth(100);
-
+        priceCol.setCellValueFactory(
+                new PropertyValueFactory<Pair<String, Integer>, String>("name"));
+        //klasy jeden port
         //priceListView.setEditable(true);
         //priceListView.getSelectionModel().setCellSelectionEnabled(true);
         priceListView.getColumns().addAll(nameServiceCol, priceCol);
@@ -113,5 +126,14 @@ public class priceListDialog extends Application implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
+    }
+
+    public final ObservableList<Pair<String, Integer>> setData() {
+        final ObservableList<Pair<String, Integer>> data = FXCollections.observableArrayList(
+                new Pair("Usluga1", 12),
+                new Pair("Usluga2", 10),
+                new Pair("Usluga3", 15)
+        );
+        return data;
     }
 }
