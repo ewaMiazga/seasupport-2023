@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.PortsEntity;
 
 /**
  * The type Port dialog.
@@ -27,7 +28,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     private Scene scene;
     private Stage portStage;
 
-    private String portName;
+    private PortsEntity selectedPort;
     private String cssPath;
 
     @Override
@@ -38,11 +39,11 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * Start.
      *
      * @param stage the stage
-     * @param name the port
+     * @param port the port
      */
-    public void start(Stage stage, String name) {
+    public void start(Stage stage, PortsEntity port) {
         portStage = stage;
-        portName = name;
+        selectedPort = port;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -55,7 +56,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text(name);
+        formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
@@ -138,9 +139,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         }
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
-            //Stage stage = new Stage();
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, portName);
+            priceListDialog.start(portStage, selectedPort);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");

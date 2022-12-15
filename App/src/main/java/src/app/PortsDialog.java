@@ -1,18 +1,22 @@
 package src.app;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.PortsEntity;
 
 /**
  * The type Ports dialog.
@@ -20,7 +24,13 @@ import javafx.stage.Stage;
 public class PortsDialog extends Application implements EventHandler<MouseEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private ListView<String> listView;
+
+    private TableView<PortsEntity> tableView;
+
+    private final ObservableList<PortsEntity> data =
+            FXCollections.observableArrayList(
+                    new PortsEntity()
+            );
 
     private Button mouseButton, settingsButton;
     private Scene scene;
@@ -58,24 +68,30 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         grid.add(settingsButton, 1, 0);
         grid.setHalignment(settingsButton, HPos.RIGHT);
 
-        listView = new ListView<String>();
-        listView.getItems().addAll("Port1", "Port2", "Port3");
-        listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        tableView = new TableView<PortsEntity>();
+        tableView.setEditable(true);
+        TableColumn portNameCol = new TableColumn<String, String>("Port Name");
+        portNameCol.setMinWidth(260);
+        portNameCol.setCellValueFactory(
+                new PropertyValueFactory<PortsEntity, String>("portName"));
+        tableView.setItems(data);
+        tableView.getColumns().addAll(portNameCol);
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(listView, 1, 1);
+        grid.add(tableView, 1, 1);
 
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent click) {
 
                 if (click.getClickCount() == 2) {
                     //Use ListView's getSelected Item
-                    String currentItemSelected = listView.getSelectionModel()
+                    PortsEntity currentItemSelected = tableView.getSelectionModel()
                             .getSelectedItem();
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
-                    System.out.println(currentItemSelected);
+                    System.out.println(currentItemSelected.getPortName());
                     PortDialog portDialog = new PortDialog();
                     portDialog.start(stage, currentItemSelected);
 
