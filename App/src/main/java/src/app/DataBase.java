@@ -1,6 +1,8 @@
 package src.app;
 
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,6 +13,8 @@ import src.logic.AdminPortIntermediaryEntity;
 import src.logic.AllUsersEntity;
 import src.logic.CaptainsEntity;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.criteria.*;
+import org.hibernate.cfg.Configuration;
 import src.logic.PortsEntity;
 
 /**
@@ -127,7 +131,6 @@ public class DataBase {
         ss.close();
         return allUsersEntity;
     }
-
 
     /**
      * Method responsible for pulling data to database
