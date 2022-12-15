@@ -11,8 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -29,6 +31,9 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
     @Override
     public void start(Stage stage) {
         stage.setTitle("Welcome Dialog");
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -37,30 +42,25 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         formTitle = new Text("Welcome");
-
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0, 1,1);
+        grid.setHalignment(formTitle, HPos.CENTER);
 
-        whoAreYouLabel = new Label("Do you have account?");
+        whoAreYouLabel = new Label("Join us!");
         grid.add(whoAreYouLabel, 0, 1);
-
-        whoAreYouLabel = new Label("if you want to log: ");
-        grid.add(whoAreYouLabel, 0, 2);
-
-        whoAreYouLabel = new Label("if you want to make an account: ");
-        grid.add(whoAreYouLabel, 1, 2);
+        grid.setHalignment(whoAreYouLabel, HPos.CENTER);
 
         loginButton = new Button("Sign In");
+        loginButton.setPrefSize(400, 50);
         loginButton.setOnAction(this);
-
         grid.add(loginButton, 0, 3);
-        grid.setHalignment(loginButton, HPos.LEFT);
+        grid.setHalignment(loginButton, HPos.CENTER);
 
-        registrationButton = new Button("Register");
+        registrationButton = new Button("Create a free account");
+        registrationButton.setPrefSize(400, 50);
         registrationButton.setOnAction(this);
-
-        grid.add(registrationButton, 1, 3);
-        grid.setHalignment(registrationButton, HPos.RIGHT);
+        grid.add(registrationButton, 0, 4);
+        grid.setHalignment(registrationButton, HPos.CENTER);
 
         notification = new Text();
         notification.setId("notification");
@@ -85,13 +85,11 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == loginButton) {
-            notification.setText("Sign in button pressed");
             Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
             loginDialog.start(stage);
         }
         else if (event.getSource() == registrationButton) {
-            notification.setText("Registration button pressed");
             Stage stage = new Stage();
             RegistrationDialog registrationDialog = new RegistrationDialog();
             registrationDialog.start(stage);
