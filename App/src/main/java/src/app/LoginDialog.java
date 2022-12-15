@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
  */
 public class LoginDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
+
     private Text formTitle, notification;
     private Label userLoginLabel, userPassLabel;
     private TextField userLoginField, userPassVisibleField;
@@ -33,6 +35,9 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     public void start(Stage stage) {
         loginStage = stage;
         stage.setTitle("Login Dialog");
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
