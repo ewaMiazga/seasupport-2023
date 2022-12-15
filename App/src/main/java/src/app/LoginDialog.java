@@ -89,9 +89,11 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     public void handle(ActionEvent event) {
         //TODO:
         //Write function, which will check if login and password are equal from those from
-        //database @michał
+        //database @bartek
         if (event.getSource() == signInButton) {
-            notification.setText("Sign in button pressed");
+            String userLogin = userLoginField.getText();
+            String userPass = userPassField.getText();
+            //@bartek TODO:
             PortsDialog portsDialog = new PortsDialog();
             portsDialog.start(loginStage);
         }
