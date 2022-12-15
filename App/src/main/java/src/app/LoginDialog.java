@@ -13,6 +13,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.appActions.LoginWindowActions;
+import src.logic.AllUsersEntity;
+import src.appActions.LoginWindowActions.*;
 
 /**
  * Class LoginDialog
@@ -108,8 +111,15 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         //database @michał
         if (event.getSource() == signInButton) {
             notification.setText("Sign in button pressed");
-            PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(loginStage);
+            LoginWindowActions action = new LoginWindowActions();
+            AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
+            if(currentUser != null){
+                PortsDialog portsDialog = new PortsDialog();
+                portsDialog.start(loginStage);
+            }
+            else{
+                notification.setText("Invalid login or password");
+            }
         }
     }
 }
