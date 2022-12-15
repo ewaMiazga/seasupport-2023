@@ -199,12 +199,6 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     }
 
     public void showPassword(PasswordField field, TextField text, CheckBox box) {
-            //text = new TextField();
-            //text.setManaged(false);
-            //text.setVisible(false);
-
-            //box.setAlignment(Pos.CENTER_RIGHT);
-
             text.managedProperty().bind(box.selectedProperty());
             text.visibleProperty().bind(box.selectedProperty());
 
