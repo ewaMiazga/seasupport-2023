@@ -7,10 +7,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,11 +21,11 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private GridPane grid;
     private Text formTitle, notification;
     private Label userLoginLabel, userPassLabel;
-    private TextField userLoginField;
+    private TextField userLoginField, userPassVisibleField;
     private PasswordField userPassField;
+    private CheckBox showPass;
     private Button signInButton;
     private Scene scene;
-
     private Stage loginStage;
     private String cssPath;
     @Override
@@ -55,8 +52,25 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         userPassLabel = new Label("User's Password: ");
         grid.add(userPassLabel, 0, 2);
 
+        userPassVisibleField = new TextField();
+        userPassVisibleField.setManaged(false);
+        userPassVisibleField.setVisible(false);
         userPassField = new PasswordField();
+
         grid.add(userPassField, 1, 2);
+        grid.add(userPassVisibleField, 1, 2);
+
+        showPass = new CheckBox("Show password");
+        showPass.setAlignment(Pos.CENTER_RIGHT);
+        grid.add(showPass, 1, 3);
+
+        userPassVisibleField.managedProperty().bind(showPass.selectedProperty());
+        userPassVisibleField.visibleProperty().bind(showPass.selectedProperty());
+
+        userPassField.managedProperty().bind(showPass.selectedProperty().not());
+        userPassField.visibleProperty().bind(showPass.selectedProperty().not());
+
+        userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
 
         signInButton = new Button("Sign In");
         signInButton.setOnAction(this);
