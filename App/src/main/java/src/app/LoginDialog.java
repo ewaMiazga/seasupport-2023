@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -38,10 +39,6 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-
-        formTitle = new Text("Welcome");
-        formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
 
         userLoginLabel = new Label("User's Login: ");
         grid.add(userLoginLabel, 0, 1);
