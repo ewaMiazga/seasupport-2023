@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -37,7 +38,9 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     public void start(Stage stage, String port) {
         stage.setTitle("Port: " + port + ", price list");
-
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);

@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,6 +42,9 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     public void start(Stage stage) {
         registrationStage = stage;
         stage.setTitle("Registration Dialog");
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);

@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -19,7 +20,6 @@ import javafx.stage.Stage;
 public class PortsDialog extends Application implements EventHandler<MouseEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-
     private ListView<String> listView;
 
     private Button mouseButton, settingsButton;
@@ -29,6 +29,9 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     @Override
     public void start(Stage stage) {
         stage.setTitle("Ports Dialog");
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
