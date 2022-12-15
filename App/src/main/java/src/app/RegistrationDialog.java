@@ -12,7 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * The type Registration dialog.
@@ -25,9 +30,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private Label userLoginLabel, userPassLabel, userPassConfLabel, userTypeLabel, forenameLabel, surnameLabel, numberLabel, peselLabel, birthdayLabel;
 
-    private TextField userLoginField, userTypeField, forenameField, surnameField, numberField, peselField, birthdayField;
+    private TextField userLoginField, userTypeField, forenameField, surnameField, numberField, peselField;
     private TextField userPassVisibleField, userPassVisibleConfField;
 
+    private DatePicker birthdayPicker;
+    private final String pattern = "dd/MM/yy";
     private PasswordField userPassField, userPassConfField;
 
     private CheckBox showPass, showPassConf;
@@ -123,8 +130,12 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         birthdayLabel = new Label("Date of Birth: ");
         grid.add(birthdayLabel, 0, 10);
 
-        birthdayField = new TextField();
-        grid.add(birthdayField, 1, 10);
+        Locale.setDefault(Locale.ENGLISH);
+        birthdayPicker = new DatePicker();
+        birthdayPicker.setConverter(createStringConverter());
+        birthdayPicker.setPromptText(pattern.toLowerCase());
+
+        grid.add(birthdayPicker, 1, 10);
 
         peselLabel = new Label("Pesel: ");
         grid.add(peselLabel, 0, 11);
@@ -148,6 +159,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
+        userLoginField.requestFocus();
     }
 
     /**
@@ -201,5 +213,29 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
             text.textProperty().bindBidirectional(field.textProperty());
         }
-    }
 
+    public StringConverter createStringConverter() {
+        StringConverter converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern(pattern);
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        return converter;
+        }
+    }

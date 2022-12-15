@@ -49,6 +49,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
+
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
