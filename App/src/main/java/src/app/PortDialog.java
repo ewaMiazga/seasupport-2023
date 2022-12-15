@@ -2,7 +2,6 @@ package src.app;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -27,6 +26,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     private Scene scene;
     private Stage portStage;
 
+    private String portName;
     private String cssPath;
 
     @Override
@@ -37,10 +37,11 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * Start.
      *
      * @param stage the stage
-     * @param port  the port
+     * @param name the port
      */
-    public void start(Stage stage, String port) {
+    public void start(Stage stage, String name) {
         portStage = stage;
+        portName = name;
         stage.setTitle("Port Dialog");
 
         grid = new GridPane();
@@ -49,7 +50,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text(port);
+        formTitle = new Text(name);
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
@@ -133,8 +134,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             //Stage stage = new Stage();
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(portStage);
+            PriceListDialog priceListDialog = new PriceListDialog();
+            priceListDialog.start(portStage, portName);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");

@@ -104,14 +104,5 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        //TODO:
-        //Write function, which will check if login and password are equal from those from
-        //database @michał
-        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-            System.out.println(mouseEvent.getClickCount());
-            if(mouseEvent.getClickCount() == 2){
-                System.out.println("Double clicked");
-            }
-        }
     }
 }
