@@ -45,13 +45,13 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        userLoginLabel = new Label("User's Login: ");
+        userLoginLabel = new Label("Login: ");
         grid.add(userLoginLabel, 0, 1);
 
         userLoginField = new TextField();
         grid.add(userLoginField, 1, 1);
 
-        userPassLabel = new Label("User's Password: ");
+        userPassLabel = new Label("Password: ");
         grid.add(userPassLabel, 0, 2);
 
         userPassVisibleField = new TextField();

@@ -49,13 +49,40 @@
 }
 
 .text-field {
+  -fx-prompt-text-fill: #1385B4;;
   -fx-border-color: #1385B4;
   -fx-border-width: 0 0 1 0; // top, right, bottom, left
   -fx-background-color: transparent;
 }
 
 .text-field:focused {
-      -fx-border-color: #035F85;
-      -fx-border-width: 0 0 2 0; // top, right, bottom, left
-      -fx-background-color: transparent;
+  -fx-border-color: #035F85;
+  -fx-border-width: 0 0 2 0; // top, right, bottom, left
+  -fx-background-color: transparent;
+}
+
+.date-picker: .arrow-button {
+  -fx-font-color: black;
+  -fx-border-color: #1385B4;
+  -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button:hover {
+  -fx-background-color: #1385B4;
+}
+
+.date-picker .arrow-button .arrow {
+  -fx-background-color: #035F85;
+}
+
+.date-picker {
+  -fx-border-color: #1385B4;
+  -fx-border-width: 0 0 1 0; // top, right, bottom, left
+  -fx-background-color: transparent;
+}
+
+.date-picker:focused {
+  -fx-border-color: #035F85;
+  -fx-border-width: 0 0 2 0; // top, right, bottom, left
+  -fx-background-color: transparent;
 }
