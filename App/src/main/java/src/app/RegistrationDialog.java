@@ -186,7 +186,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             String userSurname = surnameField.getText();
             String userNumber = numberField.getText();
             String userPesel = peselField.getText();
-            String userBirthday = birthdayField.getText();
+            String userBirthday = birthdayPicker.toString();
             LoginDialog loginDialog = new LoginDialog();
             if (userLogin.equals("") || userPass.equals("") || userPassConf.equals("") || userType.equals("") ||
                     userForename.equals("") || userSurname.equals("") || userNumber.equals("") || userPesel.equals("") ||
