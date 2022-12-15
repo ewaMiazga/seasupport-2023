@@ -17,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import src.logic.PortsEntity;
 
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
@@ -36,8 +37,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, String port) {
-        stage.setTitle("Port: " + port + ", price list");
+    public void start(Stage stage, PortsEntity port) {
+        stage.setTitle("Port: " + port.getPortName() + ", price list");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
