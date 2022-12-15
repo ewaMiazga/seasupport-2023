@@ -68,7 +68,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         TableColumn nameServiceCol = new TableColumn("Name of service");
         nameServiceCol.setMinWidth(160);
         nameServiceCol.setCellValueFactory(
-                new PropertyValueFactory<Pair<String, Integer>, String>("name"));
+                new PropertyValueFactory<Pair<String, Integer>, String>("pair.getValue0()"));
         TableColumn priceCol = new TableColumn("Price (ZL)");
         priceCol.setMinWidth(100);
         priceCol.setCellValueFactory(
