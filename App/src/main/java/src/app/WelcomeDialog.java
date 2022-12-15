@@ -55,6 +55,8 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         grid.add(whoAreYouLabel, 1, 2);
 
         loginButton = new Button("Sign In");
+        loginButton.setPrefSize(200, 200);
+        loginButton.setOnAction(this);
         loginButton.setOnAction(this);
 
         grid.add(loginButton, 0, 3);

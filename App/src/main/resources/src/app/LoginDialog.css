@@ -47,3 +47,15 @@
     -fx-fill: #ff7070;
     -fx-font-weight: bold;
 }
+
+.text-field {
+  -fx-border-color: #1385B4;
+  -fx-border-width: 0 0 1 0; // top, right, bottom, left
+  -fx-background-color: transparent;
+}
+
+.text-field:focused {
+      -fx-border-color: #035F85;
+      -fx-border-width: 0 0 2 0; // top, right, bottom, left
+      -fx-background-color: transparent;
+}
