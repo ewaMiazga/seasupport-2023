@@ -14,10 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import src.appActions.LoginWindowActions;
-
-import java.util.List;
-import java.util.Vector;
 
 /**
  * The type Registration dialog.
@@ -26,7 +22,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private GridPane grid;
 
-    private Text formTitle;
+    private Text formTitle, notification;
 
     private Label userLoginLabel, userPassLabel, userPassConfLabel, userTypeLabel, forenameLabel, surnameLabel, numberLabel, peselLabel, birthdayLabel;
 
@@ -41,24 +37,6 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private Stage registrationStage;
 
     private String cssPath;
-
-    private List<String> messages=  List.of("Username is not available.", "Password is different from the confirmation.",
-    "Incorrect type of user.", "Wrong format of phone number.", "Wrong format of pesel.", "Wrong format of birthdate.",
-            "Successful registration, go to login");
-
-    public Vector<String> getTextContents(){
-        Vector<String> data = new Vector<>();
-        data.add(userLoginField.getText());
-        data.add(userPassField.getText());
-        data.add(userPassConfField.getText());
-        data.add(userTypeField.getText());
-        data.add(forenameField.getText());
-        data.add(surnameField.getText());
-        data.add(numberField.getText());
-        data.add(peselField.getText());
-        data.add(birthdayField.getText());
-        return data;
-    }
     @Override
     public void start(Stage stage) {
         registrationStage = stage;
@@ -70,7 +48,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text("Welcome");
+        formTitle = new Text("Registration Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
@@ -135,6 +113,10 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(registerButton, 1, 11);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+        notification = new Text();
+        notification.setId("notification");
+        grid.add(notification, 1, 10);
+
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
@@ -154,16 +136,27 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == registerButton) {
-
-            registerButton.setText("Register button pressed");
-            LoginWindowActions action = new LoginWindowActions();
-            int message_code = action.checkRegData(getTextContents());
-            // za pomoca numeru uzupelnij info
-            if(message_code == 6) {
-                action.register(getTextContents());
-                LoginDialog loginDialog = new LoginDialog();
-                loginDialog.start(registrationStage);
+            String userLogin = userLoginField.getText();
+            String userPass = userPassField.getText();
+            String userPassConf = userPassConfField.getText();
+            if(!userPass.equals(userPassConf)) {
+                notification.setText("Passwords are different!");
+                return;
             }
+            String userType = userTypeField.getText();
+            String userForename = forenameField.getText();
+            String userSurname = surnameField.getText();
+            String userNumber = numberField.getText();
+            String userPesel = peselField.getText();
+            String userBirthday = birthdayField.getText();
+            LoginDialog loginDialog = new LoginDialog();
+            if(!userLogin.equals("") || !userPass.equals("") || !userPassConf.equals("") || !userType.equals("") ||
+                    !userForename.equals("") || !userSurname.equals("") || userNumber.equals("") || !userPesel.equals("") ||
+                        !userBirthday.equals("")) {
+                notification.setText("Required fields are empty!");
+                return;
+            }
+            loginDialog.start(registrationStage);
         }
     }
 
