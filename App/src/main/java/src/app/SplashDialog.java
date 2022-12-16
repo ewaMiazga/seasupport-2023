@@ -27,12 +27,13 @@ import javafx.util.Duration;
 import java.io.File;
 
 public class SplashDialog extends Application {
-    File file = new File("Logo.png");
-    File file2 = new File("background.png");
-    public final String APPLICATION_ICON =
+/*    File file = new File("Logo.png");
+    File file2 = new File("background.jpg");*/
+
+/*    public final String APPLICATION_ICON =
             file.toURI().toString();
     public final String SPLASH_IMAGE =
-            file2.toURI().toString();
+            file2.toURI().toString();*/
 
     private Pane splashLayout;
     private ProgressBar loadProgress;
@@ -51,15 +52,16 @@ public class SplashDialog extends Application {
 
     @Override
     public void init() {
-        ImageView splash = new ImageView(new Image(
+/*        ImageView splash = new ImageView(new Image(
                 SPLASH_IMAGE
-        ));
+        ));*/
         loadProgress = new ProgressBar();
         loadProgress.setPrefWidth(SPLASH_WIDTH - 20);
         progressText = new Label("Will find ports . . .");
         splashLayout = new VBox();
-        splashLayout.getChildren().addAll(splash, loadProgress, progressText);
+        splashLayout.getChildren().addAll(loadProgress, progressText);
         progressText.setAlignment(Pos.CENTER);
+
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         splashLayout.getStylesheets().add(cssPath);
 
