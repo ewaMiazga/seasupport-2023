@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.web.*;
 
 import java.io.IOException;
+import java.net.URL;
 
 import static java.lang.String.valueOf;
 
@@ -92,9 +93,11 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         bankAccountText = new Text(valueOf(port.getBankAccount()));
         grid.add(bankAccountText, 1, 4);
 
-        //webEngine = new WebEngine(getClass().getResource("googlemap.html").toString());
         webView = new WebView();
-        webEngine= webView.getEngine();
+        webEngine = webView.getEngine();
+        //webEngine = new WebEngine(getClass().getResource("GoogleMap.html").toString());
+        URL url = this.getClass().getResource("GoogleMap.html");
+        webEngine.load(url.toString());
 
         grid.add(webView, 0,5, 2, 1);
 
