@@ -161,9 +161,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         }
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
-            //Stage stage = new Stage();
-            RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(portStage);
+            ContactDialog contactDialog = new ContactDialog();
+            contactDialog.start(portStage, selectedPort);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");
