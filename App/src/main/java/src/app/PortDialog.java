@@ -14,6 +14,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.PortsEntity;
 
+import java.io.IOException;
+
 /**
  * The type Port dialog.
  *
@@ -144,15 +146,18 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
-            //Stage stage = new Stage();
             RegistrationDialog registrationDialog = new RegistrationDialog();
             registrationDialog.start(portStage);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");
-            //Stage stage = new Stage();
-            RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(portStage);
+            MapDialog mapDialog = new MapDialog();
+            try {
+                mapDialog.start(portStage, selectedPort);
+            }
+            catch(IOException e) {
+                e.printStackTrace();
+            }
         }
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
