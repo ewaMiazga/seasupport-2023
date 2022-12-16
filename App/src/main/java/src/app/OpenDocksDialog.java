@@ -37,7 +37,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     }
 
     public void start(Stage stage, PortsEntity port) {
-        stage.setTitle("Port: " + port.getPortName() + ",open docks");
+        stage.setTitle("Port: " + port.getPortName() + ", open docks");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -107,5 +107,15 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == smallShipsButton) {
+            Stage stage = new Stage();
+            LoginDialog loginDialog = new LoginDialog();
+            loginDialog.start(stage);
+        }
+        else if (event.getSource() == bigShipsButton) {
+            Stage stage = new Stage();
+            RegistrationDialog registrationDialog = new RegistrationDialog();
+            registrationDialog.start(stage);
+        }
     }
 }

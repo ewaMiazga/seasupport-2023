@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="file workspace changed">
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ReserveDockDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -117,6 +118,17 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="file workspace changed" />
     <option name="LAST_COMMIT_MESSAGE" value="file workspace changed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
