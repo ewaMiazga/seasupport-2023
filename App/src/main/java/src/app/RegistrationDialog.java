@@ -178,7 +178,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             String userPass = userPassField.getText();
             String userPassConf = userPassConfField.getText();
             if (!userPass.equals(userPassConf)) {
-                notification.setText("Passwords are different!");
+              notification.setText("Passwords are different!");
                 return;
             }
             String userType = userTypeField.getText();
