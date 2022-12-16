@@ -33,7 +33,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
 
     public void start(Stage stage, PortsEntity port) throws IOException {
         mapStage = stage;
-        stage.setTitle("Map Dialog");
+        stage.setTitle("Port: " + port.getPortName() + ", price list");
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
