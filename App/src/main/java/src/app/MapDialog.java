@@ -67,12 +67,12 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
             }
         });
 
-        grid.add(returnButton, 1, 2);
+        grid.add(returnButton, 0, 2);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 6);
+        grid.add(notification, 0, 6);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
