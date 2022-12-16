@@ -23,7 +23,6 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-
     private Button detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
 
     private Button mouseButton;
@@ -146,8 +145,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
-            RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(portStage);
+            //OpenDocksDialog openDocksDialog = new OpenDocksDialog();
+            //openDocksDialog.start(portStage, selectedPort);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");

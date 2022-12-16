@@ -14,6 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.PortsEntity;
+import javafx.scene.paint.Color;
+import javafx.scene.web.*;
 
 import java.io.IOException;
 
@@ -26,6 +28,10 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
     private Label addressLabel, contactNumberLabel, vhfChannelLabel, bankAccountLabel;
 
     private Text streetNumberText, streetNameText, cityNameText, postCodeText, contactNumberText,vhfChannelText, bankAccountText;
+
+    private WebEngine webEngine;
+    private WebView webView;
+
     private Button returnButton;
     private Scene scene;
     private Stage contactStage;
@@ -37,7 +43,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
     public void start(Stage stage, PortsEntity port) {
         contactStage = stage;
-        stage.setTitle("Map Dialog");
+        stage.setTitle("Port: " + port.getPortName() + ", price list");
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -86,6 +92,12 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         bankAccountText = new Text(valueOf(port.getBankAccount()));
         grid.add(bankAccountText, 1, 4);
 
+        //webEngine = new WebEngine(getClass().getResource("googlemap.html").toString());
+        webView = new WebView();
+        webEngine= webView.getEngine();
+
+        grid.add(webView, 0,5, 2, 1);
+
 
         returnButton = new Button("Return");
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -99,7 +111,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
             }
         });
 
-        grid.add(returnButton, 1, 5);
+        grid.add(returnButton, 1, 6);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         notification = new Text();

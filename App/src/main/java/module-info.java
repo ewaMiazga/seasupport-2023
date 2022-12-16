@@ -1,6 +1,7 @@
 module src.app {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.web;
 
     opens src.app to javafx.fxml;
     requires jakarta.persistence;
