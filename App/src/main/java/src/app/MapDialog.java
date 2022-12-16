@@ -21,9 +21,7 @@ import java.io.IOException;
 public class MapDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-
     private Image map;
-
     private ImageView view;
     private Button returnButton;
     private Scene scene;
