@@ -95,12 +95,10 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
         webView = new WebView();
         webEngine = webView.getEngine();
-        //webEngine = new WebEngine(getClass().getResource("GoogleMap.html").toString());
         URL url = this.getClass().getResource("GoogleMap.html");
         webEngine.load(url.toString());
 
         grid.add(webView, 0,5, 2, 1);
-
 
         returnButton = new Button("Return");
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
