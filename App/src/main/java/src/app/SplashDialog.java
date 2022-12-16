@@ -60,19 +60,9 @@ public class SplashDialog extends Application {
         splashLayout = new VBox();
         splashLayout.getChildren().addAll(splash, loadProgress, progressText);
         progressText.setAlignment(Pos.CENTER);
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+        splashLayout.getStylesheets().add(cssPath);
 
-
-        splashLayout.setStyle(
-                "-fx-padding: 5; " +
-                        "-fx-background-color: cornsilk; " +
-                        "-fx-border-width:5; " +
-                        "-fx-border-color: " +
-                        "linear-gradient(" +
-                        "to bottom, " +
-                        "chocolate, " +
-                        "derive(chocolate, 50%)" +
-                        ");"
-        );
         splashLayout.setEffect(new DropShadow());
     }
 
@@ -104,7 +94,6 @@ public class SplashDialog extends Application {
                 return foundFriends;
             }
         };
-
         showSplash(
                 initStage,
                 friendTask,
@@ -114,8 +103,7 @@ public class SplashDialog extends Application {
     }
 
     private void showMainStage() {
-        stage = new Stage(StageStyle.DECORATED);
-        //stage.setTitle("My Ports");
+        stage = new Stage();
 
         WelcomeDialog welcomeDialog = new WelcomeDialog();
         welcomeDialog.start(stage);
