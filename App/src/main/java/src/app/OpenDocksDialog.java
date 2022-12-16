@@ -25,6 +25,9 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     private Label yachtLength;
     private Button smallShipsButton, bigShipsButton, returnButton;
     private Scene scene;
+    private Stage openDocksStage;
+
+    private PortsEntity selectedPort;
     private String cssPath;
 
     private final ObservableList<PortsEntity> data =
@@ -37,6 +40,8 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     }
 
     public void start(Stage stage, PortsEntity port) {
+        openDocksStage = stage;
+        selectedPort = port;
         stage.setTitle("Port: " + port.getPortName() + ", open docks");
         stage.getIcons().add(
                 new Image(
@@ -108,14 +113,13 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == smallShipsButton) {
-            Stage stage = new Stage();
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(stage);
+            ReserveDockDialog reserveDockDialog = new ReserveDockDialog();
+            reserveDockDialog.start(openDocksStage, selectedPort, true);
         }
         else if (event.getSource() == bigShipsButton) {
             Stage stage = new Stage();
-            RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(stage);
+            ReserveDockDialog reserveDockDialog = new ReserveDockDialog();
+            reserveDockDialog.start(openDocksStage, selectedPort, false);
         }
     }
 }

@@ -34,7 +34,6 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     private Button mouseButton, settingsButton;
     private Scene scene;
-
     private String cssPath;
     @Override
     public void start(Stage stage) {
