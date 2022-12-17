@@ -14,6 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.appActions.LoginWindowActions;
+
+import java.util.List;
+import java.util.Vector;
 
 /**
  * The type Registration dialog.
@@ -37,6 +41,24 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private Stage registrationStage;
 
     private String cssPath;
+
+    private List<String> messages=  List.of("Username is not available.", "Password is different from the confirmation.",
+    "Incorrect type of user.", "Wrong format of phone number.", "Wrong format of pesel.", "Wrong format of birthdate.",
+            "Successful registration, go to login");
+
+    public Vector<String> getTextContents(){
+        Vector<String> data = new Vector<>();
+        data.add(userLoginField.getText());
+        data.add(userPassField.getText());
+        data.add(userPassConfField.getText());
+        data.add(userTypeField.getText());
+        data.add(forenameField.getText());
+        data.add(surnameField.getText());
+        data.add(numberField.getText());
+        data.add(peselField.getText());
+        data.add(birthdayField.getText());
+        return data;
+    }
     @Override
     public void start(Stage stage) {
         registrationStage = stage;
@@ -132,9 +154,16 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == registerButton) {
+
             registerButton.setText("Register button pressed");
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(registrationStage);
+            LoginWindowActions action = new LoginWindowActions();
+            int message_code = action.checkRegData(getTextContents());
+            // za pomoca numeru uzupelnij info
+            if(message_code == 6) {
+                action.register(getTextContents());
+                LoginDialog loginDialog = new LoginDialog();
+                loginDialog.start(registrationStage);
+            }
         }
     }
 
