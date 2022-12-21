@@ -21,7 +21,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Label userLoginLabel, userPassLabel, userForenameLabel, userSurnameLabel, userPeselLabel, userBirthdayLabel,  userContactNumberLabel, userTypeLabel;
 
     private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
-    private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPseselButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
+    private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
     private Scene scene;
 
     private Stage accountStage;
@@ -52,10 +52,10 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userLoginLabel, 0, 1);
 
         userLoginText = new Text(user.getLogin());
-        grid.add(userLoginText, 1, 0);
+        grid.add(userLoginText, 1, 1);
 
         setUserLoginButton = new Button("Change login");
-        grid.add(setUserLoginButton, 2, 0);
+        grid.add(setUserLoginButton, 2, 1);
 
         userPassLabel = new Label("Password: ");
         grid.add(userPassLabel, 0, 2);
@@ -64,7 +64,58 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userPassText, 1, 2);
 
         setUserPassButton = new Button("Change Password");
-        grid.add(setUserPassButton, 0, 2);
+        grid.add(setUserPassButton, 2, 2);
+
+        userForenameLabel = new Label("Forename: ");
+        grid.add(userForenameLabel, 0, 3);
+
+        userForenameText = new Text(user.getForename());
+        grid.add(userForenameText, 1, 3);
+
+        setUserForenameButton = new Button("Change Forename");
+        grid.add(setUserForenameButton, 2, 3);
+
+        userSurnameLabel = new Label("Surname: ");
+        grid.add(userSurnameLabel, 0, 4);
+
+        userSurnameText = new Text(user.getSurname());
+        grid.add(userSurnameText, 1, 4);
+
+        setUserSurnameButton = new Button("Change Surname");
+        grid.add(setUserSurnameButton, 2, 4);
+
+        userContactNumberLabel = new Label("Contact Number: ");
+        grid.add(userContactNumberLabel, 0, 5);
+
+        userContactNumberText = new Text(user.getPhoneNumber());
+        grid.add(userContactNumberText, 1, 5);
+
+        setUserContactNumberButton = new Button("Change ContactNumber");
+        grid.add(setUserContactNumberButton, 2, 5);
+
+        userPeselLabel = new Label("Pesel: ");
+        grid.add(userPeselLabel, 0, 6);
+
+        userPeselText = new Text(user.getPesel());
+        grid.add(userPeselText, 1, 6);
+
+        setUserPeselButton = new Button("Change Pesel");
+        grid.add(setUserPeselButton, 2, 6);
+
+        userBirthdayLabel = new Label("Birthday: ");
+        grid.add(userBirthdayLabel, 0, 7);
+
+        userBirthdayText = new Text(user.getBirthday().toString());
+        grid.add(userBirthdayText, 1, 7);
+
+        setUserBirthdayButton = new Button("Change Birthday");
+        grid.add(setUserBirthdayButton, 2, 7);
+
+        userTypeLabel = new Label("User Type: ");
+        grid.add(userTypeLabel, 0, 8);
+
+        userTypeText = new Text(user.getUserType());
+        grid.add(userTypeText, 1, 8);
 
 
         notification = new Text();
