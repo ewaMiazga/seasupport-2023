@@ -32,7 +32,6 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
     private WebEngine webEngine;
     private WebView webView;
-
     private Button returnButton;
     private Scene scene;
     private Stage contactStage;

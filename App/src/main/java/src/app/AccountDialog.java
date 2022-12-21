@@ -9,10 +9,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.AllUsersEntity;
+import src.logic.PortsEntity;
 
 import java.lang.reflect.Field;
 
@@ -25,6 +28,8 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     private Button returnButton;
     private TextField userLoginField;
+
+    private AllUsersEntity selectedUser;
     private Scene scene;
     private Stage accountStage;
     private String cssPath;
@@ -32,8 +37,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     public void start(Stage stage) {
 
     }
-    public void start(Stage stage, AllUsersEntity user) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         accountStage = stage;
+        selectedUser = user;
         stage.setTitle("Account Dialog");
         stage.getIcons().add(
                 new Image(
@@ -58,13 +64,27 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
         setUserLoginButton = new Button("Change Login");
         setUserLoginButton.setPrefSize(150, 25);
+        setUserLoginButton.setOnAction(this);
+
         grid.add(setUserLoginButton, 2, 1);
         grid.setHalignment(setUserLoginButton, HPos.CENTER);
 
         userLoginField = new TextField();
-        userLoginField.setPromptText(user.getLogin());
         userLoginField.setManaged(false);
         userLoginField.setVisible(false);
+
+        userLoginField.setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                userLoginField.setManaged(false);
+                userLoginField.setVisible(false);
+
+                user.setLogin(userLoginField.getText());
+                userLoginText.setText(user.getLogin());
+
+                userLoginText.setManaged(true);
+                userLoginText.setVisible(true);
+            }
+        });
 
         grid.add(userLoginField, 1 ,1);
 
@@ -141,7 +161,16 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userTypeText, 1, 8);
 
         returnButton = new Button("return");
-        returnButton.setOnAction(this);
+        returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource().equals(returnButton)) {
+                    PortDialog portDialog = new PortDialog();
+                    portDialog.start(stage, port);
+                }
+
+            }
+        });
 
         grid.add(returnButton, 2, 9);
         grid.setHalignment(returnButton, HPos.RIGHT);
@@ -174,13 +203,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             userLoginText.setManaged(false);
             userLoginText.setVisible(false);
 
+            userLoginField.setPromptText(selectedUser.getLogin());
             userLoginField.setManaged(true);
             userLoginField.setVisible(true);
-        }
-        else if (event.getSource() == returnButton) {
-            notification.setText("Return button pressed");
-            PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(accountStage);
         }
     }
 
