@@ -292,7 +292,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
                 selectedUser.setBirthday(newDate);
 
                 var newProperty = picker.valueProperty().get().toString().toLowerCase();
-                text.setText(newProperty);
+                text.setText(getProperty("Birthday"));
 
                 text.setManaged(true);
                 text.setVisible(true);
@@ -317,8 +317,8 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             return selectedUser.getPhoneNumber();
         }
         else if (whichProperty == "Birthday") {
-            //return createStringConverter().fromString(selectedUser.getBirthday().toString());
-            return selectedUser.getBirthday().toString();
+            LocalDate tempDate = selectedUser.getBirthday().toLocalDate();
+            return createStringConverter().toString(tempDate);
         }
         return "";
     }
