@@ -23,7 +23,6 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
     private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
     private Scene scene;
-
     private Stage accountStage;
     private String cssPath;
     @Override
@@ -43,7 +42,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text("Hi" + user.getForename());
+        formTitle = new Text("Hi " + user.getForename());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 1,1);
         grid.setHalignment(formTitle, HPos.CENTER);
@@ -90,7 +89,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         userContactNumberText = new Text(user.getPhoneNumber());
         grid.add(userContactNumberText, 1, 5);
 
-        setUserContactNumberButton = new Button("Change ContactNumber");
+        setUserContactNumberButton = new Button("Change Contact Number");
         grid.add(setUserContactNumberButton, 2, 5);
 
         userPeselLabel = new Label("Pesel: ");
@@ -122,7 +121,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         notification.setId("notification");
         grid.add(notification, 1, 6);
 
-        scene = new Scene(grid, 300, 275);
+        scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         accountStage.setScene(scene);
