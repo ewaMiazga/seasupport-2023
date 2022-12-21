@@ -14,10 +14,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.sql.Date;
+import java.util.Locale;
 
 public class AccountDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
@@ -30,6 +36,8 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     private DatePicker birthdayPicker;
     private AllUsersEntity selectedUser;
+
+    private final String pattern = "dd/MM/yy";
     private Scene scene;
     private Stage accountStage;
     private String cssPath;
@@ -185,6 +193,18 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(setUserBirthdayButton, 2, 7);
         grid.setHalignment(setUserBirthdayButton, HPos.CENTER);
 
+        Locale.setDefault(Locale.ENGLISH);
+        birthdayPicker = new DatePicker();
+        birthdayPicker.setConverter(createStringConverter());
+        birthdayPicker.setPromptText(selectedUser.getBirthday().toString().toLowerCase());
+
+        birthdayPicker.setManaged(false);
+        birthdayPicker.setVisible(false);
+
+        setDateField(setUserBirthdayButton, userBirthdayText, birthdayPicker, "Birthday");
+
+        grid.add(birthdayPicker, 1, 7);
+
         userTypeLabel = new Label("User Type: ");
         grid.add(userTypeLabel, 0, 8);
 
@@ -243,9 +263,36 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
                 field.setVisible(false);
 
                 setProperty(whichProperty, field.getText());
-                //selectedUser.setLogin(field.getText());
                 text.setText(getProperty(whichProperty));
-                //text.setText(selectedUser.getLogin());
+
+                text.setManaged(true);
+                text.setVisible(true);
+            }
+        });
+    }
+
+    public void setDateField(Button button,Text text, DatePicker picker, String whichProperty) {
+        button.setOnAction(event -> {
+            if (event.getSource() == button) {
+                text.setManaged(false);
+                text.setVisible(false);
+
+                picker.setPromptText(getProperty(whichProperty));
+                picker.setManaged(true);
+                picker.setVisible(true);
+            }
+        });
+
+        picker.setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                picker.setManaged(false);
+                picker.setVisible(false);
+
+                java.sql.Date newDate = Date.valueOf(picker.valueProperty().get());
+                selectedUser.setBirthday(newDate);
+
+                var newProperty = picker.valueProperty().get().toString().toLowerCase();
+                text.setText(newProperty);
 
                 text.setManaged(true);
                 text.setVisible(true);
@@ -269,26 +316,28 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         else if (whichProperty == "Contact Number") {
             return selectedUser.getPhoneNumber();
         }
+        else if (whichProperty == "Birthday") {
+            //return createStringConverter().fromString(selectedUser.getBirthday().toString());
+            return selectedUser.getBirthday().toString();
+        }
         return "";
     }
 
     public void setProperty(String whichProperty, String newProperty) {
         if (whichProperty == "Login") {
             selectedUser.setLogin(newProperty);
-        }
-        else if (whichProperty == "Forename") {
+        } else if (whichProperty == "Forename") {
             selectedUser.setForename(newProperty);
-        }
-        else if (whichProperty == "Surname") {
+        } else if (whichProperty == "Surname") {
             selectedUser.setSurname(newProperty);
-        }
-        else if (whichProperty == "Pesel") {
+        } else if (whichProperty == "Pesel") {
             selectedUser.setPesel(newProperty);
-        }
-        else if (whichProperty == "Contact Number") {
+        } else if (whichProperty == "Contact Number") {
             selectedUser.setPhoneNumber(newProperty);
+        } else if (whichProperty == "Birthday") {
+            Date d = Date.valueOf(newProperty);
+            selectedUser.setBirthday(d);
         }
-
     }
     public static void main(String[] args) {
         launch(args);
@@ -296,6 +345,31 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
+    }
+
+    public StringConverter createStringConverter() {
+        StringConverter converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern(pattern);
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        return converter;
     }
 
 }

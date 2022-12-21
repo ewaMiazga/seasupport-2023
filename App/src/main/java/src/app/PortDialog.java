@@ -144,7 +144,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         if (event.getSource() == accountButton) {
             notification.setText("account button pressed");
             @Deprecated
-            Date d = new Date(2015, 10, 5);
+            Date d = new Date(1999, 10, 5);
             AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
             AccountDialog accountDialog = new AccountDialog();
             accountDialog.start(portStage, selectedPort, user);
