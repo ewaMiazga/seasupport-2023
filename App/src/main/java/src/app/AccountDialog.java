@@ -25,10 +25,10 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Label userLoginLabel, userPassLabel, userForenameLabel, userSurnameLabel, userPeselLabel, userBirthdayLabel,  userContactNumberLabel, userTypeLabel;
     private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
     private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
-
     private Button returnButton;
-    private TextField userLoginField;
+    private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
 
+    private DatePicker birthdayPicker;
     private AllUsersEntity selectedUser;
     private Scene scene;
     private Stage accountStage;
@@ -50,6 +50,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+
 
         formTitle = new Text("Hi " + user.getForename());
         formTitle.setId("formatTitle");
@@ -73,20 +74,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         userLoginField.setManaged(false);
         userLoginField.setVisible(false);
 
-        userLoginField.setOnKeyPressed(event -> {
-            if(event.getCode() == KeyCode.ENTER) {
-                userLoginField.setManaged(false);
-                userLoginField.setVisible(false);
-
-                user.setLogin(userLoginField.getText());
-                userLoginText.setText(user.getLogin());
-
-                userLoginText.setManaged(true);
-                userLoginText.setVisible(true);
-            }
-        });
-
         grid.add(userLoginField, 1 ,1);
+
+        setTextField(setUserLoginButton, userLoginText, userLoginField, "Login");
 
         userPassLabel = new Label("Password: ");
         grid.add(userPassLabel, 0, 2);
@@ -99,6 +89,15 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(setUserPassButton, 2, 2);
         grid.setHalignment(setUserPassButton, HPos.CENTER);
 
+        //Change to some dialog to changing passwords
+        userPassField = new TextField();
+        userPassField.setManaged(false);
+        userPassField.setVisible(false);
+
+        grid.add(userPassField, 1 ,2);
+
+        setTextField(setUserPassButton, userPassText, userPassField, "Pass");
+
         userForenameLabel = new Label("Forename: ");
         grid.add(userForenameLabel, 0, 3);
 
@@ -109,6 +108,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         setUserForenameButton.setPrefSize(150, 25);
         grid.add(setUserForenameButton, 2, 3);
         grid.setHalignment(setUserForenameButton, HPos.CENTER);
+
+        userForenameField = new TextField();
+        userForenameField.setManaged(false);
+        userForenameField.setVisible(false);
+
+        grid.add(userForenameField, 1 ,3);
+
+        setTextField(setUserForenameButton, userForenameText, userForenameField, "Forename");
 
         userSurnameLabel = new Label("Surname: ");
         grid.add(userSurnameLabel, 0, 4);
@@ -121,6 +128,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(setUserSurnameButton, 2, 4);
         grid.setHalignment(setUserSurnameButton, HPos.CENTER);
 
+        userSurnameField = new TextField();
+        userSurnameField.setManaged(false);
+        userSurnameField.setVisible(false);
+
+        grid.add(userSurnameField, 1 ,4);
+
+        setTextField(setUserSurnameButton, userSurnameText, userSurnameField, "Surname");
+
         userContactNumberLabel = new Label("Contact Number: ");
         grid.add(userContactNumberLabel, 0, 5);
 
@@ -132,6 +147,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(setUserContactNumberButton, 2, 5);
         grid.setHalignment(setUserContactNumberButton, HPos.CENTER);
 
+        userContactNumberField = new TextField();
+        userContactNumberField.setManaged(false);
+        userContactNumberField.setVisible(false);
+
+        grid.add(userContactNumberField, 1 ,5);
+
+        setTextField(setUserContactNumberButton, userContactNumberText, userContactNumberField, "Contact Number");
+
         userPeselLabel = new Label("Pesel: ");
         grid.add(userPeselLabel, 0, 6);
 
@@ -142,6 +165,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         setUserPeselButton.setPrefSize(150, 25);
         grid.add(setUserPeselButton, 2, 6);
         grid.setHalignment(setUserPeselButton, HPos.CENTER);
+
+        userPeselField = new TextField();
+        userPeselField.setManaged(false);
+        userPeselField.setVisible(false);
+
+        grid.add(userPeselField, 1 ,6);
+
+        setTextField(setUserPeselButton, userPeselText, userPeselField, "Pesel");
 
         userBirthdayLabel = new Label("Birthday: ");
         grid.add(userBirthdayLabel, 0, 7);
@@ -193,20 +224,78 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
      *
      * @param args the input arguments
      */
+
+    public void setTextField(Button button,Text text, TextField field, String whichProperty) {
+        button.setOnAction(event -> {
+            if (event.getSource() == button) {
+                text.setManaged(false);
+                text.setVisible(false);
+
+                field.setPromptText(getProperty(whichProperty));
+                field.setManaged(true);
+                field.setVisible(true);
+            }
+        });
+
+        field.setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                field.setManaged(false);
+                field.setVisible(false);
+
+                setProperty(whichProperty, field.getText());
+                //selectedUser.setLogin(field.getText());
+                text.setText(getProperty(whichProperty));
+                //text.setText(selectedUser.getLogin());
+
+                text.setManaged(true);
+                text.setVisible(true);
+            }
+        });
+    }
+
+    public String getProperty(String whichProperty) {
+        if (whichProperty == "Login") {
+            return selectedUser.getLogin();
+        }
+        else if (whichProperty == "Forename") {
+            return selectedUser.getForename();
+        }
+        else if (whichProperty == "Surname") {
+            return selectedUser.getSurname();
+        }
+        else if (whichProperty == "Pesel") {
+            return selectedUser.getPesel();
+        }
+        else if (whichProperty == "Contact Number") {
+            return selectedUser.getPhoneNumber();
+        }
+        return "";
+    }
+
+    public void setProperty(String whichProperty, String newProperty) {
+        if (whichProperty == "Login") {
+            selectedUser.setLogin(newProperty);
+        }
+        else if (whichProperty == "Forename") {
+            selectedUser.setForename(newProperty);
+        }
+        else if (whichProperty == "Surname") {
+            selectedUser.setSurname(newProperty);
+        }
+        else if (whichProperty == "Pesel") {
+            selectedUser.setPesel(newProperty);
+        }
+        else if (whichProperty == "Contact Number") {
+            selectedUser.setPhoneNumber(newProperty);
+        }
+
+    }
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == setUserLoginButton) {
-            userLoginText.setManaged(false);
-            userLoginText.setVisible(false);
-
-            userLoginField.setPromptText(selectedUser.getLogin());
-            userLoginField.setManaged(true);
-            userLoginField.setVisible(true);
-        }
     }
 
 }
