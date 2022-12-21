@@ -32,7 +32,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                     new PortsEntity()
             );
 
-    private Button mouseButton, settingsButton;
+    private Button settingsButton;
     private Scene scene;
 
     private String cssPath;
