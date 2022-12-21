@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -59,6 +60,10 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(200));
+
 
         formTitle = new Text("Hi " + user.getForename());
         formTitle.setId("formatTitle");
@@ -72,7 +77,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userLoginText, 1, 1);
 
         setUserLoginButton = new Button("Change Login");
-        setUserLoginButton.setPrefSize(150, 25);
+        setUserLoginButton.setPrefSize(175, 25);
         setUserLoginButton.setOnAction(this);
 
         grid.add(setUserLoginButton, 2, 1);
@@ -93,7 +98,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userPassText, 1, 2);
 
         setUserPassButton = new Button("Change Password");
-        setUserPassButton.setPrefSize(150, 25);
+        setUserPassButton.setPrefSize(175, 25);
         grid.add(setUserPassButton, 2, 2);
         grid.setHalignment(setUserPassButton, HPos.CENTER);
 
@@ -113,7 +118,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userForenameText, 1, 3);
 
         setUserForenameButton = new Button("Change Forename");
-        setUserForenameButton.setPrefSize(150, 25);
+        setUserForenameButton.setPrefSize(175, 25);
         grid.add(setUserForenameButton, 2, 3);
         grid.setHalignment(setUserForenameButton, HPos.CENTER);
 
@@ -132,7 +137,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userSurnameText, 1, 4);
 
         setUserSurnameButton = new Button("Change Surname");
-        setUserSurnameButton.setPrefSize(150, 25);
+        setUserSurnameButton.setPrefSize(175, 25);
         grid.add(setUserSurnameButton, 2, 4);
         grid.setHalignment(setUserSurnameButton, HPos.CENTER);
 
@@ -151,7 +156,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userContactNumberText, 1, 5);
 
         setUserContactNumberButton = new Button("Change Contact Number");
-        setUserContactNumberButton.setPrefSize(150, 25);
+        setUserContactNumberButton.setPrefSize(175, 25);
         grid.add(setUserContactNumberButton, 2, 5);
         grid.setHalignment(setUserContactNumberButton, HPos.CENTER);
 
@@ -170,7 +175,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userPeselText, 1, 6);
 
         setUserPeselButton = new Button("Change Pesel");
-        setUserPeselButton.setPrefSize(150, 25);
+        setUserPeselButton.setPrefSize(175, 25);
         grid.add(setUserPeselButton, 2, 6);
         grid.setHalignment(setUserPeselButton, HPos.CENTER);
 
@@ -189,7 +194,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userBirthdayText, 1, 7);
 
         setUserBirthdayButton = new Button("Change Birthday");
-        setUserBirthdayButton.setPrefSize(150, 25);
+        setUserBirthdayButton.setPrefSize(175, 25);
         grid.add(setUserBirthdayButton, 2, 7);
         grid.setHalignment(setUserBirthdayButton, HPos.CENTER);
 
@@ -370,6 +375,98 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         };
 
         return converter;
+    }
+
+    class changePassDialog extends Application {
+        private GridPane grid;
+
+        private Text formTitle, notification;
+
+        private Label userOldPassLabel,userPassLabel, userPassConfLabel;
+
+        private TextField userOldPassVisibleField, userPassVisibleField, userPassConfVisibleField;
+
+        private PasswordField userOldPassField, userPassField, userPassConfField;
+
+        private CheckBox showOldPass, showPass, showConfPass;
+
+        private Button changePassButton;
+        private Scene scene;
+
+        private Stage changePassStage;
+        private String cssPath;
+
+        @Override
+        public void start(Stage stage) {
+            changePassStage = stage;
+            stage.setTitle("Change Password Dialog");
+            stage.getIcons().add(
+                    new Image(
+                            WelcomeDialog.class.getResourceAsStream("Logo.png")));
+
+            grid = new GridPane();
+            grid.setAlignment(Pos.CENTER);
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(25, 25, 25, 25));
+
+            userOldPassLabel = new Label("Enter old Pass: ");
+            grid.add(userLoginLabel, 0, 1);
+
+            userLoginField = new TextField();
+            grid.add(userLoginField, 1, 1);
+
+            userPassLabel = new Label("Password: ");
+            grid.add(userPassLabel, 0, 2);
+
+            userPassVisibleField = new TextField();
+            userPassVisibleField.setManaged(false);
+            userPassVisibleField.setVisible(false);
+            userPassField = new PasswordField();
+
+            grid.add(userPassField, 1, 2);
+            grid.add(userPassVisibleField, 1, 2);
+
+            showPass = new CheckBox("Show password");
+            showPass.setAlignment(Pos.CENTER_RIGHT);
+            grid.add(showPass, 1, 3);
+
+            userPassVisibleField.managedProperty().bind(showPass.selectedProperty());
+            userPassVisibleField.visibleProperty().bind(showPass.selectedProperty());
+
+            userPassField.managedProperty().bind(showPass.selectedProperty().not());
+            userPassField.visibleProperty().bind(showPass.selectedProperty().not());
+
+            userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
+
+            signInButton = new Button("Sign In");
+            signInButton.setOnAction(this);
+
+            grid.add(signInButton, 1, 4);
+            grid.setHalignment(signInButton, HPos.RIGHT);
+
+            notification = new Text();
+            notification.setId("notification");
+            grid.add(notification, 1, 6);
+
+            scene = new Scene(grid, 300, 275);
+            cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
+            loginStage.setScene(scene);
+            loginStage.centerOnScreen();
+            loginStage.show();
+        }
+
+        /**
+         * The entry point of class LoginDialog
+         *
+         * @param args the input arguments
+         */
+        public static void main(String[] args) {
+            launch(args);
+        }
+
+
     }
 
 }

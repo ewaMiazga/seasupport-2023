@@ -64,14 +64,14 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.add(formTitle, 0, 0, 2, 1);
 
         accountButton = new Button("Account Details");
-        accountButton.setMaxSize(100, 100);
+        accountButton.setPrefSize(150, 50);
         accountButton.setOnAction(this);
 
         grid.add(accountButton, 0, 0);
         grid.setHalignment(accountButton, HPos.LEFT);
 
         detailsButton = new Button("Port Details");
-        detailsButton.setMaxSize(100, 100);
+        detailsButton.setPrefSize(150, 50);
         detailsButton.setOnAction(this);
 
         grid.add(detailsButton, 1, 0);
@@ -109,7 +109,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setHalignment(contactButton, HPos.RIGHT);
 
         returnButton = new Button("Return");
-        returnButton.setPrefSize(100, 100);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnAction(this);
 
         grid.add(returnButton, 1, 4);
