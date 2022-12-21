@@ -31,8 +31,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     }
     public void start(Stage stage, AllUsersEntity user) {
-        user.
-        loginStage = stage;
+        accountStage = stage;
         stage.setTitle("Account Dialog");
         stage.getIcons().add(
                 new Image(
@@ -44,40 +43,29 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        formTitle = new Text("Hi" + user.getForename());
+        formTitle.setId("formatTitle");
+        grid.add(formTitle, 0, 0, 1,1);
+        grid.setHalignment(formTitle, HPos.CENTER);
+
         userLoginLabel = new Label("Login: ");
         grid.add(userLoginLabel, 0, 1);
 
-        userLoginField = new TextField();
-        grid.add(userLoginField, 1, 1);
+        userLoginText = new Text(user.getLogin());
+        grid.add(userLoginText, 1, 0);
+
+        setUserLoginButton = new Button("Change login");
+        grid.add(setUserLoginButton, 2, 0);
 
         userPassLabel = new Label("Password: ");
         grid.add(userPassLabel, 0, 2);
 
-        userPassVisibleField = new TextField();
-        userPassVisibleField.setManaged(false);
-        userPassVisibleField.setVisible(false);
-        userPassField = new PasswordField();
+        userPassText = new Text(user.getUserPassword());
+        grid.add(userPassText, 1, 2);
 
-        grid.add(userPassField, 1, 2);
-        grid.add(userPassVisibleField, 1, 2);
+        setUserPassButton = new Button("Change Password");
+        grid.add(setUserPassButton, 0, 2);
 
-        showPass = new CheckBox("Show password");
-        showPass.setAlignment(Pos.CENTER_RIGHT);
-        grid.add(showPass, 1, 3);
-
-        userPassVisibleField.managedProperty().bind(showPass.selectedProperty());
-        userPassVisibleField.visibleProperty().bind(showPass.selectedProperty());
-
-        userPassField.managedProperty().bind(showPass.selectedProperty().not());
-        userPassField.visibleProperty().bind(showPass.selectedProperty().not());
-
-        userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
-
-        signInButton = new Button("Sign In");
-        signInButton.setOnAction(this);
-
-        grid.add(signInButton, 1, 4);
-        grid.setHalignment(signInButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
@@ -86,9 +74,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         scene = new Scene(grid, 300, 275);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
-        loginStage.setScene(scene);
-        loginStage.centerOnScreen();
-        loginStage.show();
+        accountStage.setScene(scene);
+        accountStage.centerOnScreen();
+        accountStage.show();
     }
 
     /**
@@ -102,15 +90,6 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
-        //TODO:
-        //Write function, which will check if login and password are equal from those from
-        //database @bartek
-        if (event.getSource() == signInButton) {
-            String userLogin = userLoginField.getText();
-            String userPass = userPassField.getText();
-            //@bartek TODO:
-            PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(loginStage);
+
         }
     }
-}

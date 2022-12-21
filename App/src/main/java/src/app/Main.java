@@ -36,8 +36,19 @@ public class Main extends Application {
      * @param args the input arguments
      */
     public static void main(String[] args) {
+        /*
+            Platform.runLater(() ->{
+            final Stage st = new Stage();
+            DataBase.getInstance(); // connecting with database
+            launch(args);
+            SplashDialog spD = new SplashDialog();
+            try {
+                spD.start(st);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });*/
         DataBase.getInstance(); // connecting with database
-        launch(args);
         DataBase.disableConnection(); // disconnecting with database
     }
 }

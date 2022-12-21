@@ -41,7 +41,6 @@ public class SplashDialog extends Application {
 
     private Scene scene;
     private Stage stage;
-
     private String cssPath;
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;

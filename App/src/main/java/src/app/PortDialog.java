@@ -12,7 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
+import java.sql.Date;
 
 import java.io.IOException;
 
@@ -23,7 +25,7 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
+    private Button accountButton, detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
 
     private Button mouseButton;
     private Scene scene;
@@ -60,6 +62,13 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
+
+        accountButton = new Button("Port Details");
+        accountButton.setMaxSize(100, 100);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 0, 0);
+        grid.setHalignment(accountButton, HPos.LEFT);
 
         detailsButton = new Button("Port Details");
         detailsButton.setMaxSize(100, 100);
@@ -132,7 +141,15 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         //TODO:
         //Write function, which will check if login and password are equal from those from
         //database @michał
-        if (event.getSource() == detailsButton) {
+        if (event.getSource() == accountButton) {
+            notification.setText("price button pressed");
+            @Deprecated
+            Date d = new Date(2015, 10, 5);
+            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(portStage, user);
+        }
+        else if (event.getSource() == detailsButton) {
             notification.setText("price button pressed");
             //Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
