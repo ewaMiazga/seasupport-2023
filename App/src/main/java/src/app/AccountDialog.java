@@ -54,7 +54,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userLoginText, 1, 1);
 
         setUserLoginButton = new Button("Change login");
+        setUserLoginButton.setPrefSize(150, 25);
         grid.add(setUserLoginButton, 2, 1);
+        grid.setHalignment(setUserLoginButton, HPos.CENTER);
 
         userPassLabel = new Label("Password: ");
         grid.add(userPassLabel, 0, 2);
@@ -63,7 +65,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userPassText, 1, 2);
 
         setUserPassButton = new Button("Change Password");
+        setUserPassButton.setPrefSize(150, 25);
         grid.add(setUserPassButton, 2, 2);
+        grid.setHalignment(setUserPassButton, HPos.CENTER);
 
         userForenameLabel = new Label("Forename: ");
         grid.add(userForenameLabel, 0, 3);
@@ -72,7 +76,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userForenameText, 1, 3);
 
         setUserForenameButton = new Button("Change Forename");
+        setUserForenameButton.setPrefSize(150, 25);
         grid.add(setUserForenameButton, 2, 3);
+        grid.setHalignment(setUserForenameButton, HPos.CENTER);
 
         userSurnameLabel = new Label("Surname: ");
         grid.add(userSurnameLabel, 0, 4);
@@ -81,7 +87,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userSurnameText, 1, 4);
 
         setUserSurnameButton = new Button("Change Surname");
+        setUserSurnameButton.setPrefSize(150, 25);
         grid.add(setUserSurnameButton, 2, 4);
+        grid.setHalignment(setUserSurnameButton, HPos.CENTER);
 
         userContactNumberLabel = new Label("Contact Number: ");
         grid.add(userContactNumberLabel, 0, 5);
@@ -90,7 +98,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userContactNumberText, 1, 5);
 
         setUserContactNumberButton = new Button("Change Contact Number");
+        setUserContactNumberButton.setPrefSize(150, 25);
         grid.add(setUserContactNumberButton, 2, 5);
+        grid.setHalignment(setUserContactNumberButton, HPos.CENTER);
 
         userPeselLabel = new Label("Pesel: ");
         grid.add(userPeselLabel, 0, 6);
@@ -99,7 +109,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userPeselText, 1, 6);
 
         setUserPeselButton = new Button("Change Pesel");
+        setUserPeselButton.setPrefSize(150, 25);
         grid.add(setUserPeselButton, 2, 6);
+        grid.setHalignment(setUserPeselButton, HPos.CENTER);
 
         userBirthdayLabel = new Label("Birthday: ");
         grid.add(userBirthdayLabel, 0, 7);
@@ -108,7 +120,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userBirthdayText, 1, 7);
 
         setUserBirthdayButton = new Button("Change Birthday");
+        setUserBirthdayButton.setPrefSize(150, 25);
         grid.add(setUserBirthdayButton, 2, 7);
+        grid.setHalignment(setUserBirthdayButton, HPos.CENTER);
 
         userTypeLabel = new Label("User Type: ");
         grid.add(userTypeLabel, 0, 8);
