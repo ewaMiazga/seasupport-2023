@@ -1,6 +1,7 @@
 package src.app;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import src.logic.CaptainsEntity;
 
@@ -15,19 +16,20 @@ public class Main extends Application {
     /**
      * primary Stage
      */
-    private Stage primaryStage;
+    //private Stage primaryStage;
     /**
      * The func that run application
      *
-     * @param primaryStage
+     * @param stage
      */
-    public void start(Stage primaryStage) {
-        primaryStage = new Stage();
-        primaryStage.setTitle("SeaSupPort");
-
-
-        WelcomeDialog welcomeDialog = new WelcomeDialog();
-        welcomeDialog.start(primaryStage);
+    public void start(Stage stage) {
+        stage = new Stage();
+        SplashDialog splashDialog = new SplashDialog();
+        try {
+            splashDialog.start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -36,19 +38,8 @@ public class Main extends Application {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        /*
-            Platform.runLater(() ->{
-            final Stage st = new Stage();
-            DataBase.getInstance(); // connecting with database
-            launch(args);
-            SplashDialog spD = new SplashDialog();
-            try {
-                spD.start(st);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });*/
         DataBase.getInstance(); // connecting with database
+        launch(args);
         DataBase.disableConnection(); // disconnecting with database
     }
 }

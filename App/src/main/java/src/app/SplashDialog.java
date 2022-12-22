@@ -95,6 +95,7 @@ public class SplashDialog extends Application {
                 return foundFriends;
             }
         };
+        init();
         showSplash(
                 initStage,
                 friendTask,
