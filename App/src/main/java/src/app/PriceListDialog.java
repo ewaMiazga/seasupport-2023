@@ -20,6 +20,8 @@ import javafx.util.Pair;
 import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
+import java.sql.Date;
+
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -27,6 +29,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     private Button accountButton, returnButton;
 
     private AllUsersEntity selectedUser;
+
+    private Stage priceListStage;
     private Scene scene;
     private String cssPath;
 
@@ -42,6 +46,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         selectedUser = user;
+        priceListStage = stage;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
         stage.getIcons().add(
                 new Image(
@@ -143,6 +148,14 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            Date d = new Date(1999, 10, 5);
+            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(priceListStage, user);
+        }
     }
 
     public final ObservableList<Pair<String, Integer>> setData() {

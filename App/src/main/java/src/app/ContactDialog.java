@@ -21,6 +21,7 @@ import javafx.scene.web.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 
 import static java.lang.String.valueOf;
 
@@ -154,6 +155,14 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            Date d = new Date(1999, 10, 5);
+            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(contactStage, user);
+        }
     }
 }
 
