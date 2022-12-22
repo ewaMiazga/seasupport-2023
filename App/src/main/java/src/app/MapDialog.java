@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
 import java.io.FileInputStream;
@@ -23,7 +24,8 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
     private Text formTitle, notification;
     private Image map;
     private ImageView view;
-    private Button returnButton;
+    private Button accountButton, returnButton;
+    private AllUsersEntity selectedUser;
     private Scene scene;
     private Stage mapStage;
     private String cssPath;
@@ -31,9 +33,10 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
     @Override
     public void start(Stage stage) { }
 
-    public void start(Stage stage, PortsEntity port) throws IOException {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) throws IOException {
         mapStage = stage;
-        stage.setTitle("Port: " + port.getPortName() + ", price list");
+        selectedUser = user;
+        stage.setTitle("Port: " + port.getPortName() + ", map");
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -41,9 +44,16 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
+
         formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
 
         map = new Image(WelcomeDialog.class.getResourceAsStream("ExamplePortMap.jpg"));
         view = new ImageView(map);
@@ -51,21 +61,22 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         view.setY(10);
         view.setFitWidth(575);
         view.setPreserveRatio(true);
-        grid.add(view, 0, 1);
+        grid.add(view, 0, 1, 2, 1);
 
         returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if(event.getSource().equals(returnButton)) {
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    portDialog.start(stage, port, selectedUser);
                 }
 
             }
         });
 
-        grid.add(returnButton, 0, 2);
+        grid.add(returnButton, 1, 2);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         notification = new Text();

@@ -12,7 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
+import java.sql.Date;
 
 import java.io.IOException;
 
@@ -23,11 +25,12 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
 
-    private Button mouseButton;
     private Scene scene;
     private Stage portStage;
+
+    private AllUsersEntity selectedUser;
 
     private PortsEntity selectedPort;
     private String cssPath;
@@ -42,9 +45,10 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * @param stage the stage
      * @param port the port
      */
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;
         selectedPort = port;
+        selectedUser = user;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -61,23 +65,22 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        detailsButton = new Button("Port Details");
-        detailsButton.setMaxSize(100, 100);
-        detailsButton.setOnAction(this);
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
 
-        grid.add(detailsButton, 1, 0);
-        grid.setHalignment(detailsButton, HPos.RIGHT);
-
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         priceListButton = new Button("Price List");
-        priceListButton.setPrefSize(200, 200);
+        priceListButton.setPrefSize(250, 250);
         priceListButton.setOnAction(this);
 
         grid.add(priceListButton, 0, 1);
         grid.setHalignment(priceListButton, HPos.LEFT);
 
         docksButton = new Button("Open docks");
-        docksButton.setPrefSize(200, 200);
+        docksButton.setPrefSize(250, 250);
         docksButton.setOnAction(this);
 
         grid.add(docksButton, 1, 1);
@@ -85,7 +88,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         mapButton = new Button("Map of the port");
-        mapButton.setPrefSize(200, 200);
+        mapButton.setPrefSize(250, 250);
         mapButton.setOnAction(this);
 
         grid.add(mapButton, 0, 3);
@@ -93,14 +96,14 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         contactButton = new Button("Contact");
-        contactButton.setPrefSize(200, 200);
+        contactButton.setPrefSize(250, 250);
         contactButton.setOnAction(this);
 
         grid.add(contactButton, 1, 3);
         grid.setHalignment(contactButton, HPos.RIGHT);
 
         returnButton = new Button("Return");
-        returnButton.setPrefSize(100, 100);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnAction(this);
 
         grid.add(returnButton, 1, 4);
@@ -132,16 +135,18 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         //TODO:
         //Write function, which will check if login and password are equal from those from
         //database @michał
-        if (event.getSource() == detailsButton) {
-            notification.setText("price button pressed");
-            //Stage stage = new Stage();
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(portStage);
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            Date d = new Date(1999, 10, 5);
+            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(portStage, user);
         }
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, selectedPort);
+            priceListDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
@@ -152,7 +157,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
             notification.setText("map button pressed");
             MapDialog mapDialog = new MapDialog();
             try {
-                mapDialog.start(portStage, selectedPort);
+                mapDialog.start(portStage, selectedPort, selectedUser);
             }
             catch(IOException e) {
                 e.printStackTrace();
@@ -161,12 +166,12 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
             ContactDialog contactDialog = new ContactDialog();
-            contactDialog.start(portStage, selectedPort);
+            contactDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");
             PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(portStage);
+            portsDialog.start(portStage, selectedUser);
         }
     }
 

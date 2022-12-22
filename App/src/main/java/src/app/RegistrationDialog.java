@@ -44,10 +44,14 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private Stage registrationStage;
 
+    private Stage welcomeStage;
+
     private String cssPath;
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) { }
+    public void start(Stage stage, Stage previousStage) {
         registrationStage = stage;
+        welcomeStage = previousStage;
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -194,7 +198,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
                 notification.setText("Required fields are empty!");
                 return;
             }
-            loginDialog.start(registrationStage);
+            loginDialog.start(registrationStage, welcomeStage);
         }
     }
 

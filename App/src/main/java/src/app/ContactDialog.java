@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 import javafx.scene.paint.Color;
 import javafx.scene.web.*;
@@ -32,8 +33,9 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
     private WebEngine webEngine;
     private WebView webView;
+    private Button accountButton, returnButton;
 
-    private Button returnButton;
+    private AllUsersEntity selectedUser;
     private Scene scene;
     private Stage contactStage;
     private String cssPath;
@@ -42,8 +44,9 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         contactStage = stage;
+        selectedUser = user;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
 
         grid = new GridPane();
@@ -52,9 +55,17 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
+
         formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
+
 
         addressLabel = new Label("Address: ");
         grid.add(addressLabel, 0, 1);
@@ -101,12 +112,13 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         grid.add(webView, 0,5, 2, 1);
 
         returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (event.getSource().equals(returnButton)) {
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    portDialog.start(stage, port, selectedUser);
                 }
 
             }
