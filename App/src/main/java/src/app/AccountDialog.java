@@ -115,8 +115,6 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             changePassDialog.start(tempStage);
         });
 
-        //setTextField(setUserPassButton, userPassText, userPassField, "Pass");
-
         userForenameLabel = new Label("Forename: ");
         grid.add(userForenameLabel, 0, 3);
 
@@ -470,11 +468,8 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             grid.add(userPassConfVisibleField, 1, 5);
 
             changePassButton = new Button("Change Password");
-            //changePassButton.setOnAction(this);
 
             changePassButton.setOnAction(event -> {
-                System.out.println(userPassField.getText());
-                System.out.println(userPassConfField.getText());
                 if (!userOldPassField.getText().equals(selectedUser.getUserPassword().toString())) {
                     notification.setText("Old password is incorrect!");
                     return;
@@ -488,7 +483,6 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
                     userPassText.setText(selectedUser.getUserPassword().toString());
 
                     changePassStage.close();
-                    changePassStage.hide();
                 }
             });
 
@@ -499,7 +493,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             notification.setId("notification");
             grid.add(notification, 1, 8);
 
-            scene = new Scene(grid, 300, 275);
+            scene = new Scene(grid, 400, 275);
             cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
             scene.getStylesheets().add(cssPath);
             changePassStage.setScene(scene);

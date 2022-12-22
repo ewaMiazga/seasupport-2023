@@ -30,10 +30,15 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private Button signInButton;
     private Scene scene;
     private Stage loginStage;
+
+    private Stage welcomeStage;
     private String cssPath;
+
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) { }
+    public void start(Stage stage, Stage previousStage) {
         loginStage = stage;
+        welcomeStage = previousStage;
         stage.setTitle("Login Dialog");
         stage.getIcons().add(
                 new Image(
@@ -112,6 +117,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
             //@bartek TODO:
             PortsDialog portsDialog = new PortsDialog();
             portsDialog.start(loginStage);
+            welcomeStage.close();
         }
     }
 }

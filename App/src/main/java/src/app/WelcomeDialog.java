@@ -23,13 +23,16 @@ import javafx.stage.Stage;
 public class WelcomeDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Label whoAreYouLabel, toLoginLabel, toRegisterLabel;
+    private Label whoAreYouLabel;
     private Button loginButton, registrationButton;
     private Scene scene;
+
+    private Stage welcomeStage;
     private String cssPath;
 
     @Override
     public void start(Stage stage) {
+        welcomeStage = stage;
         stage.setTitle("Welcome Dialog");
         stage.getIcons().add(
                 new Image(
@@ -87,12 +90,12 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         if (event.getSource() == loginButton) {
             Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(stage);
+            loginDialog.start(stage, welcomeStage);
         }
         else if (event.getSource() == registrationButton) {
             Stage stage = new Stage();
             RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(stage);
+            registrationDialog.start(stage, welcomeStage);
         }
     }
 }
