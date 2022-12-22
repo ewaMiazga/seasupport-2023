@@ -46,8 +46,12 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     public void start(Stage stage) {
 
     }
-    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
+    public void start(Stage previousStage, AllUsersEntity user) {
+        Stage stage = new Stage();
         accountStage = stage;
+
+        previousStage.hide();
+
         selectedUser = user;
         stage.setTitle("Account Dialog");
         stage.getIcons().add(
@@ -226,8 +230,10 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             @Override
             public void handle(MouseEvent event) {
                 if(event.getSource().equals(returnButton)) {
-                    PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    previousStage.show();
+                    stage.hide();
+                    //PortDialog portDialog = new PortDialog();
+                    //portDialog.start(stage, port);
                 }
 
             }

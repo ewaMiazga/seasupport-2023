@@ -13,6 +13,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
+
+import java.sql.Date;
 
 /**
  * Class LoginDialog
@@ -114,9 +117,12 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         if (event.getSource() == signInButton) {
             String userLogin = userLoginField.getText();
             String userPass = userPassField.getText();
+            @Deprecated
+            Date d = new Date(1999, 10, 5);
+            AllUsersEntity user = new AllUsersEntity(userLogin, userPass, "Ewa", "Miazga", "666999333", d, "123456789", "user");
             //@bartek TODO:
             PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(loginStage);
+            portsDialog.start(loginStage, user);
             welcomeStage.close();
         }
     }

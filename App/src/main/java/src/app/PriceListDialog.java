@@ -17,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
@@ -24,6 +25,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     private Text formTitle, notification;
     private TableView<Pair<String, Integer>> priceListView;
     private Button returnButton;
+
+    private AllUsersEntity selectedUser;
     private Scene scene;
     private String cssPath;
 
@@ -37,7 +40,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
+        selectedUser = user;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
         stage.getIcons().add(
                 new Image(
@@ -58,7 +62,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
             public void handle(MouseEvent event) {
                 if(event.getSource().equals(returnButton)) {
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    portDialog.start(stage, port, selectedUser);
                 }
 
             }

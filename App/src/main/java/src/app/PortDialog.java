@@ -25,11 +25,12 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button accountButton, detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
 
-    private Button mouseButton;
     private Scene scene;
     private Stage portStage;
+
+    private AllUsersEntity selectedUser;
 
     private PortsEntity selectedPort;
     private String cssPath;
@@ -44,9 +45,10 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * @param stage the stage
      * @param port the port
      */
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;
         selectedPort = port;
+        selectedUser = user;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -67,16 +69,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         accountButton.setPrefSize(150, 50);
         accountButton.setOnAction(this);
 
-        grid.add(accountButton, 0, 0);
-        grid.setHalignment(accountButton, HPos.LEFT);
-
-        detailsButton = new Button("Port Details");
-        detailsButton.setPrefSize(150, 50);
-        detailsButton.setOnAction(this);
-
-        grid.add(detailsButton, 1, 0);
-        grid.setHalignment(detailsButton, HPos.RIGHT);
-
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         priceListButton = new Button("Price List");
         priceListButton.setPrefSize(200, 200);
@@ -147,18 +141,12 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
             Date d = new Date(1999, 10, 5);
             AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
             AccountDialog accountDialog = new AccountDialog();
-            accountDialog.start(portStage, selectedPort, user);
-        }
-        else if (event.getSource() == detailsButton) {
-            notification.setText("price button pressed");
-            //Stage stage = new Stage();
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(portStage);
+            accountDialog.start(portStage, user);
         }
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, selectedPort);
+            priceListDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
@@ -169,7 +157,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
             notification.setText("map button pressed");
             MapDialog mapDialog = new MapDialog();
             try {
-                mapDialog.start(portStage, selectedPort);
+                mapDialog.start(portStage, selectedPort, selectedUser);
             }
             catch(IOException e) {
                 e.printStackTrace();
@@ -178,12 +166,12 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
             ContactDialog contactDialog = new ContactDialog();
-            contactDialog.start(portStage, selectedPort);
+            contactDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");
             PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(portStage);
+            portsDialog.start(portStage, selectedUser);
         }
     }
 
