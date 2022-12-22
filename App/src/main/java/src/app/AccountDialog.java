@@ -226,6 +226,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userTypeText, 1, 8);
 
         returnButton = new Button("return");
+        returnButton.setPrefSize(150, 25);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -240,7 +241,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         });
 
         grid.add(returnButton, 2, 9);
-        grid.setHalignment(returnButton, HPos.RIGHT);
+        grid.setHalignment(returnButton, HPos.CENTER);
 
 
         notification = new Text();
