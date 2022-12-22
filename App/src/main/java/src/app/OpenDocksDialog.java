@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -56,6 +57,10 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(200));
+
         formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
@@ -64,29 +69,29 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.add(yachtLength, 0, 1);
 
         smallShipsLabel = new Label("Up to 18 meters");
-        grid.add(smallShipsLabel, 1,2);
+        grid.add(smallShipsLabel, 0,2);
 
         smallShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsSmall()));
-        grid.add(smallShipsText, 2, 2);
+        grid.add(smallShipsText, 1, 2);
 
         smallShipsButton = new Button("Reserve");
         smallShipsButton.setPrefSize(175, 25);
         smallShipsButton.setOnAction(this);
 
-        grid.add(smallShipsButton, 3, 2);
+        grid.add(smallShipsButton, 2, 2);
         grid.setHalignment(smallShipsButton, HPos.CENTER);
 
         bigShipsLabel = new Label("Over 18 meters");
-        grid.add(bigShipsLabel, 1,3);
+        grid.add(bigShipsLabel, 0,3);
 
         bigShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsBig()));
-        grid.add(bigShipsText, 2, 3);
+        grid.add(bigShipsText, 1, 3);
 
         bigShipsButton = new Button("Reserve");
         bigShipsButton.setPrefSize(175, 25);
         bigShipsButton.setOnAction(this);
 
-        grid.add(bigShipsButton, 3, 3);
+        grid.add(bigShipsButton, 2, 3);
         grid.setHalignment(bigShipsButton, HPos.CENTER);
 
         returnButton = new Button("Return");
