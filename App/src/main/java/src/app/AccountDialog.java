@@ -473,17 +473,18 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             //changePassButton.setOnAction(this);
 
             changePassButton.setOnAction(event -> {
-                System.out.println(selectedUser.getUserPassword().toString());
-                if (!userOldPassField.toString().equals(selectedUser.getUserPassword().toString())) {
+                System.out.println(userPassField.getText());
+                System.out.println(userPassConfField.getText());
+                if (!userOldPassField.getText().equals(selectedUser.getUserPassword().toString())) {
                     notification.setText("Old password is incorrect!");
                     return;
                 }
-                else if (!userPassField.equals(userPassConfField)) {
+                else if (!userPassField.getText().equals(userPassConfField.getText())) {
                     notification.setText("Passwords are different!");
                     return;
                 }
                 else if (event.getSource() == changePassButton) {
-                    selectedUser.setUserPassword(userPassField.toString());
+                    selectedUser.setUserPassword(userPassField.getText());
                     userPassText.setText(selectedUser.getUserPassword().toString());
 
                     changePassStage.close();
