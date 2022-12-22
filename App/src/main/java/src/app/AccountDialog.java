@@ -109,7 +109,13 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
         grid.add(userPassField, 1 ,2);
 
-        setTextField(setUserPassButton, userPassText, userPassField, "Pass");
+        setUserPassButton.setOnAction(event -> {
+            ChangePassDialog changePassDialog = new ChangePassDialog();
+            Stage tempStage = new Stage();
+            changePassDialog.start(tempStage);
+        });
+
+        //setTextField(setUserPassButton, userPassText, userPassField, "Pass");
 
         userForenameLabel = new Label("Forename: ");
         grid.add(userForenameLabel, 0, 3);
@@ -127,6 +133,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         userForenameField.setVisible(false);
 
         grid.add(userForenameField, 1 ,3);
+
 
         setTextField(setUserForenameButton, userForenameText, userForenameField, "Forename");
 
@@ -247,7 +254,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     /**
      * The entry point of class LoginDialog
      *
-     * @param args the input arguments
+     * @param button the input arguments
      */
 
     public void setTextField(Button button,Text text, TextField field, String whichProperty) {
@@ -377,7 +384,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         return converter;
     }
 
-    class changePassDialog extends Application {
+    class ChangePassDialog extends Application {
         private GridPane grid;
 
         private Text formTitle, notification;
@@ -410,51 +417,103 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             grid.setVgap(10);
             grid.setPadding(new Insets(25, 25, 25, 25));
 
-            userOldPassLabel = new Label("Enter old Pass: ");
-            grid.add(userLoginLabel, 0, 1);
+            userOldPassLabel = new Label("Enter old Password: ");
+            grid.add(userOldPassLabel, 0, 1);
 
-            userLoginField = new TextField();
-            grid.add(userLoginField, 1, 1);
+            userOldPassVisibleField = new TextField();
+            userOldPassVisibleField.setManaged(false);
+            userOldPassVisibleField.setVisible(false);
 
-            userPassLabel = new Label("Password: ");
-            grid.add(userPassLabel, 0, 2);
+            showOldPass = new CheckBox("Show password");
+            showOldPass.setAlignment(Pos.CENTER_RIGHT);
+            grid.add(showOldPass, 1, 2);
+
+            userOldPassField = new PasswordField();
+            showPassword(userOldPassField, userOldPassVisibleField, showOldPass);
+
+            grid.add(userOldPassField, 1, 1);
+            grid.add(userOldPassVisibleField, 1,1);
+
+            userPassLabel = new Label("Enter new Password: ");
+            grid.add(userPassLabel, 0, 3);
 
             userPassVisibleField = new TextField();
             userPassVisibleField.setManaged(false);
             userPassVisibleField.setVisible(false);
-            userPassField = new PasswordField();
-
-            grid.add(userPassField, 1, 2);
-            grid.add(userPassVisibleField, 1, 2);
 
             showPass = new CheckBox("Show password");
             showPass.setAlignment(Pos.CENTER_RIGHT);
-            grid.add(showPass, 1, 3);
+            grid.add(showPass, 1, 4);
 
-            userPassVisibleField.managedProperty().bind(showPass.selectedProperty());
-            userPassVisibleField.visibleProperty().bind(showPass.selectedProperty());
+            userPassField = new PasswordField();
+            showPassword(userPassField, userPassVisibleField, showPass);
 
-            userPassField.managedProperty().bind(showPass.selectedProperty().not());
-            userPassField.visibleProperty().bind(showPass.selectedProperty().not());
+            grid.add(userPassField, 1, 3);
+            grid.add(userPassVisibleField, 1, 3);
 
-            userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
 
-            signInButton = new Button("Sign In");
-            signInButton.setOnAction(this);
+            userPassConfLabel = new Label("Repeat new Password: ");
+            grid.add(userPassConfLabel, 0, 5);
 
-            grid.add(signInButton, 1, 4);
-            grid.setHalignment(signInButton, HPos.RIGHT);
+            userPassConfVisibleField = new TextField();
+            userPassConfVisibleField.setManaged(false);
+            userPassConfVisibleField.setVisible(false);
+
+            showConfPass = new CheckBox("Show password");
+            showConfPass.setAlignment(Pos.CENTER_RIGHT);
+            grid.add(showConfPass, 1, 6);
+
+            userPassConfField = new PasswordField();
+            showPassword(userPassConfField, userPassConfVisibleField, showConfPass);
+
+            grid.add(userPassConfField, 1, 5);
+            grid.add(userPassConfVisibleField, 1, 5);
+
+            changePassButton = new Button("Change Password");
+            //changePassButton.setOnAction(this);
+
+            changePassButton.setOnAction(event -> {
+                System.out.println(selectedUser.getUserPassword().toString());
+                if (!userOldPassField.toString().equals(selectedUser.getUserPassword().toString())) {
+                    notification.setText("Old password is incorrect!");
+                    return;
+                }
+                else if (!userPassField.equals(userPassConfField)) {
+                    notification.setText("Passwords are different!");
+                    return;
+                }
+                else if (event.getSource() == changePassButton) {
+                    selectedUser.setUserPassword(userPassField.toString());
+                    userPassText.setText(selectedUser.getUserPassword().toString());
+
+                    changePassStage.close();
+                    changePassStage.hide();
+                }
+            });
+
+            grid.add(changePassButton, 1, 7);
+            grid.setHalignment(changePassButton, HPos.RIGHT);
 
             notification = new Text();
             notification.setId("notification");
-            grid.add(notification, 1, 6);
+            grid.add(notification, 1, 8);
 
             scene = new Scene(grid, 300, 275);
             cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
             scene.getStylesheets().add(cssPath);
-            loginStage.setScene(scene);
-            loginStage.centerOnScreen();
-            loginStage.show();
+            changePassStage.setScene(scene);
+            changePassStage.centerOnScreen();
+            changePassStage.show();
+        }
+
+        public void showPassword(PasswordField field, TextField text, CheckBox box) {
+            text.managedProperty().bind(box.selectedProperty());
+            text.visibleProperty().bind(box.selectedProperty());
+
+            field.managedProperty().bind(box.selectedProperty().not());
+            field.visibleProperty().bind(box.selectedProperty().not());
+
+            text.textProperty().bindBidirectional(field.textProperty());
         }
 
         /**
