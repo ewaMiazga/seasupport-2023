@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import src.logic.AllUsersEntity;
@@ -27,7 +28,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     private Label yachtLength, smallShipsLabel, bigShipsLabel;
 
     private Text smallShipsText, bigShipsText;
-    private Button smallShipsButton, bigShipsButton, returnButton;
+    private Button accountButton, smallShipsButton, bigShipsButton, returnButton;
 
     private PortsEntity selectedPort;
 
@@ -57,21 +58,29 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        grid.getColumnConstraints().add(new ColumnConstraints(150));
-        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(250));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
         grid.getColumnConstraints().add(new ColumnConstraints(200));
 
         formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
 
-        yachtLength = new Label("Yacht with hull length:");
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.CENTER);
+
+        yachtLength = new Label("Places for yacht with hull length:");
         grid.add(yachtLength, 0, 1);
 
         smallShipsLabel = new Label("Up to 18 meters");
         grid.add(smallShipsLabel, 0,2);
 
         smallShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsSmall()));
+        smallShipsText.setTextAlignment(TextAlignment.CENTER);
         grid.add(smallShipsText, 1, 2);
 
         smallShipsButton = new Button("Reserve");
@@ -85,6 +94,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.add(bigShipsLabel, 0,3);
 
         bigShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsBig()));
+        bigShipsText.setTextAlignment(TextAlignment.CENTER);
         grid.add(bigShipsText, 1, 3);
 
         bigShipsButton = new Button("Reserve");
@@ -106,15 +116,16 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
             }
         });
 
-        grid.add(returnButton, 0, 4);
-        grid.setHalignment(returnButton, HPos.RIGHT);
+        grid.add(returnButton, 2, 5);
+        returnButton.setPrefSize(150, 25);
+        grid.setHalignment(returnButton, HPos.CENTER);
 
         notification = new Text();
         notification.setId("notification");
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 575);
-        cssPath = this.getClass().getResource("PortsDialog.css").toExternalForm();
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.centerOnScreen();
