@@ -24,7 +24,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     private GridPane grid;
     private Text formTitle, notification;
     private TableView<Pair<String, Integer>> priceListView;
-    private Button returnButton;
+    private Button accountButton, returnButton;
 
     private AllUsersEntity selectedUser;
     private Scene scene;
@@ -52,11 +52,19 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
+
         formTitle = new Text("Price List");
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
 
         returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -74,11 +82,11 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         priceListView = new TableView<Pair<String, Integer>>();
 
         TableColumn nameServiceCol = new TableColumn("Name of service");
-        nameServiceCol.setMinWidth(160);
+        nameServiceCol.setMinWidth(300);
         nameServiceCol.setCellValueFactory(
                 new PropertyValueFactory<Pair<String, Integer>, String>("pair.getValue0()"));
         TableColumn priceCol = new TableColumn("Price (ZL)");
-        priceCol.setMinWidth(100);
+        priceCol.setMinWidth(200);
         priceCol.setCellValueFactory(
                 new PropertyValueFactory<Pair<String, Integer>, String>("name"));
         //klasy jeden port
@@ -87,9 +95,10 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         priceListView.getColumns().addAll(nameServiceCol, priceCol);
 
         //priceListView.getItems().addAll("Usluga1", "Usluga2", "Usluga3");
+
         priceListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(priceListView, 1, 1);
+        grid.add(priceListView, 0, 1, 2, 1);
 
         priceListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 

@@ -54,9 +54,10 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
         formTitle = new Text("Choose Port");
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
 
         accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
         accountButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -74,14 +75,14 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         tableView = new TableView<PortsEntity>();
         tableView.setEditable(true);
         TableColumn portNameCol = new TableColumn<String, String>("Port Name");
-        portNameCol.setMinWidth(260);
+        portNameCol.setMinWidth(500);
         portNameCol.setCellValueFactory(
                 new PropertyValueFactory<PortsEntity, String>("portName"));
         tableView.setItems(data);
         tableView.getColumns().addAll(portNameCol);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(tableView, 1, 1);
+        grid.add(tableView, 0, 1, 2, 1);
 
         tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 

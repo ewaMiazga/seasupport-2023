@@ -73,14 +73,14 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setHalignment(accountButton, HPos.RIGHT);
 
         priceListButton = new Button("Price List");
-        priceListButton.setPrefSize(200, 200);
+        priceListButton.setPrefSize(250, 250);
         priceListButton.setOnAction(this);
 
         grid.add(priceListButton, 0, 1);
         grid.setHalignment(priceListButton, HPos.LEFT);
 
         docksButton = new Button("Open docks");
-        docksButton.setPrefSize(200, 200);
+        docksButton.setPrefSize(250, 250);
         docksButton.setOnAction(this);
 
         grid.add(docksButton, 1, 1);
@@ -88,7 +88,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         mapButton = new Button("Map of the port");
-        mapButton.setPrefSize(200, 200);
+        mapButton.setPrefSize(250, 250);
         mapButton.setOnAction(this);
 
         grid.add(mapButton, 0, 3);
@@ -96,7 +96,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         contactButton = new Button("Contact");
-        contactButton.setPrefSize(200, 200);
+        contactButton.setPrefSize(250, 250);
         contactButton.setOnAction(this);
 
         grid.add(contactButton, 1, 3);
