@@ -151,7 +151,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
             OpenDocksDialog openDocksDialog = new OpenDocksDialog();
-            openDocksDialog.start(portStage, selectedPort);
+            openDocksDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");

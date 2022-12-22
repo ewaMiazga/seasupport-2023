@@ -23,8 +23,12 @@ import src.logic.PortsEntity;
 public class OpenDocksDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Label yachtLength;
+    private Label yachtLength, smallShipsLabel, bigShipsLabel;
+
+    private Text smallShipsText, bigShipsText;
     private Button smallShipsButton, bigShipsButton, returnButton;
+
+    private PortsEntity selectedPort;
 
     private AllUsersEntity selectedUser;
     private Scene scene;
@@ -41,6 +45,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         selectedUser = user;
+        selectedPort = port;
         stage.setTitle("Port: " + port.getPortName() + ",open docks");
         stage.getIcons().add(
                 new Image(
@@ -58,20 +63,31 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         yachtLength = new Label("Yacht with hull length:");
         grid.add(yachtLength, 0, 1);
 
-        smallShipsButton = new Button("Up to 12 meters");
-        smallShipsButton.setPrefSize(400, 50);
+        smallShipsLabel = new Label("Up to 18 meters");
+        grid.add(smallShipsLabel, 1,2);
+
+        smallShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsSmall()));
+        grid.add(smallShipsText, 2, 2);
+
+        smallShipsButton = new Button("Reserve");
+        smallShipsButton.setPrefSize(175, 25);
         smallShipsButton.setOnAction(this);
 
-        grid.add(smallShipsButton, 0, 2);
-        grid.setHalignment(smallShipsButton, HPos.LEFT);
+        grid.add(smallShipsButton, 3, 2);
+        grid.setHalignment(smallShipsButton, HPos.CENTER);
 
+        bigShipsLabel = new Label("Over 18 meters");
+        grid.add(bigShipsLabel, 1,3);
 
-        bigShipsButton = new Button("Over 12 meters");
-        bigShipsButton.setPrefSize(400, 50);
+        bigShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsBig()));
+        grid.add(bigShipsText, 2, 3);
+
+        bigShipsButton = new Button("Reserve");
+        bigShipsButton.setPrefSize(175, 25);
         bigShipsButton.setOnAction(this);
 
-        grid.add(bigShipsButton, 0, 3);
-        grid.setHalignment(bigShipsButton, HPos.LEFT);
+        grid.add(bigShipsButton, 3, 3);
+        grid.setHalignment(bigShipsButton, HPos.CENTER);
 
         returnButton = new Button("Return");
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
