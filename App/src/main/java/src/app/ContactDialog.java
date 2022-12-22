@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ import javafx.scene.web.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 
 import static java.lang.String.valueOf;
 
@@ -54,6 +56,9 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+
+        grid.getColumnConstraints().add(new ColumnConstraints(250));
+        grid.getColumnConstraints().add(new ColumnConstraints(250));
 
         accountButton = new Button("Account Details");
         accountButton.setPrefSize(150, 50);
@@ -150,6 +155,14 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            Date d = new Date(1999, 10, 5);
+            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(contactStage, user);
+        }
     }
 }
 
