@@ -90,7 +90,16 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
         smallShipsButton = new Button("Reserve");
         smallShipsButton.setPrefSize(175, 25);
-        smallShipsButton.setOnAction(this);
+
+        smallShipsButton.setOnAction(actionEvent -> {
+            if(!(selectedPort.getPlacesShipsSmall() > 0)) {
+                notification.setText("All small docks are booked!");
+                return;
+            }
+
+            selectedPort.setPlacesShipsSmall(selectedPort.getPlacesShipsSmall() - 1);
+            smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall()));
+        });
 
         grid.add(smallShipsButton, 2, 2);
         grid.setHalignment(smallShipsButton, HPos.CENTER);
@@ -104,7 +113,16 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
         bigShipsButton = new Button("Reserve");
         bigShipsButton.setPrefSize(175, 25);
-        bigShipsButton.setOnAction(this);
+
+        bigShipsButton.setOnAction(actionEvent -> {
+            if(!(selectedPort.getPlacesShipsBig() > 0)) {
+                notification.setText("All big docks are booked!");
+                return;
+            }
+
+            selectedPort.setPlacesShipsBig(selectedPort.getPlacesShipsBig() - 1);
+            bigShipsText.setText(Integer.toString(selectedPort.getPlacesShipsBig()));
+        });
 
         grid.add(bigShipsButton, 2, 3);
         grid.setHalignment(bigShipsButton, HPos.CENTER);
@@ -127,7 +145,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 6);
+        grid.add(notification, 2, 6);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
