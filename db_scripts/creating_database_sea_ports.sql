@@ -60,7 +60,7 @@ CREATE TABLE price_list
 CREATE TABLE ports
 (
     port_id NUMBER(7) CONSTRAINT port_pk PRIMARY KEY,
-    port_name VARCHAR2(15 CHAR) NOT NULL,
+    port_name VARCHAR2(50 CHAR) NOT NULL,
     places_ships_big NUMBER(3) NOT NULL,
     places_ships_small NUMBER(3) NOT NULL,
     street_number NUMBER(3) NOT NULL,
