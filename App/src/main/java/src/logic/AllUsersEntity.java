@@ -3,6 +3,7 @@ package src.logic;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -30,6 +31,18 @@ public class AllUsersEntity {
 
     public AllUsersEntity()
     {}
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ADMIN_PORT_INTERMEDIARY",
+            joinColumns = { @JoinColumn(name = "LOGIN") },
+            inverseJoinColumns = { @JoinColumn(name = "PORT_ID") }
+    )
+    private Collection<PortsEntity> portsEntities;
+
+    @OneToMany(mappedBy = "allUsersEntity")
+    private Collection<VisitsEntity> visitsEntities;
+
     public AllUsersEntity(String login, String userPassword, String forename, String surname, String phoneNumber, Date birthday, String pesel, String userType) {
         this.login = login;
         this.userPassword = userPassword;
@@ -39,15 +52,45 @@ public class AllUsersEntity {
         this.birthday = birthday;
         this.pesel = pesel;
         this.userType = userType;
+        this.portsEntities = new ArrayList<PortsEntity>();
+        this.visitsEntities = new ArrayList<VisitsEntity>();
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "ADMIN_PORT_INTERMEDIARY",
-            joinColumns = { @JoinColumn(name = "LOGIN") },
-            inverseJoinColumns = { @JoinColumn(name = "PORT_ID") }
-    )
-    private Collection<PortsEntity> portsEntities;
+    public AllUsersEntity(String login, String userPassword, String forename, String surname, String phoneNumber, Date birthday, String userType) {
+        this.login = login;
+        this.userPassword = userPassword;
+        this.forename = forename;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.userType = userType;
+        this.portsEntities = new ArrayList<PortsEntity>();
+        this.visitsEntities = new ArrayList<VisitsEntity>();
+    }
+
+    public Collection<PortsEntity> getPortsEntities() {
+        return portsEntities;
+    }
+
+    public void setPortsEntities(Collection<PortsEntity> portsEntities) {
+        this.portsEntities = portsEntities;
+    }
+
+    public Collection<VisitsEntity> getVisitsEntities() {
+        return visitsEntities;
+    }
+
+    public void setVisitsEntities(Collection<VisitsEntity> visitsEntities) {
+        this.visitsEntities = visitsEntities;
+    }
+    public void addPort(PortsEntity port)
+    {
+        this.portsEntities.add(port);
+    }
+    public void addVisit(VisitsEntity visit)
+    {
+        this.visitsEntities.add(visit);
+    }
 
     public String getLogin() {
         return login;

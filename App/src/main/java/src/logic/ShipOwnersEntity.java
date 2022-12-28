@@ -2,35 +2,68 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "SHIP_OWNERS")
 public class ShipOwnersEntity {
     @Id
+    @SequenceGenerator(name = "ship_owners_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ship_owners_id")
     @Column(name = "SHIP_OWNER_ID")
     private int shipOwnerId;
-    @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
-    @Basic
     @Column(name = "EMAIL")
     private String email;
-    @Basic
-    @Column(name = "FORNAME")
+    @Column(name = "FORENAME")
     private String forname;
-    @Basic
     @Column(name = "SURNAME")
     private String surname;
-    @Basic
     @Column(name = "PESEL")
     private String pesel;
-    @Basic
     @Column(name = "NAME_COMPANY")
     private String nameCompany;
-    @Basic
     @Column(name = "NIP")
     private Integer nip;
+
+    @OneToMany(mappedBy = "shipOwnersEntity")
+    private Collection<ShipsEntity> shipsEntities;
+
+    public ShipOwnersEntity(int shipOwnerId, String phoneNumber, String email, String forename,
+                            String surname, String pesel, Collection<ShipsEntity> shipsEntities) {
+        this.shipOwnerId = shipOwnerId;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.forname = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.shipsEntities = shipsEntities;
+    }
+
+    public ShipOwnersEntity(int shipOwnerId, String email, String nameCompany, Integer nip, Collection<ShipsEntity> shipsEntities) {
+        this.shipOwnerId = shipOwnerId;
+        this.email = email;
+        this.nameCompany = nameCompany;
+        this.nip = nip;
+        this.shipsEntities = shipsEntities;
+    }
+
+    public ShipOwnersEntity() {
+    }
+
+    public void addShip(ShipsEntity ship){
+        this.shipsEntities.add(ship);
+    }
+
+    public Collection<ShipsEntity> getShipsEntities() {
+        return shipsEntities;
+    }
+
+    public void setShipsEntities(Collection<ShipsEntity> shipsEntities) {
+        this.shipsEntities = shipsEntities;
+    }
 
     public int getShipOwnerId() {
         return shipOwnerId;

@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -11,40 +12,74 @@ public class PriceListEntity {
     @Id
     @Column(name = "LIST_ID")
     private int listId;
-    @Basic
     @Column(name = "LAUNDRY")
     private Byte laundry;
-    @Basic
     @Column(name = "DRYING_ROOM")
     private Byte dryingRoom;
-    @Basic
     @Column(name = "WATER")
     private Byte water;
-    @Basic
     @Column(name = "SHOWER")
     private Byte shower;
-    @Basic
     @Column(name = "SAUNA")
     private Byte sauna;
-    @Basic
     @Column(name = "PLACE_LESS_7M")
     private short placeLess7M;
-    @Basic
     @Column(name = "PLACE_7_12M")
     private short place712M;
-    @Basic
     @Column(name = "PLACE_12_17M")
     private short place1217M;
-    @Basic
     @Column(name = "PLACE_17_20M")
     private short place1720M;
-    @Basic
     @Column(name = "PLACE_MORE_20M")
     private short placeMore20M;
-    @OneToMany(mappedBy = "priceListByPriceListId")
-    private Collection<PortsEntity> portsByListId;
+    @OneToMany(mappedBy = "priceListEntity")
+    private Collection<PortsEntity> portsEntities;
 
-    public int getListId() { return listId; }
+    public PriceListEntity(int listId, Byte laundry, Byte dryingRoom, Byte water, Byte shower, Byte sauna, short placeLess7M,
+                           short place712M, short place1217M, short place1720M, short placeMore20M) {
+        this.listId = listId;
+        this.laundry = laundry;
+        this.dryingRoom = dryingRoom;
+        this.water = water;
+        this.shower = shower;
+        this.sauna = sauna;
+        this.placeLess7M = placeLess7M;
+        this.place712M = place712M;
+        this.place1217M = place1217M;
+        this.place1720M = place1720M;
+        this.placeMore20M = placeMore20M;
+        this.portsEntities = new ArrayList<PortsEntity>();
+    }
+
+    public PriceListEntity(int listId, short placeLess7M, short place712M, short place1217M, short place1720M,
+                           short placeMore20M) {
+        this.listId = listId;
+        this.placeLess7M = placeLess7M;
+        this.place712M = place712M;
+        this.place1217M = place1217M;
+        this.place1720M = place1720M;
+        this.placeMore20M = placeMore20M;
+        this.portsEntities = new ArrayList<PortsEntity>();
+    }
+
+    public void addPort(PortsEntity port){
+        this.portsEntities.add(port);
+    }
+
+    public PriceListEntity() {
+    }
+
+    public Collection<PortsEntity> getPortsEntities() {
+        return portsEntities;
+    }
+
+    public void setPortsEntities(Collection<PortsEntity> portsEntities) {
+        this.portsEntities = portsEntities;
+    }
+
+    public int getListId() {
+        return listId;
+    }
 
     public void setListId(int listId) {
         this.listId = listId;
@@ -143,11 +178,4 @@ public class PriceListEntity {
         return Objects.hash(listId, laundry, dryingRoom, water, shower, sauna, placeLess7M, place712M, place1217M, place1720M, placeMore20M);
     }
 
-    public Collection<PortsEntity> getPortsByListId() {
-        return portsByListId;
-    }
-
-    public void setPortsByListId(Collection<PortsEntity> portsByListId) {
-        this.portsByListId = portsByListId;
-    }
 }
