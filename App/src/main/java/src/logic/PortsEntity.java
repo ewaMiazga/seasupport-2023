@@ -55,7 +55,8 @@ public class PortsEntity {
     public PortsEntity()
     {}
 
-    public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListId) {
+    public PortsEntity(int portId, String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity, Collection<AllUsersEntity> allUsersEntities, Collection<VisitsEntity> visitsEntities) {
+        this.portId = portId;
         this.portName = portName;
         this.placesShipsBig = placesShipsBig;
         this.placesShipsSmall = placesShipsSmall;
@@ -66,7 +67,33 @@ public class PortsEntity {
         this.phoneNumber = phoneNumber;
         this.vhfChannel = vhfChannel;
         this.bankAccount = bankAccount;
-        this.priceListEntity = priceListId;
+        this.priceListEntity = priceListEntity;
+        this.allUsersEntities = allUsersEntities;
+        this.visitsEntities = visitsEntities;
+    }
+
+    public PriceListEntity getPriceListEntity() {
+        return priceListEntity;
+    }
+
+    public void setPriceListEntity(PriceListEntity priceListEntity) {
+        this.priceListEntity = priceListEntity;
+    }
+
+    public Collection<AllUsersEntity> getAllUsersEntities() {
+        return allUsersEntities;
+    }
+
+    public void setAllUsersEntities(Collection<AllUsersEntity> allUsersEntities) {
+        this.allUsersEntities = allUsersEntities;
+    }
+
+    public Collection<VisitsEntity> getVisitsEntities() {
+        return visitsEntities;
+    }
+
+    public void setVisitsEntities(Collection<VisitsEntity> visitsEntities) {
+        this.visitsEntities = visitsEntities;
     }
 
     public int getPortId() {

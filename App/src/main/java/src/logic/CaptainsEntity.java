@@ -25,11 +25,20 @@ public class CaptainsEntity {
     public CaptainsEntity()
     {}
 
-    public CaptainsEntity(String forename, String surname, String pesel, int captainId) {
+    public CaptainsEntity(String forename, String surname, String pesel, int captainId, Collection<VisitsEntity> visitsEntity) {
         this.forename = forename;
         this.surname = surname;
         this.pesel = pesel;
         this.captainId = captainId;
+        this.visitsEntity = visitsEntity;
+    }
+
+    public Collection<VisitsEntity> getVisitsEntity() {
+        return visitsEntity;
+    }
+
+    public void setVisitsEntity(Collection<VisitsEntity> visitsEntity) {
+        this.visitsEntity = visitsEntity;
     }
 
     public String getForename() {

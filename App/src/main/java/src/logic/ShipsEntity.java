@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -12,8 +13,8 @@ public class ShipsEntity {
     @Column(name = "CALL_SIGN")
     private String callSign;
     @Basic
-    @Column(name = "SHPIP_NAME")
-    private String shpipName;
+    @Column(name = "SHIP_NAME")
+    private String shipName;
     @Basic
     @Column(name = "SHIP_OWNER_ID")
     private int shipOwnerId;
@@ -29,6 +30,33 @@ public class ShipsEntity {
     @OneToMany(mappedBy = "shipsEntity")
     private Collection<VisitsEntity> visitsEntities;
 
+    public ShipsEntity(String callSign, String shipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
+        this.callSign = callSign;
+        this.shipName = shipName;
+        this.shipOwnerId = shipOwnerId;
+        this.shipType = shipType;
+        this.shipLength = shipLength;
+        this.shipOwnersEntity = shipOwnersEntity;
+        this.visitsEntities = new ArrayList<VisitsEntity>();
+    }
+
+    public ShipsEntity() {
+    }
+
+
+    public void addVisit(VisitsEntity visit)
+    {
+        this.visitsEntities.add(visit);
+    }
+
+    public Collection<VisitsEntity> getVisitsEntities() {
+        return visitsEntities;
+    }
+
+    public void setVisitsEntities(Collection<VisitsEntity> visitsEntities) {
+        this.visitsEntities = visitsEntities;
+    }
+
     public String getCallSign() {
         return callSign;
     }
@@ -37,12 +65,12 @@ public class ShipsEntity {
         this.callSign = callSign;
     }
 
-    public String getShpipName() {
-        return shpipName;
+    public String getShipName() {
+        return shipName;
     }
 
-    public void setShpipName(String shpipName) {
-        this.shpipName = shpipName;
+    public void setShipName(String shpipName) {
+        this.shipName = shpipName;
     }
 
     public int getShipOwnerId() {
@@ -74,12 +102,12 @@ public class ShipsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShipsEntity that = (ShipsEntity) o;
-        return shipOwnerId == that.shipOwnerId && shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shpipName, that.shpipName) && Objects.equals(shipType, that.shipType);
+        return shipOwnerId == that.shipOwnerId && shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shipName, that.shipName) && Objects.equals(shipType, that.shipType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(callSign, shpipName, shipOwnerId, shipType, shipLength);
+        return Objects.hash(callSign, shipName, shipOwnerId, shipType, shipLength);
     }
 
     public ShipOwnersEntity getShipOwnersEntity() {

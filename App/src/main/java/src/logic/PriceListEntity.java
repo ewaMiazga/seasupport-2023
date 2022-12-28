@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -43,6 +44,48 @@ public class PriceListEntity {
     private short placeMore20M;
     @OneToMany(mappedBy = "priceListEntity")
     private Collection<PortsEntity> portsEntities;
+
+    public PriceListEntity(int listId, Byte laundry, Byte dryingRoom, Byte water, Byte shower, Byte sauna, short placeLess7M,
+                           short place712M, short place1217M, short place1720M, short placeMore20M) {
+        this.listId = listId;
+        this.laundry = laundry;
+        this.dryingRoom = dryingRoom;
+        this.water = water;
+        this.shower = shower;
+        this.sauna = sauna;
+        this.placeLess7M = placeLess7M;
+        this.place712M = place712M;
+        this.place1217M = place1217M;
+        this.place1720M = place1720M;
+        this.placeMore20M = placeMore20M;
+        this.portsEntities = new ArrayList<PortsEntity>();
+    }
+
+    public PriceListEntity(int listId, short placeLess7M, short place712M, short place1217M, short place1720M,
+                           short placeMore20M) {
+        this.listId = listId;
+        this.placeLess7M = placeLess7M;
+        this.place712M = place712M;
+        this.place1217M = place1217M;
+        this.place1720M = place1720M;
+        this.placeMore20M = placeMore20M;
+        this.portsEntities = new ArrayList<PortsEntity>();
+    }
+
+    public void addPort(PortsEntity port){
+        this.portsEntities.add(port);
+    }
+
+    public PriceListEntity() {
+    }
+
+    public Collection<PortsEntity> getPortsEntities() {
+        return portsEntities;
+    }
+
+    public void setPortsEntities(Collection<PortsEntity> portsEntities) {
+        this.portsEntities = portsEntities;
+    }
 
     public int getListId() {
         return listId;

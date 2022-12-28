@@ -45,6 +45,46 @@ public class VisitsEntity {
     @JoinColumn(name = "CAPTAIN_ID", referencedColumnName = "CAPTAIN_ID")
     private CaptainsEntity captainsEntity;
 
+    public VisitsEntity(Date dateBegin, int portId, String login, String callSign, int captainId, int visitId, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
+        this.dateBegin = dateBegin;
+        this.portId = portId;
+        this.login = login;
+        this.callSign = callSign;
+        this.captainId = captainId;
+        this.visitId = visitId;
+        this.portsEntity = portsEntity;
+        this.allUsersEntity = allUsersEntity;
+        this.shipsEntity = shipsEntity;
+        this.captainsEntity = captainsEntity;
+    }
+
+    public VisitsEntity() {
+    }
+
+    public PortsEntity getPortsEntity() {
+        return portsEntity;
+    }
+
+    public void setPortsEntity(PortsEntity portsEntity) {
+        this.portsEntity = portsEntity;
+    }
+
+    public AllUsersEntity getAllUsersEntity() {
+        return allUsersEntity;
+    }
+
+    public void setAllUsersEntity(AllUsersEntity allUsersEntity) {
+        this.allUsersEntity = allUsersEntity;
+    }
+
+    public ShipsEntity getShipsEntity() {
+        return shipsEntity;
+    }
+
+    public void setShipsEntity(ShipsEntity shipsEntity) {
+        this.shipsEntity = shipsEntity;
+    }
+
     public Date getDateBegin() {
         return dateBegin;
     }
