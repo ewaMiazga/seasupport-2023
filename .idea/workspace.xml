@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="annotations in classes changed">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/App/src/test/java/src/logic/CaptainsEntityTest.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -114,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671318588532</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="annotations in classes changed">
+      <created>1672245117157</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672245117157</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +128,21 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature_database_connection" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>

@@ -33,6 +33,13 @@ public class CaptainsEntity {
         this.visitsEntity = visitsEntity;
     }
 
+    public CaptainsEntity(String forename, String surname, String pesel, int captainId) {
+        this.forename = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.captainId = captainId;
+    }
+
     public Collection<VisitsEntity> getVisitsEntity() {
         return visitsEntity;
     }
