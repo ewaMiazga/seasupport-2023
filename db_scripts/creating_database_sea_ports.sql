@@ -44,16 +44,16 @@ CREATE TABLE captains
 CREATE TABLE price_list
 (
     list_id NUMBER(7) CONSTRAINT price_list_pk PRIMARY KEY,
-    laundry NUMBER(3, 2),
-    drying_room NUMBER(3, 2),
-    water NUMBER(3, 2),
-    shower NUMBER(3, 2),
-    sauna NUMBER(3, 2),
-    place_less_7m NUMBER(4, 2) NOT NULL,
-    place_7_12m NUMBER(4, 2) NOT NULL,
-    place_12_17m NUMBER(4, 2) NOT NULL,
-    place_17_20m NUMBER(4, 2) NOT NULL,
-    place_more_20m NUMBER(4, 2) NOT NULL
+    laundry NUMBER(4, 2),
+    drying_room NUMBER(4, 2),
+    water NUMBER(4, 2),
+    shower NUMBER(4, 2),
+    sauna NUMBER(4, 2),
+    place_less_7m NUMBER(6, 2),
+    place_7_12m NUMBER(6, 2),
+    place_12_17m NUMBER(6, 2),
+    place_17_20m NUMBER(6, 2),
+    place_more_20m NUMBER(6, 2)
 );
 
 
@@ -95,17 +95,3 @@ CREATE TABLE visits
     visit_id NUMBER(7) CONSTRAINT vistits_pk PRIMARY KEY,
     CONSTRAINT unique_visit UNIQUE (port_id, login, call_sign, captain_id, date_begin)
 );
-
-
-
-<<<<<<< HEAD
-
-=======
-ALTER TABLE PORTS
-    DROP CONSTRAINT ports_price_fk;
-
-CREATE SEQUENCE port_id_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1;
->>>>>>> 2c72b991708e5f66ec057d95f1482ed6fd19269c
