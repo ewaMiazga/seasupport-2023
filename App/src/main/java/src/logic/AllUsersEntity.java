@@ -49,6 +49,9 @@ public class AllUsersEntity {
     )
     private Collection<PortsEntity> portsEntities;
 
+    @OneToMany(mappedBy = "allUsersEntity")
+    private Collection<VisitsEntity> visitsEntities;
+
     public String getLogin() {
         return login;
     }

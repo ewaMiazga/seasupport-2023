@@ -42,14 +42,20 @@ public class PortsEntity {
     @Column(name = "BANK_ACCOUNT")
     private String bankAccount;
 
-    @Column(name = "PRICE_LIST_ID")
-    private int priceListId;
+    @ManyToOne
+    @JoinColumn(name = "PRICE_LIST_ID", referencedColumnName = "LIST_ID")
+    private PriceListEntity priceListEntity;
+
+    @ManyToMany(mappedBy = "portsEntities")
+    private Collection<AllUsersEntity> allUsersEntities;
+
+    @OneToMany(mappedBy = "portsEntity")
+    private Collection<VisitsEntity> visitsEntities;
 
     public PortsEntity()
     {}
 
-    public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, int priceListId) {
-//        this.portId = portId;
+    public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListId) {
         this.portName = portName;
         this.placesShipsBig = placesShipsBig;
         this.placesShipsSmall = placesShipsSmall;
@@ -60,10 +66,8 @@ public class PortsEntity {
         this.phoneNumber = phoneNumber;
         this.vhfChannel = vhfChannel;
         this.bankAccount = bankAccount;
-        this.priceListId = priceListId;
+        this.priceListEntity = priceListId;
     }
-    @ManyToMany(mappedBy = "portsEntities")
-    private Collection<AllUsersEntity> allUsersEntities;
 
     public int getPortId() {
         return portId;
@@ -153,32 +157,17 @@ public class PortsEntity {
         this.bankAccount = bankAccount;
     }
 
-    public int getPriceListId() {
-        return priceListId;
-    }
-
-    public void setPriceListId(int priceListId) {
-        this.priceListId = priceListId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PortsEntity that = (PortsEntity) o;
-        return portId == that.portId && placesShipsBig == that.placesShipsBig && placesShipsSmall == that.placesShipsSmall && streetNumber == that.streetNumber && vhfChannel == that.vhfChannel && priceListId == that.priceListId && Objects.equals(portName, that.portName) && Objects.equals(streetName, that.streetName) && Objects.equals(cityName, that.cityName) && Objects.equals(postCode, that.postCode) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(bankAccount, that.bankAccount);
+        return portId == that.portId && placesShipsBig == that.placesShipsBig && placesShipsSmall == that.placesShipsSmall && streetNumber == that.streetNumber && vhfChannel == that.vhfChannel && priceListEntity == that.priceListEntity && Objects.equals(portName, that.portName) && Objects.equals(streetName, that.streetName) && Objects.equals(cityName, that.cityName) && Objects.equals(postCode, that.postCode) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(bankAccount, that.bankAccount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(portId, portName, placesShipsBig, placesShipsSmall, streetNumber, streetName, cityName, postCode, phoneNumber, vhfChannel, bankAccount, priceListId);
+        return Objects.hash(portId, portName, placesShipsBig, placesShipsSmall, streetNumber, streetName, cityName, postCode, phoneNumber, vhfChannel, bankAccount, priceListEntity);
     }
 
-//    public Collection<AdminPortIntermediaryEntity> getAdminPortIntermediariesByPortId() {
-//        return adminPortIntermediariesByPortId;
-//    }
-//
-//    public void setAdminPortIntermediariesByPortId(Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId) {
-//        this.adminPortIntermediariesByPortId = adminPortIntermediariesByPortId;
-//    }
 }

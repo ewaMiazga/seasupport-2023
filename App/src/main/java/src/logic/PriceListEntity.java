@@ -41,10 +41,12 @@ public class PriceListEntity {
     @Basic
     @Column(name = "PLACE_MORE_20M")
     private short placeMore20M;
-    @OneToMany(mappedBy = "priceListByPriceListId")
-    private Collection<PortsEntity> portsByListId;
+    @OneToMany(mappedBy = "priceListEntity")
+    private Collection<PortsEntity> portsEntities;
 
-    public int getListId() { return listId; }
+    public int getListId() {
+        return listId;
+    }
 
     public void setListId(int listId) {
         this.listId = listId;
@@ -143,11 +145,4 @@ public class PriceListEntity {
         return Objects.hash(listId, laundry, dryingRoom, water, shower, sauna, placeLess7M, place712M, place1217M, place1720M, placeMore20M);
     }
 
-    public Collection<PortsEntity> getPortsByListId() {
-        return portsByListId;
-    }
-
-    public void setPortsByListId(Collection<PortsEntity> portsByListId) {
-        this.portsByListId = portsByListId;
-    }
 }

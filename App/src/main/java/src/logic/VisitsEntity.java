@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "VISITS")
 public class VisitsEntity {
+
     @Basic
     @Column(name = "DATE_BEGIN")
     private Date dateBegin;
@@ -27,20 +28,22 @@ public class VisitsEntity {
     @Column(name = "CAPTAIN_ID")
     private int captainId;
     @Id
+    @SequenceGenerator(name = "visit_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visit_id")
     @Column(name = "VISIT_ID")
     private int visitId;
     @ManyToOne
-    @JoinColumn(name = "PORT_ID", referencedColumnName = "PORT_ID", nullable = false)
-    private PortsEntity portsByPortId;
+    @JoinColumn(name = "PORT_ID", referencedColumnName = "PORT_ID")
+    private PortsEntity portsEntity;
     @ManyToOne
-    @JoinColumn(name = "LOGIN", referencedColumnName = "LOGIN", nullable = false)
-    private AllUsersEntity allUsersByLogin;
+    @JoinColumn(name = "LOGIN", referencedColumnName = "LOGIN")
+    private AllUsersEntity allUsersEntity;
     @ManyToOne
-    @JoinColumn(name = "CALL_SIGN", referencedColumnName = "CALL_SIGN", nullable = false)
-    private ShipsEntity shipsByCallSign;
+    @JoinColumn(name = "CALL_SIGN", referencedColumnName = "CALL_SIGN")
+    private ShipsEntity shipsEntity;
     @ManyToOne
-    @JoinColumn(name = "CAPTAIN_ID", referencedColumnName = "CAPTAIN_ID", nullable = false)
-    private CaptainsEntity captainsByCaptainId;
+    @JoinColumn(name = "CAPTAIN_ID", referencedColumnName = "CAPTAIN_ID")
+    private CaptainsEntity captainsEntity;
 
     public Date getDateBegin() {
         return dateBegin;
@@ -111,35 +114,15 @@ public class VisitsEntity {
         return Objects.hash(dateBegin, dateEnd, portId, login, callSign, captainId, visitId);
     }
 
-    public PortsEntity getPortsByPortId() {
-        return portsByPortId;
+
+    public CaptainsEntity getCaptainsEntity() {
+        return captainsEntity;
     }
 
-    public void setPortsByPortId(PortsEntity portsByPortId) {
-        this.portsByPortId = portsByPortId;
+    public void setCaptainsEntity(CaptainsEntity captainsEntity) {
+        this.captainsEntity = captainsEntity;
     }
 
-    public AllUsersEntity getAllUsersByLogin() {
-        return allUsersByLogin;
-    }
 
-    public void setAllUsersByLogin(AllUsersEntity allUsersByLogin) {
-        this.allUsersByLogin = allUsersByLogin;
-    }
 
-    public ShipsEntity getShipsByCallSign() {
-        return shipsByCallSign;
-    }
-
-    public void setShipsByCallSign(ShipsEntity shipsByCallSign) {
-        this.shipsByCallSign = shipsByCallSign;
-    }
-
-    public CaptainsEntity getCaptainsByCaptainId() {
-        return captainsByCaptainId;
-    }
-
-    public void setCaptainsByCaptainId(CaptainsEntity captainsByCaptainId) {
-        this.captainsByCaptainId = captainsByCaptainId;
-    }
 }

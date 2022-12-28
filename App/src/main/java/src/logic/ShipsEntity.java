@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -23,8 +24,10 @@ public class ShipsEntity {
     @Column(name = "SHIP_LENGTH")
     private short shipLength;
     @ManyToOne
-    @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID", nullable = false)
-    private ShipOwnersEntity shipOwnersByShipOwnerId;
+    @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID")
+    private ShipOwnersEntity shipOwnersEntity;
+    @OneToMany(mappedBy = "shipsEntity")
+    private Collection<VisitsEntity> visitsEntities;
 
     public String getCallSign() {
         return callSign;
@@ -79,11 +82,11 @@ public class ShipsEntity {
         return Objects.hash(callSign, shpipName, shipOwnerId, shipType, shipLength);
     }
 
-    public ShipOwnersEntity getShipOwnersByShipOwnerId() {
-        return shipOwnersByShipOwnerId;
+    public ShipOwnersEntity getShipOwnersEntity() {
+        return shipOwnersEntity;
     }
 
-    public void setShipOwnersByShipOwnerId(ShipOwnersEntity shipOwnersByShipOwnerId) {
-        this.shipOwnersByShipOwnerId = shipOwnersByShipOwnerId;
+    public void setShipOwnersEntity(ShipOwnersEntity shipOwnersEntity) {
+        this.shipOwnersEntity = shipOwnersEntity;
     }
 }

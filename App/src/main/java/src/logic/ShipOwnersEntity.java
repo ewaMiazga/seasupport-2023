@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +32,17 @@ public class ShipOwnersEntity {
     @Basic
     @Column(name = "NIP")
     private Integer nip;
+
+    @OneToMany(mappedBy = "shipOwnersEntity")
+    private Collection<ShipsEntity> shipsEntities;
+
+    public Collection<ShipsEntity> getShipsEntities() {
+        return shipsEntities;
+    }
+
+    public void setShipsEntities(Collection<ShipsEntity> shipsEntities) {
+        this.shipsEntities = shipsEntities;
+    }
 
     public int getShipOwnerId() {
         return shipOwnerId;

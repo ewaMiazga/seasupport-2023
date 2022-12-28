@@ -6,8 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import src.logic.AdminPortIntermediaryEntity;
 import src.logic.AllUsersEntity;
 import src.logic.CaptainsEntity;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

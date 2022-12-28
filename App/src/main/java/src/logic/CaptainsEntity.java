@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -14,8 +15,12 @@ public class CaptainsEntity {
     @Column(name = "PESEL")
     private String pesel;
     @Id
+    @SequenceGenerator(name = "captains_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "captains_id")
     @Column(name = "CAPTAIN_ID")
     private int captainId;
+    @OneToMany(mappedBy = "captainsEntity")
+    private Collection<VisitsEntity>  visitsEntity;
 
     public CaptainsEntity()
     {}
