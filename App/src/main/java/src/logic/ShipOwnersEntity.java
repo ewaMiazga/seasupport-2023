@@ -13,25 +13,18 @@ public class ShipOwnersEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ship_owners_id")
     @Column(name = "SHIP_OWNER_ID")
     private int shipOwnerId;
-    @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
-    @Basic
     @Column(name = "EMAIL")
     private String email;
-    @Basic
     @Column(name = "FORENAME")
     private String forname;
-    @Basic
     @Column(name = "SURNAME")
     private String surname;
-    @Basic
     @Column(name = "PESEL")
     private String pesel;
-    @Basic
     @Column(name = "NAME_COMPANY")
     private String nameCompany;
-    @Basic
     @Column(name = "NIP")
     private Integer nip;
 

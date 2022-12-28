@@ -12,16 +12,10 @@ public class ShipsEntity {
     @Id
     @Column(name = "CALL_SIGN")
     private String callSign;
-    @Basic
     @Column(name = "SHIP_NAME")
     private String shipName;
-    @Basic
-    @Column(name = "SHIP_OWNER_ID")
-    private int shipOwnerId;
-    @Basic
     @Column(name = "SHIP_TYPE")
     private String shipType;
-    @Basic
     @Column(name = "SHIP_LENGTH")
     private short shipLength;
     @ManyToOne
@@ -33,7 +27,7 @@ public class ShipsEntity {
     public ShipsEntity(String callSign, String shipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
         this.callSign = callSign;
         this.shipName = shipName;
-        this.shipOwnerId = shipOwnerId;
+//        this.shipOwnerId = shipOwnerId;
         this.shipType = shipType;
         this.shipLength = shipLength;
         this.shipOwnersEntity = shipOwnersEntity;
@@ -73,13 +67,8 @@ public class ShipsEntity {
         this.shipName = shpipName;
     }
 
-    public int getShipOwnerId() {
-        return shipOwnerId;
-    }
 
-    public void setShipOwnerId(int shipOwnerId) {
-        this.shipOwnerId = shipOwnerId;
-    }
+
 
     public String getShipType() {
         return shipType;
@@ -102,12 +91,12 @@ public class ShipsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShipsEntity that = (ShipsEntity) o;
-        return shipOwnerId == that.shipOwnerId && shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shipName, that.shipName) && Objects.equals(shipType, that.shipType);
+        return shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shipName, that.shipName) && Objects.equals(shipType, that.shipType) && Objects.equals(shipOwnersEntity, that.shipOwnersEntity) && Objects.equals(visitsEntities, that.visitsEntities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(callSign, shipName, shipOwnerId, shipType, shipLength);
+        return Objects.hash(callSign, shipName, shipType, shipLength, shipOwnersEntity, visitsEntities);
     }
 
     public ShipOwnersEntity getShipOwnersEntity() {

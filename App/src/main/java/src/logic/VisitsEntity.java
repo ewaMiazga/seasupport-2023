@@ -9,24 +9,10 @@ import java.util.Objects;
 @Table(name = "VISITS")
 public class VisitsEntity {
 
-    @Basic
     @Column(name = "DATE_BEGIN")
     private Date dateBegin;
-    @Basic
     @Column(name = "DATE_END")
     private Date dateEnd;
-    @Basic
-    @Column(name = "PORT_ID")
-    private int portId;
-    @Basic
-    @Column(name = "LOGIN")
-    private String login;
-    @Basic
-    @Column(name = "CALL_SIGN")
-    private String callSign;
-    @Basic
-    @Column(name = "CAPTAIN_ID")
-    private int captainId;
     @Id
     @SequenceGenerator(name = "visit_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visit_id")
@@ -47,10 +33,6 @@ public class VisitsEntity {
 
     public VisitsEntity(Date dateBegin, int portId, String login, String callSign, int captainId, int visitId, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
         this.dateBegin = dateBegin;
-        this.portId = portId;
-        this.login = login;
-        this.callSign = callSign;
-        this.captainId = captainId;
         this.visitId = visitId;
         this.portsEntity = portsEntity;
         this.allUsersEntity = allUsersEntity;
@@ -101,38 +83,6 @@ public class VisitsEntity {
         this.dateEnd = dateEnd;
     }
 
-    public int getPortId() {
-        return portId;
-    }
-
-    public void setPortId(int portId) {
-        this.portId = portId;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getCallSign() {
-        return callSign;
-    }
-
-    public void setCallSign(String callSign) {
-        this.callSign = callSign;
-    }
-
-    public int getCaptainId() {
-        return captainId;
-    }
-
-    public void setCaptainId(int captainId) {
-        this.captainId = captainId;
-    }
-
     public int getVisitId() {
         return visitId;
     }
@@ -146,14 +96,13 @@ public class VisitsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VisitsEntity that = (VisitsEntity) o;
-        return portId == that.portId && captainId == that.captainId && visitId == that.visitId && Objects.equals(dateBegin, that.dateBegin) && Objects.equals(dateEnd, that.dateEnd) && Objects.equals(login, that.login) && Objects.equals(callSign, that.callSign);
+        return visitId == that.visitId && Objects.equals(dateBegin, that.dateBegin) && Objects.equals(dateEnd, that.dateEnd) && Objects.equals(portsEntity, that.portsEntity) && Objects.equals(allUsersEntity, that.allUsersEntity) && Objects.equals(shipsEntity, that.shipsEntity) && Objects.equals(captainsEntity, that.captainsEntity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateBegin, dateEnd, portId, login, callSign, captainId, visitId);
+        return Objects.hash(dateBegin, dateEnd, visitId, portsEntity, allUsersEntity, shipsEntity, captainsEntity);
     }
-
 
     public CaptainsEntity getCaptainsEntity() {
         return captainsEntity;

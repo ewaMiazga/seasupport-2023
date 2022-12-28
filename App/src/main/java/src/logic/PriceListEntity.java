@@ -12,34 +12,24 @@ public class PriceListEntity {
     @Id
     @Column(name = "LIST_ID")
     private int listId;
-    @Basic
     @Column(name = "LAUNDRY")
     private Byte laundry;
-    @Basic
     @Column(name = "DRYING_ROOM")
     private Byte dryingRoom;
-    @Basic
     @Column(name = "WATER")
     private Byte water;
-    @Basic
     @Column(name = "SHOWER")
     private Byte shower;
-    @Basic
     @Column(name = "SAUNA")
     private Byte sauna;
-    @Basic
     @Column(name = "PLACE_LESS_7M")
     private short placeLess7M;
-    @Basic
     @Column(name = "PLACE_7_12M")
     private short place712M;
-    @Basic
     @Column(name = "PLACE_12_17M")
     private short place1217M;
-    @Basic
     @Column(name = "PLACE_17_20M")
     private short place1720M;
-    @Basic
     @Column(name = "PLACE_MORE_20M")
     private short placeMore20M;
     @OneToMany(mappedBy = "priceListEntity")

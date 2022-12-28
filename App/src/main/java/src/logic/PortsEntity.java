@@ -13,28 +13,20 @@ public class PortsEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ports_id")
     @Column(name = "PORT_ID")
     private int portId;
-    @Basic
     @Column(name = "PORT_NAME")
     private String portName;
-    @Basic
     @Column(name = "PLACES_SHIPS_BIG")
     private int placesShipsBig;
-    @Basic
     @Column(name = "PLACES_SHIPS_SMALL")
     private int placesShipsSmall;
-    @Basic
     @Column(name = "STREET_NUMBER")
     private int streetNumber;
-    @Basic
     @Column(name = "STREET_NAME")
     private String streetName;
-    @Basic
     @Column(name = "CITY_NAME")
     private String cityName;
-    @Basic
     @Column(name = "POST_CODE")
     private String postCode;
-    @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
     @Column(name = "VHF_CHANNEL")

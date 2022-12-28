@@ -6,10 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
-import src.logic.AllUsersEntity;
-import src.logic.CaptainsEntity;
+import src.logic.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import src.logic.PortsEntity;
 
 /**
  * Class responisble for connecting to database -
@@ -48,7 +46,10 @@ public class DataBase {
         configuration.addAnnotatedClass(CaptainsEntity.class);
         configuration.addAnnotatedClass(AllUsersEntity.class);
         configuration.addAnnotatedClass(PortsEntity.class);
-//        configuration.addAnnotatedClass(AdminPortIntermediaryEntity.class);
+        configuration.addAnnotatedClass(PriceListEntity.class);
+        configuration.addAnnotatedClass(ShipOwnersEntity.class);
+        configuration.addAnnotatedClass(ShipsEntity.class);
+        configuration.addAnnotatedClass(VisitsEntity.class);
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
