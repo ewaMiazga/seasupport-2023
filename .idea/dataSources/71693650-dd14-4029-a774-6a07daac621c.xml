@@ -4,7 +4,7 @@
     <root id="1">
       <IntrospectionLevel>3</IntrospectionLevel>
       <ServerVersion>19.0.0.0.0</ServerVersion>
-      <TablespacesHash>32087197635</TablespacesHash>
+      <TablespacesHash>32664566025</TablespacesHash>
     </root>
     <schema id="2" parent="1" name="ABASAN">
       <ObjectId>1243</ObjectId>
@@ -578,9 +578,9 @@
     </schema>
     <schema id="192" parent="1" name="PUBLIC">
       <CreatedTimestamp>2019-04-17.02:56:16</CreatedTimestamp>
-      <IntrospectionL1Timestamp>2022-12-18.02:17:45</IntrospectionL1Timestamp>
-      <IntrospectionL2Timestamp>2022-12-18.02:17:45</IntrospectionL2Timestamp>
-      <IntrospectionL3Timestamp>2022-12-18.02:17:45</IntrospectionL3Timestamp>
+      <IntrospectionL1Timestamp>2022-12-30.22:45:15</IntrospectionL1Timestamp>
+      <IntrospectionL2Timestamp>2022-12-30.22:45:15</IntrospectionL2Timestamp>
+      <IntrospectionL3Timestamp>2022-12-30.22:45:15</IntrospectionL3Timestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
       <ModifiedTimestamp>2020-09-07.17:50:36</ModifiedTimestamp>
       <ObjectId>1</ObjectId>
@@ -741,11 +741,11 @@
     <schema id="244" parent="1" name="Z03">
       <CreatedTimestamp>2022-11-05.17:37:54</CreatedTimestamp>
       <Current>1</Current>
-      <IntrospectionL1Timestamp>2022-12-18.02:17:45</IntrospectionL1Timestamp>
-      <IntrospectionL2Timestamp>2022-12-18.02:17:45</IntrospectionL2Timestamp>
-      <IntrospectionL3Timestamp>2022-12-18.02:17:45</IntrospectionL3Timestamp>
+      <IntrospectionL1Timestamp>2022-12-30.22:45:15</IntrospectionL1Timestamp>
+      <IntrospectionL2Timestamp>2022-12-30.22:45:15</IntrospectionL2Timestamp>
+      <IntrospectionL3Timestamp>2022-12-30.22:45:15</IntrospectionL3Timestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <ModifiedTimestamp>2022-12-18.02:17:44</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-12-28.17:45:57</ModifiedTimestamp>
       <ObjectId>1146</ObjectId>
     </schema>
     <schema id="245" parent="1" name="Z04">
@@ -59803,98 +59803,119 @@
       <TargetObjectName>_V$SXGG_TRANSACTION</TargetObjectName>
       <TargetObjectParentName>SYS</TargetObjectParentName>
     </synonym>
-    <sequence id="7811" parent="244" name="PORTS_ID">
+    <sequence id="7811" parent="244" name="CAPTAINS_ID">
+      <CreatedTimestamp>2022-12-28.17:45:57</CreatedTimestamp>
+      <DetailsLevel>2</DetailsLevel>
+      <ModifiedTimestamp>2022-12-28.17:45:57</ModifiedTimestamp>
+      <ObjectId>422114</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+    </sequence>
+    <sequence id="7812" parent="244" name="PORTS_ID">
       <CreatedTimestamp>2022-12-07.13:21:07</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2022-12-07.13:21:07</ModifiedTimestamp>
       <ObjectId>402815</ObjectId>
       <SequenceIdentity>1(1001)+50</SequenceIdentity>
     </sequence>
-    <sequence id="7812" parent="244" name="PORTS_ID_SEQ">
+    <sequence id="7813" parent="244" name="PORTS_ID_SEQ">
       <CreatedTimestamp>2022-12-07.13:19:11</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2022-12-07.13:19:11</ModifiedTimestamp>
       <ObjectId>402811</ObjectId>
       <SequenceIdentity>1(21)</SequenceIdentity>
     </sequence>
-    <sequence id="7813" parent="244" name="PORTS_SEQ">
+    <sequence id="7814" parent="244" name="PORTS_SEQ">
       <CreatedTimestamp>2022-12-07.12:50:29</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2022-12-07.12:50:29</ModifiedTimestamp>
       <ObjectId>402735</ObjectId>
       <SequenceIdentity>1(1001)+50</SequenceIdentity>
     </sequence>
-    <sequence id="7814" parent="244" name="PORTS_SEQ_GEN">
+    <sequence id="7815" parent="244" name="PORTS_SEQ_GEN">
       <CreatedTimestamp>2022-12-07.13:16:49</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2022-12-07.13:16:49</ModifiedTimestamp>
       <ObjectId>402766</ObjectId>
       <SequenceIdentity>1(1001)+50</SequenceIdentity>
     </sequence>
-    <sequence id="7815" parent="244" name="PORT_ID_SEQ">
+    <sequence id="7816" parent="244" name="PORT_ID_SEQ">
       <CreatedTimestamp>2022-12-07.13:04:38</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2022-12-07.13:04:38</ModifiedTimestamp>
       <ObjectId>402736</ObjectId>
       <SequenceIdentity>1(1)</SequenceIdentity>
     </sequence>
-    <table id="7816" parent="244" name="ADMIN_PORT_INTERMEDIARY">
+    <sequence id="7817" parent="244" name="SHIP_OWNERS_ID">
+      <CreatedTimestamp>2022-12-28.17:45:57</CreatedTimestamp>
+      <DetailsLevel>2</DetailsLevel>
+      <ModifiedTimestamp>2022-12-28.17:45:57</ModifiedTimestamp>
+      <ObjectId>422115</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+    </sequence>
+    <sequence id="7818" parent="244" name="VISIT_ID">
+      <CreatedTimestamp>2022-12-28.17:45:57</CreatedTimestamp>
+      <DetailsLevel>2</DetailsLevel>
+      <ModifiedTimestamp>2022-12-28.17:45:57</ModifiedTimestamp>
+      <ObjectId>422116</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+    </sequence>
+    <table id="7819" parent="244" name="ADMIN_PORT_INTERMEDIARY">
       <CreatedTimestamp>2022-11-05.17:39:02</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
       <ModifiedTimestamp>2022-12-18.01:00:11</ModifiedTimestamp>
       <ObjectId>374328</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7817" parent="244" name="ALL_USERS">
+    <table id="7820" parent="244" name="ALL_USERS">
       <CreatedTimestamp>2022-11-05.17:37:54</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
       <ModifiedTimestamp>2022-11-05.17:37:54</ModifiedTimestamp>
       <ObjectId>374312</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7818" parent="244" name="CAPTAINS">
+    <table id="7821" parent="244" name="CAPTAINS">
       <CreatedTimestamp>2022-11-05.17:38:04</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-12-24.15:47:42</ModifiedTimestamp>
       <ObjectId>374320</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7819" parent="244" name="PORTS">
+    <table id="7822" parent="244" name="PORTS">
       <CreatedTimestamp>2022-11-05.17:38:39</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2022-12-07.12:44:39</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-12-24.00:38:29</ModifiedTimestamp>
       <ObjectId>374326</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7820" parent="244" name="PRICE_LIST">
+    <table id="7823" parent="244" name="PRICE_LIST">
       <CreatedTimestamp>2022-11-05.17:38:32</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2022-11-05.17:38:32</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-12-24.01:05:23</ModifiedTimestamp>
       <ObjectId>374324</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7821" parent="244" name="SHIPS">
+    <table id="7824" parent="244" name="SHIPS">
       <CreatedTimestamp>2022-11-05.17:38:04</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
       <ModifiedTimestamp>2022-12-18.02:17:38</ModifiedTimestamp>
       <ObjectId>374318</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7822" parent="244" name="SHIP_OWNERS">
+    <table id="7825" parent="244" name="SHIP_OWNERS">
       <CreatedTimestamp>2022-11-05.17:37:58</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
       <ModifiedTimestamp>2022-12-18.02:17:44</ModifiedTimestamp>
       <ObjectId>374314</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7823" parent="244" name="VISITS">
+    <table id="7826" parent="244" name="VISITS">
       <CreatedTimestamp>2022-11-05.17:39:07</CreatedTimestamp>
       <DetailsLevel>3</DetailsLevel>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <ObjectId>374330</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <data-file id="7824" parent="343" name="/u02/oradata/ORA4INF/pdb1/system01.dbf">
+    <data-file id="7827" parent="343" name="/u02/oradata/ORA4INF/pdb1/system01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>9</FileId>
@@ -59905,18 +59926,18 @@
       <Position>1</Position>
       <UserSize>115072</UserSize>
     </data-file>
-    <data-file id="7825" parent="344" name="/u02/oradata/ORA4INF/pdb1/sysaux01.dbf">
+    <data-file id="7828" parent="344" name="/u02/oradata/ORA4INF/pdb1/sysaux01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>10</FileId>
-      <FileSize>369920</FileSize>
+      <FileSize>471040</FileSize>
       <IncrementBy>1280</IncrementBy>
       <MaxSize>4194302</MaxSize>
       <OnlineStatus>E</OnlineStatus>
       <Position>4</Position>
-      <UserSize>369792</UserSize>
+      <UserSize>470912</UserSize>
     </data-file>
-    <data-file id="7826" parent="345" name="/u02/oradata/ORA4INF/pdb1/temp01.dbf">
+    <data-file id="7829" parent="345" name="/u02/oradata/ORA4INF/pdb1/temp01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <FileId>3</FileId>
       <FileSize>825856</FileSize>
@@ -59925,7 +59946,7 @@
       <Position>1</Position>
       <UserSize>825728</UserSize>
     </data-file>
-    <data-file id="7827" parent="346" name="/u02/oradata/ORA4INF/pdb1/users01.dbf">
+    <data-file id="7830" parent="346" name="/u02/oradata/ORA4INF/pdb1/users01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>12</FileId>
@@ -59936,7 +59957,7 @@
       <Position>12</Position>
       <UserSize>512</UserSize>
     </data-file>
-    <data-file id="7828" parent="347" name="/u02/oradata/ORA4INF/undotbs02.dbf">
+    <data-file id="7831" parent="347" name="/u02/oradata/ORA4INF/undotbs02.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>19</FileId>
@@ -59947,7 +59968,7 @@
       <Position>19</Position>
       <UserSize>130944</UserSize>
     </data-file>
-    <data-file id="7829" parent="348" name="/u02/oradata/ORA4INF/ii_data_01.dbf">
+    <data-file id="7832" parent="348" name="/u02/oradata/ORA4INF/ii_data_01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>20</FileId>
@@ -59958,7 +59979,7 @@
       <Position>20</Position>
       <UserSize>130944</UserSize>
     </data-file>
-    <data-file id="7830" parent="349" name="/u02/oradata/ORA4INF/ii_idx_01.dbf">
+    <data-file id="7833" parent="349" name="/u02/oradata/ORA4INF/ii_idx_01.dbf">
       <AutoExtensible>1</AutoExtensible>
       <AvailabilityStatus>A</AvailabilityStatus>
       <FileId>21</FileId>
@@ -59969,31 +59990,31 @@
       <Position>21</Position>
       <UserSize>130944</UserSize>
     </data-file>
-    <column id="7831" parent="7816" name="LOGIN">
+    <column id="7834" parent="7819" name="LOGIN">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7832" parent="7816" name="PORT_ID">
+    <column id="7835" parent="7819" name="PORT_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <foreign-key id="7833" parent="7816" name="INTER_ADMIN_FK">
+    <foreign-key id="7836" parent="7819" name="INTER_ADMIN_FK">
       <ColNames>LOGIN</ColNames>
       <ModifiedTimestamp>2022-12-18.00:58:50</ModifiedTimestamp>
       <OnDelete>cascade</OnDelete>
       <RefKeyName>LOGIN_PK</RefKeyName>
       <RefTableName>ALL_USERS</RefTableName>
     </foreign-key>
-    <foreign-key id="7834" parent="7816" name="INTER_PORT_FK">
+    <foreign-key id="7837" parent="7819" name="INTER_PORT_FK">
       <ColNames>PORT_ID</ColNames>
       <ModifiedTimestamp>2022-12-18.01:00:11</ModifiedTimestamp>
       <OnDelete>cascade</OnDelete>
       <RefKeyName>PORT_PK</RefKeyName>
       <RefTableName>PORTS</RefTableName>
     </foreign-key>
-    <index id="7835" parent="7816" name="INTER_ADMIN_PORT_PK">
+    <index id="7838" parent="7819" name="INTER_ADMIN_PORT_PK">
       <ColNames>LOGIN
 PORT_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:39:02</CreatedTimestamp>
@@ -60002,57 +60023,57 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7836" parent="7816" name="INTER_ADMIN_PORT_PK">
+    <key id="7839" parent="7819" name="INTER_ADMIN_PORT_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:39:02</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>INTER_ADMIN_PORT_PK</UnderlyingIndexName>
     </key>
-    <check id="7837" parent="7817" name="TWO_USER_TYPES">
+    <check id="7840" parent="7820" name="TWO_USER_TYPES">
       <ColNames>USER_TYPE</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:37:54</ModifiedTimestamp>
       <Predicate>user_type = &apos;admin&apos; OR user_type = &apos;normal&apos;</Predicate>
     </check>
-    <column id="7838" parent="7817" name="LOGIN">
+    <column id="7841" parent="7820" name="LOGIN">
       <DasType>VARCHAR2(15 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7839" parent="7817" name="USER_PASSWORD">
+    <column id="7842" parent="7820" name="USER_PASSWORD">
       <DasType>VARCHAR2(15 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="7840" parent="7817" name="FORENAME">
+    <column id="7843" parent="7820" name="FORENAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7841" parent="7817" name="SURNAME">
+    <column id="7844" parent="7820" name="SURNAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="7842" parent="7817" name="PHONE_NUMBER">
+    <column id="7845" parent="7820" name="PHONE_NUMBER">
       <DasType>VARCHAR2(13 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="7843" parent="7817" name="BIRTHDAY">
+    <column id="7846" parent="7820" name="BIRTHDAY">
       <DasType>DATE|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="7844" parent="7817" name="PESEL">
+    <column id="7847" parent="7820" name="PESEL">
       <DasType>VARCHAR2(11 byte)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="7845" parent="7817" name="USER_TYPE">
+    <column id="7848" parent="7820" name="USER_TYPE">
       <DasType>VARCHAR2(6 char)|0us</DasType>
       <Position>8</Position>
     </column>
-    <index id="7846" parent="7817" name="LOGIN_PK">
+    <index id="7849" parent="7820" name="LOGIN_PK">
       <ColNames>LOGIN</ColNames>
       <CreatedTimestamp>2022-11-05.17:37:54</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:37:54</ModifiedTimestamp>
@@ -60060,33 +60081,33 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7847" parent="7817" name="LOGIN_PK">
+    <key id="7850" parent="7820" name="LOGIN_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:37:54</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>LOGIN_PK</UnderlyingIndexName>
     </key>
-    <column id="7848" parent="7818" name="FORENAME">
+    <column id="7851" parent="7821" name="FORENAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7849" parent="7818" name="SURNAME">
+    <column id="7852" parent="7821" name="SURNAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="7850" parent="7818" name="PESEL">
+    <column id="7853" parent="7821" name="PESEL">
       <DasType>VARCHAR2(11 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7851" parent="7818" name="CAPTAIN_ID">
+    <column id="7854" parent="7821" name="CAPTAIN_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="7852" parent="7818" name="PESEL_UNIQUE">
+    <index id="7855" parent="7821" name="PESEL_UNIQUE">
       <ColNames>PESEL</ColNames>
       <CreatedTimestamp>2022-11-05.17:38:04</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
@@ -60094,7 +60115,7 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <index id="7853" parent="7818" name="CAPTAIN_PK">
+    <index id="7856" parent="7821" name="CAPTAIN_PK">
       <ColNames>CAPTAIN_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:38:04</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
@@ -60102,77 +60123,93 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7854" parent="7818" name="CAPTAIN_PK">
+    <key id="7857" parent="7821" name="CAPTAIN_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>CAPTAIN_PK</UnderlyingIndexName>
     </key>
-    <key id="7855" parent="7818" name="PESEL_UNIQUE">
+    <key id="7858" parent="7821" name="PESEL_UNIQUE">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
       <UnderlyingIndexName>PESEL_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="7856" parent="7819" name="PORT_ID">
+    <trigger id="7859" parent="7821" name="TG_CAPTAINS">
+      <CreatedTimestamp>2022-12-24.15:37:35</CreatedTimestamp>
+      <DependsOnIds>1771,7339,374330</DependsOnIds>
+      <Events>IU</Events>
+      <ModifiedTimestamp>2022-12-24.15:47:42</ModifiedTimestamp>
+      <ObjectId>418014</ObjectId>
+      <SourceTextLength>330</SourceTextLength>
+      <Turn>before-row</Turn>
+    </trigger>
+    <column id="7860" parent="7822" name="PORT_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7857" parent="7819" name="PORT_NAME">
-      <DasType>VARCHAR2(15 char)|0us</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="7858" parent="7819" name="PLACES_SHIPS_BIG">
+    <column id="7861" parent="7822" name="PLACES_SHIPS_BIG">
       <DasType>NUMBER(3)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7859" parent="7819" name="PLACES_SHIPS_SMALL">
+    <column id="7862" parent="7822" name="PLACES_SHIPS_SMALL">
       <DasType>NUMBER(3)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="7860" parent="7819" name="STREET_NUMBER">
+    <column id="7863" parent="7822" name="STREET_NUMBER">
       <DasType>NUMBER(3)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="7861" parent="7819" name="STREET_NAME">
+    <column id="7864" parent="7822" name="STREET_NAME">
       <DasType>VARCHAR2(20 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="7862" parent="7819" name="CITY_NAME">
+    <column id="7865" parent="7822" name="CITY_NAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="7863" parent="7819" name="POST_CODE">
+    <column id="7866" parent="7822" name="POST_CODE">
       <DasType>VARCHAR2(6 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="7864" parent="7819" name="PHONE_NUMBER">
+    <column id="7867" parent="7822" name="PHONE_NUMBER">
       <DasType>VARCHAR2(13 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <column id="7865" parent="7819" name="VHF_CHANNEL">
+    <column id="7868" parent="7822" name="VHF_CHANNEL">
       <DasType>NUMBER(2)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
-    <column id="7866" parent="7819" name="BANK_ACCOUNT">
+    <column id="7869" parent="7822" name="BANK_ACCOUNT">
       <DasType>VARCHAR2(30 byte)|0s</DasType>
       <Position>11</Position>
     </column>
-    <column id="7867" parent="7819" name="PRICE_LIST_ID">
+    <column id="7870" parent="7822" name="PRICE_LIST_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>12</Position>
     </column>
-    <index id="7868" parent="7819" name="PORT_PK">
+    <column id="7871" parent="7822" name="PORT_NAME">
+      <DasType>VARCHAR2(50 char)|0us</DasType>
+      <NotNull>1</NotNull>
+      <Position>13</Position>
+    </column>
+    <foreign-key id="7872" parent="7822" name="PORTS_PRICE_FK">
+      <ColNames>PRICE_LIST_ID</ColNames>
+      <ModifiedTimestamp>2022-12-19.01:10:30</ModifiedTimestamp>
+      <OnDelete>restrict</OnDelete>
+      <RefKeyName>PRICE_LIST_PK</RefKeyName>
+      <RefTableName>PRICE_LIST</RefTableName>
+    </foreign-key>
+    <index id="7873" parent="7822" name="PORT_PK">
       <ColNames>PORT_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:38:39</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:38:39</ModifiedTimestamp>
@@ -60180,63 +60217,58 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7869" parent="7819" name="PORT_PK">
+    <key id="7874" parent="7822" name="PORT_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:39</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>PORT_PK</UnderlyingIndexName>
     </key>
-    <column id="7870" parent="7820" name="LIST_ID">
+    <column id="7875" parent="7823" name="LIST_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7871" parent="7820" name="LAUNDRY">
-      <DasType>NUMBER(3,2)|0s</DasType>
-      <Position>2</Position>
+    <column id="7876" parent="7823" name="LAUNDRY">
+      <DasType>NUMBER(5,2)|0s</DasType>
+      <Position>12</Position>
     </column>
-    <column id="7872" parent="7820" name="DRYING_ROOM">
-      <DasType>NUMBER(3,2)|0s</DasType>
-      <Position>3</Position>
+    <column id="7877" parent="7823" name="DRYING_ROOM">
+      <DasType>NUMBER(5,2)|0s</DasType>
+      <Position>13</Position>
     </column>
-    <column id="7873" parent="7820" name="WATER">
-      <DasType>NUMBER(3,2)|0s</DasType>
-      <Position>4</Position>
+    <column id="7878" parent="7823" name="WATER">
+      <DasType>NUMBER(5,2)|0s</DasType>
+      <Position>14</Position>
     </column>
-    <column id="7874" parent="7820" name="SHOWER">
-      <DasType>NUMBER(3,2)|0s</DasType>
-      <Position>5</Position>
+    <column id="7879" parent="7823" name="SHOWER">
+      <DasType>NUMBER(5,2)|0s</DasType>
+      <Position>15</Position>
     </column>
-    <column id="7875" parent="7820" name="SAUNA">
-      <DasType>NUMBER(3,2)|0s</DasType>
-      <Position>6</Position>
+    <column id="7880" parent="7823" name="SAUNA">
+      <DasType>NUMBER(5,2)|0s</DasType>
+      <Position>16</Position>
     </column>
-    <column id="7876" parent="7820" name="PLACE_LESS_7M">
-      <DasType>NUMBER(4,2)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
+    <column id="7881" parent="7823" name="PLACE_LESS_7M">
+      <DasType>NUMBER(6,2)|0s</DasType>
+      <Position>22</Position>
     </column>
-    <column id="7877" parent="7820" name="PLACE_7_12M">
-      <DasType>NUMBER(4,2)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
+    <column id="7882" parent="7823" name="PLACE_7_12M">
+      <DasType>NUMBER(6,2)|0s</DasType>
+      <Position>23</Position>
     </column>
-    <column id="7878" parent="7820" name="PLACE_12_17M">
-      <DasType>NUMBER(4,2)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>9</Position>
+    <column id="7883" parent="7823" name="PLACE_12_17M">
+      <DasType>NUMBER(6,2)|0s</DasType>
+      <Position>24</Position>
     </column>
-    <column id="7879" parent="7820" name="PLACE_17_20M">
-      <DasType>NUMBER(4,2)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>10</Position>
+    <column id="7884" parent="7823" name="PLACE_17_20M">
+      <DasType>NUMBER(6,2)|0s</DasType>
+      <Position>25</Position>
     </column>
-    <column id="7880" parent="7820" name="PLACE_MORE_20M">
-      <DasType>NUMBER(4,2)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>11</Position>
+    <column id="7885" parent="7823" name="PLACE_MORE_20M">
+      <DasType>NUMBER(6,2)|0s</DasType>
+      <Position>26</Position>
     </column>
-    <index id="7881" parent="7820" name="PRICE_LIST_PK">
+    <index id="7886" parent="7823" name="PRICE_LIST_PK">
       <ColNames>LIST_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:38:32</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:38:32</ModifiedTimestamp>
@@ -60244,51 +60276,51 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7882" parent="7820" name="PRICE_LIST_PK">
+    <key id="7887" parent="7823" name="PRICE_LIST_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:32</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRICE_LIST_PK</UnderlyingIndexName>
     </key>
-    <check id="7883" parent="7821" name="ONLY_2_TYPES">
+    <check id="7888" parent="7824" name="ONLY_2_TYPES">
       <ColNames>SHIP_TYPE</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
       <Predicate>ship_type = &apos;sailng_boat&apos; OR ship_type = &apos;motor_boat&apos;</Predicate>
     </check>
-    <column id="7884" parent="7821" name="CALL_SIGN">
+    <column id="7889" parent="7824" name="CALL_SIGN">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7885" parent="7821" name="SHIP_OWNER_ID">
+    <column id="7890" parent="7824" name="SHIP_OWNER_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7886" parent="7821" name="SHIP_TYPE">
+    <column id="7891" parent="7824" name="SHIP_TYPE">
       <DasType>VARCHAR2(7 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="7887" parent="7821" name="SHIP_LENGTH">
+    <column id="7892" parent="7824" name="SHIP_LENGTH">
       <DasType>NUMBER(5,2)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="7888" parent="7821" name="SHIP_NAME">
+    <column id="7893" parent="7824" name="SHIP_NAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <foreign-key id="7889" parent="7821" name="SHIP_OWNERS_FK">
+    <foreign-key id="7894" parent="7824" name="SHIP_OWNERS_FK">
       <ColNames>SHIP_OWNER_ID</ColNames>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
       <OnDelete>restrict</OnDelete>
       <RefKeyName>SHIP_OWNERS_PK</RefKeyName>
       <RefTableName>SHIP_OWNERS</RefTableName>
     </foreign-key>
-    <index id="7890" parent="7821" name="SHIPS_PK">
+    <index id="7895" parent="7824" name="SHIPS_PK">
       <ColNames>CALL_SIGN</ColNames>
       <CreatedTimestamp>2022-11-05.17:38:04</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
@@ -60296,48 +60328,48 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7891" parent="7821" name="SHIPS_PK">
+    <key id="7896" parent="7824" name="SHIPS_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:38:04</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>SHIPS_PK</UnderlyingIndexName>
     </key>
-    <column id="7892" parent="7822" name="SHIP_OWNER_ID">
+    <column id="7897" parent="7825" name="SHIP_OWNER_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7893" parent="7822" name="PHONE_NUMBER">
+    <column id="7898" parent="7825" name="PHONE_NUMBER">
       <DasType>VARCHAR2(13 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="7894" parent="7822" name="EMAIL">
+    <column id="7899" parent="7825" name="EMAIL">
       <DasType>VARCHAR2(20 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7895" parent="7822" name="SURNAME">
+    <column id="7900" parent="7825" name="SURNAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <Position>5</Position>
     </column>
-    <column id="7896" parent="7822" name="PESEL">
+    <column id="7901" parent="7825" name="PESEL">
       <DasType>VARCHAR2(11 byte)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="7897" parent="7822" name="NAME_COMPANY">
+    <column id="7902" parent="7825" name="NAME_COMPANY">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <Position>7</Position>
     </column>
-    <column id="7898" parent="7822" name="NIP">
+    <column id="7903" parent="7825" name="NIP">
       <DasType>NUMBER(10)|0s</DasType>
       <Position>8</Position>
     </column>
-    <column id="7899" parent="7822" name="FORENAME">
+    <column id="7904" parent="7825" name="FORENAME">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <Position>11</Position>
     </column>
-    <index id="7900" parent="7822" name="SHIP_OWNERS_PK">
+    <index id="7905" parent="7825" name="SHIP_OWNERS_PK">
       <ColNames>SHIP_OWNER_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:37:58</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
@@ -60345,7 +60377,7 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <index id="7901" parent="7822" name="EMAIL_OWNER_UNIQUE">
+    <index id="7906" parent="7825" name="EMAIL_OWNER_UNIQUE">
       <ColNames>EMAIL</ColNames>
       <CreatedTimestamp>2022-11-05.17:37:58</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
@@ -60353,7 +60385,7 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <index id="7902" parent="7822" name="PESEL_UNIQUE_OWNERS">
+    <index id="7907" parent="7825" name="PESEL_UNIQUE_OWNERS">
       <ColNames>PESEL</ColNames>
       <CreatedTimestamp>2022-11-05.17:37:58</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
@@ -60361,85 +60393,85 @@ PORT_ID</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7903" parent="7822" name="SHIP_OWNERS_PK">
+    <key id="7908" parent="7825" name="SHIP_OWNERS_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>SHIP_OWNERS_PK</UnderlyingIndexName>
     </key>
-    <key id="7904" parent="7822" name="EMAIL_OWNER_UNIQUE">
+    <key id="7909" parent="7825" name="EMAIL_OWNER_UNIQUE">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
       <UnderlyingIndexName>EMAIL_OWNER_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="7905" parent="7822" name="PESEL_UNIQUE_OWNERS">
+    <key id="7910" parent="7825" name="PESEL_UNIQUE_OWNERS">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:37:58</ModifiedTimestamp>
       <UnderlyingIndexName>PESEL_UNIQUE_OWNERS</UnderlyingIndexName>
     </key>
-    <column id="7906" parent="7823" name="DATE_BEGIN">
+    <column id="7911" parent="7826" name="DATE_BEGIN">
       <DasType>DATE|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7907" parent="7823" name="DATE_END">
+    <column id="7912" parent="7826" name="DATE_END">
       <DasType>DATE|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="7908" parent="7823" name="PORT_ID">
+    <column id="7913" parent="7826" name="PORT_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="7909" parent="7823" name="LOGIN">
+    <column id="7914" parent="7826" name="LOGIN">
       <DasType>VARCHAR2(15 byte)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="7910" parent="7823" name="CALL_SIGN">
+    <column id="7915" parent="7826" name="CALL_SIGN">
       <DasType>VARCHAR2(15 char)|0us</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="7911" parent="7823" name="CAPTAIN_ID">
+    <column id="7916" parent="7826" name="CAPTAIN_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="7912" parent="7823" name="VISIT_ID">
+    <column id="7917" parent="7826" name="VISIT_ID">
       <DasType>NUMBER(7)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <foreign-key id="7913" parent="7823" name="VISITS_PORTS_FK">
+    <foreign-key id="7918" parent="7826" name="VISITS_PORTS_FK">
       <ColNames>PORT_ID</ColNames>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <OnDelete>restrict</OnDelete>
       <RefKeyName>PORT_PK</RefKeyName>
       <RefTableName>PORTS</RefTableName>
     </foreign-key>
-    <foreign-key id="7914" parent="7823" name="VISITS_USER_FK">
+    <foreign-key id="7919" parent="7826" name="VISITS_USER_FK">
       <ColNames>LOGIN</ColNames>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <OnDelete>restrict</OnDelete>
       <RefKeyName>LOGIN_PK</RefKeyName>
       <RefTableName>ALL_USERS</RefTableName>
     </foreign-key>
-    <foreign-key id="7915" parent="7823" name="VISITS_SHIPS_FK">
+    <foreign-key id="7920" parent="7826" name="VISITS_SHIPS_FK">
       <ColNames>CALL_SIGN</ColNames>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <OnDelete>restrict</OnDelete>
       <RefKeyName>SHIPS_PK</RefKeyName>
       <RefTableName>SHIPS</RefTableName>
     </foreign-key>
-    <foreign-key id="7916" parent="7823" name="VISITS_CAPTAINS_FK">
+    <foreign-key id="7921" parent="7826" name="VISITS_CAPTAINS_FK">
       <ColNames>CAPTAIN_ID</ColNames>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <OnDelete>restrict</OnDelete>
       <RefKeyName>CAPTAIN_PK</RefKeyName>
       <RefTableName>CAPTAINS</RefTableName>
     </foreign-key>
-    <index id="7917" parent="7823" name="UNIQUE_VISIT">
+    <index id="7922" parent="7826" name="UNIQUE_VISIT">
       <ColNames>PORT_ID
 LOGIN
 CALL_SIGN
@@ -60451,7 +60483,7 @@ DATE_BEGIN</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <index id="7918" parent="7823" name="VISTITS_PK">
+    <index id="7923" parent="7826" name="VISTITS_PK">
       <ColNames>VISIT_ID</ColNames>
       <CreatedTimestamp>2022-11-05.17:39:07</CreatedTimestamp>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
@@ -60459,13 +60491,13 @@ DATE_BEGIN</ColNames>
       <Unique>1</Unique>
       <TablespaceName>II_DATA</TablespaceName>
     </index>
-    <key id="7919" parent="7823" name="VISTITS_PK">
+    <key id="7924" parent="7826" name="VISTITS_PK">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <Primary>1</Primary>
       <UnderlyingIndexName>VISTITS_PK</UnderlyingIndexName>
     </key>
-    <key id="7920" parent="7823" name="UNIQUE_VISIT">
+    <key id="7925" parent="7826" name="UNIQUE_VISIT">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2022-11-05.17:39:07</ModifiedTimestamp>
       <UnderlyingIndexName>UNIQUE_VISIT</UnderlyingIndexName>

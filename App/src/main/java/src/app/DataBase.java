@@ -6,8 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import src.logic.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Class responisble for connecting to database -
@@ -104,7 +109,7 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.save(portsEntity);
+        ss.persist(portsEntity);
         tx.commit();
         ss.close();
     }
@@ -127,6 +132,89 @@ public class DataBase {
         return allUsersEntity;
     }
 
+    /**
+     * Fetch visit with given user and data_begin
+     *
+     * @param user
+     * @param dateBegin
+     * @return VisitsEntity
+     */
+    public VisitsEntity getVisit(AllUsersEntity user, Date dateBegin)
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE " +
+                                     "VE.dateBegin = :dateBegin and allUsersEntity = :user");
+        query.setParameter("dataBegin", dateBegin);
+        query.setParameter("user", user);
+        VisitsEntity visit = (VisitsEntity)query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return visit;
+    }
+
+    public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin)
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port");
+        query.setParameter("port", port);
+        List<VisitsEntity> visits = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return visits;
+    }
+
+    /**
+     * Fetches all ports in the database
+     * @return List<PortsEntities>
+     */
+    public List<PortsEntity> getAllPorts()
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("from PortsEntity");
+        List<PortsEntity> ports = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return ports;
+    }
+
+    /**
+     * Adds ShipsEntity to the database
+     *
+     * @param ship
+     */
+    public void addShip(ShipsEntity ship)
+    {
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+        ss.persist(ship);
+        tx.commit();
+        ss.close();
+    }
+
+//    /**
+//     * Adds ShipsEntity to the database and sets its shipowner to
+//     * that one with given pesel
+//     *
+//     * @param ship
+//     */
+//    public void addShip(ShipsEntity ship, String pesel)
+//    {
+//        Session ss = sessionFactory.openSession();
+//        Transaction tx = ss.beginTransaction();
+//        Query query = ss.createQuery("from ShipOwnersEntity where pesel = :pesel");
+//        query.setParameter("pesel", pesel);
+//        ShipOwnersEntity shipOwner = (ShipOwnersEntity) query.uniqueResult();
+//        ship.setShipOwnersEntity(shipOwner);
+//        ss.save(ship);
+//        tx.commit();
+//        ss.close();
+//    }
 
     /**
      * Method responsible for pulling data to database
@@ -138,24 +226,37 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.save(allUsers);
+        ss.persist(allUsers);
         tx.commit();
         ss.close();
     }
 
 
-    /**
-     * Method responsible for pulling data to database
-     * to the CAPTAINS table
-     *
-     * @param cap
-     */
+//    /**
+//     * Method responsible for pulling data to database
+//     * to the CAPTAINS table
+//     *
+//     * @param cap
+//     */
+//
+//    public void addCaptain(CaptainsEntity cap)
+//    {
+//        Session ss = sessionFactory.openSession();
+//        Transaction tx = ss.beginTransaction();
+//        ss.save(cap);
+//        tx.commit();
+//        ss.close();
+//    }
 
-    public void addCaptain(CaptainsEntity cap)
+    /**
+     * Adds new visit to the database
+     * @param visit
+     */
+    public void addVisit(VisitsEntity visit)
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.save(cap);
+        ss.persist(visit);
         tx.commit();
         ss.close();
     }
