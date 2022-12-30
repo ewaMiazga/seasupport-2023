@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="constructor added">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="sql get_active_visit added">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670426982275</updated>
       <workItem from="1671400948783" duration="745000" />
-      <workItem from="1672429140305" duration="7306000" />
+      <workItem from="1672429140305" duration="10944000" />
     </task>
     <task id="LOCAL-00001" summary="file workspace changed">
       <created>1670433712624</created>
@@ -128,7 +126,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672245393459</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="few database queries added">
+      <created>1672439751950</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672439751950</updated>
+    </task>
+    <task id="LOCAL-00007" summary="sql get_active_visit added">
+      <created>1672441669388</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672441669388</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +178,9 @@
     <MESSAGE value="adnotations in classes changed" />
     <MESSAGE value="annotations in classes changed" />
     <MESSAGE value="constructor added" />
-    <option name="LAST_COMMIT_MESSAGE" value="constructor added" />
+    <MESSAGE value="few database queries added" />
+    <MESSAGE value="sql get_active_visit added" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql get_active_visit added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

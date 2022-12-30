@@ -7,15 +7,15 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.hibernate.query.sql.internal.SQLQueryParser;
 import src.logic.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * Class responisble for connecting to database -
+ * Class responsible for connecting to database -
  * fetching/pulling data to/from it.
  *
  * Design pattern singleton - you can get the object only from the method getInstance()
@@ -165,6 +165,19 @@ public class DataBase {
         ss.getTransaction().commit();
         ss.close();
         return visits;
+    }
+
+    public VisitsEntity getActiveVisit(String userLogin)
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+        String query = "select get_active_visit(?) from visits";
+        Query q = ss.createNativeQuery(query, VisitsEntity.class);
+        q.setParameter(1, userLogin);
+        VisitsEntity visit = (VisitsEntity) q.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return visit;
     }
 
     /**
