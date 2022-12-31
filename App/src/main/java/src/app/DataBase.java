@@ -154,19 +154,34 @@ public class DataBase {
         return visit;
     }
 
+    /**
+     * Gets a list of VistsEntities from a port after given date
+     *
+     * @param port
+     * @param dateBegin
+     * @return List<VisitsEntity>
+     */
     public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin)
     {
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
 
-        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port");
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
+                                     "and VE.dateBegin > :dateBegin");
         query.setParameter("port", port);
+        query.setParameter("dataBegin", dateBegin);
         List<VisitsEntity> visits = query.list();
         ss.getTransaction().commit();
         ss.close();
         return visits;
     }
 
+    /**
+     * Gets active visit for user with given login
+     *
+     * @param userLogin
+     * @return VisitsEntity
+     */
     public VisitsEntity getActiveVisit(String userLogin)
     {
         Session ss = sessionFactory.openSession();
