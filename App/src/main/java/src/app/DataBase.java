@@ -169,7 +169,7 @@ public class DataBase {
         Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
                                      "and VE.dateBegin > :dateBegin");
         query.setParameter("port", port);
-        query.setParameter("dataBegin", dateBegin);
+        query.setParameter("dateBegin", dateBegin);
         List<VisitsEntity> visits = query.list();
         ss.getTransaction().commit();
         ss.close();
