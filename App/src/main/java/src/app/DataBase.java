@@ -220,6 +220,7 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
+        ss.persist(ship.getShipOwnersEntity());
         ss.persist(ship);
         tx.commit();
         ss.close();

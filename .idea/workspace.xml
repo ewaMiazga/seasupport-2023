@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="sql get_active_visit added">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" afterDir="false" />
+    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="price entity class fixed">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670426982275</updated>
       <workItem from="1671400948783" duration="745000" />
-      <workItem from="1672429140305" duration="10944000" />
+      <workItem from="1672429140305" duration="15901000" />
     </task>
     <task id="LOCAL-00001" summary="file workspace changed">
       <created>1670433712624</created>
@@ -140,7 +142,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672441669388</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="necessary queries added">
+      <created>1672443501201</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672443501201</updated>
+    </task>
+    <task id="LOCAL-00009" summary="descriptions added">
+      <created>1672445802431</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672445802431</updated>
+    </task>
+    <task id="LOCAL-00010" summary="price entity class fixed">
+      <created>1672447747945</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672447747945</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +203,25 @@
     <MESSAGE value="constructor added" />
     <MESSAGE value="few database queries added" />
     <MESSAGE value="sql get_active_visit added" />
-    <option name="LAST_COMMIT_MESSAGE" value="sql get_active_visit added" />
+    <MESSAGE value="necessary queries added" />
+    <MESSAGE value="descriptions added" />
+    <MESSAGE value="price entity class fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="price entity class fixed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/App/src/main/java/src/app/Main.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
