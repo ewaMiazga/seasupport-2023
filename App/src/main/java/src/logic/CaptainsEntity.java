@@ -18,7 +18,7 @@ public class CaptainsEntity {
     @SequenceGenerator(name = "captains_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "captains_id")
     @Column(name = "CAPTAIN_ID")
-    private int captainId;
+    private Integer captainId;
     @OneToMany(mappedBy = "captainsEntity")
     private Collection<VisitsEntity>  visitsEntity;
 

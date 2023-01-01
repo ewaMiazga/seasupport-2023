@@ -11,7 +11,7 @@ import java.util.Objects;
 public class PriceListEntity {
     @Id
     @Column(name = "LIST_ID")
-    private int listId;
+    private Integer listId;
     @Column(name = "LAUNDRY")
     private Byte laundry;
     @Column(name = "DRYING_ROOM")
@@ -23,15 +23,15 @@ public class PriceListEntity {
     @Column(name = "SAUNA")
     private Byte sauna;
     @Column(name = "PLACE_LESS_7M")
-    private short placeLess7M;
+    private Short placeLess7M;
     @Column(name = "PLACE_7_12M")
-    private short place712M;
+    private Short place712M;
     @Column(name = "PLACE_12_17M")
-    private short place1217M;
+    private Short place1217M;
     @Column(name = "PLACE_17_20M")
-    private short place1720M;
+    private Short place1720M;
     @Column(name = "PLACE_MORE_20M")
-    private short placeMore20M;
+    private Short placeMore20M;
     @OneToMany(mappedBy = "priceListEntity")
     private Collection<PortsEntity> portsEntities;
 

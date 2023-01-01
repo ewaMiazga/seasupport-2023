@@ -12,7 +12,7 @@ public class ShipOwnersEntity {
     @SequenceGenerator(name = "ship_owners_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ship_owners_id")
     @Column(name = "SHIP_OWNER_ID")
-    private int shipOwnerId;
+    private Integer shipOwnerId;
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
     @Column(name = "EMAIL")

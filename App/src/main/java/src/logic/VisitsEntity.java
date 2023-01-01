@@ -17,7 +17,7 @@ public class VisitsEntity {
     @SequenceGenerator(name = "visit_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visit_id")
     @Column(name = "VISIT_ID")
-    private int visitId;
+    private Integer visitId;
     @ManyToOne
     @JoinColumn(name = "PORT_ID", referencedColumnName = "PORT_ID")
     private PortsEntity portsEntity;
