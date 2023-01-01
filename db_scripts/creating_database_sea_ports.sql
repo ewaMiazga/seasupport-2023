@@ -29,8 +29,9 @@ CREATE TABLE ships
     shpip_name VARCHAR2(15 CHAR) NOT NULL,
     
     ship_owner_id NUMBER(7) NOT NULL CONSTRAINT ship_owners_fk REFERENCES ship_owners(ship_owner_id),
-    ship_type VARCHAR2(7) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailng_boat' OR ship_type = 'motor_boat'),
-    ship_length NUMBER(5, 2) NOT NULL
+    ship_length NUMBER(5, 2) NOT NULL,
+    ship_type VARCHAR2(12) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailing_boat' OR ship_type = 'motor_boat'),
+
 );
 
 CREATE TABLE captains
