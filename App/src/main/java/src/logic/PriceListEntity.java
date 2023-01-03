@@ -10,6 +10,8 @@ import java.util.Objects;
 @Table(name = "PRICE_LIST")
 public class PriceListEntity {
     @Id
+    @SequenceGenerator(name = "price_list_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "price_list_id")
     @Column(name = "LIST_ID")
     private int listId;
     @Column(name = "LAUNDRY")
