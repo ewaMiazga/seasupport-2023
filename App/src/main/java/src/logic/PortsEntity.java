@@ -1,6 +1,8 @@
 package src.logic;
 
 import jakarta.persistence.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.Collection;
 import java.util.Objects;

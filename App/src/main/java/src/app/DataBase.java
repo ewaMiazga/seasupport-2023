@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import src.logic.AdminPortIntermediaryEntity;
 import src.logic.AllUsersEntity;
@@ -16,6 +17,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.criteria.*;
 import org.hibernate.cfg.Configuration;
 import src.logic.PortsEntity;
+
+import java.util.List;
 
 /**
  * Class responisble for connecting to database -
@@ -98,7 +101,15 @@ public class DataBase {
         return portsEntity;
     }
 
-
+    public List<PortsEntity> getPorts(){
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+        List<PortsEntity> ports = ss.createNativeQuery("Select * from PORTS", PortsEntity.class).getResultList();
+        //List<PortsEntity> ports = ss.createQuery("FROM PORTS").getResultList();
+        tx.commit();
+        ss.close();
+        return ports;
+    }
     /**
      *  Method responsible for pulling data to database
      *  to the PORTS table
@@ -142,7 +153,7 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.save(allUsers);
+        ss.persist(allUsers);
         tx.commit();
         ss.close();
     }
@@ -163,6 +174,4 @@ public class DataBase {
         tx.commit();
         ss.close();
     }
-
-
 }

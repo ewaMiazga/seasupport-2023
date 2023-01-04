@@ -3,6 +3,8 @@ package src.app;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -16,7 +18,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.appActions.PortsWindowActions;
 import src.logic.PortsEntity;
+import src.appActions.PortsWindowActions.*;
+
+import java.util.List;
 
 /**
  * The type Ports dialog.
@@ -29,8 +35,13 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     private final ObservableList<PortsEntity> data =
             FXCollections.observableArrayList(
-                    new PortsEntity()
+                    getPorts()
             );
+
+    List<PortsEntity> getPorts() {
+        List<PortsEntity> ports = DataBase.getInstance().getPorts();
+        return ports;
+    }
 
     private Button mouseButton, settingsButton;
     private Scene scene;
@@ -70,10 +81,10 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
         tableView = new TableView<PortsEntity>();
         tableView.setEditable(true);
-        TableColumn portNameCol = new TableColumn<String, String>("Port Name");
+        TableColumn portNameCol = new TableColumn("Port Name");
         portNameCol.setMinWidth(260);
         portNameCol.setCellValueFactory(
-                new PropertyValueFactory<PortsEntity, String>("portName"));
+                new PropertyValueFactory<PortsEntity,String>("portName") );
         tableView.setItems(data);
         tableView.getColumns().addAll(portNameCol);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -94,7 +105,6 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                     System.out.println(currentItemSelected.getPortName());
                     PortDialog portDialog = new PortDialog();
                     portDialog.start(stage, currentItemSelected);
-
                 }
             }
         });

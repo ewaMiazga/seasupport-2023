@@ -4,6 +4,7 @@ import src.logic.*;
 import src.app.DataBase;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Vector;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -19,17 +20,17 @@ public class LoginWindowActions {
         return null;
     }
 
-    public AllUsersEntity register(Vector<String> data){
+    public AllUsersEntity register(Vector<String> data, LocalDate birthdate){
         String login = data.get(0);
         String password = data.get(1);
         String name = data.get(4);
         String surname = data.get(5);
         String phone = data.get(6);
-        Date birthDate = convertToDate(data.get(8));
+        Date date = Date.valueOf(birthdate);
         String pesel = data.get(7);
         String userType = data.get(3);
         if(loginIsAvalible(login)){
-            AllUsersEntity newUser = new AllUsersEntity(login, password, name, surname, phone, birthDate, pesel, userType);
+            AllUsersEntity newUser = new AllUsersEntity(login, password, name, surname, phone, date, pesel, userType);
             DataBase.getInstance().addUser(newUser);
             return newUser;
         }
@@ -48,13 +49,17 @@ public class LoginWindowActions {
     }
 
     public int checkRegData(Vector<String> data){
-        if(!loginIsAvalible(data.get(0))) return 0;
-        if(!data.get(1).equals(data.get(2))) return 1;
-        // sprawdzenie user czy dobry typ, trzeba ustalic jaki ma byc format.
-        if(data.get(6).length() != 9) return 2;
-        if(data.get(7).length() != 11) return 3;
+        for(int i =0; i < data.size(); i++){
+            if(data.get(i).equals(""))
+                return 0;
+        }
+        if(!loginIsAvalible(data.get(0))) return 1;
+        if(!data.get(1).equals(data.get(2))) return 2;
+        if(!(data.get(3).equals("client")||data.get(3).equals("admin"))) return 3;
+        if(data.get(6).length() != 9) return 4;
+        if(data.get(7).length() != 11) return 5;
         // sprawdzenie daty.
-        return 6;
+        return 7;
     }
 
     public boolean loginIsAvalible(String login){

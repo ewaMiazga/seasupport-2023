@@ -50,9 +50,9 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private String cssPath;
 
-    private List<String> messages=  List.of("Username is not available.", "Password is different from the confirmation.",
-    "Incorrect type of user.", "Wrong format of phone number.", "Wrong format of pesel.", "Wrong format of birthdate.",
-            "Successful registration, go to login");
+    private List<String> messages=  List.of("Required fields are empty!", "Username is not available!", "Passwords are different!",
+    "Incorrect type of user!", "Wrong format of phone number!", "Wrong format of pesel!", "Wrong format of birthdate!",
+            "Successful registration, go to login!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -64,7 +64,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         data.add(surnameField.getText());
         data.add(numberField.getText());
         data.add(peselField.getText());
-        data.add(birthdayField.getText());
+        data.add(birthdayPicker.toString());
         return data;
     }
     @Override
@@ -200,9 +200,9 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             registerButton.setText("Register button pressed");
             LoginWindowActions action = new LoginWindowActions();
             int message_code = action.checkRegData(getTextContents());
-            // za pomoca numeru uzupelnij info
-            if(message_code == 6) {
-                action.register(getTextContents());
+            notification.setText(messages.get(message_code));
+            if(message_code == 7) {
+                action.register(getTextContents(), birthdayPicker.getValue());
                 LoginDialog loginDialog = new LoginDialog();
                 loginDialog.start(registrationStage);
             }
