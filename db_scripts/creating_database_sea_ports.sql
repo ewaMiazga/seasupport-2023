@@ -30,7 +30,7 @@ CREATE TABLE ships
     
     ship_owner_id NUMBER(7) NOT NULL CONSTRAINT ship_owners_fk REFERENCES ship_owners(ship_owner_id),
     ship_length NUMBER(5, 2) NOT NULL,
-    ship_type VARCHAR2(12) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailing_boat' OR ship_type = 'motor_boat'),
+    ship_type VARCHAR2(12) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailing_boat' OR ship_type = 'motor_boat')
 
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE price_list
 CREATE TABLE ports
 (
     port_id NUMBER(7) CONSTRAINT port_pk PRIMARY KEY,
-    port_name VARCHAR2(50 CHAR) NOT NULL,
+    port_name VARCHAR2(50 CHAR) NOT NULL CONSTRAINT unique_port_name UNIQUE,
     places_ships_big NUMBER(3) NOT NULL,
     places_ships_small NUMBER(3) NOT NULL,
     street_number NUMBER(3) NOT NULL,
