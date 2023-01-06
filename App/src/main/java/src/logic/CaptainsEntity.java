@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -25,19 +26,26 @@ public class CaptainsEntity {
     public CaptainsEntity()
     {}
 
-    public CaptainsEntity(String forename, String surname, String pesel, int captainId, Collection<VisitsEntity> visitsEntity) {
+    public CaptainsEntity(String forename, String surname, String pesel, Collection<VisitsEntity> visitsEntity) {
         this.forename = forename;
         this.surname = surname;
         this.pesel = pesel;
-        this.captainId = captainId;
         this.visitsEntity = visitsEntity;
     }
 
-    public CaptainsEntity(String forename, String surname, String pesel, int captainId) {
+    public CaptainsEntity(String forename, String surname, String pesel) {
+        this.forename = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.visitsEntity = new ArrayList<VisitsEntity>();
+    }
+
+    public CaptainsEntity(String forename, String surname, String pesel, Integer captainId) {
         this.forename = forename;
         this.surname = surname;
         this.pesel = pesel;
         this.captainId = captainId;
+        this.visitsEntity = new ArrayList<VisitsEntity>();
     }
 
     public Collection<VisitsEntity> getVisitsEntity() {

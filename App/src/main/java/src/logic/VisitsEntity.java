@@ -31,9 +31,8 @@ public class VisitsEntity {
     @JoinColumn(name = "CAPTAIN_ID", referencedColumnName = "CAPTAIN_ID")
     private CaptainsEntity captainsEntity;
 
-    public VisitsEntity(Date dateBegin, int visitId, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
+    public VisitsEntity(Date dateBegin, Date dateEnd, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
         this.dateBegin = dateBegin;
-        this.visitId = visitId;
         this.portsEntity = portsEntity;
         this.allUsersEntity = allUsersEntity;
         this.shipsEntity = shipsEntity;

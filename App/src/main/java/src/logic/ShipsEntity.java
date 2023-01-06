@@ -21,10 +21,10 @@ public class ShipsEntity {
     @ManyToOne
     @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID")
     private ShipOwnersEntity shipOwnersEntity;
-    @OneToMany(mappedBy = "shipsEntity")
+    @OneToMany(mappedBy = "shipsEntity", fetch = FetchType.EAGER)
     private Collection<VisitsEntity> visitsEntities;
 
-    public ShipsEntity(String callSign, String shipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
+    public ShipsEntity(String callSign, String shipName, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
         this.callSign = callSign;
         this.shipName = shipName;
         this.shipType = shipType;

@@ -34,7 +34,6 @@ public class ShipOwnersEntity {
 
     public ShipOwnersEntity(String phoneNumber, String email, String forename,
                             String surname, String pesel, Collection<ShipsEntity> shipsEntities) {
-//        this.shipOwnerId = shipOwnerId;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.forname = forename;
@@ -44,12 +43,10 @@ public class ShipOwnersEntity {
     }
 
     public ShipOwnersEntity(String email, String nameCompany, Integer nip, String phoneNumber) {
-//        this.shipOwnerId = shipOwnerId;
         this.email = email;
         this.nameCompany = nameCompany;
         this.nip = nip;
-//        this.shipsEntities = shipsEntities;
-        shipsEntities = new ArrayList<>();
+        this.shipsEntities = new ArrayList<>();
         this.phoneNumber = phoneNumber;
     }
 
