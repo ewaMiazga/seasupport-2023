@@ -44,9 +44,6 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         DataBase db = DataBase.getInstance(); // connecting with database
-        ShipOwnersEntity sh = new ShipOwnersEntity("trial", "trial", 543, "34534");
-        ShipsEntity ship = new ShipsEntity("4534", "trial", 1, "motor_boat", (short)5, sh);
-        db.addShip(ship);
         launch(args);
         DataBase.disableConnection(); // disconnecting with database
     }
