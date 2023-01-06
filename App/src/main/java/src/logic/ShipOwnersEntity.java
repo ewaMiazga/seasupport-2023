@@ -2,6 +2,7 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -31,9 +32,8 @@ public class ShipOwnersEntity {
     @OneToMany(mappedBy = "shipOwnersEntity")
     private Collection<ShipsEntity> shipsEntities;
 
-    public ShipOwnersEntity(int shipOwnerId, String phoneNumber, String email, String forename,
+    public ShipOwnersEntity(String phoneNumber, String email, String forename,
                             String surname, String pesel, Collection<ShipsEntity> shipsEntities) {
-        this.shipOwnerId = shipOwnerId;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.forname = forename;
@@ -42,12 +42,12 @@ public class ShipOwnersEntity {
         this.shipsEntities = shipsEntities;
     }
 
-    public ShipOwnersEntity(int shipOwnerId, String email, String nameCompany, Integer nip, Collection<ShipsEntity> shipsEntities) {
-        this.shipOwnerId = shipOwnerId;
+    public ShipOwnersEntity(String email, String nameCompany, Integer nip, String phoneNumber) {
         this.email = email;
         this.nameCompany = nameCompany;
         this.nip = nip;
-        this.shipsEntities = shipsEntities;
+        this.shipsEntities = new ArrayList<>();
+        this.phoneNumber = phoneNumber;
     }
 
     public ShipOwnersEntity() {

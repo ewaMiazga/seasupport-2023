@@ -32,7 +32,7 @@ public class AllUsersEntity {
     public AllUsersEntity()
     {}
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "ADMIN_PORT_INTERMEDIARY",
             joinColumns = { @JoinColumn(name = "LOGIN") },
@@ -40,7 +40,7 @@ public class AllUsersEntity {
     )
     private Collection<PortsEntity> portsEntities;
 
-    @OneToMany(mappedBy = "allUsersEntity")
+    @OneToMany(mappedBy = "allUsersEntity", fetch = FetchType.EAGER)
     private Collection<VisitsEntity> visitsEntities;
 
     public AllUsersEntity(String login, String userPassword, String forename, String surname, String phoneNumber, Date birthday, String pesel, String userType) {

@@ -1,7 +1,10 @@
 package src.logic;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -47,8 +50,7 @@ public class PortsEntity {
     public PortsEntity()
     {}
 
-    public PortsEntity(int portId, String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity, Collection<AllUsersEntity> allUsersEntities, Collection<VisitsEntity> visitsEntities) {
-        this.portId = portId;
+    public PortsEntity(String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity, Collection<AllUsersEntity> allUsersEntities, Collection<VisitsEntity> visitsEntities) {
         this.portName = portName;
         this.placesShipsBig = placesShipsBig;
         this.placesShipsSmall = placesShipsSmall;
@@ -62,6 +64,22 @@ public class PortsEntity {
         this.priceListEntity = priceListEntity;
         this.allUsersEntities = allUsersEntities;
         this.visitsEntities = visitsEntities;
+    }
+
+    public PortsEntity(String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity) {
+        this.portName = portName;
+        this.placesShipsBig = placesShipsBig;
+        this.placesShipsSmall = placesShipsSmall;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.cityName = cityName;
+        this.postCode = postCode;
+        this.phoneNumber = phoneNumber;
+        this.vhfChannel = vhfChannel;
+        this.bankAccount = bankAccount;
+        this.priceListEntity = priceListEntity;
+        this.allUsersEntities = new ArrayList<AllUsersEntity>();
+        this.visitsEntities = new ArrayList<VisitsEntity>();
     }
 
     public PriceListEntity getPriceListEntity() {

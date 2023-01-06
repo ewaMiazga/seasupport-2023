@@ -15,15 +15,15 @@ public class PriceListEntity {
     @Column(name = "LIST_ID")
     private Integer listId;
     @Column(name = "LAUNDRY")
-    private Byte laundry;
+    private Short laundry;
     @Column(name = "DRYING_ROOM")
-    private Byte dryingRoom;
+    private Short dryingRoom;
     @Column(name = "WATER")
-    private Byte water;
+    private Short water;
     @Column(name = "SHOWER")
-    private Byte shower;
+    private Short shower;
     @Column(name = "SAUNA")
-    private Byte sauna;
+    private Short sauna;
     @Column(name = "PLACE_LESS_7M")
     private Short placeLess7M;
     @Column(name = "PLACE_7_12M")
@@ -37,8 +37,11 @@ public class PriceListEntity {
     @OneToMany(mappedBy = "priceListEntity")
     private Collection<PortsEntity> portsEntities;
 
-    public PriceListEntity(int listId, Byte laundry, Byte dryingRoom, Byte water, Byte shower, Byte sauna, short placeLess7M,
-                           short place712M, short place1217M, short place1720M, short placeMore20M) {
+    public PriceListEntity()
+    {}
+
+    public PriceListEntity(int listId, Short laundry, Short dryingRoom, Short water, Short shower, Short sauna, Short placeLess7M,
+                           Short place712M, Short place1217M, Short place1720M, Short placeMore20M) {
         this.listId = listId;
         this.laundry = laundry;
         this.dryingRoom = dryingRoom;
@@ -64,19 +67,14 @@ public class PriceListEntity {
         this.portsEntities = new ArrayList<PortsEntity>();
     }
 
-    public void addPort(PortsEntity port){
-        this.portsEntities.add(port);
+    public void addPort(PortsEntity port)
+    {
+        portsEntities.add(port);
     }
 
-    public PriceListEntity() {
-    }
-
-    public Collection<PortsEntity> getPortsEntities() {
-        return portsEntities;
-    }
-
-    public void setPortsEntities(Collection<PortsEntity> portsEntities) {
-        this.portsEntities = portsEntities;
+    public void removePort(PortsEntity port)
+    {
+        portsEntities.remove(port);
     }
 
     public int getListId() {
@@ -87,84 +85,92 @@ public class PriceListEntity {
         this.listId = listId;
     }
 
-    public Byte getLaundry() {
+    public Short getLaundry() {
         return laundry;
     }
 
-    public void setLaundry(Byte laundry) {
+    public void setLaundry(Short laundry) {
         this.laundry = laundry;
     }
 
-    public Byte getDryingRoom() {
+    public Short getDryingRoom() {
         return dryingRoom;
     }
 
-    public void setDryingRoom(Byte dryingRoom) {
+    public void setDryingRoom(Short dryingRoom) {
         this.dryingRoom = dryingRoom;
     }
 
-    public Byte getWater() {
+    public Short getWater() {
         return water;
     }
 
-    public void setWater(Byte water) {
+    public void setWater(Short water) {
         this.water = water;
     }
 
-    public Byte getShower() {
+    public Short getShower() {
         return shower;
     }
 
-    public void setShower(Byte shower) {
+    public void setShower(Short shower) {
         this.shower = shower;
     }
 
-    public Byte getSauna() {
+    public Short getSauna() {
         return sauna;
     }
 
-    public void setSauna(Byte sauna) {
+    public void setSauna(Short sauna) {
         this.sauna = sauna;
     }
 
-    public short getPlaceLess7M() {
+    public Short getPlaceLess7M() {
         return placeLess7M;
     }
 
-    public void setPlaceLess7M(short placeLess7M) {
+    public void setPlaceLess7M(Short placeLess7M) {
         this.placeLess7M = placeLess7M;
     }
 
-    public short getPlace712M() {
+    public Short getPlace712M() {
         return place712M;
     }
 
-    public void setPlace712M(short place712M) {
+    public void setPlace712M(Short place712M) {
         this.place712M = place712M;
     }
 
-    public short getPlace1217M() {
+    public Short getPlace1217M() {
         return place1217M;
     }
 
-    public void setPlace1217M(short place1217M) {
+    public void setPlace1217M(Short place1217M) {
         this.place1217M = place1217M;
     }
 
-    public short getPlace1720M() {
+    public Short getPlace1720M() {
         return place1720M;
     }
 
-    public void setPlace1720M(short place1720M) {
+    public void setPlace1720M(Short place1720M) {
         this.place1720M = place1720M;
     }
 
-    public short getPlaceMore20M() {
+    public Short getPlaceMore20M() {
         return placeMore20M;
     }
 
-    public void setPlaceMore20M(short placeMore20M) {
+    public void setPlaceMore20M(Short placeMore20M) {
         this.placeMore20M = placeMore20M;
+    }
+
+    public Collection<PortsEntity> getPortsEntities() {
+        return portsEntities;
+    }
+
+    public void setPortsEntities(Collection<PortsEntity> portsEntities) {
+        this.portsEntities = portsEntities;
     }
 
     @Override
