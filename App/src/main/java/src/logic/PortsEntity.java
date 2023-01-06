@@ -12,15 +12,15 @@ public class PortsEntity {
     @SequenceGenerator(name = "ports_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ports_id")
     @Column(name = "PORT_ID")
-    private int portId;
+    private Integer portId;
     @Column(name = "PORT_NAME")
     private String portName;
     @Column(name = "PLACES_SHIPS_BIG")
-    private int placesShipsBig;
+    private Integer placesShipsBig;
     @Column(name = "PLACES_SHIPS_SMALL")
-    private int placesShipsSmall;
+    private Integer placesShipsSmall;
     @Column(name = "STREET_NUMBER")
-    private int streetNumber;
+    private Integer streetNumber;
     @Column(name = "STREET_NAME")
     private String streetName;
     @Column(name = "CITY_NAME")
@@ -30,7 +30,7 @@ public class PortsEntity {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
     @Column(name = "VHF_CHANNEL")
-    private int vhfChannel;
+    private Integer vhfChannel;
     @Column(name = "BANK_ACCOUNT")
     private String bankAccount;
 

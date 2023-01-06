@@ -17,7 +17,7 @@ public class ShipsEntity {
     @Column(name = "SHIP_TYPE")
     private String shipType;
     @Column(name = "SHIP_LENGTH")
-    private short shipLength;
+    private Short shipLength;
     @ManyToOne
     @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID")
     private ShipOwnersEntity shipOwnersEntity;
@@ -27,7 +27,6 @@ public class ShipsEntity {
     public ShipsEntity(String callSign, String shipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
         this.callSign = callSign;
         this.shipName = shipName;
-//        this.shipOwnerId = shipOwnerId;
         this.shipType = shipType;
         this.shipLength = shipLength;
         this.shipOwnersEntity = shipOwnersEntity;
