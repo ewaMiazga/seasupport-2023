@@ -29,6 +29,23 @@ public class VisitsEntity {
     @Id
     @Column(name = "VISIT_ID")
     private int visitId;
+
+    public VisitsEntity(Date dateBegin, Date dateEnd, int portId, String login, String callSign,
+                        int captainId, int visitId, PortsEntity portsByPortId,
+                        AllUsersEntity allUsersByLogin, ShipsEntity shipsByCallSign, CaptainsEntity captainsByCaptainId) {
+        this.dateBegin = dateBegin;
+        this.dateEnd = dateEnd;
+        this.portId = portId;
+        this.login = login;
+        this.callSign = callSign;
+        this.captainId = captainId;
+        this.visitId = visitId;
+        this.portsByPortId = portsByPortId;
+        this.allUsersByLogin = allUsersByLogin;
+        this.shipsByCallSign = shipsByCallSign;
+        this.captainsByCaptainId = captainsByCaptainId;
+    }
+
     @ManyToOne
     @JoinColumn(name = "PORT_ID", referencedColumnName = "PORT_ID", nullable = false)
     private PortsEntity portsByPortId;

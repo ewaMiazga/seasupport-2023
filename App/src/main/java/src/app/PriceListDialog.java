@@ -18,6 +18,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import src.logic.PortsEntity;
+import src.logic.PriceListEntity;
+import src.appActions.*;
+
+import java.util.Vector;
 
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
@@ -27,11 +31,18 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     private Scene scene;
     private String cssPath;
 
+    private PriceListEntity priceList;
+
     private final ObservableList<Pair<String, Integer>> data = FXCollections.observableArrayList(
             new Pair("Usluga1", 12),
             new Pair("Usluga2", 10),
             new Pair("Usluga3", 15)
     );
+
+    PriceListEntity getList(int listId){
+        PriceListEntity current_list = DataBase.getInstance().getPriceList(listId);
+        return current_list;
+    }
 
     @Override
     public void start(Stage stage) {
@@ -68,6 +79,9 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         priceListView = new TableView<Pair<String, Integer>>();
+
+        PortInformationsActions action = new PortInformationsActions();
+        Vector<Pair<String, Integer>> prices = action.getPrices(port.getPriceListId());
 
         TableColumn nameServiceCol = new TableColumn("Name of service");
         nameServiceCol.setMinWidth(160);

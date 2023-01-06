@@ -41,7 +41,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text(port.getPortName());
+        formTitle = new Text(port.getPortName().toString());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 

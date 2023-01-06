@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.appActions.LoginWindowActions;
 import src.logic.AllUsersEntity;
-import src.appActions.LoginWindowActions.*;
+import src.logic.PortsEntity;
 
 /**
  * Class LoginDialog
@@ -114,8 +114,15 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
             LoginWindowActions action = new LoginWindowActions();
             AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
             if(currentUser != null){
-                PortsDialog portsDialog = new PortsDialog();
-                portsDialog.start(loginStage);
+                PortsEntity port = action.userInPort(currentUser.getLogin());
+                if(port != null){
+                    PortDialog portDialog = new PortDialog();
+                    portDialog.start(loginStage, port);
+                }
+                else{
+                    PortsDialog portsDialog = new PortsDialog();
+                    portsDialog.start(loginStage, currentUser);
+                }
             }
             else{
                 notification.setText("Invalid login or password");

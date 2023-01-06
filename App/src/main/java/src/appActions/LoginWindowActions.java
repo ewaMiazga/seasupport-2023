@@ -68,4 +68,14 @@ public class LoginWindowActions {
             return false;
         return true;
     }
+
+    public PortsEntity userInPort(String login){
+        PortsEntity port = new PortsEntity();
+        //if (port != null)
+        //{
+        //    return port;
+        //}
+        // if user is in port return that Port
+        return null;
+    }
 }

@@ -12,7 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import src.logic.PortsEntity;
+import src.logic.*;
+import src.appActions.PortsWindowActions;
 
 import java.io.IOException;
 
@@ -57,7 +58,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text(port.getPortName());
+        formTitle = new Text(port.getPortName().toString());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 

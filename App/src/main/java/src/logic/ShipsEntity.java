@@ -26,6 +26,19 @@ public class ShipsEntity {
     @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID", nullable = false)
     private ShipOwnersEntity shipOwnersByShipOwnerId;
 
+    public ShipsEntity(){
+
+    }
+
+    public ShipsEntity(String callSign, String shpipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersByShipOwnerId) {
+        this.callSign = callSign;
+        this.shpipName = shpipName;
+        this.shipOwnerId = shipOwnerId;
+        this.shipType = shipType;
+        this.shipLength = shipLength;
+        this.shipOwnersByShipOwnerId = shipOwnersByShipOwnerId;
+    }
+
     public String getCallSign() {
         return callSign;
     }
