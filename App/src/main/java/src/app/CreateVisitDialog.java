@@ -226,7 +226,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
             notification.setText(messages.get(message_code));
             if(message_code == 5) {
                 PortDialog portDialog = new PortDialog();
-                portDialog.start(registrationStage, currentPort);
+                portDialog.start(registrationStage, currentPort, currentUser);
             }
         }
     }

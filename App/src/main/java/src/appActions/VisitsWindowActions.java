@@ -74,7 +74,7 @@ public class VisitsWindowActions {
         List<VisitsEntity> visits = DataBase.getInstance().getVisitFromPort(port, dateBegin, dateEnd);
         ShipsEntity currentShip = new ShipsEntity();
         for(VisitsEntity v : visits){
-            currentShip = DataBase.getInstance().getShip(v.getCallSign());
+            currentShip = DataBase.getInstance().getShip(v.getShipsEntity().getCallSign());
             if(currentShip.getShipLength() <= len && currentShip.getShipLength() >= len - 15) places++;
         }
         return(portPlaces - places);
@@ -102,8 +102,6 @@ public class VisitsWindowActions {
         int size = data.size();
         if(data.get(5).equals("Private")) {
             size -= 2;
-            data.set(6, null);
-            data.set(7, null);
         }
         for(int i =0; i < size; i++){
             if(data.get(i).equals(""))
@@ -114,9 +112,10 @@ public class VisitsWindowActions {
         if(data.get(4).length() != 11) return 3;
         if(data.get(5).equals("Comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
         Integer nip = Integer.valueOf(data.get(7));
+
         ShipOwnersEntity owner = new ShipOwnersEntity(1, data.get(2), data.get(3), data.get(0),
-                data.get(1), data.get(4), data.get(6), nip);
-        DataBase.getInstance().addOwner(owner);
+                    data.get(1), data.get(4), data.get(6), nip);
+            DataBase.getInstance().addOwner(owner);
         return 5;
     }
 

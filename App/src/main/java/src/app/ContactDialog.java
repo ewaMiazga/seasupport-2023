@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.PortsEntity;
+import src.logic.AllUsersEntity;
 import javafx.scene.paint.Color;
 import javafx.scene.web.*;
 
@@ -42,7 +43,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         contactStage = stage;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
 
@@ -106,7 +107,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
             public void handle(MouseEvent event) {
                 if (event.getSource().equals(returnButton)) {
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    portDialog.start(stage, port, user);
                 }
 
             }

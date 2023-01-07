@@ -117,7 +117,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
                 PortsEntity port = action.userInPort(currentUser.getLogin());
                 if(port != null){
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(loginStage, port);
+                    portDialog.start(loginStage, port, currentUser);
                 }
                 else{
                     PortsDialog portsDialog = new PortsDialog();

@@ -31,6 +31,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     private Stage portStage;
 
     private PortsEntity selectedPort;
+
+    private AllUsersEntity currentUser;
     private String cssPath;
 
     @Override
@@ -43,9 +45,10 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * @param stage the stage
      * @param port the port
      */
-    public void start(Stage stage, PortsEntity port) {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;
         selectedPort = port;
+        currentUser = user;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -142,7 +145,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, selectedPort);
+            priceListDialog.start(portStage, selectedPort, currentUser);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
@@ -153,7 +156,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
             notification.setText("map button pressed");
             MapDialog mapDialog = new MapDialog();
             try {
-                mapDialog.start(portStage, selectedPort);
+                mapDialog.start(portStage, selectedPort, currentUser);
             }
             catch(IOException e) {
                 e.printStackTrace();
@@ -162,7 +165,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
             ContactDialog contactDialog = new ContactDialog();
-            contactDialog.start(portStage, selectedPort);
+            contactDialog.start(portStage, selectedPort, currentUser);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");

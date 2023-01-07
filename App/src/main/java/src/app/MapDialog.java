@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
 import java.io.FileInputStream;
@@ -31,7 +32,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
     @Override
     public void start(Stage stage) { }
 
-    public void start(Stage stage, PortsEntity port) throws IOException {
+    public void start(Stage stage, PortsEntity port, AllUsersEntity user) throws IOException {
         mapStage = stage;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
 
@@ -59,7 +60,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
             public void handle(MouseEvent event) {
                 if(event.getSource().equals(returnButton)) {
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, port);
+                    portDialog.start(stage, port, user);
                 }
 
             }

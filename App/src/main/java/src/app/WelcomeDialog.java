@@ -90,12 +90,12 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         if (event.getSource() == loginButton) {
             Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(stage, welcomeStage);
+            loginDialog.start(stage);
         }
         else if (event.getSource() == registrationButton) {
             Stage stage = new Stage();
             RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(stage, welcomeStage);
+            registrationDialog.start(stage);
         }
     }
 }
