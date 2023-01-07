@@ -24,12 +24,10 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button detailsButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
-
-    private Button mouseButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
     private Scene scene;
     private Stage portStage;
-
+    private AllUsersEntity selectedUser;
     private PortsEntity selectedPort;
 
     private AllUsersEntity currentUser;

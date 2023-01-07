@@ -26,7 +26,6 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
     private Label whoAreYouLabel;
     private Button loginButton, registrationButton;
     private Scene scene;
-
     private Stage welcomeStage;
     private String cssPath;
 
