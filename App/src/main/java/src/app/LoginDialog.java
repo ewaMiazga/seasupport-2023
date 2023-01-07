@@ -13,9 +13,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.appActions.LoginWindowActions;
 import src.logic.AllUsersEntity;
-
-import java.sql.Date;
+import src.logic.PortsEntity;
 
 /**
  * Class LoginDialog
@@ -33,15 +33,10 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private Button signInButton;
     private Scene scene;
     private Stage loginStage;
-
-    private Stage welcomeStage;
     private String cssPath;
-
     @Override
-    public void start(Stage stage) { }
-    public void start(Stage stage, Stage previousStage) {
+    public void start(Stage stage) {
         loginStage = stage;
-        welcomeStage = previousStage;
         stage.setTitle("Login Dialog");
         stage.getIcons().add(
                 new Image(
@@ -83,7 +78,6 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
 
         signInButton = new Button("Sign In");
-        signInButton.setPrefSize(150, 25);
         signInButton.setOnAction(this);
 
         grid.add(signInButton, 1, 4);
@@ -114,17 +108,25 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     public void handle(ActionEvent event) {
         //TODO:
         //Write function, which will check if login and password are equal from those from
-        //database @bartek
+        //database @michał
         if (event.getSource() == signInButton) {
-            String userLogin = userLoginField.getText();
-            String userPass = userPassField.getText();
-            @Deprecated
-            Date d = new Date(1999, 10, 5);
-            AllUsersEntity user = new AllUsersEntity(userLogin, userPass, "Ewa", "Miazga", "666999333", d, "123456789", "user");
-            //@bartek TODO:
-            PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(loginStage, user);
-            welcomeStage.close();
+            notification.setText("Sign in button pressed");
+            LoginWindowActions action = new LoginWindowActions();
+            AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
+            if(currentUser != null){
+                PortsEntity port = action.userInPort(currentUser.getLogin());
+                if(port != null){
+                    PortDialog portDialog = new PortDialog();
+                    portDialog.start(loginStage, port, currentUser);
+                }
+                else{
+                    PortsDialog portsDialog = new PortsDialog();
+                    portsDialog.start(loginStage, currentUser);
+                }
+            }
+            else{
+                notification.setText("Invalid login or password");
+            }
         }
     }
 }

@@ -3,6 +3,8 @@ package src.app;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -16,8 +18,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import src.logic.AllUsersEntity;
+import src.appActions.PortsWindowActions;
 import src.logic.PortsEntity;
+import src.appActions.PortsWindowActions.*;
+import src.logic.*;
+
+import java.util.List;
 
 /**
  * The type Ports dialog.
@@ -28,19 +34,28 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     private TableView<PortsEntity> tableView;
 
-    private final ObservableList<PortsEntity> data =
-            FXCollections.observableArrayList(
-                    new PortsEntity()
-            );
+    private ObservableList<PortsEntity> data;
+            //FXCollections.observableArrayList(
+                    //getPorts()
+            //);
+    private AllUsersEntity currentUser;
 
-    AllUsersEntity selectedUser;
-    private Button accountButton;
+    List<PortsEntity> getPorts() {
+        List<PortsEntity> ports = DataBase.getInstance().getPorts();
+        return ports;
+    }
+
+    private Button mouseButton, settingsButton;
     private Scene scene;
+
     private String cssPath;
     @Override
-    public void start(Stage stage) { }
+    public void start(Stage stage) {
+    }
+
     public void start(Stage stage, AllUsersEntity user) {
-        selectedUser = user;
+        currentUser = user;
+        data = FXCollections.observableArrayList(getPorts());
         stage.setTitle("Ports Dialog");
         stage.getIcons().add(
                 new Image(
@@ -54,36 +69,35 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
         formTitle = new Text("Choose Port");
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0);
+        grid.add(formTitle, 0, 0, 2, 1);
 
-        accountButton = new Button("Account Details");
-        accountButton.setPrefSize(150, 50);
-        accountButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        settingsButton = new Button("Settings");
+        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(event.getSource().equals(accountButton)) {
-                    AccountDialog accountDialog = new AccountDialog();
-                    accountDialog.start(stage, selectedUser);
+                if(event.getSource().equals(settingsButton)) {
+                    LoginDialog loginDialog = new LoginDialog();
+                    loginDialog.start(stage);
                 }
 
             }
         });
 
-        grid.add(accountButton, 1, 0);
-        grid.setHalignment(accountButton, HPos.RIGHT);
+        grid.add(settingsButton, 1, 0);
+        grid.setHalignment(settingsButton, HPos.RIGHT);
 
         tableView = new TableView<PortsEntity>();
         tableView.setEditable(true);
-        TableColumn portNameCol = new TableColumn<String, String>("Port Name");
-        portNameCol.setMinWidth(500);
+        TableColumn<PortsEntity, String> portNameCol = new TableColumn<PortsEntity, String>("Port Name");
+        portNameCol.setMinWidth(260);
         portNameCol.setCellValueFactory(
-                new PropertyValueFactory<PortsEntity, String>("portName"));
+                new PropertyValueFactory<>("portName") );
         tableView.setItems(data);
         tableView.getColumns().addAll(portNameCol);
         tableView.getColumns().set(0, portNameCol);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(tableView, 0, 1, 2, 1);
+        grid.add(tableView, 1, 1);
 
         tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -97,9 +111,10 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
                     System.out.println(currentItemSelected.getPortName());
-                    PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, currentItemSelected, selectedUser);
-
+                    CreateVisitDialog visit = new CreateVisitDialog();
+                    visit.start(stage, currentUser, currentItemSelected);
+                    //PortDialog portDialog = new PortDialog();
+                    //portDialog.start(stage, currentItemSelected);
                 }
             }
         });

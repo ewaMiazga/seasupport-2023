@@ -50,6 +50,15 @@ public class ShipsEntity {
         this.visitsEntities = visitsEntities;
     }
 
+
+    public ShipsEntity(String callSign, String shpipName, int shipOwnerId, String shipType, short shipLength, ShipOwnersEntity shipOwnersByShipOwnerId) {
+        this.callSign = callSign;
+        this.shipName = shpipName;
+        this.shipType = shipType;
+        this.shipLength = shipLength;
+        this.shipOwnersEntity = shipOwnersByShipOwnerId;
+    }
+
     public String getCallSign() {
         return callSign;
     }

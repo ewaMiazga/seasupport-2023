@@ -12,6 +12,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.appActions.LoginWindowActions;
+
+import java.util.List;
+import java.util.Vector;
 import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
 
@@ -44,14 +48,28 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private Stage registrationStage;
 
-    private Stage welcomeStage;
-
     private String cssPath;
+
+    private List<String> messages=  List.of("Required fields are empty!", "Username is not available!", "Passwords are different!",
+    "Incorrect type of user!", "Wrong format of phone number!", "Wrong format of pesel!", "Wrong format of birthdate!",
+            "Successful registration, go to login!");
+
+    public Vector<String> getTextContents(){
+        Vector<String> data = new Vector<>();
+        data.add(userLoginField.getText());
+        data.add(userPassField.getText());
+        data.add(userPassConfField.getText());
+        data.add(userTypeField.getText());
+        data.add(forenameField.getText());
+        data.add(surnameField.getText());
+        data.add(numberField.getText());
+        data.add(peselField.getText());
+        data.add(birthdayPicker.toString());
+        return data;
+    }
     @Override
-    public void start(Stage stage) { }
-    public void start(Stage stage, Stage previousStage) {
+    public void start(Stage stage) {
         registrationStage = stage;
-        welcomeStage = previousStage;
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -149,7 +167,6 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
 
         registerButton = new Button("Register");
-        registerButton.setPrefSize(150,25);
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 13);
@@ -179,27 +196,16 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == registerButton) {
-            String userLogin = userLoginField.getText();
-            String userPass = userPassField.getText();
-            String userPassConf = userPassConfField.getText();
-            if (!userPass.equals(userPassConf)) {
-              notification.setText("Passwords are different!");
-                return;
+
+            registerButton.setText("Register button pressed");
+            LoginWindowActions action = new LoginWindowActions();
+            int message_code = action.checkRegData(getTextContents());
+            notification.setText(messages.get(message_code));
+            if(message_code == 7) {
+                action.register(getTextContents(), birthdayPicker.getValue());
+                LoginDialog loginDialog = new LoginDialog();
+                loginDialog.start(registrationStage);
             }
-            String userType = userTypeField.getText();
-            String userForename = forenameField.getText();
-            String userSurname = surnameField.getText();
-            String userNumber = numberField.getText();
-            String userPesel = peselField.getText();
-            String userBirthday = birthdayPicker.toString();
-            LoginDialog loginDialog = new LoginDialog();
-            if (userLogin.equals("") || userPass.equals("") || userPassConf.equals("") || userType.equals("") ||
-                    userForename.equals("") || userSurname.equals("") || userNumber.equals("") || userPesel.equals("") ||
-                    userBirthday.equals("")) {
-                notification.setText("Required fields are empty!");
-                return;
-            }
-            loginDialog.start(registrationStage, welcomeStage);
         }
     }
 
