@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="db_script updated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db_scripts/creating_database_sea_ports.sql" afterDir="false" />
-    </list>
+    <list default="true" id="858f7292-1f73-4400-a5e2-1d706afb972b" name="Changes" comment="file workspace changed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
