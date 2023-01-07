@@ -9,6 +9,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "SHIP_OWNERS")
 public class ShipOwnersEntity {
+    public ShipOwnersEntity(int shipOwnerId, String phoneNumber, String email, String forname,
+                            String surname, String pesel, String nameCompany, Integer nip) {
+        this.shipOwnerId = shipOwnerId;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.forname = forname;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.nameCompany = nameCompany;
+        this.nip = nip;
+    }
+
     @Id
     @SequenceGenerator(name = "ship_owners_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ship_owners_id")

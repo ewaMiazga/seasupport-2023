@@ -12,9 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import src.logic.AllUsersEntity;
-import src.logic.PortsEntity;
-import java.sql.Date;
+import src.logic.*;
+import src.appActions.PortsWindowActions;
 
 import java.io.IOException;
 
@@ -30,6 +29,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     private Stage portStage;
     private AllUsersEntity selectedUser;
     private PortsEntity selectedPort;
+
+    private AllUsersEntity currentUser;
     private String cssPath;
 
     @Override
@@ -45,7 +46,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;
         selectedPort = port;
-        selectedUser = user;
+        currentUser = user;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -58,26 +59,27 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text(port.getPortName());
+        formTitle = new Text(port.getPortName().toString());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        accountButton = new Button("Account Details");
-        accountButton.setPrefSize(150, 50);
-        accountButton.setOnAction(this);
+        detailsButton = new Button("Port Details");
+        detailsButton.setMaxSize(100, 100);
+        detailsButton.setOnAction(this);
 
-        grid.add(accountButton, 1, 0);
-        grid.setHalignment(accountButton, HPos.RIGHT);
+        grid.add(detailsButton, 1, 0);
+        grid.setHalignment(detailsButton, HPos.RIGHT);
+
 
         priceListButton = new Button("Price List");
-        priceListButton.setPrefSize(250, 250);
+        priceListButton.setPrefSize(200, 200);
         priceListButton.setOnAction(this);
 
         grid.add(priceListButton, 0, 1);
         grid.setHalignment(priceListButton, HPos.LEFT);
 
         docksButton = new Button("Open docks");
-        docksButton.setPrefSize(250, 250);
+        docksButton.setPrefSize(200, 200);
         docksButton.setOnAction(this);
 
         grid.add(docksButton, 1, 1);
@@ -85,7 +87,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         mapButton = new Button("Map of the port");
-        mapButton.setPrefSize(250, 250);
+        mapButton.setPrefSize(200, 200);
         mapButton.setOnAction(this);
 
         grid.add(mapButton, 0, 3);
@@ -93,14 +95,14 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
 
         contactButton = new Button("Contact");
-        contactButton.setPrefSize(250, 250);
+        contactButton.setPrefSize(200, 200);
         contactButton.setOnAction(this);
 
         grid.add(contactButton, 1, 3);
         grid.setHalignment(contactButton, HPos.RIGHT);
 
         returnButton = new Button("Return");
-        returnButton.setPrefSize(150, 50);
+        returnButton.setPrefSize(100, 100);
         returnButton.setOnAction(this);
 
         grid.add(returnButton, 1, 4);
@@ -132,29 +134,27 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         //TODO:
         //Write function, which will check if login and password are equal from those from
         //database @michał
-        if (event.getSource() == accountButton) {
-            notification.setText("account button pressed");
-            @Deprecated
-            Date d = new Date(1999, 10, 5);
-            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
-            AccountDialog accountDialog = new AccountDialog();
-            accountDialog.start(portStage, user);
+        if (event.getSource() == detailsButton) {
+            notification.setText("price button pressed");
+            //Stage stage = new Stage();
+            LoginDialog loginDialog = new LoginDialog();
+            loginDialog.start(portStage);
         }
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, selectedPort, selectedUser);
+            priceListDialog.start(portStage, selectedPort, currentUser);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
-            OpenDocksDialog openDocksDialog = new OpenDocksDialog();
-            openDocksDialog.start(portStage, selectedPort, selectedUser);
+            //OpenDocksDialog openDocksDialog = new OpenDocksDialog();
+            //openDocksDialog.start(portStage, selectedPort);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");
             MapDialog mapDialog = new MapDialog();
             try {
-                mapDialog.start(portStage, selectedPort, selectedUser);
+                mapDialog.start(portStage, selectedPort, currentUser);
             }
             catch(IOException e) {
                 e.printStackTrace();
@@ -163,12 +163,12 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
             ContactDialog contactDialog = new ContactDialog();
-            contactDialog.start(portStage, selectedPort, selectedUser);
+            contactDialog.start(portStage, selectedPort, currentUser);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");
             PortsDialog portsDialog = new PortsDialog();
-            portsDialog.start(portStage, selectedUser);
+            portsDialog.start(portStage);
         }
     }
 

@@ -30,7 +30,7 @@ public class SplashDialog extends Application {
 /*    File file = new File("Logo.png");
     File file2 = new File("background.jpg");*/
 
-/*    public final String APPLICATION_ICON =
+/*   public final String APPLICATION_ICON =
             file.toURI().toString();
     public final String SPLASH_IMAGE =
             file2.toURI().toString();*/
@@ -41,6 +41,7 @@ public class SplashDialog extends Application {
 
     private Scene scene;
     private Stage stage;
+
     private String cssPath;
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;
@@ -95,7 +96,6 @@ public class SplashDialog extends Application {
                 return foundFriends;
             }
         };
-        init();
         showSplash(
                 initStage,
                 friendTask,

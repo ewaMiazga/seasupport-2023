@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="858f7292-1f73-4400-a5e2-1d706afb972b" name="Changes" comment="file workspace changed" />
+    <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/LoginWindowActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortsWindowActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/getData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +47,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/App/src/test/java/src/logic/CaptainsEntityTest.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,22 +79,11 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-19/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.28850573&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;Oracle&quot;
-    ]
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
   <component name="RunAnythingCache">
@@ -75,6 +91,21 @@
       <command value="mvn compile" />
       <command value="mvn site:jar" />
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="app" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="app" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,9 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670426982275</updated>
-      <workItem from="1671400948783" duration="745000" />
-      <workItem from="1672429140305" duration="15901000" />
-      <workItem from="1672773415790" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="file workspace changed">
       <created>1670433712624</created>
@@ -95,88 +123,8 @@
       <option name="project" value="LOCAL" />
       <updated>1670433712624</updated>
     </task>
-    <task id="LOCAL-00002" summary="adnotations in classes changed">
-      <created>1671318500825</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1671318500825</updated>
-    </task>
-    <task id="LOCAL-00003" summary="annotations in classes changed">
-      <created>1671318588532</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1671318588532</updated>
-    </task>
-    <task id="LOCAL-00004" summary="annotations in classes changed">
-      <created>1672245117157</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1672245117157</updated>
-    </task>
-    <task id="LOCAL-00005" summary="constructor added">
-      <created>1672245393459</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1672245393459</updated>
-    </task>
-    <task id="LOCAL-00006" summary="few database queries added">
-      <created>1672439751950</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1672439751950</updated>
-    </task>
-    <task id="LOCAL-00007" summary="sql get_active_visit added">
-      <created>1672441669388</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1672441669388</updated>
-    </task>
-    <task id="LOCAL-00008" summary="necessary queries added">
-      <created>1672443501201</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1672443501201</updated>
-    </task>
-    <task id="LOCAL-00009" summary="descriptions added">
-      <created>1672445802431</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1672445802431</updated>
-    </task>
-    <task id="LOCAL-00010" summary="price entity class fixed">
-      <created>1672447747945</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1672447747945</updated>
-    </task>
-    <task id="LOCAL-00011" summary="classes from db upgraded">
-      <created>1673048934841</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1673048934841</updated>
-    </task>
-    <task id="LOCAL-00012" summary="queries added">
-      <created>1673048961957</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1673048961957</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -188,52 +136,11 @@
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="feature_database_connection" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="file workspace changed" />
-    <MESSAGE value="adnotations in classes changed" />
-    <MESSAGE value="annotations in classes changed" />
-    <MESSAGE value="constructor added" />
-    <MESSAGE value="few database queries added" />
-    <MESSAGE value="sql get_active_visit added" />
-    <MESSAGE value="necessary queries added" />
-    <MESSAGE value="descriptions added" />
-    <MESSAGE value="price entity class fixed" />
-    <MESSAGE value="classes from db upgraded" />
-    <MESSAGE value="queries added" />
-    <MESSAGE value="db_script updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="db_script updated" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.sql.SQLException" package="java.sql" />
-          <option name="timeStamp" value="5" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/App/src/main/java/src/app/Main.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="file workspace changed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
