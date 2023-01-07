@@ -5,6 +5,7 @@ import src.app.DataBase;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -69,13 +70,13 @@ public class LoginWindowActions {
         return true;
     }
 
-    public PortsEntity userInPort(String login){
-        PortsEntity port = new PortsEntity();
-        //if (port != null)
-        //{
-        //    return port;
-        //}
-        // if user is in port return that Port
+    public PortsEntity userInPort(AllUsersEntity user){
+        Date today = new Date(Calendar.getInstance().getTime().getTime());
+        VisitsEntity v = DataBase.getInstance().getVisit(user, today);
+        if( v != null){
+            PortsEntity port = v.getPortsEntity();
+            return port;
+        }
         return null;
     }
 }

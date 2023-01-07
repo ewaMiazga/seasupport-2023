@@ -161,21 +161,19 @@ public class DataBase {
      * @param dateBegin
      * @return VisitsEntity
      */
-    public VisitsEntity getVisit(AllUsersEntity user, Date dateBegin)
-    {
+    public VisitsEntity getVisit(AllUsersEntity user, Date dateBegin) {
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
 
-        Query query = ss.createQuery("FROM VisitsEntity VE WHERE " +
-                                     "VE.dateBegin = :dateB and allUsersEntity = :user");
-        query.setParameter("dateB", dateBegin);
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE allUsersEntity = :user " +
+                "AND :dateBegin BETWEEN VE.dateBegin AND VE.dateEnd");
         query.setParameter("user", user);
-        VisitsEntity visit = (VisitsEntity)query.uniqueResult();
+        query.setParameter("dateBegin", dateBegin);
+        VisitsEntity visit = (VisitsEntity) query.uniqueResult();
         ss.getTransaction().commit();
         ss.close();
         return visit;
     }
-
     /**
      * Gets a list of VistsEntities from a port after given date
      *
@@ -205,23 +203,47 @@ public class DataBase {
      * @param dateBegin
      * @return List<VisitsEntity>
      */
-    public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin, Date dateEnd)
+    public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin)
     {
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
 
         Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
-                "and VE.dateBegin >= :dateBegin" + "and VE.dateEnd =< :dateEnd");
+                "AND :dateBegin BETWEEN VE.dateBegin AND VE.dateEnd");
         query.setParameter("port", port);
         query.setParameter("dateBegin", dateBegin);
-        query.setParameter("dateEnd", dateEnd);
         List<VisitsEntity> visits = query.list();
         ss.getTransaction().commit();
         ss.close();
         return visits;
     }
 
+    public List<VisitsEntity> getVisitByPortBetween(PortsEntity port, Date dateBegin, Date dateEnd){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
 
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
+                "AND VE.dateBegin BETWEEN :dateBegin AND :dateEnd");
+        query.setParameter("port", port);
+        query.setParameter("dateBegin", dateBegin);
+        query.setParameter("dateBegin", dateEnd);
+        List<VisitsEntity> visits = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return visits;
+    }
+
+    public List<VisitsEntity> getVisitByPort(PortsEntity port){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity WHERE portsEntity = :port ");
+        query.setParameter("port", port);
+        List<VisitsEntity> visits = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return visits;
+    }
     /**
      * Fetches all ports in the database
      * @return List<PortsEntities>
@@ -401,6 +423,4 @@ public class DataBase {
         tx.commit();
         ss.close();
     }
-
-
-}
+    }

@@ -77,7 +77,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
 
         userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
 
-        signInButton = new Button("Mśćibór");
+        signInButton = new Button("Login");
         signInButton.setOnAction(this);
 
         grid.add(signInButton, 1, 4);
@@ -114,7 +114,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
             LoginWindowActions action = new LoginWindowActions();
             AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
             if(currentUser != null){
-                PortsEntity port = action.userInPort(currentUser.getLogin());
+                PortsEntity port = action.userInPort(currentUser);
                 if(port != null){
                     PortDialog portDialog = new PortDialog();
                     portDialog.start(loginStage, port, currentUser);

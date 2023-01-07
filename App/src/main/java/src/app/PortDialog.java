@@ -24,7 +24,7 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton, detailsButton;
     private Scene scene;
     private Stage portStage;
     private AllUsersEntity selectedUser;
