@@ -1,8 +1,10 @@
 package src.logic;
 
 import jakarta.persistence.*;
-import javafx.beans.property.StringProperty;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -13,45 +15,43 @@ public class PortsEntity {
     @SequenceGenerator(name = "ports_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ports_id")
     @Column(name = "PORT_ID")
-    private int portId;
-    @Basic
+    private Integer portId;
     @Column(name = "PORT_NAME")
-    private StringProperty portName;
-    @Basic
+    private String portName;
     @Column(name = "PLACES_SHIPS_BIG")
-    private int placesShipsBig;
-    @Basic
+    private Integer placesShipsBig;
     @Column(name = "PLACES_SHIPS_SMALL")
-    private int placesShipsSmall;
-    @Basic
+    private Integer placesShipsSmall;
     @Column(name = "STREET_NUMBER")
-    private int streetNumber;
-    @Basic
+    private Integer streetNumber;
     @Column(name = "STREET_NAME")
     private String streetName;
-    @Basic
     @Column(name = "CITY_NAME")
     private String cityName;
-    @Basic
     @Column(name = "POST_CODE")
     private String postCode;
-    @Basic
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
     @Column(name = "VHF_CHANNEL")
-    private int vhfChannel;
+    private Integer vhfChannel;
     @Column(name = "BANK_ACCOUNT")
     private String bankAccount;
 
-    @Column(name = "PRICE_LIST_ID")
-    private int priceListId;
+    @ManyToOne
+    @JoinColumn(name = "PRICE_LIST_ID", referencedColumnName = "LIST_ID")
+    private PriceListEntity priceListEntity;
+
+    @ManyToMany(mappedBy = "portsEntities")
+    private Collection<AllUsersEntity> allUsersEntities;
+
+    @OneToMany(mappedBy = "portsEntity")
+    private Collection<VisitsEntity> visitsEntities;
 
     public PortsEntity()
     {}
 
-    public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, int priceListId) {
-//        this.portId = portId;
-        this.portName.set(portName);
+    public PortsEntity(String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity, Collection<AllUsersEntity> allUsersEntities, Collection<VisitsEntity> visitsEntities) {
+        this.portName = portName;
         this.placesShipsBig = placesShipsBig;
         this.placesShipsSmall = placesShipsSmall;
         this.streetNumber = streetNumber;
@@ -61,10 +61,50 @@ public class PortsEntity {
         this.phoneNumber = phoneNumber;
         this.vhfChannel = vhfChannel;
         this.bankAccount = bankAccount;
-        this.priceListId = priceListId;
+        this.priceListEntity = priceListEntity;
+        this.allUsersEntities = allUsersEntities;
+        this.visitsEntities = visitsEntities;
     }
-    @ManyToMany(mappedBy = "portsEntities")
-    private Collection<AllUsersEntity> allUsersEntities;
+
+    public PortsEntity(String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, PriceListEntity priceListEntity) {
+        this.portName = portName;
+        this.placesShipsBig = placesShipsBig;
+        this.placesShipsSmall = placesShipsSmall;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.cityName = cityName;
+        this.postCode = postCode;
+        this.phoneNumber = phoneNumber;
+        this.vhfChannel = vhfChannel;
+        this.bankAccount = bankAccount;
+        this.priceListEntity = priceListEntity;
+        this.allUsersEntities = new ArrayList<AllUsersEntity>();
+        this.visitsEntities = new ArrayList<VisitsEntity>();
+    }
+
+    public PriceListEntity getPriceListEntity() {
+        return priceListEntity;
+    }
+
+    public void setPriceListEntity(PriceListEntity priceListEntity) {
+        this.priceListEntity = priceListEntity;
+    }
+
+    public Collection<AllUsersEntity> getAllUsersEntities() {
+        return allUsersEntities;
+    }
+
+    public void setAllUsersEntities(Collection<AllUsersEntity> allUsersEntities) {
+        this.allUsersEntities = allUsersEntities;
+    }
+
+    public Collection<VisitsEntity> getVisitsEntities() {
+        return visitsEntities;
+    }
+
+    public void setVisitsEntities(Collection<VisitsEntity> visitsEntities) {
+        this.visitsEntities = visitsEntities;
+    }
 
     public int getPortId() {
         return portId;
@@ -75,11 +115,11 @@ public class PortsEntity {
     }
 
     public String getPortName() {
-        return portName.get();
+        return portName;
     }
 
     public void setPortName(String portName) {
-        this.portName.set(portName);
+        this.portName = portName;
     }
 
     public int getPlacesShipsBig() {
@@ -154,32 +194,17 @@ public class PortsEntity {
         this.bankAccount = bankAccount;
     }
 
-    public int getPriceListId() {
-        return priceListId;
-    }
-
-    public void setPriceListId(int priceListId) {
-        this.priceListId = priceListId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PortsEntity that = (PortsEntity) o;
-        return portId == that.portId && placesShipsBig == that.placesShipsBig && placesShipsSmall == that.placesShipsSmall && streetNumber == that.streetNumber && vhfChannel == that.vhfChannel && priceListId == that.priceListId && Objects.equals(portName, that.portName) && Objects.equals(streetName, that.streetName) && Objects.equals(cityName, that.cityName) && Objects.equals(postCode, that.postCode) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(bankAccount, that.bankAccount);
+        return portId == that.portId && placesShipsBig == that.placesShipsBig && placesShipsSmall == that.placesShipsSmall && streetNumber == that.streetNumber && vhfChannel == that.vhfChannel && priceListEntity == that.priceListEntity && Objects.equals(portName, that.portName) && Objects.equals(streetName, that.streetName) && Objects.equals(cityName, that.cityName) && Objects.equals(postCode, that.postCode) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(bankAccount, that.bankAccount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(portId, portName, placesShipsBig, placesShipsSmall, streetNumber, streetName, cityName, postCode, phoneNumber, vhfChannel, bankAccount, priceListId);
+        return Objects.hash(portId, portName, placesShipsBig, placesShipsSmall, streetNumber, streetName, cityName, postCode, phoneNumber, vhfChannel, bankAccount, priceListEntity);
     }
 
-//    public Collection<AdminPortIntermediaryEntity> getAdminPortIntermediariesByPortId() {
-//        return adminPortIntermediariesByPortId;
-//    }
-//
-//    public void setAdminPortIntermediariesByPortId(Collection<AdminPortIntermediaryEntity> adminPortIntermediariesByPortId) {
-//        this.adminPortIntermediariesByPortId = adminPortIntermediariesByPortId;
-//    }
 }

@@ -2,6 +2,8 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -14,17 +16,44 @@ public class CaptainsEntity {
     @Column(name = "PESEL")
     private String pesel;
     @Id
+    @SequenceGenerator(name = "captains_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "captains_id")
     @Column(name = "CAPTAIN_ID")
-    private int captainId;
+    private Integer captainId;
+    @OneToMany(mappedBy = "captainsEntity")
+    private Collection<VisitsEntity>  visitsEntity;
 
     public CaptainsEntity()
     {}
 
-    public CaptainsEntity(String forename, String surname, String pesel, int captainId) {
+    public CaptainsEntity(String forename, String surname, String pesel, Collection<VisitsEntity> visitsEntity) {
+        this.forename = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.visitsEntity = visitsEntity;
+    }
+
+    public CaptainsEntity(String forename, String surname, String pesel) {
+        this.forename = forename;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.visitsEntity = new ArrayList<VisitsEntity>();
+    }
+
+    public CaptainsEntity(String forename, String surname, String pesel, Integer captainId) {
         this.forename = forename;
         this.surname = surname;
         this.pesel = pesel;
         this.captainId = captainId;
+        this.visitsEntity = new ArrayList<VisitsEntity>();
+    }
+
+    public Collection<VisitsEntity> getVisitsEntity() {
+        return visitsEntity;
+    }
+
+    public void setVisitsEntity(Collection<VisitsEntity> visitsEntity) {
+        this.visitsEntity = visitsEntity;
     }
 
     public String getForename() {
