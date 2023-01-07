@@ -4,30 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/LoginWindowActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortsWindowActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/getData.java" afterDir="false" />
+    <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,23 +52,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-19/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.28850573&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Program Files/Java/javafx-sdk-19/lib",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.28850573",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn compile" />
@@ -110,7 +93,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="" />
+      <changelist id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;" />
       <created>1670426982275</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -123,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670433712624</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;Marged&quot;">
+      <created>1673086525270</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673086525270</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +130,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="file workspace changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="file workspace changed" />
+    <MESSAGE value="&quot;Marged&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Marged&quot;" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

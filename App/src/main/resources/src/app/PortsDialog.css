@@ -79,3 +79,21 @@
     -fx-background-color: #0093ff;
     -fx-text-fill: white;
 }
+
+
+.list-view: .list {
+  -fx-font-color: black;
+  -fx-border-color: #1385B4;
+  -fx-background-color: transparent;
+}
+
+.list-view .list:hover {
+  -fx-background-color: #1385B4;
+}
+
+
+.list-view:focused {
+  -fx-border-color: #035F85;
+  -fx-border-width: 0 0 2 0; // top, right, bottom, left
+  -fx-background-color: transparent;
+}

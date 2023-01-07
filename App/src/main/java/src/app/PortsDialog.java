@@ -23,6 +23,7 @@ import src.logic.PortsEntity;
 import src.appActions.PortsWindowActions.*;
 import src.logic.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,16 +33,18 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     private GridPane grid;
     private Text formTitle, notification;
 
-    private TableView<PortsEntity> tableView;
+    private ListView<PortsEntity> listView;
 
     private ObservableList<PortsEntity> data;
-            //FXCollections.observableArrayList(
-                    //getPorts()
-            //);
     private AllUsersEntity currentUser;
 
     List<PortsEntity> getPorts() {
         List<PortsEntity> ports = DataBase.getInstance().getPorts();
+        List<String> names = new ArrayList<String>();
+        for(PortsEntity port: ports)  {
+            names.add(port.getPortName());
+        }
+
         return ports;
     }
 
@@ -86,7 +89,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         grid.add(settingsButton, 1, 0);
         grid.setHalignment(settingsButton, HPos.RIGHT);
 
-        tableView = new TableView<PortsEntity>();
+        /*tableView = new TableView<PortsEntity>();
         tableView.setEditable(true);
         TableColumn<PortsEntity, String> portNameCol = new TableColumn<PortsEntity, String>("Port Name");
         portNameCol.setMinWidth(260);
@@ -95,18 +98,31 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         tableView.setItems(data);
         tableView.getColumns().addAll(portNameCol);
         tableView.getColumns().set(0, portNameCol);
-        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);*/
 
-        grid.add(tableView, 1, 1);
+        listView = new ListView<PortsEntity>();
+        listView.setItems(data);
+        listView.setCellFactory(param -> new ListCell<PortsEntity>() {
 
-        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            protected void updateItem(PortsEntity port, boolean empty) {
+                super.updateItem(port, empty);
+
+                if (empty || port == null || port.getPortName() == null) {
+                    setText(null);
+                } else {
+                    setText(port.getPortName());
+                }
+            }
+        });
+
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent click) {
 
                 if (click.getClickCount() == 2) {
                     //Use ListView's getSelected Item
-                    PortsEntity currentItemSelected = tableView.getSelectionModel()
+                    PortsEntity currentItemSelected = listView.getSelectionModel()
                             .getSelectedItem();
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
@@ -119,6 +135,10 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
             }
         });
 
+        listView.setPrefWidth(400);
+        listView.setPrefHeight(500);
+
+        grid.add(listView, 1, 1);
 
         notification = new Text();
         notification.setId("notification");

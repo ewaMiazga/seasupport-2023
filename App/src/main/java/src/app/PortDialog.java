@@ -63,12 +63,12 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        detailsButton = new Button("Port Details");
-        detailsButton.setMaxSize(100, 100);
-        detailsButton.setOnAction(this);
+        accountButton = new Button("Port Details");
+        accountButton.setMaxSize(100, 100);
+        accountButton.setOnAction(this);
 
-        grid.add(detailsButton, 1, 0);
-        grid.setHalignment(detailsButton, HPos.RIGHT);
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
 
         priceListButton = new Button("Price List");
@@ -134,7 +134,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         //TODO:
         //Write function, which will check if login and password are equal from those from
         //database @michał
-        if (event.getSource() == detailsButton) {
+        if (event.getSource() == accountButton) {
             notification.setText("price button pressed");
             //Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
