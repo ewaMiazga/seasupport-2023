@@ -9,31 +9,25 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import src.logic.PortsEntity;
 
-/**
- * The type Welcome dialog.
- */
-public class WelcomeDialog extends Application implements EventHandler<ActionEvent> {
+public class ReserveDockDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Label whoAreYouLabel;
+
+    private Label smallDockLabel, bigDockLabel;
     private Button loginButton, registrationButton;
     private Scene scene;
-
-    private Stage welcomeStage;
     private String cssPath;
-
     @Override
-    public void start(Stage stage) {
-        welcomeStage = stage;
-        stage.setTitle("Welcome Dialog");
+    public void start(Stage stage) { }
+
+    public void start(Stage stage, PortsEntity port, Boolean isBig) {
+        stage.setTitle("Reserve Dock Dialog");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -44,14 +38,10 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text("Welcome");
+        formTitle = new Text(port.getPortName());
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 1,1);
         grid.setHalignment(formTitle, HPos.CENTER);
-
-        whoAreYouLabel = new Label("Join us!");
-        grid.add(whoAreYouLabel, 0, 1);
-        grid.setHalignment(whoAreYouLabel, HPos.CENTER);
 
         loginButton = new Button("Sign In");
         loginButton.setPrefSize(400, 50);
@@ -87,15 +77,6 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == loginButton) {
-            Stage stage = new Stage();
-            LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(stage, welcomeStage);
-        }
-        else if (event.getSource() == registrationButton) {
-            Stage stage = new Stage();
-            RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(stage, welcomeStage);
-        }
     }
 }
+

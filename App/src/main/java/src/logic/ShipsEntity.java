@@ -2,6 +2,8 @@ package src.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,21 +12,43 @@ public class ShipsEntity {
     @Id
     @Column(name = "CALL_SIGN")
     private String callSign;
-    @Basic
-    @Column(name = "SHPIP_NAME")
-    private String shpipName;
-    @Basic
-    @Column(name = "SHIP_OWNER_ID")
-    private int shipOwnerId;
-    @Basic
+    @Column(name = "SHIP_NAME")
+    private String shipName;
     @Column(name = "SHIP_TYPE")
     private String shipType;
-    @Basic
     @Column(name = "SHIP_LENGTH")
-    private short shipLength;
+    private Short shipLength;
     @ManyToOne
-    @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID", nullable = false)
-    private ShipOwnersEntity shipOwnersByShipOwnerId;
+    @JoinColumn(name = "SHIP_OWNER_ID", referencedColumnName = "SHIP_OWNER_ID")
+    private ShipOwnersEntity shipOwnersEntity;
+    @OneToMany(mappedBy = "shipsEntity", fetch = FetchType.EAGER)
+    private Collection<VisitsEntity> visitsEntities;
+
+    public ShipsEntity(String callSign, String shipName, String shipType, short shipLength, ShipOwnersEntity shipOwnersEntity) {
+        this.callSign = callSign;
+        this.shipName = shipName;
+        this.shipType = shipType;
+        this.shipLength = shipLength;
+        this.shipOwnersEntity = shipOwnersEntity;
+        this.visitsEntities = new ArrayList<VisitsEntity>();
+    }
+
+    public ShipsEntity() {
+    }
+
+
+    public void addVisit(VisitsEntity visit)
+    {
+        this.visitsEntities.add(visit);
+    }
+
+    public Collection<VisitsEntity> getVisitsEntities() {
+        return visitsEntities;
+    }
+
+    public void setVisitsEntities(Collection<VisitsEntity> visitsEntities) {
+        this.visitsEntities = visitsEntities;
+    }
 
     public ShipsEntity(){
 
@@ -47,21 +71,16 @@ public class ShipsEntity {
         this.callSign = callSign;
     }
 
-    public String getShpipName() {
-        return shpipName;
+    public String getShipName() {
+        return shipName;
     }
 
-    public void setShpipName(String shpipName) {
-        this.shpipName = shpipName;
+    public void setShipName(String shpipName) {
+        this.shipName = shpipName;
     }
 
-    public int getShipOwnerId() {
-        return shipOwnerId;
-    }
 
-    public void setShipOwnerId(int shipOwnerId) {
-        this.shipOwnerId = shipOwnerId;
-    }
+
 
     public String getShipType() {
         return shipType;
@@ -84,19 +103,19 @@ public class ShipsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShipsEntity that = (ShipsEntity) o;
-        return shipOwnerId == that.shipOwnerId && shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shpipName, that.shpipName) && Objects.equals(shipType, that.shipType);
+        return shipLength == that.shipLength && Objects.equals(callSign, that.callSign) && Objects.equals(shipName, that.shipName) && Objects.equals(shipType, that.shipType) && Objects.equals(shipOwnersEntity, that.shipOwnersEntity) && Objects.equals(visitsEntities, that.visitsEntities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(callSign, shpipName, shipOwnerId, shipType, shipLength);
+        return Objects.hash(callSign, shipName, shipType, shipLength, shipOwnersEntity, visitsEntities);
     }
 
-    public ShipOwnersEntity getShipOwnersByShipOwnerId() {
-        return shipOwnersByShipOwnerId;
+    public ShipOwnersEntity getShipOwnersEntity() {
+        return shipOwnersEntity;
     }
 
-    public void setShipOwnersByShipOwnerId(ShipOwnersEntity shipOwnersByShipOwnerId) {
-        this.shipOwnersByShipOwnerId = shipOwnersByShipOwnerId;
+    public void setShipOwnersEntity(ShipOwnersEntity shipOwnersEntity) {
+        this.shipOwnersEntity = shipOwnersEntity;
     }
 }

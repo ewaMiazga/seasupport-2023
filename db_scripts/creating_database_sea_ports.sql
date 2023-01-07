@@ -29,8 +29,9 @@ CREATE TABLE ships
     shpip_name VARCHAR2(15 CHAR) NOT NULL,
     
     ship_owner_id NUMBER(7) NOT NULL CONSTRAINT ship_owners_fk REFERENCES ship_owners(ship_owner_id),
-    ship_type VARCHAR2(7) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailng_boat' OR ship_type = 'motor_boat'),
-    ship_length NUMBER(5, 2) NOT NULL
+    ship_length NUMBER(5, 2) NOT NULL,
+    ship_type VARCHAR2(12) NOT NULL CONSTRAINT only_2_types CHECK (ship_type = 'sailing_boat' OR ship_type = 'motor_boat')
+
 );
 
 CREATE TABLE captains
@@ -44,23 +45,23 @@ CREATE TABLE captains
 CREATE TABLE price_list
 (
     list_id NUMBER(7) CONSTRAINT price_list_pk PRIMARY KEY,
-    laundry NUMBER(3, 2),
-    drying_room NUMBER(3, 2),
-    water NUMBER(3, 2),
-    shower NUMBER(3, 2),
-    sauna NUMBER(3, 2),
-    place_less_7m NUMBER(4, 2) NOT NULL,
-    place_7_12m NUMBER(4, 2) NOT NULL,
-    place_12_17m NUMBER(4, 2) NOT NULL,
-    place_17_20m NUMBER(4, 2) NOT NULL,
-    place_more_20m NUMBER(4, 2) NOT NULL
+    laundry NUMBER(4, 2),
+    drying_room NUMBER(4, 2),
+    water NUMBER(4, 2),
+    shower NUMBER(4, 2),
+    sauna NUMBER(4, 2),
+    place_less_7m NUMBER(6, 2),
+    place_7_12m NUMBER(6, 2),
+    place_12_17m NUMBER(6, 2),
+    place_17_20m NUMBER(6, 2),
+    place_more_20m NUMBER(6, 2)
 );
 
 
 CREATE TABLE ports
 (
     port_id NUMBER(7) CONSTRAINT port_pk PRIMARY KEY,
-    port_name VARCHAR2(15 CHAR) NOT NULL,
+    port_name VARCHAR2(50 CHAR) NOT NULL CONSTRAINT unique_port_name UNIQUE,
     places_ships_big NUMBER(3) NOT NULL,
     places_ships_small NUMBER(3) NOT NULL,
     street_number NUMBER(3) NOT NULL,
@@ -95,17 +96,3 @@ CREATE TABLE visits
     visit_id NUMBER(7) CONSTRAINT vistits_pk PRIMARY KEY,
     CONSTRAINT unique_visit UNIQUE (port_id, login, call_sign, captain_id, date_begin)
 );
-
-
-
-<<<<<<< HEAD
-
-=======
-ALTER TABLE PORTS
-    DROP CONSTRAINT ports_price_fk;
-
-CREATE SEQUENCE port_id_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1;
->>>>>>> 2c72b991708e5f66ec057d95f1482ed6fd19269c

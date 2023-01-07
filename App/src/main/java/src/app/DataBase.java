@@ -1,28 +1,21 @@
 package src.app;
 
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.hibernate.service.ServiceRegistry;
-import src.logic.AdminPortIntermediaryEntity;
-import src.logic.AllUsersEntity;
-import src.logic.CaptainsEntity;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.query.criteria.*;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.sql.internal.SQLQueryParser;
 import src.logic.*;
-
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.sql.Date;
 import java.util.List;
 
+
 /**
- * Class responisble for connecting to database -
+ * Class responsible for connecting to database -
  * fetching/pulling data to/from it.
  *
  * Design pattern singleton - you can get the object only from the method getInstance()
@@ -58,16 +51,21 @@ public class DataBase {
         configuration.addAnnotatedClass(CaptainsEntity.class);
         configuration.addAnnotatedClass(AllUsersEntity.class);
         configuration.addAnnotatedClass(PortsEntity.class);
-//        configuration.addAnnotatedClass(AdminPortIntermediaryEntity.class);
+        configuration.addAnnotatedClass(PriceListEntity.class);
+        configuration.addAnnotatedClass(ShipOwnersEntity.class);
+        configuration.addAnnotatedClass(ShipsEntity.class);
+        configuration.addAnnotatedClass(VisitsEntity.class);
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
     }
 
+    /**
+     * Method responsible for disabling connection after closing the application
+     */
     public static void disableConnection()
     {
         sessionFactory.close();
-//        StandardServiceRegistryBuilder.destroy(sessionFactory.getSessionFactoryOptions().getServiceRegistry());
     }
 
     /**
@@ -92,7 +90,7 @@ public class DataBase {
      * @param portId
      * @return PortsEntity
      */
-    public PortsEntity getPort(String portId)
+    public PortsEntity getPort(int portId)
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
@@ -102,28 +100,23 @@ public class DataBase {
         return portsEntity;
     }
 
-    public List<PortsEntity> getPorts(){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        List<PortsEntity> ports = ss.createNativeQuery("Select * from PORTS", PortsEntity.class).getResultList();
-        //List<PortsEntity> ports = ss.createQuery("FROM PORTS").getResultList();
-        tx.commit();
-        ss.close();
-        return ports;
-    }
     /**
-     *  Method responsible for pulling data to database
-     *  to the PORTS table
+     * Method responsible for fetching data from database
+     *  from the PORTS
      *
-     * @param portsEntity
+     * @param name
+     * @return PortsEntity
      */
-    public void addPort(PortsEntity portsEntity)
+    public PortsEntity getPort(String name)
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.save(portsEntity);
+        Query query = ss.createQuery("from PortsEntity where portName = :name");
+        query.setParameter("name", name);
+        PortsEntity portsEntity = (PortsEntity) query.uniqueResult();
         tx.commit();
         ss.close();
+        return portsEntity;
     }
 
 
@@ -145,6 +138,109 @@ public class DataBase {
     }
 
     /**
+     * Fetch visit with given user and data_begin
+     *
+     * @param user
+     * @param dateBegin
+     * @return VisitsEntity
+     */
+    public VisitsEntity getVisit(AllUsersEntity user, Date dateBegin)
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE " +
+                                     "VE.dateBegin = :dateB and allUsersEntity = :user");
+        query.setParameter("dateB", dateBegin);
+        query.setParameter("user", user);
+        VisitsEntity visit = (VisitsEntity)query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return visit;
+    }
+
+    /**
+     * Gets a list of VistsEntities from a port after given date
+     *
+     * @param port
+     * @param dateBegin
+     * @return List<VisitsEntity>
+     */
+    public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin)
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
+                                     "and VE.dateBegin >= :dateBegin");
+        query.setParameter("port", port);
+        query.setParameter("dateBegin", dateBegin);
+        List<VisitsEntity> visits = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return visits;
+    }
+
+
+    /**
+     * Fetches all ports in the database
+     * @return List<PortsEntities>
+     */
+    public List<PortsEntity> getAllPorts()
+    {
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("from PortsEntity");
+        List<PortsEntity> ports = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        return ports;
+    }
+
+
+    /**
+     * Adds ShipsEntity to the database
+     *
+     * @param ship
+     */
+    public void addShip(ShipsEntity ship)
+    {
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+
+        ss.saveOrUpdate(ship.getShipOwnersEntity());
+        if (!ship.getVisitsEntities().isEmpty())
+        {
+            for (var visit : ship.getVisitsEntities())
+                ss.saveOrUpdate(visit);
+        }
+        ss.saveOrUpdate(ship);
+        tx.commit();
+        ss.close();
+    }
+
+    /**
+     * Adds ShipsEntity to the database and sets its shipowner to
+     * that one with given pesel
+     *
+     * @param ship
+     */
+    public void addShip(ShipsEntity ship, String pesel)
+    {
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+        Query query = ss.createQuery("from ShipOwnersEntity where pesel = :pesel");
+        query.setParameter("pesel", pesel);
+        ShipOwnersEntity shipOwner = (ShipOwnersEntity) query.uniqueResult();
+        ship.setShipOwnersEntity(shipOwner);
+        ss.saveOrUpdate(shipOwner);
+        ss.saveOrUpdate(ship);
+        tx.commit();
+        ss.close();
+    }
+
+    /**
      * Method responsible for pulling data to database
      * to the ALL_USERS table
      *
@@ -154,7 +250,15 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.persist(allUsers);
+        if (!allUsers.getPortsEntities().isEmpty()){
+            for (var port : allUsers.getPortsEntities())
+                ss.saveOrUpdate(port);
+        }
+        if (!allUsers.getVisitsEntities().isEmpty()){
+            for (var visit : allUsers.getVisitsEntities())
+                ss.saveOrUpdate(visit);
+        }
+        ss.saveOrUpdate(allUsers);
         tx.commit();
         ss.close();
     }
@@ -171,110 +275,27 @@ public class DataBase {
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.persist(cap);
+        ss.saveOrUpdate(cap);
         tx.commit();
         ss.close();
     }
 
     /**
-     * Get PriceListEntity from database
-     *
-     * @param listId
+     * Adds new visit to the database
+     * @param visit
      */
-
-    public PriceListEntity getPriceList(int listId){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        //String id = Integer.toString(listId);
-        PriceListEntity priceList = ss.get(PriceListEntity.class, listId);
-        tx.commit();
-        ss.close();
-        return priceList;
-    }
-
-    /**
-     * Get CaptainsEntity from database
-     *
-     * @param id
-     */
-
-    public CaptainsEntity getCaptain(int id){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        CaptainsEntity captian = ss.get(CaptainsEntity.class, id);
-        tx.commit();
-        ss.close();
-        return captian;
-    }
-
-    /**
-     * Get ShipsEntity from database
-     *
-     * @param callSign
-     */
-
-    public ShipsEntity getShip(String callSign){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        ShipsEntity s = ss.get(ShipsEntity.class, callSign);
-        tx.commit();
-        ss.close();
-        return s;
-    }
-
-    /**
-     * Adds ShipsEntity to the database
-     *
-     * @param ship
-     */
-    public void addShip(ShipsEntity ship)
+    public void addVisit(VisitsEntity visit)
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        ss.persist(ship);
+        this.addUser(visit.getAllUsersEntity());
+        ss.saveOrUpdate(visit.getPortsEntity());
+        this.addShip(visit.getShipsEntity());
+        ss.saveOrUpdate(visit.getCaptainsEntity());
+        ss.saveOrUpdate(visit);
         tx.commit();
         ss.close();
     }
 
-
-    public ShipOwnersEntity getOwner(String id){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        ShipOwnersEntity s = ss.get(ShipOwnersEntity.class, id);
-        tx.commit();
-        ss.close();
-        return s;
-    }
-
-    public void addOwner(ShipOwnersEntity owner){
-        Session ss = sessionFactory.openSession();
-        Transaction tx = ss.beginTransaction();
-        ss.persist(owner);
-        tx.commit();
-        ss.close();
-    }
-
-    /**
-     * Gets a list of VistsEntities from a port after given date
-     *
-     * @param port
-     * @param dateBegin
-     * @return List<VisitsEntity>
-     */
-    public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin, Date dateEnd)
-    {
-        Session ss = sessionFactory.openSession();
-        ss.beginTransaction();
-
-        Query query = ss.createQuery("FROM VisitsEntity VE WHERE portsEntity = :port " +
-                "and VE.dateBegin >= :dateBegin" + "and VE.dateEnd =< :dateEnd");
-        query.setParameter("port", port);
-        query.setParameter("dateBegin", dateBegin);
-        query.setParameter("dateEnd", dateEnd);
-        List<VisitsEntity> visits = query.list();
-        ss.getTransaction().commit();
-        ss.close();
-        return visits;
-    }
 
 }

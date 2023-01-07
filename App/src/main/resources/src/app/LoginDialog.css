@@ -45,6 +45,7 @@
 #notification
 {
     -fx-fill: #ff7070;
+    -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
 }
 
