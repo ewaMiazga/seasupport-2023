@@ -34,17 +34,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
     private Button returnButton;
     private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
-
     private DatePicker birthdayPicker;
     private AllUsersEntity selectedUser;
-
     private final String pattern = "dd/MM/yy";
     private Scene scene;
     private Stage accountStage;
     private String cssPath;
     @Override
     public void start(Stage stage) {
-
     }
     public void start(Stage previousStage, AllUsersEntity user) {
         Stage stage = new Stage();
@@ -391,20 +388,13 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     class ChangePassDialog extends Application {
         private GridPane grid;
-
-        private Text formTitle, notification;
-
+        private Text notification;
         private Label userOldPassLabel,userPassLabel, userPassConfLabel;
-
         private TextField userOldPassVisibleField, userPassVisibleField, userPassConfVisibleField;
-
         private PasswordField userOldPassField, userPassField, userPassConfField;
-
         private CheckBox showOldPass, showPass, showConfPass;
-
         private Button changePassButton;
         private Scene scene;
-
         private Stage changePassStage;
         private String cssPath;
 

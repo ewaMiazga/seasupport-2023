@@ -1,6 +1,7 @@
 package src.logic;
 
 import jakarta.persistence.*;
+import javafx.beans.property.StringProperty;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class PortsEntity {
     private int portId;
     @Basic
     @Column(name = "PORT_NAME")
-    private String portName;
+    private StringProperty portName;
     @Basic
     @Column(name = "PLACES_SHIPS_BIG")
     private int placesShipsBig;
@@ -50,7 +51,7 @@ public class PortsEntity {
 
     public PortsEntity( String portName, int placesShipsBig, int placesShipsSmall, int streetNumber, String streetName, String cityName, String postCode, String phoneNumber, int vhfChannel, String bankAccount, int priceListId) {
 //        this.portId = portId;
-        this.portName = portName;
+        this.portName.set(portName);
         this.placesShipsBig = placesShipsBig;
         this.placesShipsSmall = placesShipsSmall;
         this.streetNumber = streetNumber;
@@ -74,11 +75,11 @@ public class PortsEntity {
     }
 
     public String getPortName() {
-        return portName;
+        return portName.get();
     }
 
     public void setPortName(String portName) {
-        this.portName = portName;
+        this.portName.set(portName);
     }
 
     public int getPlacesShipsBig() {

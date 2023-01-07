@@ -80,6 +80,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                 new PropertyValueFactory<PortsEntity, String>("portName"));
         tableView.setItems(data);
         tableView.getColumns().addAll(portNameCol);
+        tableView.getColumns().set(0, portNameCol);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         grid.add(tableView, 0, 1, 2, 1);

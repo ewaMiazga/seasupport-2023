@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="97bd4801-bc5d-4068-9343-85da8493532d" name="Changes" comment="file workspace changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +63,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.28850573&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RunAnythingCache">
@@ -86,7 +90,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9e8215c1-04b6-4c1f-852e-e1c08f9f89da" name="Changes" comment="" />
+      <changelist id="97bd4801-bc5d-4068-9343-85da8493532d" name="Changes" comment="file workspace changed" />
       <created>1670426982275</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
