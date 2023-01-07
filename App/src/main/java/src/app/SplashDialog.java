@@ -23,17 +23,13 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import src.logic.PortsEntity;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SplashDialog extends Application {
-/*    File file = new File("Logo.png");
-    File file2 = new File("background.jpg");*/
-
-/*    public final String APPLICATION_ICON =
-            file.toURI().toString();
-    public final String SPLASH_IMAGE =
-            file2.toURI().toString();*/
 
     private Pane splashLayout;
     private ProgressBar loadProgress;
@@ -49,11 +45,17 @@ public class SplashDialog extends Application {
         launch(args);
     }
 
+
+    List<String> getPortsNames() {
+        List<PortsEntity> ports = DataBase.getInstance().getPorts();
+        List<String> names = new ArrayList<String>();
+        for (PortsEntity port: ports) {
+            names.add(port.getPortName());
+        }
+        return names;
+    }
     @Override
     public void init() {
-/*        ImageView splash = new ImageView(new Image(
-                SPLASH_IMAGE
-        ));*/
         loadProgress = new ProgressBar();
         loadProgress.setPrefWidth(SPLASH_WIDTH - 20);
         progressText = new Label("Will find ports . . .");
@@ -76,9 +78,7 @@ public class SplashDialog extends Application {
                         FXCollections.<String>observableArrayList();
                 ObservableList<String> availableFriends =
                         FXCollections.observableArrayList(
-                                "Fili", "Kili", "Oin", "Gloin", "Thorin",
-                                "Dwalin", "Balin", "Bifur", "Bofur",
-                                "Bombur", "Dori", "Nori", "Ori"
+                                getPortsNames()
                         );
 
                 updateMessage("Finding ports . . .");
