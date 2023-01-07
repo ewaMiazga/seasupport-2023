@@ -115,77 +115,59 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         grid.add(formTitle, 0, 0, 2, 1);
 
 
-        forenameLabel = new Label("Forename: ");
-        grid.add(forenameLabel, 0, 1);
-
-        forenameField = new TextField();
-        grid.add(forenameField, 1, 1);
-
-        surnameLabel = new Label("Surname: ");
-        grid.add(surnameLabel, 0, 2);
-
-        surnameField = new TextField();
-        grid.add(surnameField, 1, 2);
-
-        peselLabel = new Label("Pesel: ");
-        grid.add(peselLabel, 0, 3);
-
-        peselField = new TextField();
-        grid.add(peselField, 1, 3);
-
         beginLabel = new Label("Start date of the visit: ");
-        grid.add(beginLabel, 0, 4);
+        grid.add(beginLabel, 0, 1);
 
         Locale.setDefault(Locale.ENGLISH);
         beginPicker = new DatePicker();
         beginPicker.setConverter(createStringConverter());
         beginPicker.setPromptText(pattern.toLowerCase());
 
-        grid.add(beginPicker, 1, 4);
+        grid.add(beginPicker, 1, 1);
 
         endLabel = new Label("End date of the visit: ");
-        grid.add(endLabel, 0, 5);
+        grid.add(endLabel, 0, 3);
 
         Locale.setDefault(Locale.ENGLISH);
         endPicker = new DatePicker();
         endPicker.setConverter(createStringConverter());
         endPicker.setPromptText(pattern.toLowerCase());
 
-        grid.add(endPicker, 1, 5);
+        grid.add(endPicker, 1, 3);
 
         numberLabel = new Label("Ship Call Sign: ");
-        grid.add(numberLabel, 0, 6);
+        grid.add(numberLabel, 0, 5);
 
         numberField = new TextField();
-        grid.add(numberField, 1, 6);
+        grid.add(numberField, 1, 5);
 
         newShipButton = new Button("Add New Ship");
         newShipButton.setOnAction(this);
 
-        grid.add(newShipButton, 2, 6);
+        grid.add(newShipButton, 2, 7);
         grid.setHalignment(newShipButton, HPos.RIGHT);
 
         captainLabel = new Label("Visit's Captian Id: ");
-        grid.add(captainLabel, 0, 7);
+        grid.add(captainLabel, 0, 9);
 
         captainField = new TextField();
-        grid.add(captainField, 1, 7);
+        grid.add(captainField, 1, 9);
 
         newCaptainButton = new Button("Add New Captian");
         newCaptainButton.setOnAction(this);
 
-        grid.add(newCaptainButton, 2, 7);
+        grid.add(newCaptainButton, 2, 9);
         grid.setHalignment(newCaptainButton, HPos.RIGHT);
 
         registerButton = new Button("Create Visit");
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 10);
+        grid.add(registerButton, 1, 11);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 11);
+        grid.add(notification, 1, 12);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();

@@ -99,6 +99,8 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
 
             selectedPort.setPlacesShipsSmall(selectedPort.getPlacesShipsSmall() - 1);
             smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall()));
+            CreateVisitDialog dial = new CreateVisitDialog();
+            dial.start(openDocksStage, selectedUser, selectedPort);
         });
 
         grid.add(smallShipsButton, 2, 2);
@@ -119,9 +121,10 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
                 notification.setText("All big docks are booked!");
                 return;
             }
-
             selectedPort.setPlacesShipsBig(selectedPort.getPlacesShipsBig() - 1);
             bigShipsText.setText(Integer.toString(selectedPort.getPlacesShipsBig()));
+            ReserveDockDialog dial = new ReserveDockDialog();
+            dial.start(openDocksStage, selectedPort, true);
         });
 
         grid.add(bigShipsButton, 2, 3);
@@ -172,7 +175,11 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
             Date d = new Date(1999, 10, 5);
             AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
             AccountDialog accountDialog = new AccountDialog();
-            accountDialog.start(openDocksStage, user);
+            accountDialog.start(openDocksStage, selectedUser);
+        }
+
+        if(event.getSource() == smallShipsButton){
+
         }
     }
 }

@@ -111,10 +111,10 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                     //Parent parent = LoginDialog
                     //e->stage.setScene();
                     System.out.println(currentItemSelected.getPortName());
-                    CreateVisitDialog visit = new CreateVisitDialog();
-                    visit.start(stage, currentUser, currentItemSelected);
-                    //PortDialog portDialog = new PortDialog();
-                    //portDialog.start(stage, currentItemSelected);
+                    //CreateVisitDialog visit = new CreateVisitDialog();
+                    //visit.start(stage, currentUser, currentItemSelected);
+                    PortDialog portDialog = new PortDialog();
+                    portDialog.start(stage, currentItemSelected, currentUser);
                 }
             }
         });
