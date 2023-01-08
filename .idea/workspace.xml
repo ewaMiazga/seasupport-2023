@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +130,17 @@
     <MESSAGE value="file workspace changed" />
     <MESSAGE value="&quot;Marged&quot;" />
     <option name="LAST_COMMIT_MESSAGE" value="&quot;Marged&quot;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,13 +25,12 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton, detailsButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
     private Scene scene;
     private Stage portStage;
     private AllUsersEntity selectedUser;
     private PortsEntity selectedPort;
 
-    private AllUsersEntity currentUser;
     private String cssPath;
 
     @Override
@@ -46,7 +46,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;
         selectedPort = port;
-        currentUser = user;
+        selectedUser = user;
         stage.setTitle("Port Dialog");
         stage.getIcons().add(
                 new Image(
@@ -63,9 +63,18 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        accountButton = new Button("Port Details");
-        accountButton.setMaxSize(100, 100);
-        accountButton.setOnAction(this);
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource().equals(accountButton)) {
+                    AccountDialog accountDialog = new AccountDialog();
+                    accountDialog.start(stage, selectedUser);
+                }
+
+            }
+        });
 
         grid.add(accountButton, 1, 0);
         grid.setHalignment(accountButton, HPos.RIGHT);
@@ -143,18 +152,18 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == priceListButton) {
             notification.setText("price button pressed");
             PriceListDialog priceListDialog = new PriceListDialog();
-            priceListDialog.start(portStage, selectedPort, currentUser);
+            priceListDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
             OpenDocksDialog openDocksDialog = new OpenDocksDialog();
-            openDocksDialog.start(portStage, selectedPort, currentUser);
+            openDocksDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");
             MapDialog mapDialog = new MapDialog();
             try {
-                mapDialog.start(portStage, selectedPort, currentUser);
+                mapDialog.start(portStage, selectedPort, selectedUser);
             }
             catch(IOException e) {
                 e.printStackTrace();
@@ -163,7 +172,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         else if (event.getSource() == contactButton) {
             notification.setText("contact button pressed");
             ContactDialog contactDialog = new ContactDialog();
-            contactDialog.start(portStage, selectedPort, currentUser);
+            contactDialog.start(portStage, selectedPort, selectedUser);
         }
         else if (event.getSource() == returnButton) {
             notification.setText("Return button pressed");
