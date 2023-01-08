@@ -15,18 +15,18 @@ CREATE TABLE ship_owners
 (
     ship_owner_id NUMBER(7) CONSTRAINT ship_owners_pk PRIMARY KEY,
     phone_number VARCHAR2(13 BYTE) NOT NULL,
-    email VARCHAR2(20 CHAR) NOT NULL CONSTRAINT email_owner_unique UNIQUE,
-    forname VARCHAR2(15 CHAR),
+    email VARCHAR2(35 CHAR) NOT NULL CONSTRAINT email_owner_unique UNIQUE,
+    forename VARCHAR2(15 CHAR),
     surname VARCHAR2(15 CHAR),
     pesel VARCHAR2(11 BYTE) CONSTRAINT pesel_unique_owners UNIQUE,
-    name_company VARCHAR(15 CHAR),
+    name_company VARCHAR(30 CHAR),
     NIP NUMBER(10)
 );
 
 CREATE TABLE ships
 (
     call_sign VARCHAR2(15 CHAR) CONSTRAINT ships_pk PRIMARY KEY,
-    shpip_name VARCHAR2(15 CHAR) NOT NULL,
+    ship_name VARCHAR2(15 CHAR) NOT NULL,
     
     ship_owner_id NUMBER(7) NOT NULL CONSTRAINT ship_owners_fk REFERENCES ship_owners(ship_owner_id),
     ship_length NUMBER(5, 2) NOT NULL,
