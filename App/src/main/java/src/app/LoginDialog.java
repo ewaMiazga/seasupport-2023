@@ -9,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -88,6 +90,30 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 300, 275);
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                System.out.println("A key was pressed");
+                notification.setText("Sign in button pressed");
+                LoginWindowActions action = new LoginWindowActions();
+                AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
+                if(currentUser != null){
+                    PortsEntity port = action.userInPort(currentUser.getLogin());
+                    if(port != null){
+                        PortDialog portDialog = new PortDialog();
+                        portDialog.start(loginStage, port, currentUser);
+                    }
+                    else{
+                        PortsDialog portsDialog = new PortsDialog();
+                        portsDialog.start(loginStage, currentUser);
+                    }
+                }
+                else{
+                    notification.setText("Invalid login or password");
+                }
+            }
+        });
+
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         loginStage.setScene(scene);
