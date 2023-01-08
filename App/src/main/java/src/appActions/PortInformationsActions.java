@@ -2,14 +2,14 @@ package src.appActions;
 
 import javafx.util.Pair;
 import src.app.DataBase;
+import src.app.PriceListDialog;
 import src.logic.PriceListEntity;
 
 import java.util.Vector;
 
 public class PortInformationsActions {
-    public Vector<Pair<String, Integer>> getPrices(int listId){
+    public Vector<Pair<String, Integer>> getPrices(PriceListEntity list) {
         Vector<Pair<String, Integer>> prices = new Vector<Pair<String, Integer>>();
-        PriceListEntity list = DataBase.getInstance().getPriceList(listId);
         prices.add(new Pair<>("LAUNDRY", list.getLaundry().intValue()));
         prices.add(new Pair<>("DRYING_ROOM", list.getDryingRoom().intValue()));
         prices.add(new Pair<>("WATER", list.getWater().intValue()));

@@ -89,6 +89,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         userPassVisibleField.textProperty().bindBidirectional(userPassField.textProperty());
 
         signInButton = new Button("Login");
+        signInButton.setPrefSize(150, 25);
         signInButton.setOnAction(this);
 
         grid.add(signInButton, 1, 4);

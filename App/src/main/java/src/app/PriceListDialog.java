@@ -28,8 +28,10 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     private GridPane grid;
     private Text formTitle, notification;
     private TableView<Pair<String, Integer>> priceListView;
-    private Button returnButton;
+    private Button accountButton, returnButton;
+    private AllUsersEntity selectedUser;
     private Scene scene;
+    private Stage priceListStage;
     private String cssPath;
 
     private PriceListEntity priceList;
@@ -50,6 +52,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     }
 
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
+        priceListStage = stage;
+        selectedUser = user;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
         stage.getIcons().add(
                 new Image(
@@ -64,6 +68,13 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.CENTER);
+
         returnButton = new Button("Return");
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -77,12 +88,13 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         });
 
         grid.add(returnButton, 1, 2);
+        returnButton.setPrefSize(150, 50);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         priceListView = new TableView<Pair<String, Integer>>();
 
         PortInformationsActions action = new PortInformationsActions();
-        Vector<Pair<String, Integer>> prices = action.getPrices(port.getPriceListEntity().getListId());
+        Vector<Pair<String, Integer>> prices = action.getPrices(port.getPriceListEntity());
 
         TableColumn nameServiceCol = new TableColumn("Name of service");
         nameServiceCol.setMinWidth(160);
@@ -145,6 +157,12 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(priceListStage, selectedUser);
+        }
     }
 
     public final ObservableList<Pair<String, Integer>> setData() {

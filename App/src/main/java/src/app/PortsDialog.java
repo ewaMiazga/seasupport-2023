@@ -33,10 +33,12 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     private GridPane grid;
     private Text formTitle, notification;
 
+    private Button accountButton;
+
     private ListView<PortsEntity> listView;
 
     private ObservableList<PortsEntity> data;
-    private AllUsersEntity currentUser;
+    private AllUsersEntity selectedUser;
 
     List<PortsEntity> getPorts() {
         List<PortsEntity> ports = DataBase.getInstance().getPorts();
@@ -52,7 +54,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     }
 
     public void start(Stage stage, AllUsersEntity user) {
-        currentUser = user;
+        selectedUser = user;
         data = FXCollections.observableArrayList(getPorts());
         stage.setTitle("Ports Dialog");
         stage.getIcons().add(
@@ -67,33 +69,23 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
         formTitle = new Text("Choose Port");
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0);
 
-        settingsButton = new Button("Settings");
-        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(event.getSource().equals(settingsButton)) {
-                    LoginDialog loginDialog = new LoginDialog();
-                    loginDialog.start(stage);
+                if(event.getSource().equals(accountButton)) {
+                    AccountDialog accountDialog = new AccountDialog();
+                    accountDialog.start(stage, selectedUser);
                 }
 
             }
         });
 
-        grid.add(settingsButton, 1, 0);
-        grid.setHalignment(settingsButton, HPos.RIGHT);
-
-        /*tableView = new TableView<PortsEntity>();
-        tableView.setEditable(true);
-        TableColumn<PortsEntity, String> portNameCol = new TableColumn<PortsEntity, String>("Port Name");
-        portNameCol.setMinWidth(260);
-        portNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("portName") );
-        tableView.setItems(data);
-        tableView.getColumns().addAll(portNameCol);
-        tableView.getColumns().set(0, portNameCol);
-        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);*/
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         listView = new ListView<PortsEntity>();
         listView.setItems(data);
@@ -125,7 +117,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
                     //CreateVisitDialog visit = new CreateVisitDialog();
                     //visit.start(stage, currentUser, currentItemSelected);
                     PortDialog portDialog = new PortDialog();
-                    portDialog.start(stage, currentItemSelected, currentUser);
+                    portDialog.start(stage, currentItemSelected, selectedUser);
                 }
             }
         });
@@ -133,7 +125,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         listView.setPrefWidth(400);
         listView.setPrefHeight(500);
 
-        grid.add(listView, 1, 1);
+        grid.add(listView, 0, 1, 2, 1);
 
         notification = new Text();
         notification.setId("notification");
