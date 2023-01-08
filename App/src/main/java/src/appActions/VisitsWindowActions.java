@@ -60,7 +60,7 @@ public class VisitsWindowActions {
         if(!shipInDataBase(data.get(2))) return 4;
         if(!captianInDataBase(data.get(3))) return 5;
 
-        ShipsEntity ship = DataBase.getInstance().getShip(data.get(5));
+        ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
         CaptainsEntity cap = DataBase.getInstance().getCaptain(Integer.valueOf(data.get(3)));
 
         Integer avaliblePlaces = 0;

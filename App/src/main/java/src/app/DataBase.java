@@ -226,7 +226,7 @@ public class DataBase {
                 "AND VE.dateBegin BETWEEN :dateBegin AND :dateEnd");
         query.setParameter("port", port);
         query.setParameter("dateBegin", dateBegin);
-        query.setParameter("dateBegin", dateEnd);
+        query.setParameter("dateEnd", dateEnd);
         List<VisitsEntity> visits = query.list();
         ss.getTransaction().commit();
         ss.close();
