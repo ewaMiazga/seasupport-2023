@@ -24,7 +24,9 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
     private Text formTitle, notification;
     private Image map;
     private ImageView view;
-    private Button returnButton;
+    private Button accountButton, returnButton;
+
+    private AllUsersEntity selectedUser;
     private Scene scene;
     private Stage mapStage;
     private String cssPath;
@@ -34,6 +36,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
 
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) throws IOException {
         mapStage = stage;
+        selectedUser = user;
         stage.setTitle("Port: " + port.getPortName() + ", price list");
 
         grid = new GridPane();
@@ -46,15 +49,23 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
+
         map = new Image(WelcomeDialog.class.getResourceAsStream("ExamplePortMap.jpg"));
         view = new ImageView(map);
         view.setX(10);
         view.setY(10);
         view.setFitWidth(575);
         view.setPreserveRatio(true);
-        grid.add(view, 0, 1);
+        grid.add(view, 0, 1, 2, 1);
 
         returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -66,7 +77,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
             }
         });
 
-        grid.add(returnButton, 0, 2);
+        grid.add(returnButton, 1, 2);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         notification = new Text();
@@ -92,6 +103,12 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(mapStage, selectedUser);
+        }
     }
 
 }

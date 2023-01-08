@@ -135,6 +135,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.setHalignment(bigShipsButton, HPos.CENTER);
 
         returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

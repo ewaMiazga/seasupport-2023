@@ -174,6 +174,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
 
         registerButton = new Button("Register");
+        registerButton.setPrefSize(150, 25);
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 13);
