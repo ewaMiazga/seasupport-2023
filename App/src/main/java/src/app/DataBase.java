@@ -217,7 +217,14 @@ public class DataBase {
         ss.close();
         return visits;
     }
-
+    /**
+     * Gets a list of VistsEntities witch will start between dateBegin and dateEnd
+     *
+     * @param port
+     * @param dateBegin
+     * @param dateEnd
+     * @return List<VisitsEntity>
+     */
     public List<VisitsEntity> getVisitByPortBetween(PortsEntity port, Date dateBegin, Date dateEnd){
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
@@ -233,6 +240,12 @@ public class DataBase {
         return visits;
     }
 
+    /**
+     * Gets a list of actually VistsEntities from this port.
+     *
+     * @param port
+     * @return List<VisitsEntity>
+     */
     public List<VisitsEntity> getVisitByPort(PortsEntity port){
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();

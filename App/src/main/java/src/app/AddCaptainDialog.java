@@ -13,37 +13,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import src.appActions.LoginWindowActions;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.Vector;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import src.appActions.LoginWindowActions;
-
-import java.util.List;
-import java.util.Vector;
-import javafx.util.StringConverter;
-import org.hibernate.annotations.Check;
 import src.appActions.VisitsWindowActions;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import src.logic.AllUsersEntity;
 
 /**
@@ -71,7 +48,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private String cssPath;
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
-            "Successful action, you added new Captian!");
+            "Successful action, you added new Captain!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -87,7 +64,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     public void start(Stage stage, AllUsersEntity user) {
         registrationStage = stage;
-        stage.setTitle("Registration Dialog");
+        stage.setTitle("Add Captain Dialog");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -99,12 +76,12 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setPadding(new Insets(25, 25, 25, 25));
 
 
-        formTitle = new Text("Add Captian Form");
+        formTitle = new Text("Add Captain Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
 
-        showPass = new CheckBox("I'm the Captian of the ship");
+        showPass = new CheckBox("I'm the Captain of the ship");
         grid.add(showPass, 0, 1);
 
         forenameLabel = new Label("Forename: ");
@@ -127,7 +104,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.add(peselField, 1, 7);
 
 
-        registerButton = new Button("Add Captian");
+        registerButton = new Button("Add Captain");
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 9);
@@ -145,7 +122,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddCaptainDialog
      *
      * @param args the input arguments
      */
@@ -159,7 +136,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();
-            int message_code = action.addCaptian(getTextContents());
+            int message_code = action.addCaptain(getTextContents());
             notification.setText(messages.get(message_code));
             if(message_code == 2) {
                 registrationStage.close();

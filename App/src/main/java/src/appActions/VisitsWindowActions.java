@@ -13,7 +13,16 @@ import javafx.util.Pair;
 import src.logic.*;
 import src.app.DataBase;
 
+/**
+ * The type Visits Window Actions.
+ */
 public class VisitsWindowActions {
+    /**
+     * AddShip.
+     *
+     * Checking given data and add new ship to database.
+     * @param data Vector<String>
+     */
     public int addShip(Vector<String> data){
         for(int i =0; i < data.size(); i++){
             if(data.get(i).equals(""))
@@ -34,18 +43,40 @@ public class VisitsWindowActions {
         return 5;
     }
 
+    /**
+     * ShipInDataBase.
+     *
+     * Checking that the ship is in database.
+     * @param callSign String
+     */
     private boolean shipInDataBase(String callSign){
         ShipsEntity s = DataBase.getInstance().getShip(callSign);
         if(s == null) return false;
         return true;
     }
 
+    /**
+     * OwnerInDataBase.
+     *
+     * Checking that the shipowner is in database.
+     * @param id String
+     */
     private boolean ownerInDataBase(String id){
         ShipOwnersEntity s = DataBase.getInstance().getOwner(id);
         if(s == null) return false;
         return true;
     }
 
+    /**
+     * AddVisit.
+     *
+     * Checking given data and add new visit to database.
+     * @param data Vector<String>
+     * @param begin LocalDate
+     * @param end LocalDate
+     * @param port PortsEntity
+     * @param user AllUsersEntity
+     */
     public int addVisit(Vector<String> data, LocalDate begin, LocalDate end, PortsEntity port, AllUsersEntity user){
         Date dateBegin = Date.valueOf(begin);
         Date dateEnd = Date.valueOf(end);
@@ -58,45 +89,62 @@ public class VisitsWindowActions {
         if(begin.isBefore(LocalDate.now())) return 2;
         if(begin.isAfter(end)) return 3;
         if(!shipInDataBase(data.get(2))) return 4;
-        if(!captianInDataBase(data.get(3))) return 5;
+        if(!captainInDataBase(data.get(3))) return 5;
 
         ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
         CaptainsEntity cap = DataBase.getInstance().getCaptain(Integer.valueOf(data.get(3)));
 
-        Integer avaliblePlaces = 0;
-        if(ship.getShipLength() > 18) avaliblePlaces = port.getPlacesShipsBig() -
+        Integer availablePlaces = 0;
+        if(ship.getShipLength() > 18) availablePlaces = port.getPlacesShipsBig() -
                 getBookedPlacesNow(port, dateBegin).getValue() - getBookedPlacesBetween(port, dateBegin, dateEnd).getValue();
         else
-            avaliblePlaces = port.getPlacesShipsSmall() -
+            availablePlaces = port.getPlacesShipsSmall() -
                     getBookedPlacesNow(port, dateBegin).getKey() - getBookedPlacesBetween(port, dateBegin, dateEnd).getKey();
-        if(avaliblePlaces == 0) return 6;
+        if(availablePlaces == 0) return 6;
 
         VisitsEntity v = new VisitsEntity(dateBegin, dateEnd, port, user, ship, cap);
         DataBase.getInstance().addVisit(v);
         return 5;
     }
 
-    private boolean captianInDataBase(String id){
+    /**
+     * CaptainInDataBase.
+     *
+     * Checking that the captain is in database.
+     * @param id String
+     */
+    private boolean captainInDataBase(String id){
         int i_id = Integer.valueOf(id);
         CaptainsEntity c = DataBase.getInstance().getCaptain(i_id);
         if(c == null) return false;
         return true;
     }
 
-    public int addCaptian(Vector<String> data){
+    /**
+     * AddCaptain.
+     *
+     * Checking given data and add new captain to database.
+     * @param data Vector<String>
+     */
+    public int addCaptain(Vector<String> data){
         for(int i =0; i < data.size(); i++){
             if(data.get(i).equals(""))
                 return 0;
         }
         if(data.get(2).length() != 11) return 1;
-        CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
+        CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2));
         DataBase.getInstance().addCaptain(cap);
         return 2;
     }
-
+    /**
+     * AddOwner.
+     *
+     * Checking given data and add new shipowner to database.
+     * @param data Vector<String>
+     */
     public int addOwner(Vector<String> data){
         int size = data.size();
-        if(data.get(5).equals("Private")) {
+        if (data.get(5).equals("Private")) {
             size -= 2;
             for(int i =0; i < size; i++){
                 if(data.get(i).equals(""))
@@ -127,13 +175,25 @@ public class VisitsWindowActions {
         }
     }
 
+    /**
+     * emailSuit.
+     *
+     * Checking if given String can be an email.
+     * @param email String
+     */
     private boolean emailSuit(String email){
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher mat = pattern.matcher(email);
         if(mat.matches()) return true;
         return false;
     }
-
+    /**
+     * GetBookedPlacesNow.
+     *
+     * Check how much ships is now in port.
+     * @param port PortsEntity
+     * @param date Date
+     */
     public Pair<Integer, Integer> getBookedPlacesNow(PortsEntity port, Date date){
         Integer big = 0, small = 0;
         List<VisitsEntity>  visits = DataBase.getInstance().getVisitFromPort(port, date);
@@ -144,7 +204,14 @@ public class VisitsWindowActions {
         Pair val = new Pair(small, big);
         return val;
     }
-
+    /**
+     * GetBookedPlacesNow.
+     *
+     * Check how much places are booked between begin and end dates.
+     * @param port PortsEntity
+     * @param begin Date
+     * @param end Date
+     */
     public Pair<Integer, Integer> getBookedPlacesBetween(PortsEntity port, Date begin, Date end){
         List<VisitsEntity> visits = DataBase.getInstance().getVisitByPortBetween(port, begin, end);
         Integer small = 0;

@@ -10,7 +10,17 @@ import java.util.Vector;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+/**
+ * The type Login Window Actions.
+ */
 public class LoginWindowActions {
+    /**
+     * Login.
+     *
+     * Try to log in using given login and password.
+     * @param login String
+     * @param password String
+     */
     public AllUsersEntity login(String login, String password){
         AllUsersEntity currentUser = DataBase.getInstance().getUser(login);
         if(currentUser != null){
@@ -20,7 +30,12 @@ public class LoginWindowActions {
         }
         return null;
     }
-
+    /**
+     * Register.
+     *
+     * @param data Vector<String>
+     * @param birthdate LocalDate
+     */
     public AllUsersEntity register(Vector<String> data, LocalDate birthdate){
         String login = data.get(0);
         String password = data.get(1);
@@ -37,7 +52,12 @@ public class LoginWindowActions {
         }
         return null;
     }
-
+    /**
+     * ConvertToDate.
+     *
+     * Convert string representation of Date to Date format.
+     * @param dateStr String
+     */
     public Date convertToDate(String dateStr) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -49,6 +69,12 @@ public class LoginWindowActions {
         return null;
     }
 
+    /**
+     * CheckRegData.
+     *
+     * Checking the correctness of the given data.
+     * @param data Vector<String>
+     */
     public int checkRegData(Vector<String> data){
         for(int i =0; i < data.size(); i++){
             if(data.get(i).equals(""))
@@ -59,10 +85,15 @@ public class LoginWindowActions {
         if(!(data.get(3).equals("client")||data.get(3).equals("admin"))) return 3;
         if(data.get(6).length() != 9) return 4;
         if(data.get(7).length() != 11) return 5;
-        // sprawdzenie daty.
         return 7;
     }
 
+    /**
+     * LoginIsAvailable.
+     *
+     * Checking that the login is available
+     * @param login String
+     */
     public boolean loginIsAvalible(String login){
         AllUsersEntity currentUser = DataBase.getInstance().getUser(login);
         if(currentUser != null)
@@ -70,6 +101,12 @@ public class LoginWindowActions {
         return true;
     }
 
+    /**
+     * UserInPort
+     *
+     * Checking if the user is in any port.
+     * @param user AllUsersEntity
+     */
     public PortsEntity userInPort(AllUsersEntity user){
         Date today = new Date(Calendar.getInstance().getTime().getTime());
         VisitsEntity v = DataBase.getInstance().getVisit(user, today);

@@ -82,7 +82,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         priceListView = new TableView<Pair<String, Integer>>();
 
         PortInformationsActions action = new PortInformationsActions();
-        Vector<Pair<String, Integer>> prices = action.getPrices(port.getPriceListEntity().getListId());
+        Vector<Pair<String, String>> prices = action.getPrices(port.getPriceListEntity());
 
         TableColumn nameServiceCol = new TableColumn("Name of service");
         nameServiceCol.setMinWidth(160);

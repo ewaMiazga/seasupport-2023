@@ -1,29 +1,6 @@
 package src.app;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.StringConverter;
-import src.appActions.LoginWindowActions;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Vector;
-
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -35,17 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import src.appActions.LoginWindowActions;
 
 import java.util.List;
 import java.util.Vector;
-import javafx.util.StringConverter;
-import org.hibernate.annotations.Check;
+
 import src.appActions.VisitsWindowActions;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 /**
  * The type Add Owner dialog.
@@ -60,7 +32,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     ComboBox<String> types;
 
-    private String ownerTypes [] = {  "Private", "Comercial" };
+    private String ownerTypes [] = {  "Private", "Commercial" };
 
     private final String pattern = "dd/MM/yy";
 
@@ -142,7 +114,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         ComboBox types = new ComboBox<String>();
         types.getItems().setAll(
                 new String("Private"),
-                new String("Comercial")
+                new String("Commercial")
         );
         grid.add(types, 1, 6);
 
@@ -179,7 +151,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddOwnerDialog
      *
      * @param args the input arguments
      */

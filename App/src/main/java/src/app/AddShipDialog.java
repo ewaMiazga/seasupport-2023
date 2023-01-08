@@ -71,7 +71,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             "Incorrect type of ship!", "Length of the ship should be a number",
             "Ship is to long you can not booked place in this port",
             "Successful action, you added new ship into your account!",
-            "Uncorrect owner Id.");
+            "Incorrect owner Id.");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -96,7 +96,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-
         formTitle = new Text("Add Ship");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
@@ -104,12 +103,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         callSignLabel = new Label("Call Sign: ");
         grid.add(callSignLabel, 0, 1);
 
-        //callSignLabel.setVisible(false);
-
         callSignField = new TextField();
         grid.add(callSignField, 1, 1);
-
-        //callSignField.setVisible(false);
 
         shipNameLabel = new Label("Ship Name: ");
         grid.add(shipNameLabel, 0, 2);
@@ -117,15 +112,11 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         shipNameField = new TextField();
         grid.add(shipNameField, 1, 2);
 
-        //showPass = new CheckBox("Show password");
-        //grid.add(showPass, 1, 3);
-
         typeLabel = new Label("Ship Type: ");
         grid.add(typeLabel, 0, 4);
 
         typeField = new TextField();
         grid.add(typeField, 1, 4);
-
 
         shipLenghtLabel = new Label("Ship Length: ");
         grid.add(shipLenghtLabel, 0, 6);
@@ -145,16 +136,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.add(newUserButton, 2, 8);
         grid.setHalignment(newUserButton, HPos.RIGHT);
 
-        //userPassVisibleField = new TextField();
-        //userPassVisibleField.setManaged(false);
-        //userPassVisibleField.setVisible(false);
-
-        //userPassField = new PasswordField();
-        //showPassword(userPassField, userPassVisibleField, showPass);
-
-        //grid.add(userPassField, 1, 2);
-        //grid.add(userPassVisibleField, 1,2);
-
         registerButton = new Button("Add Ship");
         registerButton.setOnAction(this);
 
@@ -170,11 +151,10 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
-        //userLoginField.requestFocus();
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddShipDialog
      *
      * @param args the input arguments
      */
@@ -199,40 +179,5 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
                 registrationStage.close();
             }
         }
-    }
-
-    public void showPassword(PasswordField field, TextField text, CheckBox box) {
-        text.managedProperty().bind(box.selectedProperty());
-        text.visibleProperty().bind(box.selectedProperty());
-
-        field.managedProperty().bind(box.selectedProperty().not());
-        field.visibleProperty().bind(box.selectedProperty().not());
-
-        text.textProperty().bindBidirectional(field.textProperty());
-    }
-
-    public StringConverter createStringConverter() {
-        StringConverter converter = new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter =
-                    DateTimeFormatter.ofPattern(pattern);
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        };
-
-        return converter;
     }
 }

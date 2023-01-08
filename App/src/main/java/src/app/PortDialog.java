@@ -13,7 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.*;
-import src.appActions.PortsWindowActions;
 
 import java.io.IOException;
 
