@@ -33,6 +33,7 @@ public class VisitsEntity {
 
     public VisitsEntity(Date dateBegin, Date dateEnd, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
         this.dateBegin = dateBegin;
+        this.dateEnd = dateEnd;
         this.portsEntity = portsEntity;
         this.allUsersEntity = allUsersEntity;
         this.shipsEntity = shipsEntity;

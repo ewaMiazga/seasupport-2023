@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -19,10 +18,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import src.appActions.VisitsWindowActions;
 import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 public class OpenDocksDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
@@ -84,7 +85,10 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         smallShipsLabel = new Label("Up to 18 meters");
         grid.add(smallShipsLabel, 0,2);
 
-        smallShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsSmall()));
+        VisitsWindowActions action = new VisitsWindowActions();
+        Date today = new Date(Calendar.getInstance().getTime().getTime());
+        Pair<Integer, Integer> places = action.getBookedPlacesNow(selectedPort, today);
+        smallShipsText = new Text(Integer.toString(selectedPort.getPlacesShipsSmall() - places.getKey()));
         smallShipsText.setTextAlignment(TextAlignment.CENTER);
         grid.add(smallShipsText, 1, 2);
 
@@ -98,7 +102,9 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
             }
 
             selectedPort.setPlacesShipsSmall(selectedPort.getPlacesShipsSmall() - 1);
-            smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall()));
+            smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall() - places.getValue()));
+            CreateVisitDialog dial = new CreateVisitDialog();
+            dial.start(openDocksStage, selectedUser, selectedPort);
         });
 
         grid.add(smallShipsButton, 2, 2);
@@ -119,9 +125,10 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
                 notification.setText("All big docks are booked!");
                 return;
             }
-
             selectedPort.setPlacesShipsBig(selectedPort.getPlacesShipsBig() - 1);
             bigShipsText.setText(Integer.toString(selectedPort.getPlacesShipsBig()));
+            CreateVisitDialog dial = new CreateVisitDialog();
+            dial.start(openDocksStage, selectedUser, selectedPort);
         });
 
         grid.add(bigShipsButton, 2, 3);
@@ -169,10 +176,8 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         if (event.getSource() == accountButton) {
             notification.setText("account button pressed");
             @Deprecated
-            Date d = new Date(1999, 10, 5);
-            AllUsersEntity user = new AllUsersEntity("ewa", "miazga", "Ewa", "Miazga", "666999333", d, "123456789", "user");
             AccountDialog accountDialog = new AccountDialog();
-            accountDialog.start(openDocksStage, user);
+            accountDialog.start(openDocksStage, selectedUser);
         }
     }
 }

@@ -24,7 +24,7 @@ import java.io.IOException;
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton;
+    private Button accountButton, priceListButton, docksButton, mapButton, contactButton, returnButton, detailsButton;
     private Scene scene;
     private Stage portStage;
     private AllUsersEntity selectedUser;
@@ -147,8 +147,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         }
         else if (event.getSource() == docksButton) {
             notification.setText("docks button pressed");
-            //OpenDocksDialog openDocksDialog = new OpenDocksDialog();
-            //openDocksDialog.start(portStage, selectedPort);
+            OpenDocksDialog openDocksDialog = new OpenDocksDialog();
+            openDocksDialog.start(portStage, selectedPort, currentUser);
         }
         else if (event.getSource() == mapButton) {
             notification.setText("map button pressed");

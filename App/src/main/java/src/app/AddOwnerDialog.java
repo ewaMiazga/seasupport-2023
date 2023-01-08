@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -82,7 +83,6 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         data.add(phoneField.getText());
         data.add(emailField.getText());
         data.add(peselField.getText());
-        //data.add(types.getValue());
         data.add("Private");
         data.add(companyField.getText());
         data.add(nipField.getText());
@@ -139,8 +139,11 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         ownerTypeLabel = new Label("Owner Type: ");
         grid.add(ownerTypeLabel, 0, 6);
 
-        ComboBox<String> types = new ComboBox<String>(FXCollections
-                .observableArrayList(ownerTypes));
+        ComboBox types = new ComboBox<String>();
+        types.getItems().setAll(
+                new String("Private"),
+                new String("Comercial")
+        );
         grid.add(types, 1, 6);
 
         extraInfoLabel = new Label("Data provided only by the commercial owners: ");

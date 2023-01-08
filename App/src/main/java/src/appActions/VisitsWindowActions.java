@@ -2,15 +2,14 @@ package src.appActions;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.scene.chart.PieChart;
-import org.hibernate.boot.model.relational.Database;
-import org.hibernate.dialect.DatabaseVersion;
+import javafx.util.Pair;
 import src.logic.*;
 import src.app.DataBase;
 
@@ -26,10 +25,12 @@ public class VisitsWindowActions {
         if(n > 30) return 4;
         ShipOwnersEntity owner = DataBase.getInstance().getOwner(data.get(4));
         if(owner == null) return 6;
-        int owner_id = Integer.valueOf(data.get(4));
+        System.out.println(owner.getEmail());
         short len = Short.valueOf(data.get(3));
-        ShipsEntity ship = new ShipsEntity(data.get(0), data.get(1), owner_id, data.get(2), len, owner);
+        ShipsEntity ship = new ShipsEntity(data.get(0), data.get(1), data.get(2), len, owner);
+        System.out.println(ship.getShipName());
         DataBase.getInstance().addShip(ship);
+        System.out.println("Kontrola");
         return 5;
     }
 
@@ -48,36 +49,31 @@ public class VisitsWindowActions {
     public int addVisit(Vector<String> data, LocalDate begin, LocalDate end, PortsEntity port, AllUsersEntity user){
         Date dateBegin = Date.valueOf(begin);
         Date dateEnd = Date.valueOf(end);
+
         for(int i =0; i < data.size(); i++){
             if(data.get(i).equals(""))
                 return 0;
         }
-        if(data.get(2).length() != 11) return 1;
+
         if(begin.isBefore(LocalDate.now())) return 2;
         if(begin.isAfter(end)) return 3;
-        if(!shipInDataBase(data.get(5))) return 4;
-        ShipsEntity ship = DataBase.getInstance().getShip(data.get(5));
-        if(checkAvalivblePlaces(ship.getShipLength(), port, dateBegin, dateEnd) == 0) return 6;
-        //VisitsEntity v = new VisitsEntity(dateBegin, dateEnd, port.getPortId(), user.getLogin(), ship.getCallSign(),
-        //        ship.)
-        return 5;
-    }
+        if(!shipInDataBase(data.get(2))) return 4;
+        if(!captianInDataBase(data.get(3))) return 5;
 
-    public int checkAvalivblePlaces(short ShipLen, PortsEntity port, Date dateBegin, Date dateEnd){
-        int len = 15;
-        int portPlaces = port.getPlacesShipsSmall();
-        if (ShipLen > len){
-            len = 30;
-            portPlaces = port.getPlacesShipsBig();
-        }
-        int places = 0;
-        List<VisitsEntity> visits = DataBase.getInstance().getVisitFromPort(port, dateBegin, dateEnd);
-        ShipsEntity currentShip = new ShipsEntity();
-        for(VisitsEntity v : visits){
-            currentShip = DataBase.getInstance().getShip(v.getShipsEntity().getCallSign());
-            if(currentShip.getShipLength() <= len && currentShip.getShipLength() >= len - 15) places++;
-        }
-        return(portPlaces - places);
+        ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
+        CaptainsEntity cap = DataBase.getInstance().getCaptain(Integer.valueOf(data.get(3)));
+
+        Integer avaliblePlaces = 0;
+        if(ship.getShipLength() > 18) avaliblePlaces = port.getPlacesShipsBig() -
+                getBookedPlacesNow(port, dateBegin).getValue() - getBookedPlacesBetween(port, dateBegin, dateEnd).getValue();
+        else
+            avaliblePlaces = port.getPlacesShipsSmall() -
+                    getBookedPlacesNow(port, dateBegin).getKey() - getBookedPlacesBetween(port, dateBegin, dateEnd).getKey();
+        if(avaliblePlaces == 0) return 6;
+
+        VisitsEntity v = new VisitsEntity(dateBegin, dateEnd, port, user, ship, cap);
+        DataBase.getInstance().addVisit(v);
+        return 5;
     }
 
     private boolean captianInDataBase(String id){
@@ -102,21 +98,33 @@ public class VisitsWindowActions {
         int size = data.size();
         if(data.get(5).equals("Private")) {
             size -= 2;
-        }
-        for(int i =0; i < size; i++){
-            if(data.get(i).equals(""))
-                return 0;
-        }
-        if(data.get(2).length() != 9) return 1;
-        if(!emailSuit(data.get(3))) return 2;
-        if(data.get(4).length() != 11) return 3;
-        if(data.get(5).equals("Comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
-        Integer nip = Integer.valueOf(data.get(7));
-
-        ShipOwnersEntity owner = new ShipOwnersEntity(1, data.get(2), data.get(3), data.get(0),
-                    data.get(1), data.get(4), data.get(6), nip);
+            for(int i =0; i < size; i++){
+                if(data.get(i).equals(""))
+                    return 0;
+            }
+            if(data.get(2).length() != 9) return 1;
+            if(!emailSuit(data.get(3))) return 2;
+            if(data.get(4).length() != 11) return 3;
+            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2), data.get(3),
+                    data.get(0), data.get(1), data.get(4));
             DataBase.getInstance().addOwner(owner);
-        return 5;
+            return 5;
+        }
+        else{
+            for(int i =2; i < size; i++){
+                if(data.get(i).equals(""))
+                    return 0;
+            }
+            if(data.get(2).length() != 9) return 1;
+            if(!emailSuit(data.get(3))) return 2;
+            if(data.get(4).length() != 11) return 3;
+            if(data.get(5).equals("Comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
+            Integer n = Integer.valueOf(data.get(7));
+            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(3),
+                    data.get(6), n, data.get(2));
+            DataBase.getInstance().addOwner(owner);
+            return 5;
+        }
     }
 
     private boolean emailSuit(String email){
@@ -126,4 +134,26 @@ public class VisitsWindowActions {
         return false;
     }
 
+    public Pair<Integer, Integer> getBookedPlacesNow(PortsEntity port, Date date){
+        Integer big = 0, small = 0;
+        List<VisitsEntity>  visits = DataBase.getInstance().getVisitFromPort(port, date);
+        for(VisitsEntity v: visits){
+            if(v.getShipsEntity().getShipLength() > 18) big += 1;
+            else small += 1;
+        }
+        Pair val = new Pair(small, big);
+        return val;
+    }
+
+    public Pair<Integer, Integer> getBookedPlacesBetween(PortsEntity port, Date begin, Date end){
+        List<VisitsEntity> visits = DataBase.getInstance().getVisitByPortBetween(port, begin, end);
+        Integer small = 0;
+        Integer big = 0;
+        for(VisitsEntity v: visits){
+            if(v.getShipsEntity().getShipLength() > 18) big += 1;
+            else small+= 1;
+        }
+        Pair<Integer, Integer> v = new Pair<>(small, big);
+        return v;
+    }
 }
