@@ -1,5 +1,4 @@
 rollback;
-ALTER SESSION SET NLS_DATE_FORMAT = "DD/MM/YYYY";
 INSERT INTO all_users VALUES ('ewa123',  'abcabc', 'Ewa', 'Miazga', '626151252', '13/04/02', '12345678911', 'admin');
 INSERT INTO all_users VALUES ('piotrek1', 'pioterek','Piotr', 'Maciejewski', '333222111','20/08/02', '11982645371', 'normal');
 INSERT INTO all_users VALUES ('jankP', 'abcabc123', 'Piotr', 'Janowski', '162745637', '15/04/10', '63754623519', 'admin');
