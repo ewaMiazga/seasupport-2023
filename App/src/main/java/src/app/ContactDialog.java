@@ -18,7 +18,10 @@ import src.logic.AllUsersEntity;
 import javafx.scene.paint.Color;
 import javafx.scene.web.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static java.lang.String.valueOf;
@@ -140,5 +143,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
     @Override
     public void handle(ActionEvent event) {
     }
+
+
 }
 

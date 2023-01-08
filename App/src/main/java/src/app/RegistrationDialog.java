@@ -6,18 +6,24 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.appActions.LoginWindowActions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
+import src.logic.AllUsersEntity;
+import src.logic.PortsEntity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -43,18 +49,17 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private CheckBox showPass, showPassConf;
     private Button registerButton;
-
     private Scene scene;
 
     private Stage registrationStage;
 
     private String cssPath;
 
-    private List<String> messages=  List.of("Required fields are empty!", "Username is not available!", "Passwords are different!",
-    "Incorrect type of user!", "Wrong format of phone number!", "Wrong format of pesel!", "Wrong format of birthdate!",
+    private List<String> messages = List.of("Required fields are empty!", "Username is not available!", "Passwords are different!",
+            "Incorrect type of user!", "Wrong format of phone number!", "Wrong format of pesel!", "Wrong format of birthdate!",
             "Successful registration, go to login!");
 
-    public Vector<String> getTextContents(){
+    public Vector<String> getTextContents() {
         Vector<String> data = new Vector<>();
         data.add(userLoginField.getText());
         data.add(userPassField.getText());
@@ -67,6 +72,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         data.add(birthdayPicker.toString());
         return data;
     }
+
     @Override
     public void start(Stage stage) {
         registrationStage = stage;
@@ -80,7 +86,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-
+        grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
         formTitle = new Text("Registration Form");
         formTitle.setId("formatTitle");
@@ -91,6 +97,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
         userLoginField = new TextField();
         grid.add(userLoginField, 1, 1);
+
 
         showPass = new CheckBox("Show password");
         grid.add(showPass, 1, 3);
@@ -106,7 +113,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         showPassword(userPassField, userPassVisibleField, showPass);
 
         grid.add(userPassField, 1, 2);
-        grid.add(userPassVisibleField, 1,2);
+        grid.add(userPassVisibleField, 1, 2);
+
 
         showPassConf = new CheckBox("Show confirmation password");
         grid.add(showPassConf, 1, 5);
@@ -122,7 +130,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         showPassword(userPassConfField, userPassVisibleConfField, showPassConf);
 
         grid.add(userPassConfField, 1, 4);
-        grid.add(userPassVisibleConfField, 1,4);
+        grid.add(userPassVisibleConfField, 1, 4);
 
         userTypeLabel = new Label("Type of user: ");
         grid.add(userTypeLabel, 0, 6);
@@ -140,8 +148,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(surnameLabel, 0, 8);
 
         surnameField = new TextField();
-        grid.add(surnameField, 1, 8
-        );
+        grid.add(surnameField, 1, 8);
 
         numberLabel = new Label("Phone Number: ");
         grid.add(numberLabel, 0, 9);
@@ -177,6 +184,19 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(notification, 1, 12);
 
         scene = new Scene(grid, 600, 575);
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                    registerButton.setText("Register button pressed");
+                    LoginWindowActions action = new LoginWindowActions();
+                    int message_code = action.checkRegData(getTextContents());
+                    notification.setText(messages.get(message_code));
+                    if (message_code == 7) {
+                        action.register(getTextContents(), birthdayPicker.getValue());
+                        LoginDialog loginDialog = new LoginDialog();
+                        loginDialog.start(registrationStage);
+                    }
+            }
+        });
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
@@ -201,7 +221,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             LoginWindowActions action = new LoginWindowActions();
             int message_code = action.checkRegData(getTextContents());
             notification.setText(messages.get(message_code));
-            if(message_code == 7) {
+            if (message_code == 7) {
                 action.register(getTextContents(), birthdayPicker.getValue());
                 LoginDialog loginDialog = new LoginDialog();
                 loginDialog.start(registrationStage);
@@ -210,19 +230,20 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     }
 
     public void showPassword(PasswordField field, TextField text, CheckBox box) {
-            text.managedProperty().bind(box.selectedProperty());
-            text.visibleProperty().bind(box.selectedProperty());
+        text.managedProperty().bind(box.selectedProperty());
+        text.visibleProperty().bind(box.selectedProperty());
 
-            field.managedProperty().bind(box.selectedProperty().not());
-            field.visibleProperty().bind(box.selectedProperty().not());
+        field.managedProperty().bind(box.selectedProperty().not());
+        field.visibleProperty().bind(box.selectedProperty().not());
 
-            text.textProperty().bindBidirectional(field.textProperty());
-        }
+        text.textProperty().bindBidirectional(field.textProperty());
+    }
 
     public StringConverter createStringConverter() {
         StringConverter converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter =
                     DateTimeFormatter.ofPattern(pattern);
+
             @Override
             public String toString(LocalDate date) {
                 if (date != null) {
@@ -231,6 +252,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
                     return "";
                 }
             }
+
             @Override
             public LocalDate fromString(String string) {
                 if (string != null && !string.isEmpty()) {
@@ -242,5 +264,61 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         };
 
         return converter;
+    }
+
+    public List<Node> getNodesByCoordinate(Integer row, Integer column) {
+        List<Node> matchingNodes = new ArrayList<>();
+        for (Node node : grid.getChildren()) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField || node instanceof CheckBox || node instanceof DatePicker)){
+                matchingNodes.add(node);
+            }
+        }
+        return matchingNodes;
+    }
+
+
+    public void handleArrowNavigation(KeyEvent event) {
+        Node source = (Node) event.getSource(); // the GridPane
+        Node focused = source.getScene().getFocusOwner();
+        if (event.getCode().isArrowKey() && focused.getParent() == source) {
+
+            int row = grid.getRowIndex(focused);
+            int col = grid.getColumnIndex(focused);
+            // Switch expressions were standardized in Java 14
+            switch (event.getCode()) {
+                case LEFT: {
+                    if (col < grid.getColumnCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col + 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case RIGHT: {
+                    if (col > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col - 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case UP: {
+                    if (row > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row - 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case DOWN: {
+                    if (row < grid.getRowCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row + 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }break;
+            }
+            event.consume();
         }
     }
+}

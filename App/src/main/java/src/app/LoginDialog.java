@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -18,6 +19,9 @@ import javafx.stage.Stage;
 import src.appActions.LoginWindowActions;
 import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class LoginDialog
@@ -49,6 +53,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
         userLoginLabel = new Label("Login: ");
         grid.add(userLoginLabel, 0, 1);
@@ -153,6 +158,62 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
             else{
                 notification.setText("Invalid login or password");
             }
+        }
+    }
+
+    public List<Node> getNodesByCoordinate(Integer row, Integer column) {
+        List<Node> matchingNodes = new ArrayList<>();
+        for (Node node : grid.getChildren()) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField || node instanceof CheckBox || node instanceof DatePicker)){
+                matchingNodes.add(node);
+            }
+        }
+        return matchingNodes;
+    }
+
+    public void handleArrowNavigation(KeyEvent event) {
+        Node source = (Node) event.getSource(); // the GridPane
+        Node focused = source.getScene().getFocusOwner();
+        if (event.getCode().isArrowKey() && focused.getParent() == source) {
+
+            int row = grid.getRowIndex(focused);
+            int col = grid.getColumnIndex(focused);
+            // Switch expressions were standardized in Java 14
+            switch (event.getCode()) {
+                case LEFT: {
+                    if (col < grid.getColumnCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col + 1);
+                        if (newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case RIGHT: {
+                    if (col > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col - 1);
+                        if (newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case UP: {
+                    if (row > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row - 1, col);
+                        if (newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case DOWN: {
+                    if (row < grid.getRowCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row + 1, col);
+                        if (newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+            }
+            event.consume();
         }
     }
 }

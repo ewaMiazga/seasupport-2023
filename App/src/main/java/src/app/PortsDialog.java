@@ -40,11 +40,6 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
 
     List<PortsEntity> getPorts() {
         List<PortsEntity> ports = DataBase.getInstance().getPorts();
-        List<String> names = new ArrayList<String>();
-        for(PortsEntity port: ports)  {
-            names.add(port.getPortName());
-        }
-
         return ports;
     }
 
