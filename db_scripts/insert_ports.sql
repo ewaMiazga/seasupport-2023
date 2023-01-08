@@ -4,7 +4,7 @@ INSERT INTO ports VALUES (ports_id.nextval, 'Międzyzdroje(molo)', 8, 1, 18, 'Bo
 INSERT INTO ports VALUES (ports_id.nextval, 'Międzyzdroje', 6, 25, 2, 'Szubargi', 'Międzyzdroje', '72-500', '673565398', 11, 'PL61109010140000071218912874', 3);
 INSERT INTO ports VALUES (ports_id.nextval, 'Rewal', 0, 3, 6, 'Portowa', 'Rewal', '72-344', '673535398', 89, 'PL61109010140000071218912875', 4);
 INSERT INTO ports VALUES (ports_id.nextval, 'Niechorze', 0, 5, 15, 'Szczecińska', 'Niechorze', '72-350', '677865398', 90, 'PL61109010140000071218967874', 5);
-INSERT INTO ports VALUES (ports_id.nextval, 'ustronie Morskie', 0, 2, 1, '78-111', 'Ustroń Morskie', '78-111', '673568998', 56, 'PL61109010140000071214512874', 6);
+INSERT INTO ports VALUES (ports_id.nextval, 'Ustronie Morskie', 0, 2, 1, '78-111', 'Ustroń Morskie', '78-111', '673568998', 56, 'PL61109010140000071214512874', 6);
 INSERT INTO ports VALUES (ports_id.nextval, 'Chłopy', 2, 7, 29, 'Kapitańska', 'Chłopy', '76-034', '673225398', 12, 'PL61109010140000071218912123', 7);
 INSERT INTO ports VALUES (ports_id.nextval, 'Unieście', 0, 3, 1, 'Rybacka', 'Unieście', '76-032', '673565498', 13, 'PL61109010140000045348912874', 8);
 INSERT INTO ports VALUES (ports_id.nextval, 'Dąbki', 1, 1, 3, 'Uzdrowiska', 'Dąbki', '76-156', '679999398', 14, 'PL61109010140000071217772874', 9);
@@ -21,6 +21,6 @@ INSERT INTO ports VALUES (ports_id.nextval, 'Stow. Port Mechelinki', 1, 11, 34, 
 INSERT INTO ports VALUES (ports_id.nextval, 'Stacja Gdynia Port Oksywie', 10, 24, 54, 'Śmidowicza J', 'Oksywie Dolne', '81-125', '673565698', 24, 'PL61109010140000071008912874', 20);
 INSERT INTO ports VALUES (ports_id.nextval, 'Dalmor', 12, 42, 5, 'Olimpijska', 'Gdynia', '81-538', '123565398', 25, 'PL61109010140000071128912874', 21);
 INSERT INTO ports VALUES (ports_id.nextval, 'Marina Gdynia', 14, 49, 13, 'Jana Pawła II', 'Gdynia', '81-538', '673565897', 26, 'PL61109010140000071218912114', 22);
-INSERT INTO ports VALUES (ports_id.nextval3, 'Gdynia Orłowo', 3, 19, 9, 'Rotterdamska', 'Gdynia', '81-538', '827465337', 27, 'PL61109010140000078456312874', 23);
-INSERT INTO ports VALUES (ports_id.nextval4, 'Marina Sopot', 40, 63, 2, 'Plac Zdrojowy', 'Sopot', '81-720', '678985398', 28, 'PL61109010140000099918912874', 24);
+INSERT INTO ports VALUES (ports_id.nextval, 'Gdynia Orłowo', 3, 19, 9, 'Rotterdamska', 'Gdynia', '81-538', '827465337', 27, 'PL61109010140000078456312874', 23);
+INSERT INTO ports VALUES (ports_id.nextval, 'Marina Sopot', 40, 63, 2, 'Plac Zdrojowy', 'Sopot', '81-720', '678985398', 28, 'PL61109010140000099918912874', 24);
 commit;
