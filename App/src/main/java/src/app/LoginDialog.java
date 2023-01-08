@@ -55,6 +55,10 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
+        formTitle = new Text("Login Form");
+        formTitle.setId("formatTitle");
+        grid.add(formTitle, 0, 0, 2, 1);
+
         userLoginLabel = new Label("Login: ");
         grid.add(userLoginLabel, 0, 1);
 
