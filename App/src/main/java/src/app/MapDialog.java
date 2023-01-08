@@ -46,8 +46,9 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         formTitle = new Text(port.getPortName().toString());
+        formTitle.setWrappingWidth(400);
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 2, 1);
+        grid.add(formTitle, 0, 0, 1, 2);
 
         accountButton = new Button("Account Details");
         accountButton.setPrefSize(150, 50);
@@ -62,7 +63,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         view.setY(10);
         view.setFitWidth(575);
         view.setPreserveRatio(true);
-        grid.add(view, 0, 1, 2, 1);
+        grid.add(view, 0, 2, 2, 1);
 
         returnButton = new Button("Return");
         returnButton.setPrefSize(150, 50);
@@ -77,7 +78,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
             }
         });
 
-        grid.add(returnButton, 1, 2);
+        grid.add(returnButton, 1, 3);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
         notification = new Text();

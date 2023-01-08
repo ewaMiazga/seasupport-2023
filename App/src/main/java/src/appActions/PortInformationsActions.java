@@ -8,7 +8,7 @@ import src.logic.PriceListEntity;
 import java.util.Vector;
 
 public class PortInformationsActions {
-    public Vector<Pair<String, Integer>> getPrices(PriceListEntity list){
+    public Vector<Pair<String, Integer>> getPrices(PriceListEntity list) {
         Vector<Pair<String, Integer>> prices = new Vector<Pair<String, Integer>>();
         prices.add(new Pair<>("LAUNDRY", list.getLaundry().intValue()));
         prices.add(new Pair<>("DRYING_ROOM", list.getDryingRoom().intValue()));

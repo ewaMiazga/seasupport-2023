@@ -37,7 +37,7 @@ public class PortsEntity {
     @Column(name = "BANK_ACCOUNT")
     private String bankAccount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRICE_LIST_ID", referencedColumnName = "LIST_ID")
     private PriceListEntity priceListEntity;
 

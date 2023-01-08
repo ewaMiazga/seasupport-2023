@@ -129,7 +129,7 @@ public class DataBase {
     public List<PortsEntity> getPorts(){
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
-        List<PortsEntity> ports = ss.createNativeQuery("Select * from PORTS", PortsEntity.class).getResultList();
+        List<PortsEntity> ports = ss.createQuery("from PortsEntity").getResultList();
         //List<PortsEntity> ports = ss.createQuery("FROM PORTS").getResultList();
         tx.commit();
         ss.close();
