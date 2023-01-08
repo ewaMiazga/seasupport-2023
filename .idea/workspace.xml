@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
-    </list>
+    <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
