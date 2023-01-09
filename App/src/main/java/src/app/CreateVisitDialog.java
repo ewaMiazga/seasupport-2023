@@ -65,7 +65,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     private DatePicker beginPicker, endPicker;
     private final String pattern = "dd/MM/yy";
-    private Button registerButton, newShipButton, newCaptainButton;
+    private Button accountButton, registerButton, newShipButton, newCaptainButton;
 
     private Scene scene;
 
@@ -114,6 +114,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
+
 
         beginLabel = new Label("Start date of the visit: ");
         grid.add(beginLabel, 0, 1);
@@ -139,7 +146,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         grid.add(newShipLabel, 1, 4);
 
         newShipButton = new Button("Add New Ship");
-        newShipButton.setPrefSize(150,50);
+        newShipButton.setPrefSize(150,25);
         newShipButton.setOnAction(this);
 
         grid.add(newShipButton, 2, 4);
@@ -155,7 +162,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         grid.add(newCapitanLabel, 1, 6);
 
         newCaptainButton = new Button("Add New Captian");
-        newCaptainButton.setPrefSize(150, 50);
+        newCaptainButton.setPrefSize(150, 25);
         newCaptainButton.setOnAction(this);
 
         grid.add(newCaptainButton, 2, 6);
@@ -171,7 +178,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 9);
+        grid.add(registerButton, 2, 9);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
@@ -196,6 +203,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+
         if (event.getSource() == newCaptainButton) {
             Stage stage = new Stage();
             AddCaptainDialog capDialog = new AddCaptainDialog();
