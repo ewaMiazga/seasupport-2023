@@ -56,14 +56,12 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
     private GridPane grid;
     private Text formTitle, notification;
     private Label forenameLabel, surnameLabel, phoneLabel, emailLabel, peselLabel, ownerTypeLabel,
-            companyLabel, nipLabel, extraInfoLabel;
+            companyLabel, nipLabel;
     private TextField  forenameField, surnameField, phoneField, emailField, peselField, companyField, nipField;
 
     private ComboBox<String> ownerTypeBox;
 
     private String ownerTypes [] = {  "private", "comercial" };
-
-    private final String pattern = "dd/MM/yy";
 
     private Button accountButton, registerButton;
 
@@ -252,7 +250,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddOwnerDialog
      *
      * @param args the input arguments
      */
