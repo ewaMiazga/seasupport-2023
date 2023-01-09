@@ -83,8 +83,8 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             @Override
             public void handle(MouseEvent event) {
                 if(event.getSource().equals(visitButton)) {
-                    AccountDialog accountDialog = new AccountDialog();
-                    accountDialog.start(stage, selectedUser);
+                    VisitsDialog visitsDialog = new VisitsDialog();
+                    visitsDialog.start(stage, selectedUser);
                 }
 
             }
