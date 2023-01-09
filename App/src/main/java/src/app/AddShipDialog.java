@@ -73,6 +73,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     private AllUsersEntity currentUser;
     private PortsEntity currentPort;
 
+    private CaptainsEntity currentCaptain;
+
     private ShipsEntity newShip;
 
     private String cssPath;
@@ -94,7 +96,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     }
     @Override
     public void start(Stage stage) { }
-    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port) {
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, CaptainsEntity captain) {
         previousStage = tempPreviousStage;
 
         Stage stage = new Stage();
@@ -104,6 +106,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
         currentUser = user;
         currentPort = port;
+        currentCaptain = captain;
 
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
@@ -150,7 +153,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         );
         grid.add(shipTypeBox, 1, 4);
 
-
         shipLenghtLabel = new Label("Ship Length: ");
         grid.add(shipLenghtLabel, 0, 6);
 
@@ -184,7 +186,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
-        //userLoginField.requestFocus();
     }
 
     /**
@@ -219,8 +220,9 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
                 newShip = ship;
                 CreateVisitDialog createVisitDialog = new CreateVisitDialog();
 
-                CaptainsEntity newCaptain = new CaptainsEntity();
-                createVisitDialog.start(stage, currentUser, currentPort, newShip, newCaptain);
+                //CaptainsEntity newCaptain = new CaptainsEntity();
+                createVisitDialog.start(stage, currentUser, currentPort, newShip, currentCaptain);
+                registrationStage.close();
 
             }
         }

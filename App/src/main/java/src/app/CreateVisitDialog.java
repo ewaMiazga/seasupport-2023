@@ -77,6 +77,10 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     private PortsEntity currentPort;
 
+    private CaptainsEntity currentCaptain;
+
+    private ShipsEntity currentShip;
+
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Visit can not start in that day!", "Visit can not end in that day!",
             "Wrong call sign of ship!", "Wrong Captian id!","Successful operation, you added new visit in this port!", "There is no avalible places in this port.");
@@ -98,10 +102,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         registrationStage = stage;
         currentUser = user;
         currentPort = port;
+        currentCaptain = captain;
+        currentShip = ship;
         stage.setTitle("New Visit Dialog");
         stage.getIcons().add(
                 new Image(
-                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
+                        WelcomeDialog.class.getResourceAsStream("Logo.png"))
+        );
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -157,7 +164,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         numberField = new TextField();
         if (ship.getCallSign() != null)
-            numberField.setPromptText(ship.getCallSign());
+            numberField.setText(ship.getCallSign());
         grid.add(numberField, 1, 5);
 
         newCapitanLabel = new Label("If you have to add capitan: ");
@@ -175,7 +182,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         captainField = new TextField();
         if (captain.getCaptainId() != null)
-            captainField.setPromptText(Integer.toString(captain.getCaptainId()));
+            captainField.setText(Integer.toString(captain.getCaptainId()));
         grid.add(captainField, 1, 7);
 
         registerButton = new Button("Create Visit");
@@ -216,13 +223,12 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         if (event.getSource() == newCaptainButton) {
             AddCaptainDialog capDialog = new AddCaptainDialog();
-            capDialog.start(registrationStage, currentUser, currentPort);
+            capDialog.start(registrationStage, currentUser, currentPort, currentShip);
         }
 
         if (event.getSource() == newShipButton) {
-
             AddShipDialog shipDialog = new AddShipDialog();
-            shipDialog.start(registrationStage, currentUser, currentPort);
+            shipDialog.start(registrationStage, currentUser, currentPort, currentCaptain);
         }
 
         if (event.getSource() == registerButton) {

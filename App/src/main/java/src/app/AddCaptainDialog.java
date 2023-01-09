@@ -75,6 +75,8 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     private PortsEntity currentPort;
 
+    private ShipsEntity currentShip;
+
     private String cssPath;
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
@@ -92,7 +94,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     public void start(Stage stage) {
     }
 
-    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port) {
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, ShipsEntity ship) {
         previousStage = tempPreviousStage;
 
         Stage stage = new Stage();
@@ -102,6 +104,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
         currentUser = user;
         currentPort = port;
+        currentShip = ship;
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -182,10 +185,10 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
                 CaptainsEntity newCaptain = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
 
                 Stage stage = new Stage();
-                ShipsEntity newShip = new ShipsEntity();
                 CreateVisitDialog createVisitDialog = new CreateVisitDialog();
 
-                createVisitDialog.start(stage, currentUser, currentPort, newShip, newCaptain);
+                createVisitDialog.start(stage, currentUser, currentPort, currentShip, newCaptain);
+                registrationStage.close();
             }
         }
     }
