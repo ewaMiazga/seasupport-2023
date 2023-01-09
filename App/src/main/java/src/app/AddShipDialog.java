@@ -121,6 +121,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
         accountButton = new Button("Account Details");
         accountButton.setPrefSize(150, 50);
@@ -153,55 +154,56 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         //grid.add(showPass, 1, 3);
 
         typeLabel = new Label("Ship Type: ");
-        grid.add(typeLabel, 0, 4);
+        grid.add(typeLabel, 0, 3);
 
         shipTypeBox = new ComboBox();
         shipTypeBox.getItems().addAll(
             "sailing_boat",
                 "motor_boat"
         );
-        grid.add(shipTypeBox, 1, 4);
+        grid.add(shipTypeBox, 1, 3);
 
         shipLenghtLabel = new Label("Ship Length: ");
-        grid.add(shipLenghtLabel, 0, 6);
+        grid.add(shipLenghtLabel, 0, 4);
 
         lenghtField = new TextField();
-        grid.add(lenghtField, 1, 6);
+        grid.add(lenghtField, 1, 4);
 
         newOwnerLabel = new Label("If you have to add owner: ");
-        grid.add(newOwnerLabel, 1, 7);
+        grid.add(newOwnerLabel, 1, 5);
 
         newOwnerButton = new Button("Add new owner");
         newOwnerButton.setPrefSize(150, 25);
         newOwnerButton.setOnAction(this);
 
-        grid.add(newOwnerButton, 2, 7);
+        grid.add(newOwnerButton, 2, 5);
         grid.setHalignment(newOwnerButton, HPos.RIGHT);
 
         ownerIdLabel = new Label("Ship Owner Id: ");
         if(currentOwner.getShipOwnerId() != null)
             ownerIdField.setText(Integer.toString(currentOwner.getShipOwnerId()));
-        grid.add(ownerIdLabel, 0, 8);
+        grid.add(ownerIdLabel, 0, 6);
 
         ownerIdField = new TextField();
-        grid.add(ownerIdField, 1, 8);
+        grid.add(ownerIdField, 1, 6);
 
         registerButton = new Button("Add Ship");
         registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 2, 11);
+        grid.add(registerButton, 2, 7);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 12);
+        grid.add(notification, 1, 8);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
+        callSignField.requestFocus();
     }
 
     /**

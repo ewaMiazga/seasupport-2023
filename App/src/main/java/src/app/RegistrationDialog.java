@@ -100,7 +100,6 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         userLoginField = new TextField();
         grid.add(userLoginField, 1, 1);
 
-
         showPass = new CheckBox("Show password");
         grid.add(showPass, 1, 3);
 
