@@ -62,6 +62,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         view.setX(10);
         view.setY(10);
         view.setFitWidth(575);
+        view.setFitWidth(500);
         view.setPreserveRatio(true);
         grid.add(view, 0, 2, 2, 1);
 

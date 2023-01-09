@@ -66,6 +66,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
 
         accountButton = new Button("Account Details");
         accountButton.setPrefSize(150, 50);
+        accountButton.setMinSize(150, 50);
         accountButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

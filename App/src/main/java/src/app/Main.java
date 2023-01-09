@@ -21,24 +21,23 @@ public class Main extends Application {
     /**
      * primary Stage
      */
-    //private Stage primaryStage;
     /**
      * The func that run application
      *
      * @param stage
      */
     public void start(Stage stage) {
-        stage = new Stage();
+        /*stage = new Stage();
         SplashDialog splashDialog = new SplashDialog();
         try {
             splashDialog.start(stage);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        /*stage = new Stage();
+        }*/
+        stage = new Stage();
 
         WelcomeDialog welcomeDialog = new WelcomeDialog();
-        welcomeDialog.start(stage);*/
+        welcomeDialog.start(stage);
     }
 
     /**

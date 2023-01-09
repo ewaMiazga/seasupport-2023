@@ -44,7 +44,8 @@ import src.appActions.VisitsWindowActions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import src.logic.AllUsersEntity;
+
+import src.logic.*;
 
 /**
  * The type Registration dialog.
@@ -62,11 +63,19 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private final String pattern = "dd/MM/yy";
 
     private CheckBox showPass, showPassConf;
-    private Button registerButton;
+    private Button accountButton, registerButton;
 
     private Scene scene;
 
     private Stage registrationStage;
+
+    private Stage previousStage;
+
+    private AllUsersEntity currentUser;
+
+    private PortsEntity currentPort;
+
+    private ShipsEntity currentShip;
 
     private String cssPath;
 
@@ -85,8 +94,17 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, AllUsersEntity user) {
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, ShipsEntity ship) {
+        previousStage = tempPreviousStage;
+
+        Stage stage = new Stage();
         registrationStage = stage;
+
+        previousStage.hide();
+
+        currentUser = user;
+        currentPort = port;
+        currentShip = ship;
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -98,10 +116,16 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-
         formTitle = new Text("Add Captian Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
+
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
 
         showPass = new CheckBox("I'm the Captian of the ship");
@@ -128,16 +152,17 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
 
         registerButton = new Button("Add Captian");
+        registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 9);
+        grid.add(registerButton, 2, 9);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
         grid.add(notification, 1, 10);
 
-        scene = new Scene(grid, 400, 300);
+        scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
@@ -155,13 +180,27 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == registerButton) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+        else if (event.getSource() == registerButton) {
 
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();
             int message_code = action.addCaptian(getTextContents());
             notification.setText(messages.get(message_code));
             if(message_code == 2) {
+
+                Vector<String> data = getTextContents();
+                CaptainsEntity newCaptain = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
+
+                Stage stage = new Stage();
+                CreateVisitDialog createVisitDialog = new CreateVisitDialog();
+
+                createVisitDialog.start(stage, currentUser, currentPort, currentShip, newCaptain);
                 registrationStage.close();
             }
         }

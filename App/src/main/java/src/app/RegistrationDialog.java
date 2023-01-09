@@ -40,7 +40,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     private Label userLoginLabel, userPassLabel, userPassConfLabel, userTypeLabel, forenameLabel, surnameLabel, numberLabel, peselLabel, birthdayLabel;
 
-    private TextField userLoginField, userTypeField, forenameField, surnameField, numberField, peselField;
+    private TextField userLoginField, forenameField, surnameField, numberField, peselField;
     private TextField userPassVisibleField, userPassVisibleConfField;
 
     private DatePicker birthdayPicker;
@@ -48,6 +48,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private PasswordField userPassField, userPassConfField;
 
     private CheckBox showPass, showPassConf;
+
+    private ComboBox userTypeBox;
     private Button registerButton;
     private Scene scene;
 
@@ -64,7 +66,7 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         data.add(userLoginField.getText());
         data.add(userPassField.getText());
         data.add(userPassConfField.getText());
-        data.add(userTypeField.getText());
+        data.add(userTypeBox.getValue().toString());
         data.add(forenameField.getText());
         data.add(surnameField.getText());
         data.add(numberField.getText());
@@ -133,10 +135,15 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         grid.add(userPassVisibleConfField, 1, 4);
 
         userTypeLabel = new Label("Type of user: ");
+
         grid.add(userTypeLabel, 0, 6);
 
-        userTypeField = new TextField();
-        grid.add(userTypeField, 1, 6);
+        userTypeBox = new ComboBox<String>();
+        userTypeBox.getItems().addAll(
+                "normal",
+                "admin"
+        );
+        grid.add(userTypeBox, 1, 6);
 
         forenameLabel = new Label("Forename: ");
         grid.add(forenameLabel, 0, 7);

@@ -59,11 +59,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     private Label forenameLabel, surnameLabel,
             numberLabel, beginLabel, endLabel, captainLabel;
 
+    private Label newShipLabel, newCapitanLabel;
+
     private TextField  numberField, captainField;
 
     private DatePicker beginPicker, endPicker;
     private final String pattern = "dd/MM/yy";
-    private Button registerButton, newShipButton, newCaptainButton;
+    private Button accountButton, registerButton, newShipButton, newCaptainButton;
 
     private Scene scene;
 
@@ -74,6 +76,10 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     private AllUsersEntity currentUser;
 
     private PortsEntity currentPort;
+
+    private CaptainsEntity currentCaptain;
+
+    private ShipsEntity currentShip;
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Visit can not start in that day!", "Visit can not end in that day!",
@@ -92,15 +98,17 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, AllUsersEntity user, PortsEntity port) {
+    public void start(Stage stage, AllUsersEntity user, PortsEntity port, ShipsEntity ship, CaptainsEntity captain) {
         registrationStage = stage;
         currentUser = user;
         currentPort = port;
+        currentCaptain = captain;
+        currentShip = ship;
         stage.setTitle("New Visit Dialog");
         stage.getIcons().add(
                 new Image(
-                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
-
+                        WelcomeDialog.class.getResourceAsStream("Logo.png"))
+        );
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -112,6 +120,12 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         beginLabel = new Label("Start date of the visit: ");
         grid.add(beginLabel, 0, 1);
@@ -133,34 +147,47 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         grid.add(endPicker, 1, 3);
 
+        newShipLabel = new Label("If you have to add ship: ");
+        grid.add(newShipLabel, 1, 4);
+
+        newShipButton = new Button("Add New Ship");
+        newShipButton.setPrefSize(150,25);
+        newShipButton.setOnAction(this);
+
+        grid.add(newShipButton, 2, 4);
+        grid.setHalignment(newShipButton, HPos.RIGHT);
+
         numberLabel = new Label("Ship Call Sign: ");
         grid.add(numberLabel, 0, 5);
 
         numberField = new TextField();
+        if (ship.getCallSign() != null)
+            numberField.setText(ship.getCallSign());
         grid.add(numberField, 1, 5);
 
-        newShipButton = new Button("Add New Ship");
-        newShipButton.setOnAction(this);
+        newCapitanLabel = new Label("If you have to add capitan: ");
+        grid.add(newCapitanLabel, 1, 6);
 
-        grid.add(newShipButton, 2, 5);
-        grid.setHalignment(newShipButton, HPos.RIGHT);
+        newCaptainButton = new Button("Add New Captian");
+        newCaptainButton.setPrefSize(150, 25);
+        newCaptainButton.setOnAction(this);
+
+        grid.add(newCaptainButton, 2, 6);
+        grid.setHalignment(newCaptainButton, HPos.RIGHT);
 
         captainLabel = new Label("Visit's Captian Id: ");
         grid.add(captainLabel, 0, 7);
 
         captainField = new TextField();
+        if (captain.getCaptainId() != null)
+            captainField.setText(Integer.toString(captain.getCaptainId()));
         grid.add(captainField, 1, 7);
 
-        newCaptainButton = new Button("Add New Captian");
-        newCaptainButton.setOnAction(this);
-
-        grid.add(newCaptainButton, 2, 7);
-        grid.setHalignment(newCaptainButton, HPos.RIGHT);
-
         registerButton = new Button("Create Visit");
+        registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 9);
+        grid.add(registerButton, 2, 9);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
@@ -185,17 +212,22 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     @Override
     public void handle(ActionEvent event) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+
         if (event.getSource() == newCaptainButton) {
-            Stage stage = new Stage();
             AddCaptainDialog capDialog = new AddCaptainDialog();
-            capDialog.start(stage, currentUser);
+            capDialog.start(registrationStage, currentUser, currentPort, currentShip);
         }
 
         if (event.getSource() == newShipButton) {
-
-            Stage stage = new Stage();
             AddShipDialog shipDialog = new AddShipDialog();
-            shipDialog.start(stage);
+            ShipOwnersEntity owner = new ShipOwnersEntity();
+            shipDialog.start(registrationStage, currentUser, currentPort, currentCaptain, owner);
         }
 
         if (event.getSource() == registerButton) {

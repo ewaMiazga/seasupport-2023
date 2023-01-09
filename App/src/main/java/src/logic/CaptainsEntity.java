@@ -80,7 +80,7 @@ public class CaptainsEntity {
         this.pesel = pesel;
     }
 
-    public int getCaptainId() {
+    public Integer getCaptainId() {
         return captainId;
     }
 

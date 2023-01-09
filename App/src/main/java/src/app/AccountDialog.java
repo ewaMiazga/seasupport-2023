@@ -36,7 +36,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Label userLoginLabel, userPassLabel, userForenameLabel, userSurnameLabel, userPeselLabel, userBirthdayLabel,  userContactNumberLabel, userTypeLabel;
     private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
     private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
-    private Button returnButton;
+    private Button visitButton, returnButton;
     private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
     private DatePicker birthdayPicker;
     private AllUsersEntity selectedUser;
@@ -73,8 +73,25 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
         formTitle = new Text("Hi " + user.getForename());
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 1,1);
+        grid.add(formTitle, 0, 0, 1,2);
         grid.setHalignment(formTitle, HPos.CENTER);
+
+        visitButton = new Button("Visits Details");
+        visitButton.setPrefSize(150, 50);
+        visitButton.setMinSize(150, 50);
+        visitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource().equals(visitButton)) {
+                    VisitsDialog visitsDialog = new VisitsDialog();
+                    visitsDialog.start(stage, selectedUser);
+                }
+
+            }
+        });
+
+        grid.add(visitButton, 2, 0);
+        grid.setHalignment(visitButton, HPos.CENTER);
 
         userLoginLabel = new Label("Login: ");
         grid.add(userLoginLabel, 0, 1);
@@ -228,7 +245,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userTypeText, 1, 8);
 
         returnButton = new Button("return");
-        returnButton.setPrefSize(150, 25);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
