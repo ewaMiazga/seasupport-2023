@@ -48,7 +48,7 @@ import java.util.Locale;
 import src.logic.*;
 
 /**
- * The type Registration dialog.
+ * The type add Captain dialog.
  */
 public class AddCaptainDialog extends Application implements EventHandler<ActionEvent> {
 
@@ -60,9 +60,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     private TextField forenameField, surnameField, peselField;
 
-    private final String pattern = "dd/MM/yy";
-
-    private CheckBox showPass, showPassConf;
+    private CheckBox showPass;
     private Button accountButton, registerButton;
 
     private Scene scene;
@@ -184,7 +182,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddCaptainDialog
      *
      * @param args the input arguments
      */
@@ -218,40 +216,5 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
                 registrationStage.close();
             }
         }
-    }
-
-    public void showPassword(PasswordField field, TextField text, CheckBox box) {
-        text.managedProperty().bind(box.selectedProperty());
-        text.visibleProperty().bind(box.selectedProperty());
-
-        field.managedProperty().bind(box.selectedProperty().not());
-        field.visibleProperty().bind(box.selectedProperty().not());
-
-        text.textProperty().bindBidirectional(field.textProperty());
-    }
-
-    public StringConverter createStringConverter() {
-        StringConverter converter = new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter =
-                    DateTimeFormatter.ofPattern(pattern);
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        };
-
-        return converter;
     }
 }
