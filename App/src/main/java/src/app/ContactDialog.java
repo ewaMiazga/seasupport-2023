@@ -66,6 +66,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
 
         accountButton = new Button("Account Details");
         accountButton.setPrefSize(150, 50);
+        accountButton.setMinSize(150, 50);
         accountButton.setOnAction(this);
 
         grid.add(accountButton, 1, 0);
@@ -113,12 +114,14 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         URL url = this.getClass().getResource("GoogleMap.html");
         webEngine.load(url.toString());
 
-        webView.setPrefWidth(475);
+        webView.setPrefWidth(400);
+        webView.setPrefHeight(350);
 
         grid.add(webView, 0,6, 2, 1);
 
         returnButton = new Button("Return");
         returnButton.setPrefSize(150, 50);
+        returnButton.setMinSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
