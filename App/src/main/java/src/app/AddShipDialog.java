@@ -55,9 +55,11 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private Label callSignLabel, shipNameLabel, typeLabel, shipLenghtLabel, ownerIdLabel;
 
-    private TextField callSignField, shipNameField, typeField, lenghtField, ownerIdField;
+    private TextField callSignField, shipNameField, lenghtField, ownerIdField;
 
     private final String pattern = "dd/MM/yy";
+
+    private ComboBox shipTypeBox;
 
     private Button registerButton, newUserButton;
 
@@ -77,7 +79,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         Vector<String> data = new Vector<>();
         data.add(callSignField.getText());
         data.add(shipNameField.getText());
-        data.add(typeField.getText());
+        data.add(shipTypeBox.getValue().toString());
         data.add(lenghtField.getText());
         data.add(ownerIdField.getText());
         return data;
@@ -123,8 +125,12 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         typeLabel = new Label("Ship Type: ");
         grid.add(typeLabel, 0, 4);
 
-        typeField = new TextField();
-        grid.add(typeField, 1, 4);
+        shipTypeBox = new ComboBox();
+        shipTypeBox.getItems().addAll(
+            "sailing_boat",
+                "motor_boat"
+        );
+        grid.add(shipTypeBox, 1, 4);
 
 
         shipLenghtLabel = new Label("Ship Length: ");
