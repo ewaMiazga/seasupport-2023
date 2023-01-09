@@ -95,33 +95,24 @@ public class VisitsWindowActions {
     }
 
     public int addOwner(Vector<String> data){
-        int size = data.size();
-        if(data.get(5).equals("private")) {
-            size -= 2;
-            for(int i =0; i < size; i++){
-                if(data.get(i).equals(""))
-                    return 0;
-            }
-            if(data.get(2).length() != 9) return 1;
-            if(!emailSuit(data.get(3))) return 2;
-            if(data.get(4).length() != 11) return 3;
-            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2), data.get(3),
-                    data.get(0), data.get(1), data.get(4));
+        for(int i =0; i < data.size(); i++){
+            if(data.get(i).equals(""))
+                return 0;
+        }
+        if(data.get(1).length() != 9) return 1;
+        if(!emailSuit(data.get(2))) return 2;
+        if(data.get(0).equals("private")) {
+            if(data.get(5).length() != 11) return 3;
+            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(1), data.get(2), data.get(3),
+                    data.get(4), data.get(5));
             DataBase.getInstance().addOwner(owner);
             return 5;
         }
         else{
-            for(int i =2; i < size; i++){
-                if(data.get(i).equals(""))
-                    return 0;
-            }
-            if(data.get(2).length() != 9) return 1;
-            if(!emailSuit(data.get(3))) return 2;
-            if(data.get(4).length() != 11) return 3;
-            if(data.get(5).equals("comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
-            Integer n = Integer.valueOf(data.get(7));
-            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(3),
-                    data.get(6), n, data.get(2));
+            if(data.get(4).equals("commercial") && !data.get(4).chars().allMatch( Character::isDigit )) return 4;
+            Integer n = Integer.valueOf(data.get(4));
+            ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2),
+                    data.get(3), n, data.get(1));
             DataBase.getInstance().addOwner(owner);
             return 5;
         }

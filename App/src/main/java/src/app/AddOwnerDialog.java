@@ -87,14 +87,18 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
-        data.add(forenameField.getText());
-        data.add(surnameField.getText());
+        data.add(ownerTypeBox.getValue().toString());
         data.add(phoneField.getText());
         data.add(emailField.getText());
-        data.add(peselField.getText());
-        data.add(ownerTypeBox.getValue().toString());
-        data.add(companyField.getText());
-        data.add(nipField.getText());
+        if(data.get(0).equals("private")){
+            data.add(forenameField.getText());
+            data.add(surnameField.getText());
+            data.add(peselField.getText());
+        }
+        else{
+            data.add(companyField.getText());
+            data.add(nipField.getText());
+        }
         return data;
     }
     @Override
@@ -139,7 +143,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         ownerTypeBox = new ComboBox<String>();
         ownerTypeBox.getItems().setAll(
                 new String("private"),
-                new String("comercial")
+                new String("commercial")
         );
         ownerTypeBox.getSelectionModel().selectFirst();
         grid.add(ownerTypeBox, 1, 1);
@@ -210,7 +214,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
                     nipLabel.setVisible(false);
                     nipField.setVisible(false);
                     break;
-                case "comercial":
+                case "commercial":
 
                     forenameLabel.setVisible(false);
                     forenameField.setVisible(false);
