@@ -6,9 +6,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,9 +19,7 @@ import src.appActions.LoginWindowActions;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Vector;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -284,4 +284,62 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
         return converter;
     }
+
+    public List<Node> getNodesByCoordinate(Integer row, Integer column) {
+        List<Node> matchingNodes = new ArrayList<>();
+        for (Node node : grid.getChildren()) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField ||
+                    node instanceof CheckBox || node instanceof DatePicker || node instanceof ComboBox) ) {
+                matchingNodes.add(node);
+            }
+        }
+        return matchingNodes;
+    }
+
+
+    public void handleArrowNavigation(KeyEvent event) {
+        Node source = (Node) event.getSource(); // the GridPane
+        Node focused = source.getScene().getFocusOwner();
+        if (event.getCode().isArrowKey() && focused.getParent() == source) {
+
+            int row = grid.getRowIndex(focused);
+            int col = grid.getColumnIndex(focused);
+            // Switch expressions were standardized in Java 14
+            switch (event.getCode()) {
+                case LEFT: {
+                    if (col < grid.getColumnCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col + 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case RIGHT: {
+                    if (col > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col - 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case UP: {
+                    if (row > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row - 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case DOWN: {
+                    if (row < grid.getRowCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row + 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }break;
+            }
+            event.consume();
+        }
+    }
+
 }
