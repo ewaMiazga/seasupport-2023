@@ -58,7 +58,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
             companyLabel, nipLabel, extraInfoLabel;
     private TextField  forenameField, surnameField, phoneField, emailField, peselField, companyField, nipField;
 
-    private ComboBox ownerTypeBox;
+    private ComboBox<String> ownerTypeBox;
 
     private String ownerTypes [] = {  "private", "comercial" };
 
@@ -106,71 +106,112 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
-        forenameLabel = new Label("Forename: ");
-        grid.add(forenameLabel, 0, 1);
-
-        forenameField = new TextField();
-        grid.add(forenameField, 1, 1);
-
-        surnameLabel = new Label("Surname: ");
-        grid.add(surnameLabel, 0, 2);
-
-        surnameField = new TextField();
-        grid.add(surnameField, 1, 2);
-
-        peselLabel = new Label("Pesel: ");
-        grid.add(peselLabel, 0, 3);
-
-        peselField = new TextField();
-        grid.add(peselField, 1, 3);
-
-        phoneLabel = new Label("Phone number: ");
-        grid.add(phoneLabel, 0, 4);
-
-        phoneField = new TextField();
-        grid.add(phoneField, 1, 4);
-
-        emailLabel = new Label("Email: ");
-        grid.add(emailLabel, 0, 5);
-
-        emailField = new TextField();
-        grid.add(emailField, 1, 5);
-
         ownerTypeLabel = new Label("Owner Type: ");
-        grid.add(ownerTypeLabel, 0, 6);
+        grid.add(ownerTypeLabel, 0, 1);
 
-        ComboBox ownerTypeBox = new ComboBox();
+        ownerTypeBox = new ComboBox<String>();
         ownerTypeBox.getItems().setAll(
                 new String("private"),
                 new String("comercial")
         );
-        grid.add(ownerTypeBox, 1, 6);
+        ownerTypeBox.getSelectionModel().selectFirst();
+        grid.add(ownerTypeBox, 1, 1);
 
-        extraInfoLabel = new Label("Data provided only by the commercial owners: ");
-        grid.add(extraInfoLabel, 0, 9);
+        phoneLabel = new Label("Phone number: ");
+        grid.add(phoneLabel, 0, 2);
+
+        phoneField = new TextField();
+        grid.add(phoneField, 1, 2);
+
+        emailLabel = new Label("Email: ");
+        grid.add(emailLabel, 0, 3);
+
+        emailField = new TextField();
+        grid.add(emailField, 1, 3);
+
+
+
+        forenameLabel = new Label("Forename: ");
+        grid.add(forenameLabel, 0, 4);
+
+        forenameField = new TextField();
+        grid.add(forenameField, 1, 4);
+
+        surnameLabel = new Label("Surname: ");
+        grid.add(surnameLabel, 0, 5);
+
+        surnameField = new TextField();
+        grid.add(surnameField, 1, 5);
+
+        peselLabel = new Label("Pesel: ");
+        grid.add(peselLabel, 0, 6);
+
+        peselField = new TextField();
+        grid.add(peselField, 1, 6);
+
 
         companyLabel = new Label("Company name: ");
-        grid.add(companyLabel, 0, 10);
+        grid.add(companyLabel, 0, 4);
+        companyLabel.setVisible(false);
 
         companyField = new TextField();
-        grid.add(companyField, 1, 10);
+        grid.add(companyField, 1, 4);
+        companyField.setVisible(false);
 
         nipLabel = new Label("NIP: ");
-        grid.add(nipLabel, 0, 11);
+        grid.add(nipLabel, 0, 5);
+        nipLabel.setVisible(false);
 
         nipField = new TextField();
-        grid.add(nipField, 1, 11);
+        grid.add(nipField, 1, 5);
+        nipField.setVisible(false);
+
+        ownerTypeBox.setOnAction(e -> {
+            switch (ownerTypeBox.getValue()) {
+                case "private":
+
+                    forenameLabel.setVisible(true);
+                    forenameField.setVisible(true);
+                    surnameLabel.setVisible(true);
+                    surnameField.setVisible(true);
+                    peselLabel.setVisible(true);
+                    peselField.setVisible(true);
+
+
+                    companyLabel.setVisible(false);
+                    companyField.setVisible(false);
+                    nipLabel.setVisible(false);
+                    nipField.setVisible(false);
+                    break;
+                case "comercial":
+
+                    forenameLabel.setVisible(false);
+                    forenameField.setVisible(false);
+                    surnameLabel.setVisible(false);
+                    surnameField.setVisible(false);
+                    peselLabel.setVisible(false);
+                    peselField.setVisible(false);
+
+
+                    companyLabel.setVisible(true);
+                    companyField.setVisible(true);
+                    nipLabel.setVisible(true);
+                    nipField.setVisible(true);
+                    break;
+            }
+        });
 
         registerButton = new Button("Add Owner");
         registerButton.setPrefSize(150, 25);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 12);
+        grid.add(registerButton, 1, 7);
+        registerButton.setPrefSize(150, 50);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 13);
+        grid.add(notification, 1, 8);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();

@@ -165,10 +165,10 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         lenghtField = new TextField();
         grid.add(lenghtField, 1, 6);
 
-        newOwnerLabel = new Label("If you have to add capitan: ");
+        newOwnerLabel = new Label("If you have to add owner: ");
         grid.add(newOwnerLabel, 1, 7);
 
-        newOwnerButton = new Button("Add New Captian");
+        newOwnerButton = new Button("Add new owner");
         newOwnerButton.setPrefSize(150, 25);
         newOwnerButton.setOnAction(this);
 
@@ -179,13 +179,13 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.add(ownerIdLabel, 0, 8);
 
         ownerIdField = new TextField();
-        grid.add(ownerIdField, 2, 8);
+        grid.add(ownerIdField, 1, 8);
 
         registerButton = new Button("Add Ship");
         registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 11);
+        grid.add(registerButton, 2, 11);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
