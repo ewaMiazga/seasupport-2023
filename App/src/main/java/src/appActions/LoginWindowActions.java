@@ -56,7 +56,7 @@ public class LoginWindowActions {
         }
         if(!loginIsAvalible(data.get(0))) return 1;
         if(!data.get(1).equals(data.get(2))) return 2;
-        if(!(data.get(3).equals("client")||data.get(3).equals("admin"))) return 3;
+        if(!(data.get(3).equals("normal")||data.get(3).equals("admin"))) return 3;
         if(data.get(6).length() != 9) return 4;
         if(data.get(7).length() != 11) return 5;
         // sprawdzenie daty.
