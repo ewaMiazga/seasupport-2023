@@ -39,6 +39,10 @@ import java.util.List;
 import java.util.Vector;
 import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
+import src.logic.AllUsersEntity;
+import src.logic.PortsEntity;
+import src.logic.ShipOwnersEntity;
+import src.logic.ShipsEntity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -67,6 +71,13 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private Stage registrationStage;
 
+    private Stage previousStage;
+
+    private AllUsersEntity currentUser;
+    private PortsEntity currentPort;
+
+    private ShipsEntity newShip;
+
     private String cssPath;
 
     private List<String> messages=  List.of("Required fields are empty!", "Call Sign is not available!",
@@ -85,8 +96,18 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         return data;
     }
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) { }
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port) {
+        previousStage = tempPreviousStage;
+
+        Stage stage = new Stage();
         registrationStage = stage;
+
+        previousStage.hide();
+
+        currentUser = user;
+        currentPort = port;
+
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -151,16 +172,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.add(newUserButton, 2, 8);
         grid.setHalignment(newUserButton, HPos.RIGHT);
 
-        //userPassVisibleField = new TextField();
-        //userPassVisibleField.setManaged(false);
-        //userPassVisibleField.setVisible(false);
-
-        //userPassField = new PasswordField();
-        //showPassword(userPassField, userPassVisibleField, showPass);
-
-        //grid.add(userPassField, 1, 2);
-        //grid.add(userPassVisibleField, 1,2);
-
         registerButton = new Button("Add Ship");
         registerButton.setOnAction(this);
 
@@ -202,7 +213,18 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             int message_code = action.addShip(getTextContents());
             notification.setText(messages.get(message_code));
             if(message_code == 5) {
-                registrationStage.close();
+
+                Vector<String> data = getTextContents();
+                ShipOwnersEntity owner = DataBase.getInstance().getOwner(data.get(4));
+                short len = Short.valueOf(data.get(3));
+                ShipsEntity ship = new ShipsEntity(data.get(0), data.get(1), data.get(2), len, owner);
+                Stage stage = new Stage();
+                newShip = ship;
+                CreateVisitDialog createVisitDialog = new CreateVisitDialog();
+                createVisitDialog.start(stage, currentUser, currentPort, newShip);
+
+                //previousStage.show();
+                //registrationStage.hide();
             }
         }
     }

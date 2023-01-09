@@ -94,7 +94,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, AllUsersEntity user, PortsEntity port) {
+    public void start(Stage stage, AllUsersEntity user, PortsEntity port, ShipsEntity ship) {
         registrationStage = stage;
         currentUser = user;
         currentPort = port;
@@ -156,6 +156,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         grid.add(numberLabel, 0, 5);
 
         numberField = new TextField();
+        if (ship.getCallSign() != null)
+            numberField.setPromptText(ship.getCallSign());
         grid.add(numberField, 1, 5);
 
         newCapitanLabel = new Label("If you have to add capitan: ");
@@ -211,16 +213,14 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         }
 
         if (event.getSource() == newCaptainButton) {
-            Stage stage = new Stage();
             AddCaptainDialog capDialog = new AddCaptainDialog();
-            capDialog.start(stage, currentUser);
+            capDialog.start(registrationStage, currentUser);
         }
 
         if (event.getSource() == newShipButton) {
 
-            Stage stage = new Stage();
             AddShipDialog shipDialog = new AddShipDialog();
-            shipDialog.start(stage);
+            shipDialog.start(registrationStage, currentUser, currentPort);
         }
 
         if (event.getSource() == registerButton) {

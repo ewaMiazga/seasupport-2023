@@ -21,6 +21,7 @@ import javafx.util.Pair;
 import src.appActions.VisitsWindowActions;
 import src.logic.AllUsersEntity;
 import src.logic.PortsEntity;
+import src.logic.ShipsEntity;
 
 import java.sql.Date;
 import java.util.Calendar;
@@ -105,7 +106,8 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
             selectedPort.setPlacesShipsSmall(selectedPort.getPlacesShipsSmall() - 1);
             smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall() - places.getValue()));
             CreateVisitDialog dial = new CreateVisitDialog();
-            dial.start(openDocksStage, selectedUser, selectedPort);
+            ShipsEntity ship = new ShipsEntity();
+            dial.start(openDocksStage, selectedUser, selectedPort, ship);
         });
 
         grid.add(smallShipsButton, 2, 3);
@@ -129,7 +131,8 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
             selectedPort.setPlacesShipsBig(selectedPort.getPlacesShipsBig() - 1);
             bigShipsText.setText(Integer.toString(selectedPort.getPlacesShipsBig()));
             CreateVisitDialog dial = new CreateVisitDialog();
-            dial.start(openDocksStage, selectedUser, selectedPort);
+            ShipsEntity ship = new ShipsEntity();
+            dial.start(openDocksStage, selectedUser, selectedPort, ship);
         });
 
         grid.add(bigShipsButton, 2, 4);
