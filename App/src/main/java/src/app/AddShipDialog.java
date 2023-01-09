@@ -54,7 +54,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private Text formTitle, notification;
 
-    private Label callSignLabel, shipNameLabel, typeLabel, shipLenghtLabel, ownerIdLabel;
+    private Label callSignLabel, shipNameLabel, typeLabel, shipLenghtLabel, ownerIdLabel, newOwnerLabel;
 
     private TextField callSignField, shipNameField, lenghtField, ownerIdField;
 
@@ -62,7 +62,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private ComboBox shipTypeBox;
 
-    private Button registerButton, newUserButton;
+    private Button accountButton, registerButton, newOwnerButton;
 
     private Scene scene;
 
@@ -119,6 +119,12 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         formTitle = new Text("Add Ship");
         formTitle.setId("formatTitle");
@@ -159,19 +165,24 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         lenghtField = new TextField();
         grid.add(lenghtField, 1, 6);
 
+        newOwnerLabel = new Label("If you have to add capitan: ");
+        grid.add(newOwnerLabel, 1, 7);
+
+        newOwnerButton = new Button("Add New Captian");
+        newOwnerButton.setPrefSize(150, 25);
+        newOwnerButton.setOnAction(this);
+
+        grid.add(newOwnerButton, 2, 7);
+        grid.setHalignment(newOwnerButton, HPos.RIGHT);
+
         ownerIdLabel = new Label("Ship Owner Id: ");
         grid.add(ownerIdLabel, 0, 8);
 
         ownerIdField = new TextField();
-        grid.add(ownerIdField, 1, 8);
-
-        newUserButton = new Button("Add New Owner");
-        newUserButton.setOnAction(this);
-
-        grid.add(newUserButton, 2, 8);
-        grid.setHalignment(newUserButton, HPos.RIGHT);
+        grid.add(ownerIdField, 2, 8);
 
         registerButton = new Button("Add Ship");
+        registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 11);
@@ -199,7 +210,13 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == newUserButton) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+        else if (event.getSource() == newOwnerButton) {
             Stage stage = new Stage();
             AddOwnerDialog ownerDialog = new AddOwnerDialog();
             ownerDialog.start(stage);

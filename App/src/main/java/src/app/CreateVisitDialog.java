@@ -109,7 +109,6 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png"))
         );
-
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -127,7 +126,6 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         grid.add(accountButton, 2, 0);
         grid.setHalignment(accountButton, HPos.RIGHT);
-
 
         beginLabel = new Label("Start date of the visit: ");
         grid.add(beginLabel, 0, 1);

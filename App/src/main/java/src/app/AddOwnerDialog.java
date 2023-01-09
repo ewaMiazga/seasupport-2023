@@ -60,7 +60,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     private ComboBox ownerTypeBox;
 
-    private String ownerTypes [] = {  "Private", "Comercial" };
+    private String ownerTypes [] = {  "private", "comercial" };
 
     private final String pattern = "dd/MM/yy";
 
@@ -162,6 +162,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         grid.add(nipField, 1, 11);
 
         registerButton = new Button("Add Owner");
+        registerButton.setPrefSize(150, 25);
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 12);

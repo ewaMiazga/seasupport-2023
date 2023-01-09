@@ -63,7 +63,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private final String pattern = "dd/MM/yy";
 
     private CheckBox showPass, showPassConf;
-    private Button registerButton;
+    private Button accountButton, registerButton;
 
     private Scene scene;
 
@@ -116,10 +116,16 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-
         formTitle = new Text("Add Captian Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
+
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
 
         showPass = new CheckBox("I'm the Captian of the ship");
@@ -146,16 +152,17 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
 
         registerButton = new Button("Add Captian");
+        registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 9);
+        grid.add(registerButton, 2, 9);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
         grid.add(notification, 1, 10);
 
-        scene = new Scene(grid, 400, 300);
+        scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
@@ -173,7 +180,13 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == registerButton) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+        else if (event.getSource() == registerButton) {
 
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();

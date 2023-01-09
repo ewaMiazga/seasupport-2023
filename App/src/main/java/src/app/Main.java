@@ -21,7 +21,6 @@ public class Main extends Application {
     /**
      * primary Stage
      */
-    //private Stage primaryStage;
     /**
      * The func that run application
      *
