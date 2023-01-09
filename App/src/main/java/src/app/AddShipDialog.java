@@ -39,10 +39,7 @@ import java.util.List;
 import java.util.Vector;
 import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
-import src.logic.AllUsersEntity;
-import src.logic.PortsEntity;
-import src.logic.ShipOwnersEntity;
-import src.logic.ShipsEntity;
+import src.logic.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -221,10 +218,10 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
                 Stage stage = new Stage();
                 newShip = ship;
                 CreateVisitDialog createVisitDialog = new CreateVisitDialog();
-                createVisitDialog.start(stage, currentUser, currentPort, newShip);
 
-                //previousStage.show();
-                //registrationStage.hide();
+                CaptainsEntity newCaptain = new CaptainsEntity();
+                createVisitDialog.start(stage, currentUser, currentPort, newShip, newCaptain);
+
             }
         }
     }

@@ -44,7 +44,8 @@ import src.appActions.VisitsWindowActions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import src.logic.AllUsersEntity;
+
+import src.logic.*;
 
 /**
  * The type Registration dialog.
@@ -68,6 +69,12 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     private Stage registrationStage;
 
+    private Stage previousStage;
+
+    private AllUsersEntity currentUser;
+
+    private PortsEntity currentPort;
+
     private String cssPath;
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
@@ -85,8 +92,16 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     public void start(Stage stage) {
     }
 
-    public void start(Stage stage, AllUsersEntity user) {
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port) {
+        previousStage = tempPreviousStage;
+
+        Stage stage = new Stage();
         registrationStage = stage;
+
+        previousStage.hide();
+
+        currentUser = user;
+        currentPort = port;
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
                 new Image(
@@ -162,7 +177,15 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
             int message_code = action.addCaptian(getTextContents());
             notification.setText(messages.get(message_code));
             if(message_code == 2) {
-                registrationStage.close();
+
+                Vector<String> data = getTextContents();
+                CaptainsEntity newCaptain = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
+
+                Stage stage = new Stage();
+                ShipsEntity newShip = new ShipsEntity();
+                CreateVisitDialog createVisitDialog = new CreateVisitDialog();
+
+                createVisitDialog.start(stage, currentUser, currentPort, newShip, newCaptain);
             }
         }
     }
