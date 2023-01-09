@@ -59,6 +59,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     private Label forenameLabel, surnameLabel,
             numberLabel, beginLabel, endLabel, captainLabel;
 
+    private Label newShipLabel, newCapitanLabel;
+
     private TextField  numberField, captainField;
 
     private DatePicker beginPicker, endPicker;
@@ -133,17 +135,31 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         grid.add(endPicker, 1, 3);
 
+        newShipLabel = new Label("If you have to add ship: ");
+        grid.add(newShipLabel, 1, 4);
+
+        newShipButton = new Button("Add New Ship");
+        newShipButton.setPrefSize(150,50);
+        newShipButton.setOnAction(this);
+
+        grid.add(newShipButton, 2, 4);
+        grid.setHalignment(newShipButton, HPos.RIGHT);
+
         numberLabel = new Label("Ship Call Sign: ");
         grid.add(numberLabel, 0, 5);
 
         numberField = new TextField();
         grid.add(numberField, 1, 5);
 
-        newShipButton = new Button("Add New Ship");
-        newShipButton.setOnAction(this);
+        newCapitanLabel = new Label("If you have to add capitan: ");
+        grid.add(newCapitanLabel, 1, 6);
 
-        grid.add(newShipButton, 2, 5);
-        grid.setHalignment(newShipButton, HPos.RIGHT);
+        newCaptainButton = new Button("Add New Captian");
+        newCaptainButton.setPrefSize(150, 50);
+        newCaptainButton.setOnAction(this);
+
+        grid.add(newCaptainButton, 2, 6);
+        grid.setHalignment(newCaptainButton, HPos.RIGHT);
 
         captainLabel = new Label("Visit's Captian Id: ");
         grid.add(captainLabel, 0, 7);
@@ -151,13 +167,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         captainField = new TextField();
         grid.add(captainField, 1, 7);
 
-        newCaptainButton = new Button("Add New Captian");
-        newCaptainButton.setOnAction(this);
-
-        grid.add(newCaptainButton, 2, 7);
-        grid.setHalignment(newCaptainButton, HPos.RIGHT);
-
         registerButton = new Button("Create Visit");
+        registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
         grid.add(registerButton, 1, 9);
