@@ -96,7 +96,7 @@ public class VisitsWindowActions {
 
     public int addOwner(Vector<String> data){
         int size = data.size();
-        if(data.get(5).equals("Private")) {
+        if(data.get(5).equals("private")) {
             size -= 2;
             for(int i =0; i < size; i++){
                 if(data.get(i).equals(""))
@@ -118,7 +118,7 @@ public class VisitsWindowActions {
             if(data.get(2).length() != 9) return 1;
             if(!emailSuit(data.get(3))) return 2;
             if(data.get(4).length() != 11) return 3;
-            if(data.get(5).equals("Comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
+            if(data.get(5).equals("comercial") && !data.get(7).chars().allMatch( Character::isDigit )) return 4;
             Integer n = Integer.valueOf(data.get(7));
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(3),
                     data.get(6), n, data.get(2));

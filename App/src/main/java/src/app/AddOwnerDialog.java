@@ -58,7 +58,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
             companyLabel, nipLabel, extraInfoLabel;
     private TextField  forenameField, surnameField, phoneField, emailField, peselField, companyField, nipField;
 
-    ComboBox<String> types;
+    private ComboBox ownerTypeBox;
 
     private String ownerTypes [] = {  "Private", "Comercial" };
 
@@ -83,7 +83,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         data.add(phoneField.getText());
         data.add(emailField.getText());
         data.add(peselField.getText());
-        data.add("Private");
+        data.add(ownerTypeBox.getValue().toString());
         data.add(companyField.getText());
         data.add(nipField.getText());
         return data;
@@ -139,12 +139,12 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         ownerTypeLabel = new Label("Owner Type: ");
         grid.add(ownerTypeLabel, 0, 6);
 
-        ComboBox types = new ComboBox<String>();
-        types.getItems().setAll(
-                new String("Private"),
-                new String("Comercial")
+        ComboBox ownerTypeBox = new ComboBox();
+        ownerTypeBox.getItems().setAll(
+                new String("private"),
+                new String("comercial")
         );
-        grid.add(types, 1, 6);
+        grid.add(ownerTypeBox, 1, 6);
 
         extraInfoLabel = new Label("Data provided only by the commercial owners: ");
         grid.add(extraInfoLabel, 0, 9);
