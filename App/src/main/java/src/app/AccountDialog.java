@@ -245,7 +245,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         grid.add(userTypeText, 1, 8);
 
         returnButton = new Button("return");
-        returnButton.setPrefSize(150, 25);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

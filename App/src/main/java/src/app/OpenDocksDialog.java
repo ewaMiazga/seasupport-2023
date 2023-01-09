@@ -157,7 +157,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         });
 
         grid.add(returnButton, 2, 6);
-        returnButton.setPrefSize(150, 25);
+        returnButton.setPrefSize(150, 50);
         grid.setHalignment(returnButton, HPos.CENTER);
 
         notification = new Text();
