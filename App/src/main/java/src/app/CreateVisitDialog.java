@@ -226,7 +226,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
         if (event.getSource() == newShipButton) {
             AddShipDialog shipDialog = new AddShipDialog();
-            shipDialog.start(registrationStage, currentUser, currentPort, currentCaptain);
+            ShipOwnersEntity owner = new ShipOwnersEntity();
+            shipDialog.start(registrationStage, currentUser, currentPort, currentCaptain, owner);
         }
 
         if (event.getSource() == registerButton) {

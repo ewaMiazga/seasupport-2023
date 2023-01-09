@@ -74,11 +74,11 @@ public class ShipOwnersEntity {
         this.shipsEntities = shipsEntities;
     }
 
-    public int getShipOwnerId() {
+    public Integer getShipOwnerId() {
         return shipOwnerId;
     }
 
-    public void setShipOwnerId(int shipOwnerId) {
+    public void setShipOwnerId(Integer shipOwnerId) {
         this.shipOwnerId = shipOwnerId;
     }
 

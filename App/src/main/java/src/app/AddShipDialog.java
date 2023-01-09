@@ -75,6 +75,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private CaptainsEntity currentCaptain;
 
+    private ShipOwnersEntity currentOwner;
+
     private ShipsEntity newShip;
 
     private String cssPath;
@@ -96,7 +98,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     }
     @Override
     public void start(Stage stage) { }
-    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, CaptainsEntity captain) {
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, CaptainsEntity captain, ShipOwnersEntity owner) {
         previousStage = tempPreviousStage;
 
         Stage stage = new Stage();
@@ -107,6 +109,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         currentUser = user;
         currentPort = port;
         currentCaptain = captain;
+        currentOwner = owner;
 
         stage.setTitle("Registration Dialog");
         stage.getIcons().add(
@@ -176,6 +179,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.setHalignment(newOwnerButton, HPos.RIGHT);
 
         ownerIdLabel = new Label("Ship Owner Id: ");
+        if(currentOwner.getShipOwnerId() != null)
+            ownerIdField.setText(Integer.toString(currentOwner.getShipOwnerId()));
         grid.add(ownerIdLabel, 0, 8);
 
         ownerIdField = new TextField();
@@ -219,7 +224,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         else if (event.getSource() == newOwnerButton) {
             Stage stage = new Stage();
             AddOwnerDialog ownerDialog = new AddOwnerDialog();
-            ownerDialog.start(stage);
+            ownerDialog.start(stage, currentUser, currentPort, currentCaptain);
+            registrationStage.close();
         }
         if (event.getSource() == registerButton) {
 
@@ -240,7 +246,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
                 //CaptainsEntity newCaptain = new CaptainsEntity();
                 createVisitDialog.start(stage, currentUser, currentPort, newShip, currentCaptain);
                 registrationStage.close();
-
             }
         }
     }

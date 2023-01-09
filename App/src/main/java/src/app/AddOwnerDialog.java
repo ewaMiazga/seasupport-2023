@@ -42,6 +42,7 @@ import java.util.Vector;
 import javafx.util.StringConverter;
 import org.hibernate.annotations.Check;
 import src.appActions.VisitsWindowActions;
+import src.logic.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -64,11 +65,19 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     private final String pattern = "dd/MM/yy";
 
-    private Button registerButton;
+    private Button accountButton, registerButton;
 
     private Scene scene;
 
     private Stage registrationStage;
+
+    private Stage previousStage;
+
+    private AllUsersEntity currentUser;
+
+    private PortsEntity currentPort;
+
+    private CaptainsEntity currentCaptain;
 
     private String cssPath;
 
@@ -89,8 +98,19 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         return data;
     }
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) { }
+    public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, CaptainsEntity captain) {
+
+        previousStage = tempPreviousStage;
+
+        Stage stage = new Stage();
         registrationStage = stage;
+
+        previousStage.hide();
+
+        currentUser = user;
+        currentPort = port;
+        currentCaptain = captain;
         stage.setTitle("Add Owner Dialog");
         stage.getIcons().add(
                 new Image(
@@ -105,6 +125,13 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         formTitle = new Text("Add Owner Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
+
+        accountButton = new Button("Account Details");
+        accountButton.setPrefSize(150, 50);
+        accountButton.setOnAction(this);
+
+        grid.add(accountButton, 2, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         ownerTypeLabel = new Label("Owner Type: ");
         grid.add(ownerTypeLabel, 0, 1);
@@ -205,7 +232,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         registerButton.setPrefSize(150, 25);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 1, 7);
+        grid.add(registerButton, 2, 7);
         registerButton.setPrefSize(150, 50);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
@@ -231,13 +258,26 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == registerButton) {
+        if (event.getSource() == accountButton) {
+            notification.setText("account button pressed");
+            @Deprecated
+            AccountDialog accountDialog = new AccountDialog();
+            accountDialog.start(registrationStage, currentUser);
+        }
+        else if (event.getSource() == registerButton) {
 
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();
             int message_code = action.addOwner(getTextContents());
             notification.setText(messages.get(message_code));
             if(message_code == 5) {
+                Vector<String> data = getTextContents();
+                ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2), data.get(3),
+                        data.get(0), data.get(1), data.get(4));
+
+                Stage stage = new Stage();
+                AddShipDialog addShipDialog = new AddShipDialog();
+                addShipDialog.start(stage, currentUser, currentPort, currentCaptain, owner);
                 registrationStage.close();
             }
         }

@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +139,11 @@
           <url>file://$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java</url>
           <line>95</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
