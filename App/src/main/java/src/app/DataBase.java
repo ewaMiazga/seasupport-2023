@@ -264,7 +264,6 @@ public class DataBase {
      *
      * @param callSign
      */
-
     public ShipsEntity getShip(String callSign){
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
@@ -273,6 +272,7 @@ public class DataBase {
         ss.close();
         return s;
     }
+
     /**
      * Adds ShipsEntity to the database
      *
@@ -411,6 +411,18 @@ public class DataBase {
         tx.commit();
         ss.close();
         return s;
+    }
+
+    public ShipOwnersEntity getOwnerByEmail(String email){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM ShipOwnersEntity WHERE email = :email ");
+        query.setParameter("email", email);
+        ShipOwnersEntity owner = (ShipOwnersEntity) query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return owner;
     }
     /**
      * Adds new owner to the database

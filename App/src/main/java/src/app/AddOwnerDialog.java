@@ -83,7 +83,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     private List<String> messages=  List.of("Required fields are empty!"
              ,"Wrong format of phone number!", "Wrong format of email!", "Wrong format of pesel!",
-            "Wrong format of NIP number","Successful action, you added new owner!");
+            "Wrong format of NIP number","Successful action, you added new owner!", "Given email has already been used!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();

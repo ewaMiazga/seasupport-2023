@@ -47,6 +47,8 @@ public class VisitsWindowActions {
     }
 
     public int addVisit(Vector<String> data, LocalDate begin, LocalDate end, PortsEntity port, AllUsersEntity user){
+        if(begin == null || end == null) return 8;
+
         Date dateBegin = Date.valueOf(begin);
         Date dateEnd = Date.valueOf(end);
 
@@ -101,6 +103,7 @@ public class VisitsWindowActions {
         }
         if(data.get(1).length() != 9) return 1;
         if(!emailSuit(data.get(2))) return 2;
+        if(!emailIsAvailable(data.get(2))) return 6;
         if(data.get(0).equals("private")) {
             if(data.get(5).length() != 11) return 3;
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(1), data.get(2), data.get(3),
@@ -122,6 +125,12 @@ public class VisitsWindowActions {
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher mat = pattern.matcher(email);
         if(mat.matches()) return true;
+        return false;
+    }
+
+    private boolean emailIsAvailable(String email){
+        ShipOwnersEntity owner = DataBase.getInstance().getOwnerByEmail(email);
+        if(owner == null)  return true;
         return false;
     }
 
