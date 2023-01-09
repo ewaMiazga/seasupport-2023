@@ -89,7 +89,7 @@ public class VisitsWindowActions {
                 return 0;
         }
         if(data.get(2).length() != 11) return 1;
-        CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
+        CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2));
         DataBase.getInstance().addCaptain(cap);
         return 2;
     }
