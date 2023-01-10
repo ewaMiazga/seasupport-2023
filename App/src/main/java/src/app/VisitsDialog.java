@@ -28,12 +28,8 @@ import java.util.*;
 public class VisitsDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Label visitNumberLabel;
-    private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
-    private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
     private Button returnButton;
-    private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
-    private DatePicker birthdayPicker;
+
     private AllUsersEntity selectedUser;
 
     private final String pattern = "dd/MM/yy";
@@ -156,19 +152,16 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
 class ConfirmEndVistDialog extends Application {
     private GridPane grid;
     private Text notification;
-    private Label userOldPassLabel,userPassLabel, userPassConfLabel;
-    private TextField userOldPassVisibleField, userPassVisibleField, userPassConfVisibleField;
-    private PasswordField userOldPassField, userPassField, userPassConfField;
-    private CheckBox showOldPass, showPass, showConfPass;
-    private Button changePassButton;
+    private Label areYouSureLabel;
+    private Button yesButton, noButton;
     private Scene scene;
-    private Stage changePassStage;
+    private Stage confirmEndVisitStage;
     private String cssPath;
 
     @Override
     public void start(Stage stage) {
-        changePassStage = stage;
-        stage.setTitle("Change Password Dialog");
+        confirmEndVisitStage = stage;
+        stage.setTitle("Confirm the end of the visit Dialog");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -179,79 +172,38 @@ class ConfirmEndVistDialog extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        userOldPassLabel = new Label("Enter old Password: ");
-        grid.add(userOldPassLabel, 0, 1);
-
-        userOldPassVisibleField = new TextField();
-        userOldPassVisibleField.setManaged(false);
-        userOldPassVisibleField.setVisible(false);
-
-        showOldPass = new CheckBox("Show password");
-        showOldPass.setAlignment(Pos.CENTER_RIGHT);
-        grid.add(showOldPass, 1, 2);
-
-        userOldPassField = new PasswordField();
-        showPassword(userOldPassField, userOldPassVisibleField, showOldPass);
-
-        grid.add(userOldPassField, 1, 1);
-        grid.add(userOldPassVisibleField, 1,1);
-
-        userPassLabel = new Label("Enter new Password: ");
-        grid.add(userPassLabel, 0, 3);
-
-        userPassVisibleField = new TextField();
-        userPassVisibleField.setManaged(false);
-        userPassVisibleField.setVisible(false);
-
-        showPass = new CheckBox("Show password");
-        showPass.setAlignment(Pos.CENTER_RIGHT);
-        grid.add(showPass, 1, 4);
-
-        userPassField = new PasswordField();
-        showPassword(userPassField, userPassVisibleField, showPass);
-
-        grid.add(userPassField, 1, 3);
-        grid.add(userPassVisibleField, 1, 3);
+        formTitle = new Text("Are you sure that you want to end this visit? : ");
+        formTitle.setId("formatTitle");
+        grid.add(formTitle, 0, 0, 1, 2);
+        grid.setHalignment(formTitle, HPos.CENTER);
 
 
-        userPassConfLabel = new Label("Repeat new Password: ");
-        grid.add(userPassConfLabel, 0, 5);
+        yesButton = new Button("Yes, I want to end this visit");
+        grid.add(yesButton, 0, 1);
+        yesButton.setPrefSize(150, 50);
 
-        userPassConfVisibleField = new TextField();
-        userPassConfVisibleField.setManaged(false);
-        userPassConfVisibleField.setVisible(false);
+        yesButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource().equals(yesButton)) {
+                    confirmEndVisitStage.close();
+                }
 
-        showConfPass = new CheckBox("Show password");
-        showConfPass.setAlignment(Pos.CENTER_RIGHT);
-        grid.add(showConfPass, 1, 6);
-
-        userPassConfField = new PasswordField();
-        showPassword(userPassConfField, userPassConfVisibleField, showConfPass);
-
-        grid.add(userPassConfField, 1, 5);
-        grid.add(userPassConfVisibleField, 1, 5);
-
-        changePassButton = new Button("Change Password");
-
-        changePassButton.setOnAction(event -> {
-            if (!userOldPassField.getText().equals(selectedUser.getUserPassword().toString())) {
-                notification.setText("Old password is incorrect!");
-                return;
-            }
-            else if (!userPassField.getText().equals(userPassConfField.getText())) {
-                notification.setText("Passwords are different!");
-                return;
-            }
-            else if (event.getSource() == changePassButton) {
-                selectedUser.setUserPassword(userPassField.getText());
-                userPassText.setText(selectedUser.getUserPassword().toString());
-
-                changePassStage.close();
             }
         });
 
-        grid.add(changePassButton, 1, 7);
-        grid.setHalignment(changePassButton, HPos.RIGHT);
+        noButton = new Button("No, return to my visits");
+        grid.add(noButton, 1, 1);
+        noButton.setPrefSize(150, 50);
+        noButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource().equals(noButton)) {
+                    confirmEndVisitStage.close();
+                }
+
+            }
+        });
 
         notification = new Text();
         notification.setId("notification");
@@ -260,20 +212,11 @@ class ConfirmEndVistDialog extends Application {
         scene = new Scene(grid, 400, 275);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
-        changePassStage.setScene(scene);
-        changePassStage.centerOnScreen();
-        changePassStage.show();
+        confirmEndVisitStage.setScene(scene);
+        confirmEndVisitStage.centerOnScreen();
+        confirmEndVisitStage.show();
     }
 
-    public void showPassword(PasswordField field, TextField text, CheckBox box) {
-        text.managedProperty().bind(box.selectedProperty());
-        text.visibleProperty().bind(box.selectedProperty());
-
-        field.managedProperty().bind(box.selectedProperty().not());
-        field.visibleProperty().bind(box.selectedProperty().not());
-
-        text.textProperty().bindBidirectional(field.textProperty());
-    }
 
     /**
      * The entry point of class LoginDialog
@@ -283,7 +226,6 @@ class ConfirmEndVistDialog extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 
 }
 
