@@ -92,6 +92,7 @@ public class VisitsWindowActions {
         if(begin.isBefore(LocalDate.now())) return 2;
         if(begin.isAfter(end)) return 3;
         if(!shipInDataBase(data.get(2))) return 4;
+        if(shipInPortByDate(dateBegin, dateEnd, data.get(2))) return 10;
         if(!captianInDataBase(data.get(3))) return 5;
 
         ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
@@ -240,6 +241,11 @@ public class VisitsWindowActions {
      */
     boolean userInPortByDate(Date begin, Date end, AllUsersEntity user){
         if(DataBase.getInstance().getVisit(user, begin) != null||DataBase.getInstance().getVisit(user, end) !=null) return true;
+        return false;
+    }
+
+    boolean shipInPortByDate(Date begin, Date end, String sign){
+        if(DataBase.getInstance().getVisit(sign, begin) != null||DataBase.getInstance().getVisit(sign, end) !=null) return true;
         return false;
     }
 }

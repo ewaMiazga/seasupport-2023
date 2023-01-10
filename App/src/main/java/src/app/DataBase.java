@@ -175,6 +175,26 @@ public class DataBase {
         return visit;
     }
     /**
+     * Fetch visit with given callSign and data_begin
+     *
+     * @param callSign String
+     * @param dateBegin Date
+     * @return VisitsEntity
+     */
+    public VisitsEntity getVisit(String callSign, Date dateBegin){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE callSign = :callSign " +
+                "AND :dateBegin BETWEEN VE.dateBegin AND VE.dateEnd");
+        query.setParameter("callSign", callSign);
+        query.setParameter("dateBegin", dateBegin);
+        VisitsEntity visit = (VisitsEntity) query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return visit;
+    }
+    /**
      * Gets a list of VistsEntities from a port after given date
      *
      * @param port
