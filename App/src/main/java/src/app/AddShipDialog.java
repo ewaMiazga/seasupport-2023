@@ -62,6 +62,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private Button accountButton, registerButton, newOwnerButton;
 
+    private final String pattern = "dd/MM/yy";
+
     private Scene scene;
 
     private Stage registrationStage;

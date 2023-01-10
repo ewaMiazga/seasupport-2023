@@ -63,6 +63,8 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private CheckBox showPass;
     private Button accountButton, registerButton;
 
+    private final String pattern = "dd/MM/yy";
+
     private Scene scene;
 
     private Stage registrationStage;

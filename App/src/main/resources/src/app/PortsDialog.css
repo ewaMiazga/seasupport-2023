@@ -48,52 +48,42 @@
     -fx-font-weight: bold;
 }
 
-.list-view {
-    -fx-background-color: #232323;
-}
+.list-cell { -fx-text-fill: white; }
 
-.list-view .list-cell: selected {
-    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
-    -fx-text-fill: white;
-}
+.list-cell:odd {
+    -fx-background-color: #20B2AA;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.7), 6, 0.0, 0, 2);
+    }
 
-.list-view .list-cell: {
-    -fx-background-color: white;
-}
-
-.list-view .list-cell: hover {
-    -fx-background-color: #0093ff;
-    -fx-text-fill: white;
-}
-
-.list-cell:filled:selected:focused, .list-cell:filled:selected {
-    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
-    -fx-text-fill: white;
-}
-
-.list-cell:even { /* <=== changed to even */
-    -fx-background-color: white;
+.list-cell:even {
+-fx-background-color: #20b2b2;
 }
 
 .list-cell:filled:hover {
-    -fx-background-color: #0093ff;
+    -fx-background-color: linear-gradient(#20a0bd, #0070d8, #20a0bd);
     -fx-text-fill: white;
+    -fx-font-weight:bold;
 }
 
+.listView  .scroll-bar:horizontal:hover .track ,
+.listView  .scroll-bar:horizontal:pressed .track ,
+.listView:  .scroll-bar:vertical:hover .track,
+.listView  .scroll-bar:vertical:pressed .track{
+     -fx-background-color: derive(#434343,20%);
 
-.list-view: .list {
-  -fx-font-color: black;
-  -fx-border-color: #1385B4;
-  -fx-background-color: transparent;
+	 -fx-opacity: 0.2;
+	 -fx-background-radius: 0em;
+
 }
 
-.list-view .list:hover {
-  -fx-background-color: #1385B4;
+/* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
+.listView .scroll-bar .thumb:hover,
+.listView  .scroll-bar .thumb:pressed{
+    -fx-background-color: derive(black,50%);
 }
 
-
-.list-view:focused {
-  -fx-border-color: #035F85;
-  -fx-border-width: 0 0 2 0; // top, right, bottom, left
-  -fx-background-color: transparent;
+.listView .increment-button:hover ,..listView .decrement-button:hover {
+    -fx-background-color:derive(gray,100%);
+	-fx-border-color:derive(gray,80%);
+	-fx-padding:10px;
 }
