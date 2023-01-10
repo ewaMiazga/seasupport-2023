@@ -83,7 +83,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Visit can not start in that day!", "Visit can not end in that day!",
             "Wrong call sign of ship!", "Wrong Captain id!","Successful operation, you added new visit in this port!",
-            "There is no available places in this port.", "Select the start and end date of your visit!");
+            "There is no available places in this port.", "Select the start and end date of your visit!",
+            "User has already booked a place for this date.");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();

@@ -88,6 +88,7 @@ public class VisitsWindowActions {
                 return 0;
         }
 
+        if(userInPortByDate(dateBegin, dateEnd, user)) return 9;
         if(begin.isBefore(LocalDate.now())) return 2;
         if(begin.isAfter(end)) return 3;
         if(!shipInDataBase(data.get(2))) return 4;
@@ -228,5 +229,17 @@ public class VisitsWindowActions {
         }
         Pair<Integer, Integer> v = new Pair<>(small, big);
         return v;
+    }
+    /**
+     * userInPortByDate.
+     *
+     * Check that if user will be in port on this day.
+     * @param begin Date
+     * @param end Date
+     * @param user AllUsersEntity
+     */
+    boolean userInPortByDate(Date begin, Date end, AllUsersEntity user){
+        if(DataBase.getInstance().getVisit(user, begin) != null||DataBase.getInstance().getVisit(user, end) !=null) return true;
+        return false;
     }
 }
