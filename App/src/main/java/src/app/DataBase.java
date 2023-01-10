@@ -177,17 +177,17 @@ public class DataBase {
     /**
      * Fetch visit with given callSign and data_begin
      *
-     * @param callSign String
+     * @param ship ShipsEntity
      * @param dateBegin Date
      * @return VisitsEntity
      */
-    public VisitsEntity getVisit(String callSign, Date dateBegin){
+    public VisitsEntity getVisit(ShipsEntity ship, Date dateBegin){
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
 
-        Query query = ss.createQuery("FROM VisitsEntity VE WHERE callSign = :callSign " +
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE shipsEntity = :ship " +
                 "AND :dateBegin BETWEEN VE.dateBegin AND VE.dateEnd");
-        query.setParameter("callSign", callSign);
+        query.setParameter("ship", ship);
         query.setParameter("dateBegin", dateBegin);
         VisitsEntity visit = (VisitsEntity) query.uniqueResult();
         ss.getTransaction().commit();
