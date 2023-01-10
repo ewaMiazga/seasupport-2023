@@ -114,7 +114,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         URL url = this.getClass().getResource("GoogleMap.html");
         webEngine.load(url.toString());
 
-        webView.setPrefWidth(350);
+        webView.setPrefWidth(300);
         webView.setPrefHeight(350);
 
         grid.add(webView, 0,6, 2, 1);

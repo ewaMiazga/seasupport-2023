@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import src.logic.AllUsersEntity;
 import src.logic.VisitsEntity;
@@ -27,12 +29,8 @@ import java.util.*;
 public class VisitsDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private Label visitNumberLabel;
-    private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
-    private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
     private Button returnButton;
-    private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
-    private DatePicker birthdayPicker;
+
     private AllUsersEntity selectedUser;
 
     private final String pattern = "dd/MM/yy";
@@ -80,6 +78,17 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
             Label visitNumberLabel = new Label(String.valueOf(i + 1) + ".");
             visitNumberLabel.setFont(Font.font(30));
             grid.add(visitNumberLabel, 0, i + 2);
+
+            Button endVisitButton = new Button("End this visit");
+            endVisitButton.setPrefSize(150, 25);
+            grid.add(endVisitButton, 2, i + 2);
+            grid.setHalignment(endVisitButton, HPos.CENTER);
+
+            endVisitButton.setOnAction(event -> {
+                Stage tempStage = new Stage();
+                ConfirmEndVistDialog confirmEndVistDialog = new ConfirmEndVistDialog();
+                confirmEndVistDialog.start(tempStage);
+            });
 
             Label dateBeginLabel = new Label("date begin: ");
             grid.add(dateBeginLabel, 0, i + 3);
@@ -149,4 +158,150 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
     @Override
     public void handle(ActionEvent event) {
     }
+
+
+
+class ConfirmEndVistDialog extends Application {
+    private GridPane grid;
+    private Text notification;
+    private Label areYouSureLabel;
+    private Button yesButton, noButton;
+    private Scene scene;
+    private Stage confirmEndVisitStage;
+    private String cssPath;
+
+    @Override
+    public void start(Stage stage) {
+        confirmEndVisitStage = stage;
+        stage.setTitle("Confirm the end of the visit Dialog");
+        stage.getIcons().add(
+                new Image(
+                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
+
+        grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+
+        formTitle = new Text("Are you sure you want to finish this visit?");
+        formTitle.setWrappingWidth(350);
+        formTitle.setTextAlignment(TextAlignment.CENTER);
+        formTitle.setId("formatTitle");
+        grid.add(formTitle, 0, 0, 3, 2);
+        grid.setHalignment(formTitle, HPos.CENTER);
+
+
+        yesButton = new Button("Yes, I want to end this visit");
+        yesButton.setWrapText(true);
+        yesButton.setTextAlignment(TextAlignment.CENTER);
+        grid.add(yesButton, 0, 3, 1, 2);
+        yesButton.setPrefSize(200, 50);
+
+
+        yesButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource().equals(yesButton)) {
+                    confirmEndVisitStage.close();
+                }
+
+            }
+        });
+
+        noButton = new Button("No, return to my visits");
+        noButton.setTextAlignment(TextAlignment.CENTER);
+        noButton.setWrapText(true);
+        grid.add(noButton, 1, 3, 1, 2);
+        noButton.setPrefSize(200, 50);
+        noButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource().equals(noButton)) {
+                    confirmEndVisitStage.close();
+                }
+
+            }
+        });
+
+        notification = new Text();
+        notification.setId("notification");
+        grid.add(notification, 1, 8);
+
+        scene = new Scene(grid, 400, 275);
+        cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
+        confirmEndVisitStage.setScene(scene);
+        confirmEndVisitStage.centerOnScreen();
+        confirmEndVisitStage.show();
+    }
+
+
+    /**
+     * The entry point of class LoginDialog
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+}
+
+    public List<Node> getNodesByCoordinate(Integer row, Integer column) {
+        List<Node> matchingNodes = new ArrayList<>();
+        for (Node node : grid.getChildren()) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField || node instanceof CheckBox || node instanceof DatePicker)){
+                matchingNodes.add(node);
+            }
+        }
+        return matchingNodes;
+    }
+
+    public void handleArrowNavigation(KeyEvent event) {
+        Node source = (Node) event.getSource(); // the GridPane
+        Node focused = source.getScene().getFocusOwner();
+        if (event.getCode().isArrowKey() && focused.getParent() == source) {
+
+            int row = grid.getRowIndex(focused);
+            int col = grid.getColumnIndex(focused);
+            // Switch expressions were standardized in Java 14
+            switch (event.getCode()) {
+                case LEFT: {
+                    if (col < grid.getColumnCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col + 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case RIGHT: {
+                    if (col > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col - 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case UP: {
+                    if (row > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row - 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case DOWN: {
+                    if (row < grid.getRowCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row + 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }break;
+            }
+            event.consume();
+        }
+    }
+
+
 }
