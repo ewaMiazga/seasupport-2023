@@ -117,11 +117,16 @@ public class VisitsWindowActions {
      * End actually visit.
      * @param user AllUsersEntity
      */
-    public void endVisit(AllUsersEntity user){
+    public void endVisit(AllUsersEntity user, VisitsEntity visit){
         java.sql.Date today = new Date(Calendar.getInstance().getTime().getTime());
-        VisitsEntity visit = DataBase.getInstance().getVisit(user, today);
-        visit.setDateEnd(today);
-        DataBase.getInstance().addVisit(visit);
+        if(today.after(visit.getDateBegin())){
+            visit.setDateEnd(today);
+            DataBase.getInstance().addVisit(visit);
+        }
+        else{
+            DataBase.getInstance().removeVisit(visit);
+        }
+
     }
     /**
      * CaptainInDataBase.

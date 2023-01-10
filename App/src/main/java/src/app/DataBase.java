@@ -276,6 +276,14 @@ public class DataBase {
         ss.close();
         return visits;
     }
+    public void removeVisit(VisitsEntity visit)
+    {
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+        ss.remove(visit);
+        tx.commit();
+        ss.close();
+    }
     /**
      * Fetches all ports in the database
      * @return List<PortsEntities>

@@ -28,6 +28,8 @@ import src.logic.VisitsEntity;
 import java.sql.Date;
 import java.util.*;
 
+import static java.lang.Math.min;
+
 public class VisitsDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -80,14 +82,20 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
 
         visits = selectedUser.getVisitsEntities();
         visitsList = new ArrayList<>(visits);
-        int n = 0;
 
-        for (int i = 0; i < visitsList.size(); i++) {
-            Label visitNumberLabel = new Label(String.valueOf(7*i + 1) + ".");
+        int n = min(visitsList.size(), 2);
+        java.sql.Date today = new Date(Calendar.getInstance().getTime().getTime());
+
+        for (int i = 0; i < n; i++) {
+            VisitsEntity visit = visitsList.get(i);
+            Label visitNumberLabel = new Label(String.valueOf(i + 1) + ".");
             visitNumberLabel.setFont(Font.font(30));
             grid.add(visitNumberLabel, 0, 7*i + 2);
 
             Button endVisitButton = new Button("End this visit");
+            if(today.before(visit.getDateBegin())){
+                endVisitButton.setText("Cancel this visit");
+            }
             endVisitButton.setPrefSize(150, 25);
             grid.add(endVisitButton, 2, 7*i + 2);
             grid.setHalignment(endVisitButton, HPos.CENTER);
@@ -95,11 +103,10 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
             endVisitButton.setOnAction(event -> {
                 Stage tempStage = new Stage();
                 ConfirmEndVistDialog confirmEndVistDialog = new ConfirmEndVistDialog();
-                confirmEndVistDialog.start(tempStage, selectedUser);
+                confirmEndVistDialog.start(tempStage, selectedUser, visit);
                 // tutaj istotna sprawa, aktualizacja danych, zeby to sie odpalilo na nowo
                 // i wczytalo dane, tylko ze to powinno sie wykonywac po zamknieciu okna potwierdzenia
                 selectedUser = DataBase.getInstance().getUser(selectedUser.getLogin());
-                this.start(visitsStage, selectedUser);
             });
 
             Label dateBeginLabel = new Label("date begin: ");
@@ -143,11 +150,10 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
                     previousStage.show();
                     stage.hide();
                 }
-
             }
         });
 
-        grid.add(returnButton, 2, visitsList.size() * 4 + 4);
+        grid.add(returnButton, 2, n * 7 + 4);
         grid.setHalignment(returnButton, HPos.CENTER);
 
         notification = new Text();
@@ -183,9 +189,9 @@ class ConfirmEndVistDialog extends Application {
     @Override
     public void start(Stage stage) {
     }
-    public void start(Stage stage, AllUsersEntity user) {
+    public void start(Stage stage, AllUsersEntity user, VisitsEntity visit) {
         confirmEndVisitStage = stage;
-        stage.setTitle("Confirm the end of the visit Dialog");
+        stage.setTitle("Confirm the end or the cancellation of the visit Dialog");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -204,7 +210,7 @@ class ConfirmEndVistDialog extends Application {
         grid.setHalignment(formTitle, HPos.CENTER);
 
 
-        yesButton = new Button("Yes, I want to end this visit");
+        yesButton = new Button("Yes, I want to end/cancel this visit");
         yesButton.setWrapText(true);
         yesButton.setTextAlignment(TextAlignment.CENTER);
         grid.add(yesButton, 0, 3, 1, 2);
@@ -216,10 +222,9 @@ class ConfirmEndVistDialog extends Application {
             public void handle(MouseEvent event) {
                 if (event.getSource().equals(yesButton)) {
                     VisitsWindowActions action = new VisitsWindowActions();
-                    action.endVisit(user);
+                    action.endVisit(user, visit);
                     confirmEndVisitStage.close();
                 }
-
             }
         });
 
