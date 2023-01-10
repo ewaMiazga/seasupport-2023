@@ -56,14 +56,12 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
     private GridPane grid;
     private Text formTitle, notification;
     private Label forenameLabel, surnameLabel, phoneLabel, emailLabel, peselLabel, ownerTypeLabel,
-            companyLabel, nipLabel, extraInfoLabel;
+            companyLabel, nipLabel;
     private TextField  forenameField, surnameField, phoneField, emailField, peselField, companyField, nipField;
 
     private ComboBox<String> ownerTypeBox;
 
     private String ownerTypes [] = {  "private", "comercial" };
-
-    private final String pattern = "dd/MM/yy";
 
     private Button accountButton, registerButton;
 
@@ -83,18 +81,22 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     private List<String> messages=  List.of("Required fields are empty!"
              ,"Wrong format of phone number!", "Wrong format of email!", "Wrong format of pesel!",
-            "Wrong format of NIP number","Successful action, you added new owner!");
+            "Wrong format of NIP number","Successful action, you added new owner!", "Given email has already been used!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
-        data.add(forenameField.getText());
-        data.add(surnameField.getText());
+        data.add(ownerTypeBox.getValue().toString());
         data.add(phoneField.getText());
         data.add(emailField.getText());
-        data.add(peselField.getText());
-        data.add(ownerTypeBox.getValue().toString());
-        data.add(companyField.getText());
-        data.add(nipField.getText());
+        if(data.get(0).equals("private")){
+            data.add(forenameField.getText());
+            data.add(surnameField.getText());
+            data.add(peselField.getText());
+        }
+        else{
+            data.add(companyField.getText());
+            data.add(nipField.getText());
+        }
         return data;
     }
     @Override
@@ -140,7 +142,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         ownerTypeBox = new ComboBox<String>();
         ownerTypeBox.getItems().setAll(
                 new String("private"),
-                new String("comercial")
+                new String("commercial")
         );
         ownerTypeBox.getSelectionModel().selectFirst();
         grid.add(ownerTypeBox, 1, 1);
@@ -211,7 +213,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
                     nipLabel.setVisible(false);
                     nipField.setVisible(false);
                     break;
-                case "comercial":
+                case "commercial":
 
                     forenameLabel.setVisible(false);
                     forenameField.setVisible(false);
@@ -250,7 +252,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddOwnerDialog
      *
      * @param args the input arguments
      */

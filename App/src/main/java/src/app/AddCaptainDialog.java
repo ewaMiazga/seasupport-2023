@@ -48,7 +48,7 @@ import java.util.Locale;
 import src.logic.*;
 
 /**
- * The type Registration dialog.
+ * The type add Captain dialog.
  */
 public class AddCaptainDialog extends Application implements EventHandler<ActionEvent> {
 
@@ -60,9 +60,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     private TextField forenameField, surnameField, peselField;
 
-    private final String pattern = "dd/MM/yy";
-
-    private CheckBox showPass, showPassConf;
+    private CheckBox showPass;
     private Button accountButton, registerButton;
 
     private Scene scene;
@@ -80,7 +78,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private String cssPath;
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
-            "Successful action, you added new Captian!");
+            "Successful action, you added new Captain!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -105,7 +103,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         currentUser = user;
         currentPort = port;
         currentShip = ship;
-        stage.setTitle("Registration Dialog");
+        stage.setTitle("Add Captain Dialog");
         stage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
@@ -117,7 +115,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
-        formTitle = new Text("Add Captian Form");
+        formTitle = new Text("Add Captain Form");
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 2, 1);
 
@@ -129,8 +127,22 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setHalignment(accountButton, HPos.RIGHT);
 
 
-        showPass = new CheckBox("I'm the Captian of the ship");
+        showPass = new CheckBox("I'm the Captain of the ship");
         grid.add(showPass, 0, 1);
+
+        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent e)
+            {
+                if (showPass.isSelected()) {
+                    showPass.setVisible(false);
+                    forenameField.setText(currentUser.getForename());
+                    surnameField.setText(currentUser.getSurname());
+                    peselField.setText(currentUser.getPesel());
+                }
+            }
+        };
+        showPass.setOnAction(event);
 
         forenameLabel = new Label("Forename: ");
         grid.add(forenameLabel, 0, 2);
@@ -151,7 +163,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.add(peselField, 1, 4);
 
 
-        registerButton = new Button("Add Captian");
+        registerButton = new Button("Add Captain");
         registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
@@ -171,7 +183,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddCaptainDialog
      *
      * @param args the input arguments
      */
@@ -182,7 +194,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == accountButton) {
-            notification.setText("account button pressed");
+            //notification.setText("account button pressed");
             @Deprecated
             AccountDialog accountDialog = new AccountDialog();
             accountDialog.start(registrationStage, currentUser);
@@ -195,7 +207,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
             if(message_code == 2) {
 
                 Vector<String> data = getTextContents();
-                CaptainsEntity newCaptain = new CaptainsEntity(data.get(0), data.get(1), data.get(2), 1);
+                CaptainsEntity newCaptain = new CaptainsEntity(data.get(0), data.get(1), data.get(2));
 
                 Stage stage = new Stage();
                 CreateVisitDialog createVisitDialog = new CreateVisitDialog();

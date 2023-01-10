@@ -56,8 +56,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     private Text formTitle, notification;
 
-    private Label forenameLabel, surnameLabel,
-            numberLabel, beginLabel, endLabel, captainLabel;
+    private Label numberLabel, beginLabel, endLabel, captainLabel;
 
     private Label newShipLabel, newCapitanLabel;
 
@@ -83,7 +82,8 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Visit can not start in that day!", "Visit can not end in that day!",
-            "Wrong call sign of ship!", "Wrong Captian id!","Successful operation, you added new visit in this port!", "There is no avalible places in this port.");
+            "Wrong call sign of ship!", "Wrong Captain id!","Successful operation, you added new visit in this port!",
+            "There is no available places in this port.", "Select the start and end date of your visit!");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -204,7 +204,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class Create Visit Dialog
      *
      * @param args the input arguments
      */
@@ -243,16 +243,6 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
                 portDialog.start(registrationStage, currentPort, currentUser);
             }
         }
-    }
-
-    public void showPassword(PasswordField field, TextField text, CheckBox box) {
-        text.managedProperty().bind(box.selectedProperty());
-        text.visibleProperty().bind(box.selectedProperty());
-
-        field.managedProperty().bind(box.selectedProperty().not());
-        field.visibleProperty().bind(box.selectedProperty().not());
-
-        text.textProperty().bindBidirectional(field.textProperty());
     }
 
     public StringConverter createStringConverter() {

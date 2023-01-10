@@ -58,8 +58,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private TextField callSignField, shipNameField, lenghtField, ownerIdField;
 
-    private final String pattern = "dd/MM/yy";
-
     private ComboBox shipTypeBox;
 
     private Button accountButton, registerButton, newOwnerButton;
@@ -85,7 +83,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             "Incorrect type of ship!", "Length of the ship should be a number",
             "Ship is to long you can not booked place in this port",
             "Successful action, you added new ship into your account!",
-            "Uncorrect owner Id.");
+            "Incorrect owner Id.");
 
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
@@ -207,7 +205,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     }
 
     /**
-     * The entry point of class RegistrationDialog
+     * The entry point of class AddShipDialog
      *
      * @param args the input arguments
      */
@@ -218,7 +216,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == accountButton) {
-            notification.setText("account button pressed");
+            //notification.setText("account button pressed");
             @Deprecated
             AccountDialog accountDialog = new AccountDialog();
             accountDialog.start(registrationStage, currentUser);
@@ -231,7 +229,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         }
         if (event.getSource() == registerButton) {
 
-            //registerButton.setText("Add ship button pressed");
             VisitsWindowActions action = new VisitsWindowActions();
             int message_code = action.addShip(getTextContents());
             notification.setText(messages.get(message_code));
@@ -245,7 +242,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
                 newShip = ship;
                 CreateVisitDialog createVisitDialog = new CreateVisitDialog();
 
-                //CaptainsEntity newCaptain = new CaptainsEntity();
                 createVisitDialog.start(stage, currentUser, currentPort, newShip, currentCaptain);
                 registrationStage.close();
             }

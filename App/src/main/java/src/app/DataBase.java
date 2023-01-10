@@ -217,7 +217,14 @@ public class DataBase {
         ss.close();
         return visits;
     }
-
+    /**
+     * Gets a list of VistsEntities witch will start between dateBegin and dateEnd
+     *
+     * @param port
+     * @param dateBegin
+     * @param dateEnd
+     * @return List<VisitsEntity>
+     */
     public List<VisitsEntity> getVisitByPortBetween(PortsEntity port, Date dateBegin, Date dateEnd){
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
@@ -232,7 +239,12 @@ public class DataBase {
         ss.close();
         return visits;
     }
-
+    /**
+     * Gets a list of actually VistsEntities from this port.
+     *
+     * @param port
+     * @return List<VisitsEntity>
+     */
     public List<VisitsEntity> getVisitByPort(PortsEntity port){
         Session ss = sessionFactory.openSession();
         ss.beginTransaction();
@@ -264,7 +276,6 @@ public class DataBase {
      *
      * @param callSign
      */
-
     public ShipsEntity getShip(String callSign){
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
@@ -273,6 +284,7 @@ public class DataBase {
         ss.close();
         return s;
     }
+
     /**
      * Adds ShipsEntity to the database
      *
@@ -411,6 +423,21 @@ public class DataBase {
         tx.commit();
         ss.close();
         return s;
+    }
+    /**
+     * Adds get owner by email from the database
+     * @param email String
+     */
+    public ShipOwnersEntity getOwnerByEmail(String email){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM ShipOwnersEntity WHERE email = :email ");
+        query.setParameter("email", email);
+        ShipOwnersEntity owner = (ShipOwnersEntity) query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return owner;
     }
     /**
      * Adds new owner to the database
