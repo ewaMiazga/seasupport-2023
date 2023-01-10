@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import src.logic.AllUsersEntity;
 import src.logic.VisitsEntity;
@@ -77,6 +78,17 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
             Label visitNumberLabel = new Label(String.valueOf(i + 1) + ".");
             visitNumberLabel.setFont(Font.font(30));
             grid.add(visitNumberLabel, 0, i + 2);
+
+            Button endVisitButton = new Button("End this visit");
+            endVisitButton.setPrefSize(150, 25);
+            grid.add(endVisitButton, 2, i + 2);
+            grid.setHalignment(endVisitButton, HPos.CENTER);
+
+            endVisitButton.setOnAction(event -> {
+                Stage tempStage = new Stage();
+                ConfirmEndVistDialog confirmEndVistDialog = new ConfirmEndVistDialog();
+                confirmEndVistDialog.start(tempStage);
+            });
 
             Label dateBeginLabel = new Label("date begin: ");
             grid.add(dateBeginLabel, 0, i + 3);
@@ -172,15 +184,20 @@ class ConfirmEndVistDialog extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        formTitle = new Text("Are you sure that you want to end this visit? : ");
+        formTitle = new Text("Are you sure you want to finish this visit?");
+        formTitle.setWrappingWidth(350);
+        formTitle.setTextAlignment(TextAlignment.CENTER);
         formTitle.setId("formatTitle");
-        grid.add(formTitle, 0, 0, 1, 2);
+        grid.add(formTitle, 0, 0, 3, 2);
         grid.setHalignment(formTitle, HPos.CENTER);
 
 
         yesButton = new Button("Yes, I want to end this visit");
-        grid.add(yesButton, 0, 1);
-        yesButton.setPrefSize(150, 50);
+        yesButton.setWrapText(true);
+        yesButton.setTextAlignment(TextAlignment.CENTER);
+        grid.add(yesButton, 0, 3, 1, 2);
+        yesButton.setPrefSize(200, 50);
+
 
         yesButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -193,8 +210,10 @@ class ConfirmEndVistDialog extends Application {
         });
 
         noButton = new Button("No, return to my visits");
-        grid.add(noButton, 1, 1);
-        noButton.setPrefSize(150, 50);
+        noButton.setTextAlignment(TextAlignment.CENTER);
+        noButton.setWrapText(true);
+        grid.add(noButton, 1, 3, 1, 2);
+        noButton.setPrefSize(200, 50);
         noButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
