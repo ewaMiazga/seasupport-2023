@@ -112,6 +112,23 @@ public class VisitsWindowActions {
     }
 
     /**
+     * endVisit.
+     *
+     * End actually visit.
+     * @param user AllUsersEntity
+     */
+    public void endVisit(AllUsersEntity user, VisitsEntity visit){
+        java.sql.Date today = new Date(Calendar.getInstance().getTime().getTime());
+        if(today.after(visit.getDateBegin())){
+            visit.setDateEnd(today);
+            DataBase.getInstance().addVisit(visit);
+        }
+        else{
+            DataBase.getInstance().removeVisit(visit);
+        }
+
+    }
+    /**
      * CaptainInDataBase.
      *
      * Checking that the captain is in database.
@@ -243,9 +260,17 @@ public class VisitsWindowActions {
         if(DataBase.getInstance().getVisit(user, begin) != null||DataBase.getInstance().getVisit(user, end) !=null) return true;
         return false;
     }
-
-    boolean shipInPortByDate(Date begin, Date end, String sign){
-        if(DataBase.getInstance().getVisit(sign, begin) != null||DataBase.getInstance().getVisit(sign, end) !=null) return true;
+    /**
+     * shipInPortByDate.
+     *
+     * Check that if ship will be in port on this day.
+     * @param begin Date
+     * @param end Date
+     * @param callSign String
+     */
+    boolean shipInPortByDate(Date begin, Date end, String callSign){
+        ShipsEntity ship = DataBase.getInstance().getShip(callSign);
+        if(DataBase.getInstance().getVisit(ship, begin) != null||DataBase.getInstance().getVisit(ship, end) !=null) return true;
         return false;
     }
 }
