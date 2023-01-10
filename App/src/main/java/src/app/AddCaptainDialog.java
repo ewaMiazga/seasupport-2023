@@ -6,9 +6,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,9 +19,7 @@ import src.appActions.LoginWindowActions;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Vector;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -113,6 +113,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.addEventFilter(KeyEvent.KEY_PRESSED, this::handleArrowNavigation);
 
         formTitle = new Text("Add Captain Form");
         formTitle.setId("formatTitle");
@@ -144,41 +145,41 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         showPass.setOnAction(event);
 
         forenameLabel = new Label("Forename: ");
-        grid.add(forenameLabel, 0, 3);
+        grid.add(forenameLabel, 0, 2);
 
         forenameField = new TextField();
-        grid.add(forenameField, 1, 3);
+        grid.add(forenameField, 1, 2);
 
         surnameLabel = new Label("Surname: ");
-        grid.add(surnameLabel, 0, 5);
+        grid.add(surnameLabel, 0, 3);
 
         surnameField = new TextField();
-        grid.add(surnameField, 1, 5
-        );
+        grid.add(surnameField, 1, 3);
 
         peselLabel = new Label("Pesel: ");
-        grid.add(peselLabel, 0, 7);
+        grid.add(peselLabel, 0, 4);
 
         peselField = new TextField();
-        grid.add(peselField, 1, 7);
+        grid.add(peselField, 1, 4);
 
 
         registerButton = new Button("Add Captain");
         registerButton.setPrefSize(150, 50);
         registerButton.setOnAction(this);
 
-        grid.add(registerButton, 2, 9);
+        grid.add(registerButton, 2, 5);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 10);
+        grid.add(notification, 1, 6);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.show();
+        forenameField.requestFocus();
     }
 
     /**
@@ -199,7 +200,6 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
             accountDialog.start(registrationStage, currentUser);
         }
         else if (event.getSource() == registerButton) {
-
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();
             int message_code = action.addCaptian(getTextContents());
@@ -215,6 +215,98 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
                 createVisitDialog.start(stage, currentUser, currentPort, currentShip, newCaptain);
                 registrationStage.close();
             }
+        }
+    }
+
+    public void showPassword(PasswordField field, TextField text, CheckBox box) {
+        text.managedProperty().bind(box.selectedProperty());
+        text.visibleProperty().bind(box.selectedProperty());
+
+        field.managedProperty().bind(box.selectedProperty().not());
+        field.visibleProperty().bind(box.selectedProperty().not());
+
+        text.textProperty().bindBidirectional(field.textProperty());
+    }
+
+    public StringConverter createStringConverter() {
+        StringConverter converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter =
+                    DateTimeFormatter.ofPattern(pattern);
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+
+        return converter;
+    }
+
+    public List<Node> getNodesByCoordinate(Integer row, Integer column) {
+        List<Node> matchingNodes = new ArrayList<>();
+        for (Node node : grid.getChildren()) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField ||
+                    node instanceof CheckBox || node instanceof DatePicker || node instanceof ComboBox) ) {
+                matchingNodes.add(node);
+            }
+        }
+        return matchingNodes;
+    }
+
+
+    public void handleArrowNavigation(KeyEvent event) {
+        Node source = (Node) event.getSource(); // the GridPane
+        Node focused = source.getScene().getFocusOwner();
+        if (event.getCode().isArrowKey() && focused.getParent() == source) {
+
+            int row = grid.getRowIndex(focused);
+            int col = grid.getColumnIndex(focused);
+            // Switch expressions were standardized in Java 14
+            switch (event.getCode()) {
+                case LEFT: {
+                    if (col < grid.getColumnCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col + 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case RIGHT: {
+                    if (col > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row, col - 1);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case UP: {
+                    if (row > 0) {
+                        List<Node> newFocused = getNodesByCoordinate(row - 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }
+                break;
+                case DOWN: {
+                    if (row < grid.getRowCount() - 1) {
+                        List<Node> newFocused = getNodesByCoordinate(row + 1, col);
+                        if(newFocused.size() > 0)
+                            newFocused.get(0).requestFocus();
+                    }
+                }break;
+            }
+            event.consume();
         }
     }
 }

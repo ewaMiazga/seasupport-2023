@@ -100,7 +100,6 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         userLoginField = new TextField();
         grid.add(userLoginField, 1, 1);
 
-
         showPass = new CheckBox("Show password");
         grid.add(showPass, 1, 3);
 
@@ -277,7 +276,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
-            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField || node instanceof CheckBox || node instanceof DatePicker)){
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column && (node instanceof TextField ||
+                    node instanceof CheckBox || node instanceof DatePicker || node instanceof ComboBox) ) {
                 matchingNodes.add(node);
             }
         }
