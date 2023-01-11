@@ -60,7 +60,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private ComboBox shipTypeBox;
 
-    private Button accountButton, registerButton, newOwnerButton;
+    private Button accountButton, registerButton, newOwnerButton, returnButton;
 
     private Scene scene;
 
@@ -192,6 +192,12 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.add(registerButton, 2, 7);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+
+        returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 25);
+        returnButton.setOnAction(this);
+        grid.add(returnButton, 0, 7);
+
         notification = new Text();
         notification.setId("notification");
         grid.add(notification, 1, 8);
@@ -222,10 +228,14 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             accountDialog.start(registrationStage, currentUser);
         }
         else if (event.getSource() == newOwnerButton) {
-            Stage stage = new Stage();
+            //Stage stage = new Stage();
             AddOwnerDialog ownerDialog = new AddOwnerDialog();
-            ownerDialog.start(stage, currentUser, currentPort, currentCaptain);
+            ownerDialog.start(registrationStage, currentUser, currentPort, currentCaptain);
+            //registrationStage.close();
+        }
+        else if (event.getSource() == returnButton) {
             registrationStage.close();
+            previousStage.show();
         }
         if (event.getSource() == registerButton) {
 
