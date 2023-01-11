@@ -126,6 +126,7 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
         cssPath = this.getClass().getResource("PortsDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         portStage.setScene(scene);
+        stage.setResizable(false);
         portStage.show();
     }
 

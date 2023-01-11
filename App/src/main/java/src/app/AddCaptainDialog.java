@@ -180,6 +180,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         forenameField.requestFocus();
     }

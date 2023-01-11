@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
-      <change afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/dialogBackground.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ReserveDockDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ReserveDockDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/VisitsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/VisitsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +154,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java</url>
-          <line>338</line>
+          <line>339</line>
           <properties class="src.app.AccountDialog" method="getProperty">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

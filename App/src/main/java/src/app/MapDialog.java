@@ -91,6 +91,7 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
         scene.getStylesheets().add(cssPath);
         mapStage.setScene(scene);
         mapStage.centerOnScreen();
+        stage.setResizable(false);
         mapStage.show();
     }
 

@@ -128,6 +128,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         scene.getStylesheets().add(cssPath);
         loginStage.setScene(scene);
         loginStage.centerOnScreen();
+        loginStage.setResizable(false);
         loginStage.show();
     }
 

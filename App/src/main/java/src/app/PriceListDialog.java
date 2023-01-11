@@ -176,6 +176,7 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.centerOnScreen();
+        stage.setResizable(false);
         stage.show();
     }
 

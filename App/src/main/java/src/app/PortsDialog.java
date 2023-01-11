@@ -129,6 +129,7 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         stage.centerOnScreen();
+        stage.setResizable(false);
         stage.show();
     }
 
