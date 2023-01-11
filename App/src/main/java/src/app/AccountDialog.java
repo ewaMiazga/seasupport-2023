@@ -36,7 +36,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     private Label userLoginLabel, userPassLabel, userForenameLabel, userSurnameLabel, userPeselLabel, userBirthdayLabel,  userContactNumberLabel, userTypeLabel;
     private Text userLoginText, userPassText, userForenameText, userSurnameText, userPeselText, userBirthdayText, userContactNumberText, userTypeText;
     private Button setUserLoginButton, setUserPassButton, setUserForenameButton, setUserSurnameButton, setUserPeselButton, setUserBirthdayButton, setUserContactNumberButton;
-    private Button visitButton, returnButton;
+    private Button visitButton, returnButton, logoutButton;
     private TextField userLoginField, userPassField, userForenameField, userSurnameField, userPeselField, userContactNumberField;
     private DatePicker birthdayPicker;
     private AllUsersEntity selectedUser;
@@ -261,6 +261,24 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
         grid.add(returnButton, 2, 9);
         grid.setHalignment(returnButton, HPos.CENTER);
+
+        logoutButton = new Button("Logout");
+        logoutButton.setPrefSize(150, 50);
+        logoutButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getSource().equals(logoutButton)) {
+                    DataBase.getInstance().addUser(selectedUser);
+                    Stage next = new Stage();
+                    WelcomeDialog wel = new WelcomeDialog();
+                    wel.start(next);
+                    stage.close();
+                }
+
+            }
+        });
+        grid.add(logoutButton, 0, 9);
+        grid.setHalignment(logoutButton, HPos.CENTER);
 
 
         notification = new Text();
