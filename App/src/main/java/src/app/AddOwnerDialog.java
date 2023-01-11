@@ -63,7 +63,7 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
 
     private String ownerTypes [] = {  "private", "comercial" };
 
-    private Button accountButton, registerButton;
+    private Button accountButton, registerButton, returnButton;
 
     private Scene scene;
 
@@ -239,9 +239,14 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
         registerButton.setPrefSize(150, 50);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+        returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
+        returnButton.setOnAction(this);
+        grid.add(returnButton, 2, 8);
+
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 8);
+        grid.add(notification, 1, 9);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
@@ -269,7 +274,11 @@ public class AddOwnerDialog extends Application implements EventHandler<ActionEv
             AccountDialog accountDialog = new AccountDialog();
             accountDialog.start(registrationStage, currentUser);
         }
-        else if (event.getSource() == registerButton) {
+        else if (event.getSource() == returnButton) {
+            registrationStage.close();
+            previousStage.show();
+        }
+        if (event.getSource() == registerButton) {
 
             registerButton.setText("Button pressed");
             VisitsWindowActions action = new VisitsWindowActions();

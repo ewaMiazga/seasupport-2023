@@ -88,9 +88,11 @@ public class VisitsWindowActions {
                 return 0;
         }
 
+        if(userInPortByDate(dateBegin, dateEnd, user)) return 9;
         if(begin.isBefore(LocalDate.now())) return 2;
         if(begin.isAfter(end)) return 3;
         if(!shipInDataBase(data.get(2))) return 4;
+        if(shipInPortByDate(dateBegin, dateEnd, data.get(2))) return 10;
         if(!captianInDataBase(data.get(3))) return 5;
 
         ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
@@ -109,6 +111,23 @@ public class VisitsWindowActions {
         return 5;
     }
 
+    /**
+     * endVisit.
+     *
+     * End actually visit.
+     * @param user AllUsersEntity
+     */
+    public void endVisit(AllUsersEntity user, VisitsEntity visit){
+        java.sql.Date today = new Date(Calendar.getInstance().getTime().getTime());
+        if(today.after(visit.getDateBegin())){
+            visit.setDateEnd(today);
+            DataBase.getInstance().addVisit(visit);
+        }
+        else{
+            DataBase.getInstance().removeVisit(visit);
+        }
+
+    }
     /**
      * CaptainInDataBase.
      *
@@ -228,5 +247,30 @@ public class VisitsWindowActions {
         }
         Pair<Integer, Integer> v = new Pair<>(small, big);
         return v;
+    }
+    /**
+     * userInPortByDate.
+     *
+     * Check that if user will be in port on this day.
+     * @param begin Date
+     * @param end Date
+     * @param user AllUsersEntity
+     */
+    boolean userInPortByDate(Date begin, Date end, AllUsersEntity user){
+        if(DataBase.getInstance().getVisit(user, begin) != null||DataBase.getInstance().getVisit(user, end) !=null) return true;
+        return false;
+    }
+    /**
+     * shipInPortByDate.
+     *
+     * Check that if ship will be in port on this day.
+     * @param begin Date
+     * @param end Date
+     * @param callSign String
+     */
+    boolean shipInPortByDate(Date begin, Date end, String callSign){
+        ShipsEntity ship = DataBase.getInstance().getShip(callSign);
+        if(DataBase.getInstance().getVisit(ship, begin) != null||DataBase.getInstance().getVisit(ship, end) !=null) return true;
+        return false;
     }
 }

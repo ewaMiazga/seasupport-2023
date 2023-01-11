@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/GetDataTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/LoginWindowActionsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/getDataTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
@@ -33,6 +37,7 @@
       <list>
         <option value="HTML File" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -86,20 +91,102 @@
       <command value="mvn site:jar" />
     </option>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+  <component name="RunManager" selected="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable">
+    <configuration name="AllUsersEntityTest.getLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.logic" />
+      <option name="MAIN_CLASS_NAME" value="src.logic.AllUsersEntityTest" />
+      <option name="METHOD_NAME" value="getLogin" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+    <configuration name="PortInformationsActionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
-      <option name="filePath" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PortInformationsActionsTest.getPrices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
+      <option name="METHOD_NAME" value="getPrices" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PortInformationsActionsTest.testGetPricesAllServicesAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
+      <option name="METHOD_NAME" value="testGetPricesAllServicesAvailable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PortInformationsActionsTest.testGetPricesSomeServicesAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
+      <option name="METHOD_NAME" value="testGetPricesSomeServicesAvailable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
+      <item itemvalue="JUnit.PortInformationsActionsTest" />
+      <item itemvalue="JUnit.PortInformationsActionsTest.getPrices" />
+      <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesAllServicesAvailable" />
+      <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
+        <item itemvalue="JUnit.PortInformationsActionsTest" />
+        <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesAllServicesAvailable" />
+        <item itemvalue="JUnit.PortInformationsActionsTest.getPrices" />
+        <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

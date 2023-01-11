@@ -74,7 +74,4 @@ class CaptainsEntityTest {
         assertEquals(false, myCaptain.equals(myCaptain2));
     }
 
-    @Test
-    void testHashCode() {
-    }
 }

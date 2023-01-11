@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -42,7 +43,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private String cssPath;
     @Override
     public void start(Stage stage) {
-        loginStage = stage;
+        loginStage = new Stage();
         stage.setTitle("Login Dialog");
         stage.getIcons().add(
                 new Image(
@@ -91,6 +92,33 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         signInButton = new Button("Login");
         signInButton.setPrefSize(150, 25);
         signInButton.setOnAction(this);
+
+        signInButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getSource() == signInButton) {
+                    notification.setText("Sign in button pressed");
+                    LoginWindowActions action = new LoginWindowActions();
+                    AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
+                    if(currentUser != null){
+                        stage.close();
+                        PortsEntity port = action.userInPort(currentUser);
+                        if(port != null){
+                            PortDialog portDialog = new PortDialog();
+                            portDialog.start(loginStage, port, currentUser);
+                        }
+                        else{
+                            PortsDialog portsDialog = new PortsDialog();
+                            portsDialog.start(loginStage, currentUser);
+                        }
+                    }
+                    else{
+                        notification.setText("Invalid login or password");
+                    }
+                }
+
+            }
+        });
 
         grid.add(signInButton, 1, 4);
         grid.setHalignment(signInButton, HPos.RIGHT);

@@ -60,7 +60,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private ComboBox shipTypeBox;
 
-    private Button accountButton, registerButton, newOwnerButton;
+    private Button accountButton, registerButton, newOwnerButton, returnButton;
 
     private final String pattern = "dd/MM/yy";
 
@@ -80,6 +80,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
     private ShipsEntity newShip;
 
     private String cssPath;
+
+    private final String pattern = "dd/MM/yy";
 
     private List<String> messages=  List.of("Required fields are empty!", "Call Sign is not available!",
             "Incorrect type of ship!", "Length of the ship should be a number",
@@ -194,9 +196,15 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         grid.add(registerButton, 2, 7);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+
+        returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
+        returnButton.setOnAction(this);
+        grid.add(returnButton, 2, 8);
+
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 8);
+        grid.add(notification, 1, 9);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
@@ -225,10 +233,14 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             accountDialog.start(registrationStage, currentUser);
         }
         else if (event.getSource() == newOwnerButton) {
-            Stage stage = new Stage();
+            //Stage stage = new Stage();
             AddOwnerDialog ownerDialog = new AddOwnerDialog();
-            ownerDialog.start(stage, currentUser, currentPort, currentCaptain);
+            ownerDialog.start(registrationStage, currentUser, currentPort, currentCaptain);
+            //registrationStage.close();
+        }
+        else if (event.getSource() == returnButton) {
             registrationStage.close();
+            previousStage.show();
         }
         if (event.getSource() == registerButton) {
 
@@ -261,30 +273,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         text.textProperty().bindBidirectional(field.textProperty());
     }
 
-    public StringConverter createStringConverter() {
-        StringConverter converter = new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter =
-                    DateTimeFormatter.ofPattern(pattern);
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        };
-
-        return converter;
-    }
 
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();

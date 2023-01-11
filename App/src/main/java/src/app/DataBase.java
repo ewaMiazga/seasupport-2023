@@ -175,6 +175,26 @@ public class DataBase {
         return visit;
     }
     /**
+     * Fetch visit with given callSign and data_begin
+     *
+     * @param ship ShipsEntity
+     * @param dateBegin Date
+     * @return VisitsEntity
+     */
+    public VisitsEntity getVisit(ShipsEntity ship, Date dateBegin){
+        Session ss = sessionFactory.openSession();
+        ss.beginTransaction();
+
+        Query query = ss.createQuery("FROM VisitsEntity VE WHERE shipsEntity = :ship " +
+                "AND :dateBegin BETWEEN VE.dateBegin AND VE.dateEnd");
+        query.setParameter("ship", ship);
+        query.setParameter("dateBegin", dateBegin);
+        VisitsEntity visit = (VisitsEntity) query.uniqueResult();
+        ss.getTransaction().commit();
+        ss.close();
+        return visit;
+    }
+    /**
      * Gets a list of VistsEntities from a port after given date
      *
      * @param port
@@ -255,6 +275,14 @@ public class DataBase {
         ss.getTransaction().commit();
         ss.close();
         return visits;
+    }
+    public void removeVisit(VisitsEntity visit)
+    {
+        Session ss = sessionFactory.openSession();
+        Transaction tx = ss.beginTransaction();
+        ss.remove(visit);
+        tx.commit();
+        ss.close();
     }
     /**
      * Fetches all ports in the database
