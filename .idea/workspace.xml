@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
-      <change afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/dialogBackground1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/GetDataTest2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/VisitsWindowActionsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/getDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/71693650-dd14-4029-a774-6a07daac621c.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/LoginWindowActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/LoginWindowActionsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,19 +80,18 @@
       <command value="mvn site:jar" />
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="AllUsersEntityTest.getLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.VisitsWindowActionsTest">
+    <configuration name="LoginWindowActionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.logic.*" />
+          <option name="PATTERN" value="src.appActions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="src.logic" />
-      <option name="MAIN_CLASS_NAME" value="src.logic.AllUsersEntityTest" />
-      <option name="METHOD_NAME" value="getLogin" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.LoginWindowActionsTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,38 +107,6 @@
       <option name="PACKAGE_NAME" value="src.appActions" />
       <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PortInformationsActionsTest.getPrices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.appActions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="src.appActions" />
-      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
-      <option name="METHOD_NAME" value="getPrices" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PortInformationsActionsTest.testGetPricesAllServicesAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.appActions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="src.appActions" />
-      <option name="MAIN_CLASS_NAME" value="src.appActions.PortInformationsActionsTest" />
-      <option name="METHOD_NAME" value="testGetPricesAllServicesAvailable" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,20 +127,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VisitsWindowActionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.VisitsWindowActionsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VisitsWindowActionsTest.getBookedPlacesNow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.appActions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.appActions" />
+      <option name="MAIN_CLASS_NAME" value="src.appActions.VisitsWindowActionsTest" />
+      <option name="METHOD_NAME" value="getBookedPlacesNow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
+      <item itemvalue="JUnit.LoginWindowActionsTest" />
+      <item itemvalue="JUnit.VisitsWindowActionsTest" />
+      <item itemvalue="JUnit.VisitsWindowActionsTest.getBookedPlacesNow" />
       <item itemvalue="JUnit.PortInformationsActionsTest" />
-      <item itemvalue="JUnit.PortInformationsActionsTest.getPrices" />
-      <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesAllServicesAvailable" />
       <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
+        <item itemvalue="JUnit.VisitsWindowActionsTest" />
+        <item itemvalue="JUnit.LoginWindowActionsTest" />
+        <item itemvalue="JUnit.VisitsWindowActionsTest.getBookedPlacesNow" />
         <item itemvalue="JUnit.PortInformationsActionsTest" />
-        <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesAllServicesAvailable" />
-        <item itemvalue="JUnit.PortInformationsActionsTest.getPrices" />
-        <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
+        <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
       </list>
     </recent_temporary>
   </component>

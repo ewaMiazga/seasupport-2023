@@ -180,7 +180,7 @@ public class VisitsWindowActions {
             return 5;
         }
         else{
-            if(data.get(4).equals("commercial") && !data.get(4).chars().allMatch( Character::isDigit )) return 4;
+            if(data.get(0).equals("commercial") && !data.get(4).chars().allMatch( Character::isDigit )) return 4;
             Integer n = Integer.valueOf(data.get(4));
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2),
                     data.get(3), n, data.get(1));
@@ -263,7 +263,7 @@ public class VisitsWindowActions {
     /**
      * shipInPortByDate.
      *
-     * Check that if ship will be in port on this day.
+     * Check that if ship will be in port on this day.s
      * @param begin Date
      * @param end Date
      * @param callSign String
