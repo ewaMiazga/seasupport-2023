@@ -2,6 +2,7 @@ package src.app;
 
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -40,8 +41,6 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     private PriceListEntity priceList;
 
-    private ObservableList<PriceListEntity> data;
-
     PriceListEntity getList(int listId){
         PriceListEntity current_list = DataBase.getInstance().getPriceList(listId);
         return current_list;
@@ -65,8 +64,6 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         priceList = port.getPriceListEntity();
-        data = FXCollections.observableArrayList(
-                getList(priceList.getListId()));
 
         formTitle = new Text("Price List");
         formTitle.setId("formatTitle");
@@ -76,8 +73,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         accountButton.setPrefSize(150, 50);
         accountButton.setOnAction(this);
 
-        grid.add(accountButton, 2, 0);
-        grid.setHalignment(accountButton, HPos.CENTER);
+        grid.add(accountButton, 1, 0);
+        grid.setHalignment(accountButton, HPos.RIGHT);
 
         returnButton = new Button("Return");
         returnButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -110,36 +107,28 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
             );
 
 
-        TableColumn<Pair<String, Short>, String> keyCol = new TableColumn<>("Key");
+        TableColumn<Pair<String, Short>, String> keyCol = new TableColumn<>("Name of service");
+        keyCol.setMinWidth(260);
         keyCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey()));
 
-        TableColumn<Pair<String, Short>, String> valCol = new TableColumn<>("Value");
+        TableColumn<Pair<String, Short>, String> valCol = new TableColumn<>("Price (ZL)");
+        valCol.setMinWidth(160);
         valCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().toString()));
 
         priceListView.getColumns().addAll(keyCol, valCol);
 
-        /*PortInformationsActions action = new PortInformationsActions();
-        Vector<Pair<String, String>> prices = action.getPrices(port.getPriceListEntity());
-
-        TableColumn nameServiceCol = new TableColumn("Name of service");
-        nameServiceCol.setMinWidth(160);
-
-        nameServiceCol.setCellValueFactory(
-                new PropertyValueFactory<Pair<String, String>, String>("name"));
-
-        TableColumn priceCol = new TableColumn("Price (ZL)");
-        priceCol.setMinWidth(100);
-        priceCol.setCellValueFactory(
-                new PropertyValueFactory<Pair<String, String>, String>("price"));
-        //klasy jeden port
-        //priceListView.setEditable(true);
-        //priceListView.getSelectionModel().setCellSelectionEnabled(true);
-        priceListView.getColumns().addAll(nameServiceCol, priceCol);*/
-
-        //priceListView.getItems().addAll("Usluga1", "Usluga2", "Usluga3");
+        priceListView.getSelectionModel().setCellSelectionEnabled(true);
         priceListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        grid.add(priceListView, 1, 1);
+        priceListView.setFixedCellSize(25);
+        priceListView.prefHeightProperty().bind(priceListView.fixedCellSizeProperty().multiply(Bindings.size(priceListView.getItems()).add(1.01)));
+        priceListView.minHeightProperty().bind(priceListView.prefHeightProperty());
+        priceListView.maxHeightProperty().bind(priceListView.prefHeightProperty());
+        priceListView.setMaxWidth(420);
+        //priceListView.prefWidthProperty().bind(stage.widthProperty());
+
+
+        grid.add(priceListView, 0, 1, 2, 1);
 
         priceListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -192,12 +181,4 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         }
     }
 
-    /*public final ObservableList<Pair<String, Integer>> setData() {
-        final ObservableList<Pair<String, Integer>> data = FXCollections.observableArrayList(
-                new Pair("Usluga1", 12),
-                new Pair("Usluga2", 10),
-                new Pair("Usluga3", 15)
-        );
-        return data;
-    }*/
 }
