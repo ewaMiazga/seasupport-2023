@@ -77,6 +77,8 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
     private String cssPath;
 
+    private final String pattern = "dd/MM/yy";
+
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Successful action, you added new Captain!");
 

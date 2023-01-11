@@ -2,20 +2,14 @@ package src.app;
 
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Mockito.*;
+
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class RegistrationDialogTest {
-
-    @Test
-    void handle() {
-//        var myObj = mock(RegistrationDialog.class);
-//        when(myObj.handle();)
-//        when(myObj.createStringConverter()).thenReturn(0);
-
-    }
 
     @Test
     void stringConverter() {

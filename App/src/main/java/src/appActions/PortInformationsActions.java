@@ -34,9 +34,9 @@ public class PortInformationsActions {
         else prices.add(new Pair<>("PLACE_LESS_7M", "Not available"));
         if (list.getPlace712M() != null) prices.add(new Pair<>("PLACE_7_12M", list.getPlace712M().toString()));
         else prices.add(new Pair<>("PLACE_7_12M", "Not available"));
-        if (list.getLaundry() != null) prices.add(new Pair<>("PLACE_12_17M", list.getPlace1217M().toString()));
+        if (list.getPlace1217M() != null) prices.add(new Pair<>("PLACE_12_17M", list.getPlace1217M().toString()));
         else prices.add(new Pair<>("PLACE_12_17M", "Not available"));
-        if (list.getPlace1217M() != null) prices.add(new Pair<>("PLACE_17_20M", list.getPlace1720M().toString()));
+        if (list.getPlace1720M() != null) prices.add(new Pair<>("PLACE_17_20M", list.getPlace1720M().toString()));
         else prices.add(new Pair<>("PLACE_17_20M", "Not available"));
         if (list.getPlaceMore20M() != null) prices.add(new Pair<>("PLACE_MORE_20M", list.getPlaceMore20M().toString()));
         else prices.add(new Pair<>("PLACE_MORE_20M", "Not available"));

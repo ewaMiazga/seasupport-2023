@@ -117,12 +117,4 @@ class AllUsersEntityTest {
         emptyUser.setUserType("normal");
         assertEquals("normal", emptyUser.getUserType());
     }
-
-    @Test
-    void testEquals() {
-    }
-
-    @Test
-    void testHashCode() {
-    }
 }
