@@ -145,6 +145,7 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
         scene.getStylesheets().add(cssPath);
         contactStage.setScene(scene);
         contactStage.centerOnScreen();
+        contactStage.setResizable(false);
         contactStage.show();
     }
 

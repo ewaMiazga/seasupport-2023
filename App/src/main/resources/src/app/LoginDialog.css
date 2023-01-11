@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image: url("Background.jpg");
+    -fx-background-image: url("dialogBackground.jpg");
 }
 
 .label

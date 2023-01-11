@@ -62,6 +62,8 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private Button accountButton, registerButton, newOwnerButton, returnButton;
 
+    private final String pattern = "dd/MM/yy";
+
     private Scene scene;
 
     private Stage registrationStage;
@@ -208,6 +210,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         callSignField.requestFocus();
     }

@@ -170,6 +170,7 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
         scene.getStylesheets().add(cssPath);
         visitsStage.setScene(scene);
         visitsStage.centerOnScreen();
+        visitsStage.setResizable(false);
         visitsStage.show();
     }
 
@@ -252,6 +253,7 @@ class ConfirmEndVistDialog extends Application {
         scene.getStylesheets().add(cssPath);
         confirmEndVisitStage.setScene(scene);
         confirmEndVisitStage.centerOnScreen();
+        confirmEndVisitStage.setResizable(false);
         confirmEndVisitStage.show();
     }
 

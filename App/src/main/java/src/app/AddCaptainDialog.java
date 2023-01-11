@@ -63,6 +63,8 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private CheckBox showPass;
     private Button accountButton, registerButton, returnButton;
 
+    private final String pattern = "dd/MM/yy";
+
     private Scene scene;
 
     private Stage registrationStage;
@@ -185,6 +187,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         forenameField.requestFocus();
     }

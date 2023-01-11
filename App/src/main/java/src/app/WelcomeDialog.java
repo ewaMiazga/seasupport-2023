@@ -72,6 +72,7 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

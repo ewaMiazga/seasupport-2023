@@ -290,6 +290,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         scene.getStylesheets().add(cssPath);
         accountStage.setScene(scene);
         accountStage.centerOnScreen();
+        accountStage.setResizable(false);
         accountStage.show();
     }
 
@@ -535,6 +536,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             scene.getStylesheets().add(cssPath);
             changePassStage.setScene(scene);
             changePassStage.centerOnScreen();
+            changePassStage.setResizable(false);
             changePassStage.show();
         }
 
