@@ -32,7 +32,7 @@ import java.util.*;
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
-    private TableView<Pair<String, Short>> priceListView;
+    private TableView<Pair<String, String>> priceListView;
     private Button accountButton, returnButton;
     private AllUsersEntity selectedUser;
     private Scene scene;
@@ -92,8 +92,24 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         returnButton.setPrefSize(150, 50);
         grid.setHalignment(returnButton, HPos.RIGHT);
 
-        priceListView = new TableView<Pair<String, Short>>();
+        PortInformationsActions action = new PortInformationsActions();
+
+        priceListView = new TableView<Pair<String, String>>();
         priceListView.getItems().addAll(
+                action.getPrices(priceList).get(0),
+                action.getPrices(priceList).get(1),
+                action.getPrices(priceList).get(2),
+                action.getPrices(priceList).get(3),
+                action.getPrices(priceList).get(4),
+                action.getPrices(priceList).get(5),
+                action.getPrices(priceList).get(6),
+                action.getPrices(priceList).get(7),
+                action.getPrices(priceList).get(8),
+                action.getPrices(priceList).get(9)
+
+
+
+                /*
             new Pair<String, Short>("laundry", priceList.getLaundry()),
             new Pair<String, Short>("drying room", priceList.getDryingRoom()),
             new Pair<String, Short>("water", priceList.getWater()),
@@ -103,15 +119,15 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
             new Pair<String, Short>("place between 7m and 12m", priceList.getPlace712M()),
             new Pair<String, Short>("place between 12m and 17m", priceList.getPlace1217M()),
             new Pair<String, Short>("place between 17m and 20m", priceList.getPlace1720M()),
-            new Pair<String, Short>("place longer than 20m", priceList.getPlaceMore20M())
+            new Pair<String, Short>("place longer than 20m", priceList.getPlaceMore20M())*/
             );
 
 
-        TableColumn<Pair<String, Short>, String> keyCol = new TableColumn<>("Name of service");
+        TableColumn<Pair<String, String>, String> keyCol = new TableColumn<>("Name of service");
         keyCol.setMinWidth(260);
         keyCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey()));
 
-        TableColumn<Pair<String, Short>, String> valCol = new TableColumn<>("Price (ZL)");
+        TableColumn<Pair<String, String>, String> valCol = new TableColumn<>("Price (ZL)");
         valCol.setMinWidth(160);
         valCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().toString()));
 
@@ -125,7 +141,8 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
         priceListView.minHeightProperty().bind(priceListView.prefHeightProperty());
         priceListView.maxHeightProperty().bind(priceListView.prefHeightProperty());
         priceListView.setMaxWidth(420);
-        //priceListView.prefWidthProperty().bind(stage.widthProperty());
+        priceListView.setMinWidth(420);
+        priceListView.prefWidthProperty().bind(stage.widthProperty());
 
 
         grid.add(priceListView, 0, 1, 2, 1);
