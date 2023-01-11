@@ -173,13 +173,13 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.setHalignment(registerButton, HPos.RIGHT);
 
         returnButton = new Button("Return");
-        returnButton.setPrefSize(150, 25);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnAction(this);
-        grid.add(returnButton, 0, 5);
+        grid.add(returnButton, 2, 6);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 6);
+        grid.add(notification, 1, 7);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();

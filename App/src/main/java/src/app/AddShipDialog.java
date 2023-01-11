@@ -196,13 +196,13 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
 
         returnButton = new Button("Return");
-        returnButton.setPrefSize(150, 25);
+        returnButton.setPrefSize(150, 50);
         returnButton.setOnAction(this);
-        grid.add(returnButton, 0, 7);
+        grid.add(returnButton, 2, 8);
 
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 8);
+        grid.add(notification, 1, 9);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();

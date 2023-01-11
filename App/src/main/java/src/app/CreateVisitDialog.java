@@ -64,11 +64,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     private DatePicker beginPicker, endPicker;
     private final String pattern = "dd/MM/yy";
-    private Button accountButton, registerButton, newShipButton, newCaptainButton;
+    private Button accountButton, registerButton, newShipButton, newCaptainButton, returnButton;
 
     private Scene scene;
 
     private Stage registrationStage;
+
+    private Stage previousStage;
 
     private String cssPath;
 
@@ -101,6 +103,7 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
 
     public void start(Stage stage, AllUsersEntity user, PortsEntity port, ShipsEntity ship, CaptainsEntity captain) {
         registrationStage = stage;
+
         currentUser = user;
         currentPort = port;
         currentCaptain = captain;
@@ -192,9 +195,14 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         grid.add(registerButton, 2, 7);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+        returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 50);
+        returnButton.setOnAction(this);
+        grid.add(returnButton, 2, 8);
+
         notification = new Text();
         notification.setId("notification");
-        grid.add(notification, 1, 8);
+        grid.add(notification, 1, 9);
 
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
@@ -231,6 +239,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
             AddShipDialog shipDialog = new AddShipDialog();
             ShipOwnersEntity owner = new ShipOwnersEntity();
             shipDialog.start(registrationStage, currentUser, currentPort, currentCaptain, owner);
+        }
+
+        if (event.getSource() == returnButton) {
+            Stage next = new Stage();
+            OpenDocksDialog dial = new OpenDocksDialog();
+            dial.start(next, currentPort, currentUser);
+            registrationStage.close();
         }
 
         if (event.getSource() == registerButton) {
