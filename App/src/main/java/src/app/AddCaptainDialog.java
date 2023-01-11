@@ -61,7 +61,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private TextField forenameField, surnameField, peselField;
 
     private CheckBox showPass;
-    private Button accountButton, registerButton;
+    private Button accountButton, registerButton, returnButton;
 
     private Scene scene;
 
@@ -170,6 +170,11 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         grid.add(registerButton, 2, 5);
         grid.setHalignment(registerButton, HPos.RIGHT);
 
+        returnButton = new Button("Return");
+        returnButton.setPrefSize(150, 25);
+        returnButton.setOnAction(this);
+        grid.add(returnButton, 0, 5);
+
         notification = new Text();
         notification.setId("notification");
         grid.add(notification, 1, 6);
@@ -198,6 +203,10 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
             @Deprecated
             AccountDialog accountDialog = new AccountDialog();
             accountDialog.start(registrationStage, currentUser);
+        }
+        else if (event.getSource() == returnButton) {
+            registrationStage.close();
+            previousStage.show();
         }
         else if (event.getSource() == registerButton) {
             registerButton.setText("Button pressed");
