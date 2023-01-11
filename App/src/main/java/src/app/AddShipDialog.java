@@ -81,7 +81,6 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
 
     private String cssPath;
 
-    private final String pattern = "dd/MM/yy";
 
     private List<String> messages=  List.of("Required fields are empty!", "Call Sign is not available!",
             "Incorrect type of ship!", "Length of the ship should be a number",

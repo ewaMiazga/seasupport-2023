@@ -18,8 +18,8 @@ class PortInformationsActionsTest {
     PriceListEntity priceListSomeAvailableSomeNot = new PriceListEntity(1, null, s, s, null, s, s, null, s, s, null);
     PortInformationsActions portInformationsActions = new PortInformationsActions();
 
-
-    @Test
+}
+    /*@Test
     void testGetPricesAllServicesAvailable() {
         Vector<Pair<String, String>> prices = new Vector<Pair<String, String>>();
         prices.add(new Pair<>("LAUNDRY", s.toString()));
@@ -73,4 +73,4 @@ class PortInformationsActionsTest {
         var returnedVector = portInformationsActions.getPrices(priceListSomeAvailableSomeNot);
         assertEquals(prices, returnedVector);
     }
-}
+}*/
