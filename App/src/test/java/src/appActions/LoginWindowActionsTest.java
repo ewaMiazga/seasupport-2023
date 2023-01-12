@@ -82,33 +82,6 @@ class LoginWindowActionsTest {
         return allUsersEntity;
     }
 
-
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForLogin")
-//    void testRegisterForDifferentParameters(String password, AllUsersEntity expectedUserEntity) {
-//        // given
-//        var login = "mtaudul";
-//        var correctPassword = "mypassword";
-//        AllUsersEntity userWithCorrectPassword = createUser(login, correctPassword);
-//        when(dataBase.getUser(login)).thenReturn(userWithCorrectPassword);
-//
-//        // when
-//        LoginWindowActions loginWindowActions = new LoginWindowActions();
-//        AllUsersEntity newUser = loginWindowActions.register(Vector<String> data, LocalDate birthdate);
-//
-//        // then
-//        assertEquals(expectedUserEntity, returnedLogin);
-//    }
-//
-//    private static Stream<Arguments> provideParamsForRegister() {
-//        return Stream.of(
-//                Arguments.of("badpassword", null),
-//                Arguments.of("innebadpasww", null),
-//                Arguments.of(null, null),
-//                Arguments.of("mypassword", createUser("mtaudul", "mypassword"))
-//        );
-//    }
-
     @Test
     void RegisterWithCorrectLogin() {
         // given
@@ -150,7 +123,6 @@ class LoginWindowActionsTest {
         data.add("phone");
         data.add("pesel");
         LocalDate localDate = LocalDate.now();
-        Date date = Date.valueOf(localDate);
 
         var login = "login";
         var pass = "password";
@@ -164,28 +136,6 @@ class LoginWindowActionsTest {
         // then
         assertEquals(null, newUser);
     }
-
-
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForDate")
-//    void testDateConverter(String dateStr) {
-//        // given
-//        Date emptyDate = new Date(0, 0, 0);
-//
-//        // when
-//        LoginWindowActions loginWindowActions = new LoginWindowActions();
-//        Date returnedDate = loginWindowActions.convertToDate(dateStr);
-//
-//        // then
-//        assertEquals(emptyDate, returnedDate);
-//    }
-//
-//    private static Stream<Arguments> provideParamsForDate() {
-//        return Stream.of(
-//                Arguments.of("2022-12-12")
-//        );
-//    }
-
 
     @ParameterizedTest
     @MethodSource("provideParamsForLoginIsAvailable")
@@ -204,10 +154,10 @@ class LoginWindowActionsTest {
 
         // when
         LoginWindowActions loginWindowActions = new LoginWindowActions();
-        boolean returnerAvailability = loginWindowActions.loginIsAvalible(login);
+        boolean returnedAvailability = loginWindowActions.loginIsAvalible(login);
 
         // then
-        assertEquals(expectedResult, returnerAvailability);
+        assertEquals(expectedResult, returnedAvailability);
     }
 
     private static Stream<Arguments> provideParamsForLoginIsAvailable() {
@@ -231,13 +181,6 @@ class LoginWindowActionsTest {
         PortsEntity myPort = createPort("Port Jeden");
         VisitsEntity myVisit = createVisit(date, myUser, myPort);
 
-//        MockedStatic<Calendar> mockedCalendar;
-//        Calendar calendar = mock(Calendar.class);
-
-//        mockedCalendar = mockStatic(Calendar.class);
-//        mockedCalendar.when(Calendar::getInstance).thenReturn(calendar);
-
-
         when(calendar.getTime()).thenReturn(date);
         when(dataBase.getVisit(myUser, date)).thenReturn(myVisit);
 
@@ -258,13 +201,6 @@ class LoginWindowActionsTest {
         Date today = Date.valueOf(localDate);
 
         AllUsersEntity myUser = createUser("adam", "zysk");
-
-//        MockedStatic<Calendar> mockedCalendar;
-//        Calendar calendar = mock(Calendar.class);
-//
-//        mockedCalendar = mockStatic(Calendar.class);
-//        mockedCalendar.when(Calendar::getInstance).thenReturn(calendar);
-
 
         when(calendar.getTime()).thenReturn(today);
         when(dataBase.getVisit(myUser, today)).thenReturn(null);
@@ -291,12 +227,6 @@ class LoginWindowActionsTest {
         return visitEntity;
     }
 
-//    @Test
-//    void convertToDate() {
-//        Date today = new Date(Calendar.getInstance().getTime().getTime());
-//        System.out.println(today);
-//    }
-
     @ParameterizedTest
     @MethodSource("provideParamsForCheckRegData")
     void testCheckRegData(Vector<String> data, int expectedResult) {
@@ -311,7 +241,6 @@ class LoginWindowActionsTest {
 
         LoginWindowActions loginWindowActions = new LoginWindowActions();
         int result = loginWindowActions.checkRegData(data);
-//        int a = loginWindowActions.checkRegData(data);
 
         // then
         assertEquals(expectedResult, result);
@@ -376,17 +305,5 @@ class LoginWindowActionsTest {
                 Arguments.of(idealUser, 7)
 
         );
-    }
-
-    @Test
-    void checkRegData() {
-    }
-
-    @Test
-    void loginIsAvalible() {
-    }
-
-    @Test
-    void userInPort() {
     }
 }

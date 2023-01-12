@@ -46,7 +46,7 @@ public class Main extends Application {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        DataBase db = DataBase.getInstance(); // connecting with database
+        DataBase.getInstance(); // connecting with database
         launch(args);
         DataBase.disableConnection(); // disconnecting with database
     }
