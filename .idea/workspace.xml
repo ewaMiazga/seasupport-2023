@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
-      <change afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/dialogBackground1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/LoginDialog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/resources/src/app/PortsDialog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,11 +168,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
         <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesSomeServicesAvailable" />
         <item itemvalue="JUnit.PortInformationsActionsTest" />
         <item itemvalue="JUnit.PortInformationsActionsTest.testGetPricesAllServicesAvailable" />
         <item itemvalue="JUnit.PortInformationsActionsTest.getPrices" />
-        <item itemvalue="JUnit.AllUsersEntityTest.getLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -224,15 +226,6 @@
           <url>file://$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java</url>
           <line>158</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java</url>
-          <line>339</line>
-          <properties class="src.app.AccountDialog">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

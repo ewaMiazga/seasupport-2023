@@ -252,8 +252,7 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
                 if(event.getSource().equals(returnButton)) {
                     previousStage.show();
                     stage.hide();
-                    //PortDialog portDialog = new PortDialog();
-                    //portDialog.start(stage, port);
+                    DataBase.getInstance().addUser(selectedUser);
                 }
 
             }

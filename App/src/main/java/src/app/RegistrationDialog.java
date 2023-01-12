@@ -52,8 +52,9 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     private ComboBox userTypeBox;
     private Button registerButton;
     private Scene scene;
-
     private Stage registrationStage;
+
+    private Stage welcomeStage;
 
     private String cssPath;
 
@@ -76,12 +77,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start (Stage stage) {}
+    public void start(Stage previousStage, Stage stage) {
         registrationStage = stage;
+        welcomeStage = previousStage;
         stage.setTitle("Registration Dialog");
-        stage.getIcons().add(
-                new Image(
-                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -200,15 +200,15 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
                     if (message_code == 7) {
                         action.register(getTextContents(), birthdayPicker.getValue());
                         LoginDialog loginDialog = new LoginDialog();
-                        loginDialog.start(registrationStage);
+                        loginDialog.start(welcomeStage, registrationStage);
                     }
             }
         });
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        welcomeStage.setScene(scene);
+        welcomeStage.setResizable(false);
+        welcomeStage.show();
         userLoginField.requestFocus();
     }
 
@@ -232,7 +232,8 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             if (message_code == 7) {
                 action.register(getTextContents(), birthdayPicker.getValue());
                 LoginDialog loginDialog = new LoginDialog();
-                loginDialog.start(registrationStage);
+                loginDialog.start(welcomeStage, registrationStage);
+                welcomeStage.close();
             }
         }
     }

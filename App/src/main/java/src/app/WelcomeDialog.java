@@ -31,9 +31,9 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
 
     @Override
     public void start(Stage stage) {
-        welcomeStage = stage;
-        stage.setTitle("Welcome Dialog");
-        stage.getIcons().add(
+        welcomeStage = new Stage();
+        welcomeStage.setTitle("Welcome Dialog");
+        welcomeStage.getIcons().add(
                 new Image(
                         WelcomeDialog.class.getResourceAsStream("Logo.png")));
 
@@ -71,9 +71,9 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         scene = new Scene(grid, 600, 575);
         cssPath = this.getClass().getResource("LoginDialog.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        welcomeStage.setScene(scene);
+        welcomeStage.setResizable(false);
+        welcomeStage.show();
     }
 
     /**
@@ -90,12 +90,12 @@ public class WelcomeDialog extends Application implements EventHandler<ActionEve
         if (event.getSource() == loginButton) {
             Stage stage = new Stage();
             LoginDialog loginDialog = new LoginDialog();
-            loginDialog.start(stage);
+            loginDialog.start(welcomeStage, stage);
         }
         else if (event.getSource() == registrationButton) {
             Stage stage = new Stage();
             RegistrationDialog registrationDialog = new RegistrationDialog();
-            registrationDialog.start(stage);
+            registrationDialog.start(welcomeStage, stage);
         }
     }
 }

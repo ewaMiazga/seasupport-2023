@@ -40,14 +40,17 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private Button signInButton;
     private Scene scene;
     private Stage loginStage;
+    private Stage welcomeStage;
     private String cssPath;
     @Override
-    public void start(Stage stage) {
-        loginStage = new Stage();
-        stage.setTitle("Login Dialog");
-        stage.getIcons().add(
+    public void start(Stage stage) { }
+    public void start(Stage previousStage, Stage stage) {
+        loginStage = stage;
+        welcomeStage = previousStage;
+        loginStage.setTitle("Login Dialog");
+        loginStage.getIcons().add(
                 new Image(
-                        WelcomeDialog.class.getResourceAsStream("Logo.png")));
+                        LoginDialog.class.getResourceAsStream("Logo.png")));
 
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -101,15 +104,16 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
                     LoginWindowActions action = new LoginWindowActions();
                     AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
                     if(currentUser != null){
-                        stage.close();
                         PortsEntity port = action.userInPort(currentUser);
                         if(port != null){
                             PortDialog portDialog = new PortDialog();
                             portDialog.start(loginStage, port, currentUser);
+                            welcomeStage.close();
                         }
                         else{
                             PortsDialog portsDialog = new PortsDialog();
                             portsDialog.start(loginStage, currentUser);
+                            welcomeStage.close();
                         }
                     }
                     else{
@@ -140,10 +144,12 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
                     if(port != null){
                         PortDialog portDialog = new PortDialog();
                         portDialog.start(loginStage, port, currentUser);
+                        welcomeStage.close();
                     }
                     else{
                         PortsDialog portsDialog = new PortsDialog();
                         portsDialog.start(loginStage, currentUser);
+                        welcomeStage.close();
                     }
                 }
                 else{
@@ -174,7 +180,7 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         //TODO:
         //Write function, which will check if login and password are equal from those from
         //database @michał
-        if (event.getSource() == signInButton) {
+        /*if (event.getSource() == signInButton) {
             notification.setText("Sign in button pressed");
             LoginWindowActions action = new LoginWindowActions();
             AllUsersEntity currentUser = action.login(userLoginField.getText(), userPassField.getText());
@@ -183,16 +189,18 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
                 if(port != null){
                     PortDialog portDialog = new PortDialog();
                     portDialog.start(loginStage, port, currentUser);
+                    welcomeStage.hide();
                 }
                 else{
                     PortsDialog portsDialog = new PortsDialog();
                     portsDialog.start(loginStage, currentUser);
+                    welcomeStage.hide();
                 }
             }
             else{
                 notification.setText("Invalid login or password");
             }
-        }
+        }*/
     }
 
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {

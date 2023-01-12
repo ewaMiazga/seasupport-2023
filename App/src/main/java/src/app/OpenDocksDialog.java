@@ -71,7 +71,7 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
         grid.getColumnConstraints().add(new ColumnConstraints(200));
 
         formTitle = new Text(port.getPortName());
-        formTitle.setWrappingWidth(400);
+        formTitle.setWrappingWidth(350);
         formTitle.setId("formatTitle");
         grid.add(formTitle, 0, 0, 1, 2);
 
@@ -103,8 +103,6 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
                 notification.setText("All small docks are booked!");
                 return;
             }
-
-            selectedPort.setPlacesShipsSmall(selectedPort.getPlacesShipsSmall() - 1);
             smallShipsText.setText(Integer.toString(selectedPort.getPlacesShipsSmall() - places.getValue()));
             CreateVisitDialog dial = new CreateVisitDialog();
             ShipsEntity ship = new ShipsEntity();
@@ -131,7 +129,6 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
                 notification.setText("All big docks are booked!");
                 return;
             }
-            selectedPort.setPlacesShipsBig(selectedPort.getPlacesShipsBig() - 1);
             bigShipsText.setText(Integer.toString(selectedPort.getPlacesShipsBig()));
             CreateVisitDialog dial = new CreateVisitDialog();
             ShipsEntity ship = new ShipsEntity();

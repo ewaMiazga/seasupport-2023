@@ -71,6 +71,10 @@ public class SplashDialog extends Application {
 
     @Override
     public void start(final Stage initStage) throws Exception {
+        initStage.getIcons().add(
+                new Image(
+                        LoginDialog.class.getResourceAsStream("Logo.png")));
+
         final Task<ObservableList<String>> friendTask = new Task<ObservableList<String>>() {
             @Override
             protected ObservableList<String> call() throws InterruptedException {
