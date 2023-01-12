@@ -70,7 +70,15 @@ Ewa Miazga, Bartłomiej Niewiarowski, Michał Jakomulski, Mikołaj Taudul
 seasupport
    ├ App
      └ src
+       └ main
+         └ java
+           ├ app
+           ├ appActions
+           └ logic
+         └ resources
+       └ test/java/src
          ├ app
+         ├ appActions
          └ logic
    ├ db_scripts
    └ doc
