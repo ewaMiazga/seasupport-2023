@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
+/**
+ * Class that is mapping Visits entity to the class by the ORM conception
+ */
 @Entity
 @Table(name = "VISITS")
 public class VisitsEntity {
