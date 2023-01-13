@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+
+/**
+ * Class that is mapping Ports entity to the class by the ORM conception
+ */
 @Entity
 @Table(name = "PORTS")
 public class PortsEntity {

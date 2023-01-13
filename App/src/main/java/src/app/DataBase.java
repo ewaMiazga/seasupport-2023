@@ -276,6 +276,11 @@ public class DataBase {
         ss.close();
         return visits;
     }
+
+    /**
+     * Removes visit from the data base
+     * @param visit
+     */
     public void removeVisit(VisitsEntity visit)
     {
         Session ss = sessionFactory.openSession();

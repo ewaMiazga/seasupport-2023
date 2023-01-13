@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+
+/**
+ * Class that is mapping Price_list entity to the class by the ORM conception
+ */
 @Entity
 @Table(name = "PRICE_LIST")
 public class PriceListEntity {

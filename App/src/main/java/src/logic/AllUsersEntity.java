@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+
+/**
+ * Class that is mapping All_Users entity to the class by the ORM conception
+ */
 @Entity
 @Table(name = "ALL_USERS")
 public class AllUsersEntity {

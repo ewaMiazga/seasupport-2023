@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+
+/**
+ * Class that is mapping Ships entity to the class by the ORM conception
+ */
 @Entity
 @Table(name = "SHIPS")
 public class ShipsEntity {
