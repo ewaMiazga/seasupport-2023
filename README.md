@@ -155,6 +155,19 @@ git pull
 
 ### Jak sktuczenie uruchomić aplikację?
 
+Do zainstalowania aplikacji potrzebny będzie Maven zainstalowany na własnym komputerze.
+Pobierabmy wszystkie pliki z repozytorium.
+
+Kompilujemy kod i zasoby za pomocą komend
+```
+mvn compiler:compile
+mvn resources:resources
+```
+Uruchamiamy aplikację
+```
+mvn javafx:run
+```
+
 ## Dla kogo przeznaczona jest aplikacja?
 
 Aplikacja została stworzona z myślą o żeglarzach, dzięki niej jesteś w stanie zarezerwować wizyte, sporawdzić informacje o porcie oraz porównać dostępność i ceny oferowanych usług.
