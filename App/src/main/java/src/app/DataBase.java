@@ -496,7 +496,7 @@ public class DataBase {
      *
      * @param owner the owner
      */
-    public void addOwner(ShipOwnersEntity owner){
+    public void addOwner(ShipOwnersEntity owner) throws PersistenceException{
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
         ss.persist(owner);

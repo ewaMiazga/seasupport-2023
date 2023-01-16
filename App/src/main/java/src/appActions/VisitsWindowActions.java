@@ -245,8 +245,11 @@ public class VisitsWindowActions {
             }
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(1), data.get(2), data.get(3),
                     data.get(4), data.get(5));
-            DataBase.getInstance().addOwner(owner);
-            Logger.info("New owner added");
+            try{
+                DataBase.getInstance().addOwner(owner);
+            }
+            catch (PersistenceException e)
+            {return 7;}
             return 5;
         }
         else{
@@ -257,8 +260,11 @@ public class VisitsWindowActions {
             Integer n = Integer.valueOf(data.get(4));
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2),
                     data.get(3), n, data.get(1));
-            DataBase.getInstance().addOwner(owner);
-            Logger.info("New owner added");
+            try{
+                DataBase.getInstance().addOwner(owner);
+            }
+            catch (PersistenceException e)
+            {return 7;}
             return 5;
         }
     }
