@@ -21,4 +21,5 @@ module src {
     //requires org.junit.jupiter.params;
     requires java.xml.crypto;
     requires java.desktop;
+    requires org.tinylog.api;
 }

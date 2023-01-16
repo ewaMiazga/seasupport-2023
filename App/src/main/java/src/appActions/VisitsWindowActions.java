@@ -14,6 +14,7 @@ import javafx.util.Pair;
 import org.hibernate.exception.ConstraintViolationException;
 import src.logic.*;
 import src.app.DataBase;
+import org.tinylog.Logger;
 
 
 /**
@@ -33,18 +34,29 @@ public class VisitsWindowActions {
             if(data.get(i).equals(""))
                 return 0;
         }
-        if(shipInDataBase(data.get(0))) return 1;
-        if(!data.get(3).chars().allMatch( Character::isDigit )) return 3;
+        if(shipInDataBase(data.get(0))){
+            Logger.warn("Wrong input of ship CallSign");
+            return 1;
+        }
+        if(!data.get(3).chars().allMatch( Character::isDigit )){
+            Logger.warn("Wrong input of ship length");
+            return 3;
+        }
         int n = Integer.valueOf(data.get(3));
-        if(n > 30) return 4;
+        if(n > 30){
+            Logger.warn("Wrong input of ship length");
+            return 4;
+        }
         ShipOwnersEntity owner = DataBase.getInstance().getOwner(data.get(4));
-        if(owner == null) return 6;
+        if(owner == null){
+            Logger.warn("Wrong input of ship owner");
+            return 6;
+        }
         System.out.println(owner.getEmail());
         short len = Short.valueOf(data.get(3));
         ShipsEntity ship = new ShipsEntity(data.get(0), data.get(1), data.get(2), len, owner);
         System.out.println(ship.getShipName());
         DataBase.getInstance().addShip(ship);
-        System.out.println("Kontrola");
         return 5;
     }
 
@@ -95,12 +107,30 @@ public class VisitsWindowActions {
                 return 0;
         }
 
-        if(userInPortByDate(dateBegin, dateEnd, user)) return 9;
-        if(begin.isBefore(LocalDate.now())) return 2;
-        if(begin.isAfter(end)) return 3;
-        if(!shipInDataBase(data.get(2))) return 4;
-        if(shipInPortByDate(dateBegin, dateEnd, data.get(2))) return 10;
-        if(!captianInDataBase(data.get(3))) return 5;
+        if(userInPortByDate(dateBegin, dateEnd, user)){
+            Logger.warn("Wrong input of visit term");
+            return 9;
+        }
+        if(begin.isBefore(LocalDate.now())){
+            Logger.warn("Wrong input of visit begin");
+            return 2;
+        }
+        if(begin.isAfter(end)){
+            Logger.warn("Wrong input of visit end");
+            return 3;
+        }
+        if(!shipInDataBase(data.get(2))){
+            Logger.warn("Wrong input of ship");
+            return 4;
+        }
+        if(shipInPortByDate(dateBegin, dateEnd, data.get(2))){
+            Logger.warn("Wrong input of ship in visit dialog");
+            return 10;
+        }
+        if(!captianInDataBase(data.get(3))){
+            Logger.warn("Wrong input of ship in visit dialog");
+            return 5;
+        }
 
         ShipsEntity ship = DataBase.getInstance().getShip(data.get(2));
         CaptainsEntity cap = DataBase.getInstance().getCaptain(Integer.valueOf(data.get(3)));
@@ -115,6 +145,7 @@ public class VisitsWindowActions {
 
         VisitsEntity v = new VisitsEntity(dateBegin, dateEnd, port, user, ship, cap);
         DataBase.getInstance().addVisit(v);
+        Logger.info("New visit added");
         return 5;
     }
 
@@ -131,9 +162,11 @@ public class VisitsWindowActions {
         if(today.after(visit.getDateBegin())){
             visit.setDateEnd(today);
             DataBase.getInstance().addVisit(visit);
+            Logger.info("Visit ended");
         }
         else{
             DataBase.getInstance().removeVisit(visit);
+            Logger.info("Visit canceled");
         }
 
     }
@@ -163,13 +196,18 @@ public class VisitsWindowActions {
             if(data.get(i).equals(""))
                 return 0;
         }
-        if(data.get(2).length() != 11) return 1;
+        if(data.get(2).length() != 11) {
+            Logger.warn("Wrong input of pesel in new Captain dialog");
+            return 1;
+        }
         CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2));
         try{
             DataBase.getInstance().addCaptain(cap);
+            Logger.info("New captain added");
         }
         catch (PersistenceException e)
         {
+            Logger.warn("Wrong input of pesel, pesel has been already used");
             return 3;
         }
         return 2;
@@ -188,22 +226,39 @@ public class VisitsWindowActions {
             if(data.get(i).equals(""))
                 return 0;
         }
-        if(data.get(1).length() != 9) return 1;
-        if(!emailSuit(data.get(2))) return 2;
-        if(!emailIsAvailable(data.get(2))) return 6;
+        if(data.get(1).length() != 9){
+            Logger.warn("Wrong input of phone number in add owner dialog");
+            return 1;
+        }
+        if(!emailSuit(data.get(2))){
+            Logger.warn("Wrong input of email in new Captain dialog");
+            return 2;
+        }
+        if(!emailIsAvailable(data.get(2))){
+            Logger.warn("Wrong input of email in new Captain dialog, it has been already used");
+            return 6;
+        }
         if(data.get(0).equals("private")) {
-            if(data.get(5).length() != 11) return 3;
+            if(data.get(5).length() != 11){
+                Logger.warn("Wrong input of pesel in add owner dialog");
+                return 3;
+            }
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(1), data.get(2), data.get(3),
                     data.get(4), data.get(5));
             DataBase.getInstance().addOwner(owner);
+            Logger.info("New owner added");
             return 5;
         }
         else{
-            if(data.get(0).equals("commercial") && !data.get(4).chars().allMatch( Character::isDigit )) return 4;
+            if(data.get(0).equals("commercial") && !data.get(4).chars().allMatch( Character::isDigit )){
+                Logger.warn("Wrong input of NIP in new owner dialog");
+                return 4;
+            }
             Integer n = Integer.valueOf(data.get(4));
             ShipOwnersEntity owner = new ShipOwnersEntity(data.get(2),
                     data.get(3), n, data.get(1));
             DataBase.getInstance().addOwner(owner);
+            Logger.info("New owner added");
             return 5;
         }
     }
