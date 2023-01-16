@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import org.tinylog.Logger;
 import src.appActions.LoginWindowActions;
 
 import java.time.LocalDate;
@@ -263,6 +264,7 @@ public class AddShipDialog extends Application implements EventHandler<ActionEve
             notification.setText(messages.get(message_code));
             if(message_code == 5) {
 
+                Logger.info("{} added new ship", currentUser.getLogin());
                 Vector<String> data = getTextContents();
                 ShipOwnersEntity owner = DataBase.getInstance().getOwner(data.get(4));
                 short len = Short.valueOf(data.get(3));
