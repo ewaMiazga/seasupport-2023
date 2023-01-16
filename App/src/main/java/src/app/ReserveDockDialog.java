@@ -15,6 +15,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import src.logic.PortsEntity;
 
+/**
+ * The type Reserve dock dialog.
+ */
 public class ReserveDockDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -26,6 +29,13 @@ public class ReserveDockDialog extends Application implements EventHandler<Actio
     @Override
     public void start(Stage stage) { }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     * @param isBig the is big
+     */
     public void start(Stage stage, PortsEntity port, Boolean isBig) {
         stage.setTitle("Reserve Dock Dialog");
         stage.getIcons().add(

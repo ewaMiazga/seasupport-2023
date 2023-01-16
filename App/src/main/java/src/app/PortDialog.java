@@ -19,7 +19,6 @@ import java.io.IOException;
 
 /**
  * The type Port dialog.
- *
  */
 public class PortDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
@@ -40,7 +39,8 @@ public class PortDialog extends Application implements EventHandler<ActionEvent>
      * Start.
      *
      * @param stage the stage
-     * @param port the port
+     * @param port  the port
+     * @param user  the user
      */
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         portStage = stage;

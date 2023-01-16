@@ -27,6 +27,9 @@ import src.logic.ShipsEntity;
 import java.sql.Date;
 import java.util.Calendar;
 
+/**
+ * The type Open docks dialog.
+ */
 public class OpenDocksDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -52,6 +55,13 @@ public class OpenDocksDialog extends Application implements EventHandler<ActionE
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     * @param user  the user
+     */
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         selectedUser = user;
         selectedPort = port;

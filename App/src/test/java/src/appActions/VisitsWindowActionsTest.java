@@ -24,22 +24,44 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type Visits window actions test.
+ */
 class VisitsWindowActionsTest {
 
 
+    /**
+     * The Mocked database.
+     */
     MockedStatic<DataBase> mockedDatabase;
+    /**
+     * The Data base.
+     */
     DataBase dataBase = mock(DataBase.class);
 
+    /**
+     * Sets .
+     */
     @BeforeEach
     void setup() {
         mockedDatabase = mockStatic(DataBase.class);
         mockedDatabase.when(DataBase::getInstance).thenReturn(dataBase);
     }
 
+    /**
+     * Clean.
+     */
     @AfterEach
     void clean() {
         mockedDatabase.close();
     }
+
+    /**
+     * Test add ship for different parameters.
+     *
+     * @param data           the data
+     * @param expectedResult the expected result
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForAddShip")
     void testAddShipForDifferentParameters(Vector<String> data, int expectedResult) {
@@ -124,6 +146,16 @@ class VisitsWindowActionsTest {
     }
 
 
+    /**
+     * Test add visit for different parameters.
+     *
+     * @param data           the data
+     * @param begin          the begin
+     * @param end            the end
+     * @param port           the port
+     * @param user           the user
+     * @param expectedResult the expected result
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForAddVisit")
     void testAddVisitForDifferentParameters(Vector<String> data, LocalDate begin, LocalDate end, PortsEntity port, AllUsersEntity user, int expectedResult) {
@@ -254,6 +286,9 @@ class VisitsWindowActionsTest {
     }
 
 
+    /**
+     * Test add captain.
+     */
     @Test
     void testAddCaptain() {
         // given
@@ -271,6 +306,9 @@ class VisitsWindowActionsTest {
         assertEquals(2, result);
     }
 
+    /**
+     * Test add captain incorrect pesel.
+     */
     @Test
     void testAddCaptainIncorrectPesel() {
         // given
@@ -288,6 +326,9 @@ class VisitsWindowActionsTest {
         assertEquals(1, result);
     }
 
+    /**
+     * Test add captain empty data.
+     */
     @Test
     void testAddCaptainEmptyData() {
         // given
@@ -305,6 +346,12 @@ class VisitsWindowActionsTest {
         assertEquals(0, result);
     }
 
+    /**
+     * Test add owner for different parameters.
+     *
+     * @param data           the data
+     * @param expectedResult the expected result
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForAddOwner")
     void testAddOwnerForDifferentParameters(Vector<String> data, int expectedResult) {
@@ -381,6 +428,9 @@ class VisitsWindowActionsTest {
         );
     }
 
+    /**
+     * Gets booked places now.
+     */
     @Test
     void getBookedPlacesNow() {
         // given

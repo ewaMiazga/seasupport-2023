@@ -88,6 +88,11 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
             "There is no available places in this port.", "Select the start and end date of your visit!",
             "You've already booked a place for this date.", "On that day the ship will be in a different port.");
 
+    /**
+     * Get text contents vector.
+     *
+     * @return the vector
+     */
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
         data.add(beginPicker.toString());
@@ -101,6 +106,15 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage   the stage
+     * @param user    the user
+     * @param port    the port
+     * @param ship    the ship
+     * @param captain the captain
+     */
     public void start(Stage stage, AllUsersEntity user, PortsEntity port, ShipsEntity ship, CaptainsEntity captain) {
         registrationStage = stage;
 
@@ -262,6 +276,11 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         }
     }
 
+    /**
+     * Create string converter string converter.
+     *
+     * @return the string converter
+     */
     public StringConverter createStringConverter() {
         StringConverter converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter =
@@ -287,6 +306,13 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
         return converter;
     }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -299,6 +325,11 @@ public class CreateVisitDialog extends Application implements EventHandler<Actio
     }
 
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

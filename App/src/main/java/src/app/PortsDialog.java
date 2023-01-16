@@ -33,6 +33,11 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     private ObservableList<PortsEntity> data;
     private AllUsersEntity selectedUser;
 
+    /**
+     * Gets ports.
+     *
+     * @return the ports
+     */
     List<PortsEntity> getPorts() {
         List<PortsEntity> ports = DataBase.getInstance().getPorts();
         return ports;
@@ -46,6 +51,12 @@ public class PortsDialog extends Application implements EventHandler<MouseEvent>
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param user  the user
+     */
     public void start(Stage stage, AllUsersEntity user) {
         selectedUser = user;
         data = FXCollections.observableArrayList(getPorts());

@@ -19,9 +19,11 @@ import src.app.DataBase;
 public class VisitsWindowActions {
     /**
      * AddShip.
-     *
+     * <p>
      * Checking given data and add new ship to database.
-     * @param data Vector<String>
+     *
+     * @param data Vector
+     * @return the int
      */
     public int addShip(Vector<String> data){
         for(int i =0; i < data.size(); i++){
@@ -69,13 +71,15 @@ public class VisitsWindowActions {
 
     /**
      * AddVisit.
-     *
+     * <p>
      * Checking given data and add new visit to database.
-     * @param data Vector<String>
+     *
+     * @param data  Vector
      * @param begin LocalDate
-     * @param end LocalDate
-     * @param port PortsEntity
-     * @param user AllUsersEntity
+     * @param end   LocalDate
+     * @param port  PortsEntity
+     * @param user  AllUsersEntity
+     * @return the int
      */
     public int addVisit(Vector<String> data, LocalDate begin, LocalDate end, PortsEntity port, AllUsersEntity user){
         if(begin == null || end == null) return 8;
@@ -113,9 +117,11 @@ public class VisitsWindowActions {
 
     /**
      * endVisit.
-     *
+     * <p>
      * End actually visit.
-     * @param user AllUsersEntity
+     *
+     * @param user  AllUsersEntity
+     * @param visit the visit
      */
     public void endVisit(AllUsersEntity user, VisitsEntity visit){
         java.sql.Date today = new Date(Calendar.getInstance().getTime().getTime());
@@ -143,9 +149,11 @@ public class VisitsWindowActions {
 
     /**
      * AddCaptain.
-     *
+     * <p>
      * Checking given data and add new captain to database.
-     * @param data Vector<String>
+     *
+     * @param data Vector
+     * @return the int
      */
     public int addCaptian(Vector<String> data){
         for(int i =0; i < data.size(); i++){
@@ -160,9 +168,11 @@ public class VisitsWindowActions {
 
     /**
      * AddOwner.
-     *
+     * <p>
      * Checking given data and add new shipowner to database.
-     * @param data Vector<String>
+     *
+     * @param data Vector
+     * @return the int
      */
     public int addOwner(Vector<String> data){
         for(int i =0; i < data.size(); i++){
@@ -212,12 +222,15 @@ public class VisitsWindowActions {
         if(owner == null)  return true;
         return false;
     }
+
     /**
      * GetBookedPlacesNow.
-     *
+     * <p>
      * Check how much ships is now in port.
+     *
      * @param port PortsEntity
      * @param date Date
+     * @return the pair
      */
     public Pair<Integer, Integer> getBookedPlacesNow(PortsEntity port, Date date){
         Integer big = 0, small = 0;
@@ -229,13 +242,16 @@ public class VisitsWindowActions {
         Pair val = new Pair(small, big);
         return val;
     }
+
     /**
      * getBookedPlacesBetween.
-     *
+     * <p>
      * Check how much places are booked between begin and end dates.
-     * @param port PortsEntity
+     *
+     * @param port  PortsEntity
      * @param begin Date
-     * @param end Date
+     * @param end   Date
+     * @return the pair
      */
     public Pair<Integer, Integer> getBookedPlacesBetween(PortsEntity port, Date begin, Date end){
         List<VisitsEntity> visits = DataBase.getInstance().getVisitByPortBetween(port, begin, end);
@@ -248,25 +264,31 @@ public class VisitsWindowActions {
         Pair<Integer, Integer> v = new Pair<>(small, big);
         return v;
     }
+
     /**
      * userInPortByDate.
-     *
+     * <p>
      * Check that if user will be in port on this day.
+     *
      * @param begin Date
-     * @param end Date
-     * @param user AllUsersEntity
+     * @param end   Date
+     * @param user  AllUsersEntity
+     * @return the boolean
      */
     boolean userInPortByDate(Date begin, Date end, AllUsersEntity user){
         if(DataBase.getInstance().getVisit(user, begin) != null||DataBase.getInstance().getVisit(user, end) !=null) return true;
         return false;
     }
+
     /**
      * shipInPortByDate.
-     *
+     * <p>
      * Check that if ship will be in port on this day.s
-     * @param begin Date
-     * @param end Date
+     *
+     * @param begin    Date
+     * @param end      Date
      * @param callSign String
+     * @return the boolean
      */
     boolean shipInPortByDate(Date begin, Date end, String callSign){
         ShipsEntity ship = DataBase.getInstance().getShip(callSign);

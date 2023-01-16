@@ -44,6 +44,13 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
     private String cssPath;
     @Override
     public void start(Stage stage) { }
+
+    /**
+     * Start.
+     *
+     * @param previousStage the previous stage
+     * @param stage         the stage
+     */
     public void start(Stage previousStage, Stage stage) {
         loginStage = stage;
         welcomeStage = previousStage;
@@ -203,6 +210,13 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         }*/
     }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -213,6 +227,11 @@ public class LoginDialog extends Application implements EventHandler<ActionEvent
         return matchingNodes;
     }
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

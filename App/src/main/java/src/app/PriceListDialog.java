@@ -29,6 +29,9 @@ import src.appActions.*;
 import java.net.Inet4Address;
 import java.util.*;
 
+/**
+ * The type Price list dialog.
+ */
 public class PriceListDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -41,6 +44,12 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
 
     private PriceListEntity priceList;
 
+    /**
+     * Get list price list entity.
+     *
+     * @param listId the list id
+     * @return the price list entity
+     */
     PriceListEntity getList(int listId){
         PriceListEntity current_list = DataBase.getInstance().getPriceList(listId);
         return current_list;
@@ -50,6 +59,13 @@ public class PriceListDialog extends Application implements EventHandler<ActionE
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     * @param user  the user
+     */
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         priceListStage = stage;
         selectedUser = user;

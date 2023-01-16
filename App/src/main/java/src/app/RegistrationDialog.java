@@ -62,6 +62,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
             "Incorrect type of user!", "Wrong format of phone number!", "Wrong format of pesel!", "Wrong format of birthdate!",
             "Successful registration, go to login!");
 
+    /**
+     * Gets text contents.
+     *
+     * @return the text contents
+     */
     public Vector<String> getTextContents() {
         Vector<String> data = new Vector<>();
         data.add(userLoginField.getText());
@@ -78,6 +83,13 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
 
     @Override
     public void start (Stage stage) {}
+
+    /**
+     * Start.
+     *
+     * @param previousStage the previous stage
+     * @param stage         the stage
+     */
     public void start(Stage previousStage, Stage stage) {
         registrationStage = stage;
         welcomeStage = previousStage;
@@ -238,6 +250,13 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         }
     }
 
+    /**
+     * Show password.
+     *
+     * @param field the field
+     * @param text  the text
+     * @param box   the box
+     */
     public void showPassword(PasswordField field, TextField text, CheckBox box) {
         text.managedProperty().bind(box.selectedProperty());
         text.visibleProperty().bind(box.selectedProperty());
@@ -248,6 +267,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         text.textProperty().bindBidirectional(field.textProperty());
     }
 
+    /**
+     * Create string converter string converter.
+     *
+     * @return the string converter
+     */
     public StringConverter createStringConverter() {
         StringConverter converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter =
@@ -275,6 +299,13 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
         return converter;
     }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -287,6 +318,11 @@ public class RegistrationDialog extends Application implements EventHandler<Acti
     }
 
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

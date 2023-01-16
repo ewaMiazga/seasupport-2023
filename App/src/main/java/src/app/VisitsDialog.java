@@ -30,6 +30,9 @@ import java.util.*;
 
 import static java.lang.Math.min;
 
+/**
+ * The type Visits dialog.
+ */
 public class VisitsDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -51,6 +54,12 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param previousStage the previous stage
+     * @param user          the user
+     */
     public void start(Stage previousStage, AllUsersEntity user) {
         Stage stage = new Stage();
         visitsStage = stage;
@@ -178,7 +187,10 @@ public class VisitsDialog extends Application implements EventHandler<ActionEven
     public void handle(ActionEvent event) {
     }
 
-class ConfirmEndVistDialog extends Application {
+    /**
+     * The type Confirm end vist dialog.
+     */
+    class ConfirmEndVistDialog extends Application {
     private GridPane grid;
     private Text notification;
     private Label areYouSureLabel;
@@ -190,7 +202,15 @@ class ConfirmEndVistDialog extends Application {
     @Override
     public void start(Stage stage) {
     }
-    public void start(Stage stage, AllUsersEntity user, VisitsEntity visit) {
+
+        /**
+         * Start.
+         *
+         * @param stage the stage
+         * @param user  the user
+         * @param visit the visit
+         */
+        public void start(Stage stage, AllUsersEntity user, VisitsEntity visit) {
         confirmEndVisitStage = stage;
         stage.setTitle("Confirm the end or the cancellation of the visit Dialog");
         stage.getIcons().add(
@@ -258,17 +278,24 @@ class ConfirmEndVistDialog extends Application {
     }
 
 
-    /**
-     * The entry point of class LoginDialog
-     *
-     * @param args the input arguments
-     */
-    public static void main(String[] args) {
+        /**
+         * The entry point of class LoginDialog
+         *
+         * @param args the input arguments
+         */
+        public static void main(String[] args) {
         launch(args);
     }
 
 }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -279,6 +306,11 @@ class ConfirmEndVistDialog extends Application {
         return matchingNodes;
     }
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

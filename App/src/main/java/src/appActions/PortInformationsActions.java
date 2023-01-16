@@ -14,9 +14,11 @@ import java.util.Vector;
 public class PortInformationsActions {
     /**
      * GetPrices.
-     *
+     * <p>
      * Get data to Prices Window.
+     *
      * @param list PriceListEntity
+     * @return the prices
      */
     public Vector<Pair<String, String>> getPrices(PriceListEntity list) {
         Vector<Pair<String, String>> prices = new Vector<Pair<String, String>>();

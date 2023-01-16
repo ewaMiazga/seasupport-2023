@@ -7,13 +7,62 @@
     <list default="true" id="7731f27d-b566-4960-8035-b34b0ca8e6a7" name="Changes" comment="&quot;Marged&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddCaptainDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddOwnerDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/AddShipDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ContactDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/CreateVisitDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/LoginDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/MapDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/OpenDocksDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PortsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/PriceListDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/RegistrationDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/ReserveDockDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/ReserveDockDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/SplashDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/WelcomeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/app/VisitsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/app/VisitsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/LoginWindowActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/LoginWindowActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/PortInformationsActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/AllUsersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/CaptainsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PortsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/PriceListEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipOwnersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/ShipsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/src/logic/VisitsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/app/RegistrationDialogTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/app/RegistrationDialogTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/LoginWindowActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/LoginWindowActionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/PortInformationsActionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/appActions/VisitsWindowActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/appActions/VisitsWindowActionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/AllUsersEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/AllUsersEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/CaptainsEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/CaptainsEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/PortsEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/PortsEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/PriceListEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/PriceListEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/ShipOwnersEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/ShipOwnersEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/ShipsEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/ShipsEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/test/java/src/logic/VisitsEntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/test/java/src/logic/VisitsEntityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/doc/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/module-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/module-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/package-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/type-search-index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +75,8 @@
         <option value="HTML File" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="package-info" />
+        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -224,7 +275,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/App/src/main/java/src/appActions/VisitsWindowActions.java</url>
-          <line>158</line>
+          <line>166</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

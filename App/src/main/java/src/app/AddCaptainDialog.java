@@ -83,6 +83,11 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
             "Successful action, you added new Captain!");
 
+    /**
+     * Get text contents vector.
+     *
+     * @return the vector
+     */
     public Vector<String> getTextContents(){
         Vector<String> data = new Vector<>();
         data.add(forenameField.getText());
@@ -95,6 +100,14 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param tempPreviousStage the temp previous stage
+     * @param user              the user
+     * @param port              the port
+     * @param ship              the ship
+     */
     public void start(Stage tempPreviousStage, AllUsersEntity user, PortsEntity port, ShipsEntity ship) {
         previousStage = tempPreviousStage;
 
@@ -231,6 +244,13 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         }
     }
 
+    /**
+     * Show password.
+     *
+     * @param field the field
+     * @param text  the text
+     * @param box   the box
+     */
     public void showPassword(PasswordField field, TextField text, CheckBox box) {
         text.managedProperty().bind(box.selectedProperty());
         text.visibleProperty().bind(box.selectedProperty());
@@ -241,6 +261,13 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
         text.textProperty().bindBidirectional(field.textProperty());
     }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -253,6 +280,11 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
     }
 
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

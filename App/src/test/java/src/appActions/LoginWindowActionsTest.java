@@ -25,15 +25,33 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type Login window actions test.
+ */
 class LoginWindowActionsTest {
 
 
+    /**
+     * The Mocked database.
+     */
     MockedStatic<DataBase> mockedDatabase;
+    /**
+     * The Data base.
+     */
     DataBase dataBase = mock(DataBase.class);
 
+    /**
+     * The Mocked calendar.
+     */
     MockedStatic<Calendar> mockedCalendar;
+    /**
+     * The Calendar.
+     */
     Calendar calendar = mock(Calendar.class);
 
+    /**
+     * Sets .
+     */
     @BeforeEach
     void setup() {
         mockedDatabase = mockStatic(DataBase.class);
@@ -43,12 +61,21 @@ class LoginWindowActionsTest {
         mockedCalendar.when(Calendar::getInstance).thenReturn(calendar);
     }
 
+    /**
+     * Clean.
+     */
     @AfterEach
     void clean() {
         mockedDatabase.close();
         mockedCalendar.close();
     }
 
+    /**
+     * Test login for different parameters.
+     *
+     * @param password           the password
+     * @param expectedUserEntity the expected user entity
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForLogin")
     void testLoginForDifferentParameters(String password, AllUsersEntity expectedUserEntity) {
@@ -82,6 +109,9 @@ class LoginWindowActionsTest {
         return allUsersEntity;
     }
 
+    /**
+     * Register with correct login.
+     */
     @Test
     void RegisterWithCorrectLogin() {
         // given
@@ -110,6 +140,9 @@ class LoginWindowActionsTest {
         assertEquals(expectedUser, newUser);
     }
 
+    /**
+     * Register with occupied login.
+     */
     @Test
     void RegisterWithOccupiedLogin() {
         // given
@@ -137,6 +170,12 @@ class LoginWindowActionsTest {
         assertEquals(null, newUser);
     }
 
+    /**
+     * Test login is available for different parameters.
+     *
+     * @param login          the login
+     * @param expectedResult the expected result
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForLoginIsAvailable")
     void testLoginIsAvailableForDifferentParameters(String login, boolean expectedResult) {
@@ -171,6 +210,9 @@ class LoginWindowActionsTest {
         );
     }
 
+    /**
+     * Test user in port.
+     */
     @Test
     void testUserInPort() {
         // given
@@ -194,6 +236,9 @@ class LoginWindowActionsTest {
         assertNotEquals(null, returnedPort);
     }
 
+    /**
+     * Test user in port when user is not in port.
+     */
     @Test
     void testUserInPortWhenUserIsNotInPort() {
         // given
@@ -227,6 +272,12 @@ class LoginWindowActionsTest {
         return visitEntity;
     }
 
+    /**
+     * Test check reg data.
+     *
+     * @param data           the data
+     * @param expectedResult the expected result
+     */
     @ParameterizedTest
     @MethodSource("provideParamsForCheckRegData")
     void testCheckRegData(Vector<String> data, int expectedResult) {

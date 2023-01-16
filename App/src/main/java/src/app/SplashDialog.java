@@ -29,6 +29,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Splash dialog.
+ */
 public class SplashDialog extends Application {
 
     private Pane splashLayout;
@@ -41,11 +44,22 @@ public class SplashDialog extends Application {
     private static final int SPLASH_WIDTH = 676;
     private static final int SPLASH_HEIGHT = 227;
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception {
         launch(args);
     }
 
 
+    /**
+     * Gets ports names.
+     *
+     * @return the ports names
+     */
     List<String> getPortsNames() {
         List<PortsEntity> ports = DataBase.getInstance().getPorts();
         List<String> names = new ArrayList<String>();
@@ -149,7 +163,13 @@ public class SplashDialog extends Application {
         initStage.show();
     }
 
+    /**
+     * The interface Init completion handler.
+     */
     public interface InitCompletionHandler {
+        /**
+         * Complete.
+         */
         void complete();
     }
 }

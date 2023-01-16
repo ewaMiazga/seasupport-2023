@@ -9,8 +9,14 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+/**
+ * The type Registration dialog test.
+ */
 class RegistrationDialogTest {
 
+    /**
+     * String converter.
+     */
     @Test
     void stringConverter() {
         var obj = new RegistrationDialog();

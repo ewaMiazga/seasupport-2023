@@ -36,6 +36,16 @@ public class ShipOwnersEntity {
     @OneToMany(mappedBy = "shipOwnersEntity")
     private Collection<ShipsEntity> shipsEntities;
 
+    /**
+     * Instantiates a new Ship owners entity.
+     *
+     * @param phoneNumber   the phone number
+     * @param email         the email
+     * @param forename      the forename
+     * @param surname       the surname
+     * @param pesel         the pesel
+     * @param shipsEntities the ships entities
+     */
     public ShipOwnersEntity(String phoneNumber, String email, String forename,
                             String surname, String pesel, Collection<ShipsEntity> shipsEntities) {
         this.phoneNumber = phoneNumber;
@@ -46,6 +56,15 @@ public class ShipOwnersEntity {
         this.shipsEntities = shipsEntities;
     }
 
+    /**
+     * Instantiates a new Ship owners entity.
+     *
+     * @param phoneNumber the phone number
+     * @param email       the email
+     * @param forename    the forename
+     * @param surname     the surname
+     * @param pesel       the pesel
+     */
     public ShipOwnersEntity(String phoneNumber, String email, String forename,
                             String surname, String pesel) {
         this.phoneNumber = phoneNumber;
@@ -55,6 +74,14 @@ public class ShipOwnersEntity {
         this.pesel = pesel;
     }
 
+    /**
+     * Instantiates a new Ship owners entity.
+     *
+     * @param email       the email
+     * @param nameCompany the name company
+     * @param nip         the nip
+     * @param phoneNumber the phone number
+     */
     public ShipOwnersEntity(String email, String nameCompany, Integer nip, String phoneNumber) {
         this.email = email;
         this.nameCompany = nameCompany;
@@ -63,81 +90,179 @@ public class ShipOwnersEntity {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Instantiates a new Ship owners entity.
+     */
     public ShipOwnersEntity() {
     }
 
+    /**
+     * Add ship.
+     *
+     * @param ship the ship
+     */
     public void addShip(ShipsEntity ship){
         this.shipsEntities.add(ship);
     }
 
+    /**
+     * Gets ships entities.
+     *
+     * @return the ships entities
+     */
     public Collection<ShipsEntity> getShipsEntities() {
         return shipsEntities;
     }
 
+    /**
+     * Sets ships entities.
+     *
+     * @param shipsEntities the ships entities
+     */
     public void setShipsEntities(Collection<ShipsEntity> shipsEntities) {
         this.shipsEntities = shipsEntities;
     }
 
+    /**
+     * Gets ship owner id.
+     *
+     * @return the ship owner id
+     */
     public Integer getShipOwnerId() {
         return shipOwnerId;
     }
 
+    /**
+     * Sets ship owner id.
+     *
+     * @param shipOwnerId the ship owner id
+     */
     public void setShipOwnerId(Integer shipOwnerId) {
         this.shipOwnerId = shipOwnerId;
     }
 
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets forname.
+     *
+     * @return the forname
+     */
     public String getForname() {
         return forname;
     }
 
+    /**
+     * Sets forname.
+     *
+     * @param forname the forname
+     */
     public void setForname(String forname) {
         this.forname = forname;
     }
 
+    /**
+     * Gets surname.
+     *
+     * @return the surname
+     */
     public String getSurname() {
         return surname;
     }
 
+    /**
+     * Sets surname.
+     *
+     * @param surname the surname
+     */
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    /**
+     * Gets pesel.
+     *
+     * @return the pesel
+     */
     public String getPesel() {
         return pesel;
     }
 
+    /**
+     * Sets pesel.
+     *
+     * @param pesel the pesel
+     */
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
+    /**
+     * Gets name company.
+     *
+     * @return the name company
+     */
     public String getNameCompany() {
         return nameCompany;
     }
 
+    /**
+     * Sets name company.
+     *
+     * @param nameCompany the name company
+     */
     public void setNameCompany(String nameCompany) {
         this.nameCompany = nameCompany;
     }
 
+    /**
+     * Gets nip.
+     *
+     * @return the nip
+     */
     public Integer getNip() {
         return nip;
     }
 
+    /**
+     * Sets nip.
+     *
+     * @param nip the nip
+     */
     public void setNip(Integer nip) {
         this.nip = nip;
     }

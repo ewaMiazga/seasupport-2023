@@ -16,10 +16,12 @@ import java.text.SimpleDateFormat;
 public class LoginWindowActions {
     /**
      * Login.
-     *
+     * <p>
      * Try to log in using given login and password.
-     * @param login String
+     *
+     * @param login    String
      * @param password String
+     * @return the all users entity
      */
     public AllUsersEntity login(String login, String password){
         AllUsersEntity currentUser = DataBase.getInstance().getUser(login);
@@ -30,11 +32,13 @@ public class LoginWindowActions {
         }
         return null;
     }
+
     /**
      * Register.
      *
-     * @param data Vector<String>
+     * @param data      Vector
      * @param birthdate LocalDate
+     * @return AllUsersEntity the all users entity
      */
     public AllUsersEntity register(Vector<String> data, LocalDate birthdate){
         String login = data.get(0);
@@ -52,11 +56,14 @@ public class LoginWindowActions {
         }
         return null;
     }
+
     /**
      * ConvertToDate.
-     *
+     * <p>
      * Convert string representation of Date to Date format.
+     *
      * @param dateStr String
+     * @return the date
      */
     public Date convertToDate(String dateStr) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -68,11 +75,14 @@ public class LoginWindowActions {
         }
         return null;
     }
+
     /**
      * CheckRegData.
-     *
+     * <p>
      * Checking the correctness of the given data.
-     * @param data Vector<String>
+     *
+     * @param data Vector
+     * @return int error message
      */
     public int checkRegData(Vector<String> data){
         for(int i =0; i < data.size(); i++){
@@ -90,9 +100,11 @@ public class LoginWindowActions {
 
     /**
      * LoginIsAvailable.
-     *
+     * <p>
      * Checking that the login is available
+     *
      * @param login String
+     * @return the boolean
      */
     public boolean loginIsAvalible(String login){
         AllUsersEntity currentUser = DataBase.getInstance().getUser(login);
@@ -103,9 +115,11 @@ public class LoginWindowActions {
 
     /**
      * UserInPort
-     *
+     * <p>
      * Checking if the user is in any port.
+     *
      * @param user AllUsersEntity
+     * @return the ports entity
      */
     public PortsEntity userInPort(AllUsersEntity user){
         Date today = new Date(Calendar.getInstance().getTime().getTime());

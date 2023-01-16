@@ -30,6 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * The type Account dialog.
+ */
 public class AccountDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -47,6 +50,13 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     @Override
     public void start(Stage stage) {
     }
+
+    /**
+     * Start.
+     *
+     * @param previousStage the previous stage
+     * @param user          the user
+     */
     public void start(Stage previousStage, AllUsersEntity user) {
         Stage stage = new Stage();
         accountStage = stage;
@@ -296,9 +306,11 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     /**
      * The entry point of class LoginDialog
      *
-     * @param button the input arguments
+     * @param button        the input arguments
+     * @param text          the text
+     * @param field         the field
+     * @param whichProperty the which property
      */
-
     public void setTextField(Button button,Text text, TextField field, String whichProperty) {
         button.setOnAction(event -> {
             if (event.getSource() == button) {
@@ -325,6 +337,14 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         });
     }
 
+    /**
+     * Sets date field.
+     *
+     * @param button        the button
+     * @param text          the text
+     * @param picker        the picker
+     * @param whichProperty the which property
+     */
     public void setDateField(Button button,Text text, DatePicker picker, String whichProperty) {
         button.setOnAction(event -> {
             if (event.getSource() == button) {
@@ -354,6 +374,12 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         });
     }
 
+    /**
+     * Gets property.
+     *
+     * @param whichProperty the which property
+     * @return the property
+     */
     public String getProperty(String whichProperty) {
         if (whichProperty == "Login") {
             return selectedUser.getLogin();
@@ -377,6 +403,12 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         return "";
     }
 
+    /**
+     * Sets property.
+     *
+     * @param whichProperty the which property
+     * @param newProperty   the new property
+     */
     public void setProperty(String whichProperty, String newProperty) {
         if (whichProperty == "Login") {
             selectedUser.setLogin(newProperty);
@@ -393,6 +425,12 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             selectedUser.setBirthday(d);
         }
     }
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -401,6 +439,11 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
     public void handle(ActionEvent event) {
     }
 
+    /**
+     * Create string converter string converter.
+     *
+     * @return the string converter
+     */
     public StringConverter createStringConverter() {
         StringConverter converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter =
@@ -426,6 +469,9 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         return converter;
     }
 
+    /**
+     * The type Change pass dialog.
+     */
     class ChangePassDialog extends Application {
         private GridPane grid;
         private Text notification;
@@ -539,6 +585,13 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
             changePassStage.show();
         }
 
+        /**
+         * Show password.
+         *
+         * @param field the field
+         * @param text  the text
+         * @param box   the box
+         */
         public void showPassword(PasswordField field, TextField text, CheckBox box) {
             text.managedProperty().bind(box.selectedProperty());
             text.visibleProperty().bind(box.selectedProperty());
@@ -561,6 +614,13 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
 
     }
 
+    /**
+     * Gets nodes by coordinate.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the nodes by coordinate
+     */
     public List<Node> getNodesByCoordinate(Integer row, Integer column) {
         List<Node> matchingNodes = new ArrayList<>();
         for (Node node : grid.getChildren()) {
@@ -571,6 +631,11 @@ public class AccountDialog extends Application implements EventHandler<ActionEve
         return matchingNodes;
     }
 
+    /**
+     * Handle arrow navigation.
+     *
+     * @param event the event
+     */
     public void handleArrowNavigation(KeyEvent event) {
         Node source = (Node) event.getSource(); // the GridPane
         Node focused = source.getScene().getFocusOwner();

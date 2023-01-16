@@ -34,6 +34,16 @@ public class VisitsEntity {
     @JoinColumn(name = "CAPTAIN_ID", referencedColumnName = "CAPTAIN_ID")
     private CaptainsEntity captainsEntity;
 
+    /**
+     * Instantiates a new Visits entity.
+     *
+     * @param dateBegin      the date begin
+     * @param dateEnd        the date end
+     * @param portsEntity    the ports entity
+     * @param allUsersEntity the all users entity
+     * @param shipsEntity    the ships entity
+     * @param captainsEntity the captains entity
+     */
     public VisitsEntity(Date dateBegin, Date dateEnd, PortsEntity portsEntity, AllUsersEntity allUsersEntity, ShipsEntity shipsEntity, CaptainsEntity captainsEntity) {
         this.dateBegin = dateBegin;
         this.dateEnd = dateEnd;
@@ -43,53 +53,116 @@ public class VisitsEntity {
         this.captainsEntity = captainsEntity;
     }
 
+    /**
+     * Instantiates a new Visits entity.
+     */
     public VisitsEntity() {
     }
 
+    /**
+     * Gets ports entity.
+     *
+     * @return the ports entity
+     */
     public PortsEntity getPortsEntity() {
         return portsEntity;
     }
 
+    /**
+     * Sets ports entity.
+     *
+     * @param portsEntity the ports entity
+     */
     public void setPortsEntity(PortsEntity portsEntity) {
         this.portsEntity = portsEntity;
     }
 
+    /**
+     * Gets all users entity.
+     *
+     * @return the all users entity
+     */
     public AllUsersEntity getAllUsersEntity() {
         return allUsersEntity;
     }
 
+    /**
+     * Sets all users entity.
+     *
+     * @param allUsersEntity the all users entity
+     */
     public void setAllUsersEntity(AllUsersEntity allUsersEntity) {
         this.allUsersEntity = allUsersEntity;
     }
 
+    /**
+     * Gets ships entity.
+     *
+     * @return the ships entity
+     */
     public ShipsEntity getShipsEntity() {
         return shipsEntity;
     }
 
+    /**
+     * Sets ships entity.
+     *
+     * @param shipsEntity the ships entity
+     */
     public void setShipsEntity(ShipsEntity shipsEntity) {
         this.shipsEntity = shipsEntity;
     }
 
+    /**
+     * Gets date begin.
+     *
+     * @return the date begin
+     */
     public Date getDateBegin() {
         return dateBegin;
     }
 
+    /**
+     * Sets date begin.
+     *
+     * @param dateBegin the date begin
+     */
     public void setDateBegin(Date dateBegin) {
         this.dateBegin = dateBegin;
     }
 
+    /**
+     * Gets date end.
+     *
+     * @return the date end
+     */
     public Date getDateEnd() {
         return dateEnd;
     }
 
+    /**
+     * Sets date end.
+     *
+     * @param dateEnd the date end
+     */
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 
+    /**
+     * Gets visit id.
+     *
+     * @return the visit id
+     */
     public int getVisitId() {
         return visitId;
     }
 
+    /**
+     * Sets visit id.
+     *
+     * @param visitId the visit id
+     */
     public void setVisitId(int visitId) {
         this.visitId = visitId;
     }
@@ -107,10 +180,20 @@ public class VisitsEntity {
         return Objects.hash(dateBegin, dateEnd, visitId, portsEntity, allUsersEntity, shipsEntity, captainsEntity);
     }
 
+    /**
+     * Gets captains entity.
+     *
+     * @return the captains entity
+     */
     public CaptainsEntity getCaptainsEntity() {
         return captainsEntity;
     }
 
+    /**
+     * Sets captains entity.
+     *
+     * @param captainsEntity the captains entity
+     */
     public void setCaptainsEntity(CaptainsEntity captainsEntity) {
         this.captainsEntity = captainsEntity;
     }

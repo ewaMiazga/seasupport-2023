@@ -26,6 +26,9 @@ import java.net.URL;
 
 import static java.lang.String.valueOf;
 
+/**
+ * The type Contact dialog.
+ */
 public class ContactDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -48,6 +51,13 @@ public class ContactDialog extends Application implements EventHandler<ActionEve
     public void start(Stage stage) {
     }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     * @param user  the user
+     */
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) {
         contactStage = stage;
         selectedUser = user;

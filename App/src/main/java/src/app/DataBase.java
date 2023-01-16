@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Class responsible for connecting to database -
  * fetching/pulling data to/from it.
- *
+ * <p>
  * Design pattern singleton - you can get the object only from the method getInstance()
  *
  * @author Michal
@@ -72,7 +72,7 @@ public class DataBase {
      * Method responsible on the first use for creation the DataBase object
      * and then for supplying the object to whoever needs it
      *
-     * @return DataBase
+     * @return DataBase instance
      */
     public static DataBase getInstance() {
         if (instance == null)
@@ -85,10 +85,10 @@ public class DataBase {
 
     /**
      * Method responsible for fetching data from database
-     *  from the PORTS
+     * from the PORTS
      *
-     * @param portId
-     * @return PortsEntity
+     * @param portId the port id
+     * @return PortsEntity port
      */
     public PortsEntity getPort(int portId)
     {
@@ -102,10 +102,10 @@ public class DataBase {
 
     /**
      * Method responsible for fetching data from database
-     *  from the PORTS
+     * from the PORTS
      *
-     * @param name
-     * @return PortsEntity
+     * @param name the name
+     * @return PortsEntity port
      */
     public PortsEntity getPort(String name)
     {
@@ -121,11 +121,10 @@ public class DataBase {
 
     /**
      * Method responsible for fetching data from database
-     *  from the PORTS
+     * from the PORTS
      *
-     * @return List<PortsEntity>
+     * @return List  ports
      */
-
     public List<PortsEntity> getPorts(){
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();
@@ -139,10 +138,10 @@ public class DataBase {
 
     /**
      * Method responsible for fetching data from database
-     *  from the ALL_USERS table
+     * from the ALL_USERS table
      *
-     * @param login
-     * @return AllUsersEntity
+     * @param login the login
+     * @return AllUsersEntity user
      */
     public AllUsersEntity getUser(String login)
     {
@@ -157,9 +156,9 @@ public class DataBase {
     /**
      * Fetch visit with given user and data_begin
      *
-     * @param user
-     * @param dateBegin
-     * @return VisitsEntity
+     * @param user      the user
+     * @param dateBegin the date begin
+     * @return VisitsEntity visit
      */
     public VisitsEntity getVisit(AllUsersEntity user, Date dateBegin) {
         Session ss = sessionFactory.openSession();
@@ -174,12 +173,13 @@ public class DataBase {
         ss.close();
         return visit;
     }
+
     /**
      * Fetch visit with given callSign and data_begin
      *
-     * @param ship ShipsEntity
+     * @param ship      ShipsEntity
      * @param dateBegin Date
-     * @return VisitsEntity
+     * @return VisitsEntity visits entity
      */
     public VisitsEntity getVisit(ShipsEntity ship, Date dateBegin){
         Session ss = sessionFactory.openSession();
@@ -194,12 +194,13 @@ public class DataBase {
         ss.close();
         return visit;
     }
+
     /**
      * Gets a list of VistsEntities from a port after given date
      *
-     * @param port
-     * @param dateBegin
-     * @return List<VisitsEntity>
+     * @param port      the port
+     * @param dateBegin the date begin
+     * @return List  visit from port 1
      */
     public List<VisitsEntity> getVisitFromPort_1(PortsEntity port, Date dateBegin)
     {
@@ -219,9 +220,9 @@ public class DataBase {
     /**
      * Gets a list of VistsEntities from a port after given date
      *
-     * @param port
-     * @param dateBegin
-     * @return List<VisitsEntity>
+     * @param port      the port
+     * @param dateBegin the date begin
+     * @return List visit from port
      */
     public List<VisitsEntity> getVisitFromPort(PortsEntity port, Date dateBegin)
     {
@@ -237,13 +238,14 @@ public class DataBase {
         ss.close();
         return visits;
     }
+
     /**
      * Gets a list of VistsEntities witch will start between dateBegin and dateEnd
      *
-     * @param port
-     * @param dateBegin
-     * @param dateEnd
-     * @return List<VisitsEntity>
+     * @param port      the port
+     * @param dateBegin the date begin
+     * @param dateEnd   the date end
+     * @return List list of ports
      */
     public List<VisitsEntity> getVisitByPortBetween(PortsEntity port, Date dateBegin, Date dateEnd){
         Session ss = sessionFactory.openSession();
@@ -259,11 +261,12 @@ public class DataBase {
         ss.close();
         return visits;
     }
+
     /**
      * Gets a list of actually VistsEntities from this port.
      *
-     * @param port
-     * @return List<VisitsEntity>
+     * @param port the port
+     * @return List  list
      */
     public List<VisitsEntity> getVisitByPort(PortsEntity port){
         Session ss = sessionFactory.openSession();
@@ -279,7 +282,8 @@ public class DataBase {
 
     /**
      * Removes visit from the data base
-     * @param visit
+     *
+     * @param visit the visit
      */
     public void removeVisit(VisitsEntity visit)
     {
@@ -289,9 +293,11 @@ public class DataBase {
         tx.commit();
         ss.close();
     }
+
     /**
      * Fetches all ports in the database
-     * @return List<PortsEntities>
+     *
+     * @return List  all ports
      */
     public List<PortsEntity> getAllPorts()
     {
@@ -304,10 +310,12 @@ public class DataBase {
         ss.close();
         return ports;
     }
+
     /**
      * Get ShipsEntity from database
      *
-     * @param callSign
+     * @param callSign the call sign
+     * @return the ships entity
      */
     public ShipsEntity getShip(String callSign){
         Session ss = sessionFactory.openSession();
@@ -321,7 +329,7 @@ public class DataBase {
     /**
      * Adds ShipsEntity to the database
      *
-     * @param ship
+     * @param ship the ship
      */
     public void addShip(ShipsEntity ship)
     {
@@ -343,7 +351,8 @@ public class DataBase {
      * Adds ShipsEntity to the database and sets its shipowner to
      * that one with given pesel
      *
-     * @param ship
+     * @param ship  the ship
+     * @param pesel the pesel
      */
     public void addShip(ShipsEntity ship, String pesel)
     {
@@ -363,7 +372,7 @@ public class DataBase {
      * Method responsible for pulling data to database
      * to the ALL_USERS table
      *
-     * @param allUsers
+     * @param allUsers the all users
      */
     public void addUser(AllUsersEntity allUsers)
     {
@@ -387,9 +396,8 @@ public class DataBase {
      * Method responsible for pulling data to database
      * to the CAPTAINS table
      *
-     * @param cap
+     * @param cap the cap
      */
-
     public void addCaptain(CaptainsEntity cap)
     {
         Session ss = sessionFactory.openSession();
@@ -402,7 +410,8 @@ public class DataBase {
     /**
      * Get CaptainsEntity from database
      *
-     * @param id
+     * @param id the id
+     * @return the captains entity
      */
     public CaptainsEntity getCaptain(int id){
         Session ss = sessionFactory.openSession();
@@ -415,7 +424,8 @@ public class DataBase {
 
     /**
      * Adds new visit to the database
-     * @param visit
+     *
+     * @param visit the visit
      */
     public void addVisit(VisitsEntity visit)
     {
@@ -433,7 +443,8 @@ public class DataBase {
     /**
      * Get PriceListEntity from database
      *
-     * @param listId
+     * @param listId the list id
+     * @return the price list entity
      */
     public PriceListEntity getPriceList(int listId){
         Session ss = sessionFactory.openSession();
@@ -447,7 +458,8 @@ public class DataBase {
     /**
      * Get ShipOwnersEntity from database
      *
-     * @param id
+     * @param id the id
+     * @return the ship owners entity
      */
     public ShipOwnersEntity getOwner(String id){
         Session ss = sessionFactory.openSession();
@@ -457,9 +469,12 @@ public class DataBase {
         ss.close();
         return s;
     }
+
     /**
      * Adds get owner by email from the database
+     *
      * @param email String
+     * @return the ship owners entity
      */
     public ShipOwnersEntity getOwnerByEmail(String email){
         Session ss = sessionFactory.openSession();
@@ -472,9 +487,11 @@ public class DataBase {
         ss.close();
         return owner;
     }
+
     /**
      * Adds new owner to the database
-     * @param owner
+     *
+     * @param owner the owner
      */
     public void addOwner(ShipOwnersEntity owner){
         Session ss = sessionFactory.openSession();

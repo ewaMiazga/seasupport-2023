@@ -19,6 +19,9 @@ import src.logic.PortsEntity;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * The type Map dialog.
+ */
 public class MapDialog extends Application implements EventHandler<ActionEvent> {
     private GridPane grid;
     private Text formTitle, notification;
@@ -34,6 +37,14 @@ public class MapDialog extends Application implements EventHandler<ActionEvent> 
     @Override
     public void start(Stage stage) { }
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @param port  the port
+     * @param user  the user
+     * @throws IOException the io exception
+     */
     public void start(Stage stage, PortsEntity port, AllUsersEntity user) throws IOException {
         mapStage = stage;
         selectedUser = user;
