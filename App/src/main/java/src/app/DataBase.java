@@ -1,11 +1,14 @@
 package src.app;
 
 
+import jakarta.persistence.PersistenceException;
+import org.hibernate.PersistentObjectException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.hibernate.query.sql.internal.SQLQueryParser;
 import src.logic.*;
@@ -398,7 +401,7 @@ public class DataBase {
      *
      * @param cap the cap
      */
-    public void addCaptain(CaptainsEntity cap)
+    public void addCaptain(CaptainsEntity cap) throws PersistenceException
     {
         Session ss = sessionFactory.openSession();
         Transaction tx = ss.beginTransaction();

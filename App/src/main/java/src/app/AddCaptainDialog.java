@@ -81,7 +81,7 @@ public class AddCaptainDialog extends Application implements EventHandler<Action
 
 
     private List<String> messages=  List.of("Required fields are empty!", "Wrong format of pesel!",
-            "Successful action, you added new Captain!");
+            "Successful action, you added new Captain!", "Captain with this pesel already exists in the data base!");
 
     /**
      * Get text contents vector.
