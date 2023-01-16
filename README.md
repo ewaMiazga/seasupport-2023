@@ -43,6 +43,10 @@ Uruchamiamy aplikację
 mvn javafx:run
 ```
 
+## Dokumentacja kodu źródłowego
+
+[Link text Here](https://gitlab-stud.elka.pw.edu.pl/emiazga/seasupport/-/blob/main/doc/index.html)
+
 ## Wstępna deklaracja wybranej technologii
 
 - Interfejs graficzny: JavaFX.
