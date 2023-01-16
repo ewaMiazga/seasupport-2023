@@ -8,10 +8,13 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jakarta.persistence.PersistenceException;
 import javafx.scene.chart.PieChart;
 import javafx.util.Pair;
+import org.hibernate.exception.ConstraintViolationException;
 import src.logic.*;
 import src.app.DataBase;
+
 
 /**
  * The type Visits Window Actions.
@@ -162,7 +165,13 @@ public class VisitsWindowActions {
         }
         if(data.get(2).length() != 11) return 1;
         CaptainsEntity cap = new CaptainsEntity(data.get(0), data.get(1), data.get(2));
-        DataBase.getInstance().addCaptain(cap);
+        try{
+            DataBase.getInstance().addCaptain(cap);
+        }
+        catch (PersistenceException e)
+        {
+            return 3;
+        }
         return 2;
     }
 
