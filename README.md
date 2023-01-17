@@ -217,3 +217,7 @@ W celu zmiany naszych danych przejdź do okna AccountDetalis, zmień dane które
 ### Odwołanie wizyty
 
 Aby odwołać stworzoną już wizytę przejdź z poziomu okna AccountDetails do widoku VisitsDetalis, jeśli wizyta już się rozpoczęła to data zakończenia wizyty zostanie zmieniona na aktualną datę, w sytuacji gdy odwołamy wizytę która rozpocznie się w przyszłości to wizyta zostanie usunięta i nie zacznie się juz w dniu startu.
+
+## Obsługa wyjątków
+
+Wyjątki pojawiają się w związku z "unique constraint" w bazie danych nałożonym na pesel kapitanów i właścicieli statków. Obsługiwane są one w wartwie appActions - aplikacja prosi o wpisanie jeszcze raz teraz już poprawnego peselu.
