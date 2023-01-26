@@ -31,11 +31,16 @@ W celu łączenia się z bazą danych z poziomu aplikacji korzystaliśmy z popul
 ### Sekwencje:
 
 ### Triggery:
-1. current_visit_date
-2. correct_ship_owner
+1. current_visit_date - sprawdza czy data wizyty, którą dodajemy, nie jest starsza od aktualnej daty
+2. correct_ship_owner - sprawdza czy podano właściwe dane właściciela staku (stosujemy przejście z dwóch podencji na jedną tabelę)
 
 ## Napotkane problemy oraz kierunki rozwoju bazy danych
-Opisz napotkane problemy
 
-Baza danych zapewne będzie potrzebowała rozbudowy związanej z ewentualnym rozwojem aplikacji Seasupport, bardzo prawdopodobne jest dodanie nowych tabel, które będą przechowywać dane konieczne do realizacji nowych funkcjonalności aplikacji.
+Implementacja podencji w modelu logicznym - wybór ostatecznie padł na wspólną tabelę.
+
+Właściwe modelowanie relacji w modelu ORM za pomocą narzędzia Hibernate.
+
+Baza danych zapewne będzie potrzebowała rozbudowy związanej z ewentualnym rozwojem aplikacji Seasupport, bardzo prawdopodobne jest dodanie nowych tabel, które będą przechowywać dane konieczne do realizacji nowych funkcjonalności aplikacji takich np obsługa rezerwacji funkcjonalności portu zapisanych w encji Price List.
+
+
 
